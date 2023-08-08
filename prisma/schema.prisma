@@ -8,7 +8,7 @@ datasource db {
 }
 
 model DataSale {
-  id            Int         @id @default(autoincrement())
+  saleID        Int         @id @default(autoincrement())
   totalValue    Float
   sellerId      Int
   discount      Int
@@ -18,9 +18,10 @@ model DataSale {
 }
 
 model DataItems {
-  id          Int       @id @default(autoincrement())
-  ean         Int
-  description String
-  DataSale    DataSale? @relation(fields: [dataSaleId], references: [id])
-  dataSaleId  Int?
+  id             Int       @id @default(autoincrement())
+  ean            String
+  description    String
+  quantity       Int
+  DataSale       DataSale? @relation(references: [saleID], fields: [dataSaleSaleID])
+  dataSaleSaleID Int?
 }

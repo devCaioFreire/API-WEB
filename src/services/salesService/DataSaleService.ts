@@ -2,14 +2,12 @@ import { prisma } from "../../prisma";
 
 interface DataItems {
   id: number;
-  ean: number;
+  ean: string;
   description: string;
-  // DataSale    DataSale ? @relation(fields: [dataSaleId], references: [id])
-  dataSaleId: number;
+  quantity: number;
 };
 
 interface DataSaleRequest {
-  id: number,
   totalValue: number,
   paymentMethod: string,
   discount: number,
@@ -19,33 +17,24 @@ interface DataSaleRequest {
 }
 
 export class DataSaleService {
-  async execute({ id, totalValue, paymentMethod, discount, cashChange, sellerId, items }: DataSaleRequest) {
-    const formattedItems = items.map(item => ({
-      id: item.id,
-      ean: item.ean,
-      description: item.description,
-    }));
-
+  async execute({ totalValue, paymentMethod, discount, cashChange, sellerId, items }: DataSaleRequest) {
     const dataSales = await prisma.dataSale.create({
       data: {
-        id,
         totalValue,
         paymentMethod,
         discount,
         cashChange,
         sellerId,
         items: {
-          create: formattedItems
+          create: items.map(item => ({
+            ean: item.ean,
+            description: item.description,
+            quantity: item.quantity,
+          }))
         },
       },
-      select: {
-        id: true,
-        totalValue: true,
-        paymentMethod: true,
-        discount: true,
-        cashChange: true,
-        sellerId: true,
-        items: true
+      include: {
+        items: true, // This will include the items in the returned dataSales object
       },
     });
 
