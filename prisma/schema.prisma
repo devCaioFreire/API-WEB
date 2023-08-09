@@ -7,21 +7,50 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model DataSale {
-  saleID        Int         @id @default(autoincrement())
-  totalValue    Float
-  sellerId      Int
-  discount      Int
-  paymentMethod String
-  cashChange    Float?
-  items         DataItems[]
+model pedidos_venda {
+  id                    Int                   @id @default(autoincrement())
+  numero                Int?
+  vendedor_id           Int?
+  vendedor_nome         String?
+  vendedor_id_sirius    Int?
+  cliente_id            Int?
+  cliente_nome          String?
+  cliente_id_sirius     Int?
+  usuario_id            Int?
+  desconto              Float?
+  valor_bruto           Float?
+  valor_liquido         Float?
+  forma_pagamento       String?
+  pagamento             Float?
+  troco                 Float?
+  status                String?               @db.VarChar(1)
+  observacoes           String?
+  data_criacao          DateTime?
+  cliente_contato       String?
+  data_realizacao       DateTime?
+  data_sincronizacao    DateTime?
+  condicao_pagamento_id Int?
+  entrega_cep           String?
+  entrega_logradouro    String?
+  entrega_numero        String?
+  entrega_complemento   String?
+  entrega_bairro        String?
+  entrega_cidade        String?
+  entrega_uf            String?
+  itens                 pedidos_venda_itens[]
 }
 
-model DataItems {
-  id             Int       @id @default(autoincrement())
-  ean            String
-  description    String
-  quantity       Int
-  DataSale       DataSale? @relation(references: [saleID], fields: [dataSaleSaleID])
-  dataSaleSaleID Int?
+model pedidos_venda_itens {
+  id                Int           @id @default(autoincrement())
+  pedido_id         Int           @map("pedido_id")
+  produto_id        Int           @map("produto_id")
+  produto_sirius_id Int?          @map("produto_sirius_id")
+  descricao         String?       @map("descricao")
+  unidade           String?       @map("unidade")
+  quantidade        Int?          @map("quantidade")
+  valor_unitario    Float?        @map("valor_unitario")
+  valor_total       Float?        @map("valor_total")
+  ean               String?       @map("ean")
+  codigo            String?       @map("codigo")
+  pedidos_venda     pedidos_venda @relation(fields: [pedido_id], references: [id])
 }

@@ -1,40 +1,59 @@
 import { prisma } from "../../prisma";
 
 interface DataItems {
-  id: number;
+  produto_id: number;
   ean: string;
-  description: string;
-  quantity: number;
+  descricao: string;
+  quantidade: number;
+  valor_unitario: number;
+  valor_total: number;
 };
 
 interface DataSaleRequest {
-  totalValue: number,
-  paymentMethod: string,
-  discount: number,
-  cashChange: number,
-  sellerId: number,
-  items: Array<DataItems>
+  valor_bruto: number;
+  valor_liquido: number;
+  forma_pagamento: string;
+  desconto: number;
+  troco: number;
+  vendedor_id: number;
+  pagamento: number;
+  itens: Array<DataItems>
 }
 
 export class DataSaleService {
-  async execute({ totalValue, paymentMethod, discount, cashChange, sellerId, items }: DataSaleRequest) {
-    const dataSales = await prisma.dataSale.create({
+  async execute(
+    {
+      valor_bruto,
+      valor_liquido,
+      forma_pagamento,
+      desconto,
+      troco,
+      vendedor_id,
+      pagamento,
+      itens
+    }: DataSaleRequest) {
+    const dataSales = await prisma.pedidos_venda.create({
       data: {
-        totalValue,
-        paymentMethod,
-        discount,
-        cashChange,
-        sellerId,
-        items: {
-          create: items.map(item => ({
+        vendedor_id,
+        valor_bruto,
+        valor_liquido,
+        forma_pagamento,
+        desconto,
+        pagamento,
+        troco,
+        itens: {
+          create: itens.map(item => ({
+            produto_id: item.produto_id,
             ean: item.ean,
-            description: item.description,
-            quantity: item.quantity,
+            descricao: item.descricao,
+            quantidade: item.quantidade,
+            valor_unitario: item.valor_unitario,
+            valor_total: item.valor_total
           }))
         },
       },
       include: {
-        items: true, // This will include the items in the returned dataSales object
+        itens: true,
       },
     });
 
