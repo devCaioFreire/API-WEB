@@ -4,6 +4,7 @@ import { DataSaleService } from "../../services/salesService/DataSaleService";
 export class DataSaleController {
   async handle(req: Request, res: Response) {
     const {
+      cpf_cnpj,
       valor_bruto,
       valor_liquido,
       forma_pagamento,
@@ -13,10 +14,10 @@ export class DataSaleController {
       pagamento,
       itens
     } = req.body;
-
     const createDataSaleService = new DataSaleService();
     const dataSales = await createDataSaleService.execute(
       {
+        cpf_cnpj,
         valor_bruto,
         valor_liquido,
         forma_pagamento,

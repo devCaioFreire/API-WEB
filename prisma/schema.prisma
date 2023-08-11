@@ -24,11 +24,12 @@ model pedidos_venda {
   pagamento             Float?
   troco                 Float?
   status                String?               @db.VarChar(1)
+  cpf_cnpj              String?               @map("cpf_cnpj")
   observacoes           String?
-  data_criacao          DateTime?
+  data_criacao          DateTime?             @default(now())
   cliente_contato       String?
-  data_realizacao       DateTime?
-  data_sincronizacao    DateTime?
+  data_realizacao       DateTime?             @default(now())
+  data_sincronizacao    DateTime?             @default(now())
   condicao_pagamento_id Int?
   entrega_cep           String?
   entrega_logradouro    String?

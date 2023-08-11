@@ -10,6 +10,7 @@ interface DataItems {
 };
 
 interface DataSaleRequest {
+  cpf_cnpj: string;
   valor_bruto: number;
   valor_liquido: number;
   forma_pagamento: string;
@@ -23,6 +24,7 @@ interface DataSaleRequest {
 export class DataSaleService {
   async execute(
     {
+      cpf_cnpj,
       valor_bruto,
       valor_liquido,
       forma_pagamento,
@@ -41,6 +43,7 @@ export class DataSaleService {
         desconto,
         pagamento,
         troco,
+        cpf_cnpj: cpf_cnpj,
         itens: {
           create: itens.map(item => ({
             produto_id: item.produto_id,
@@ -54,8 +57,8 @@ export class DataSaleService {
       },
       include: {
         itens: true,
-      },
-    });
+      }
+    })
 
     return dataSales;
   }
