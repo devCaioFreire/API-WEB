@@ -12,7 +12,8 @@ export class DataSaleController {
       troco,
       vendedor_id,
       pagamento,
-      itens
+      itens,
+      status
     } = req.body;
     const createDataSaleService = new DataSaleService();
     const dataSales = await createDataSaleService.execute(
@@ -25,7 +26,8 @@ export class DataSaleController {
         troco,
         vendedor_id,
         pagamento,
-        itens
+        itens,
+        status
       }
     );
 

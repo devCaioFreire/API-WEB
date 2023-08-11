@@ -11,6 +11,7 @@ interface DataItems {
 
 interface DataSaleRequest {
   cpf_cnpj: string;
+  status: string;
   valor_bruto: number;
   valor_liquido: number;
   forma_pagamento: string;
@@ -32,10 +33,12 @@ export class DataSaleService {
       troco,
       vendedor_id,
       pagamento,
-      itens
+      itens,
+      status
     }: DataSaleRequest) {
     const dataSales = await prisma.pedidos_venda.create({
       data: {
+        status,
         vendedor_id,
         valor_bruto,
         valor_liquido,
