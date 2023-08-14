@@ -22,3 +22,4 @@ export class CancelCoupomController {
     return res.json(cancelCoupom);
   }
 }
+

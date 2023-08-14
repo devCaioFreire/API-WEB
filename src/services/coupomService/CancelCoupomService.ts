@@ -8,14 +8,11 @@ interface CancelCoupomRequest {
 }
 
 export class CancelCoupomService {
-  async execute(
-    {
-      id,
-      cpf_cnpj,
-      valor_liquido,
-      data_criacao
-    }: CancelCoupomRequest) {
+  async execute({ }: CancelCoupomRequest) {
     const cancelCoupom = await prisma.pedidos_venda.findMany({
+      where: {
+        status: "R",
+      },
       take: 10,
       orderBy: { data_criacao: "desc" },
     })
