@@ -58,6 +58,17 @@ model pedidos_venda_itens {
   @@index([pedido_id], map: "pedidos_venda_itens_pedido_id_fkey")
 }
 
+model produtos_movimentacoes {
+  id                Int      @id @default(autoincrement())
+  pedido_venda_id   Int?
+  produto_id        Int
+  saldo_anterior    Int?
+  saldo_atual       Int?
+  quantidade        Int?
+  tipo_movimentacao String?
+  data_hora         DateTime @default(now())
+}
+
 model certificado {
   id        Int     @id @unique(map: "id") @default(autoincrement())
   senhaCert String? @db.VarChar(15)
