@@ -8,37 +8,38 @@ datasource db {
 }
 
 model pedidos_venda {
-  id                    Int                   @id @default(autoincrement())
-  numero                Int?
-  vendedor_id           Int?
-  vendedor_nome         String?
-  vendedor_id_sirius    Int?
-  cliente_id            Int?
-  cliente_nome          String?
-  cliente_id_sirius     Int?
-  usuario_id            Int?
-  desconto              Float?
-  valor_bruto           Float?
-  valor_liquido         Float?
-  forma_pagamento       String?
-  pagamento             Float?
-  troco                 Float?
-  status                String?               @db.VarChar(1)
-  cpf_cnpj              String?               @map("cpf_cnpj")
-  observacoes           String?
-  data_criacao          DateTime?             @default(now())
-  cliente_contato       String?
-  data_realizacao       DateTime?             @default(now())
-  data_sincronizacao    DateTime?             @default(now())
-  condicao_pagamento_id Int?
-  entrega_cep           String?
-  entrega_logradouro    String?
-  entrega_numero        String?
-  entrega_complemento   String?
-  entrega_bairro        String?
-  entrega_cidade        String?
-  entrega_uf            String?
-  itens                 pedidos_venda_itens[]
+  id                     Int                      @id @default(autoincrement())
+  numero                 Int?
+  vendedor_id            Int?
+  vendedor_nome          String?
+  vendedor_id_sirius     Int?
+  cliente_id             Int?
+  cliente_nome           String?
+  cliente_id_sirius      Int?
+  usuario_id             Int?
+  desconto               Float?
+  valor_bruto            Float?
+  valor_liquido          Float?
+  forma_pagamento        String?
+  pagamento              Float?
+  troco                  Float?
+  status                 String?                  @db.VarChar(1)
+  cpf_cnpj               String?                  @map("cpf_cnpj")
+  observacoes            String?
+  data_criacao           DateTime?                @default(now())
+  cliente_contato        String?
+  data_realizacao        DateTime?                @default(now())
+  data_sincronizacao     DateTime?                @default(now())
+  condicao_pagamento_id  Int?
+  entrega_cep            String?
+  entrega_logradouro     String?
+  entrega_numero         String?
+  entrega_complemento    String?
+  entrega_bairro         String?
+  entrega_cidade         String?
+  entrega_uf             String?
+  itens                  pedidos_venda_itens[]
+  produtos_movimentacoes produtos_movimentacoes[]
 }
 
 model pedidos_venda_itens {
@@ -54,19 +55,24 @@ model pedidos_venda_itens {
   ean               String?       @map("ean")
   codigo            String?       @map("codigo")
   pedidos_venda     pedidos_venda @relation(fields: [pedido_id], references: [id])
+  pedido_venda_id   Int?
 
   @@index([pedido_id], map: "pedidos_venda_itens_pedido_id_fkey")
 }
 
 model produtos_movimentacoes {
-  id                Int      @id @default(autoincrement())
+  id                Int            @id @default(autoincrement())
   pedido_venda_id   Int?
   produto_id        Int
   saldo_anterior    Int?
   saldo_atual       Int?
   quantidade        Int?
   tipo_movimentacao String?
-  data_hora         DateTime @default(now())
+  data_hora         DateTime       @default(now())
+  pedidos_venda     pedidos_venda? @relation(fields: [pedidos_vendaId], references: [id])
+  pedidos_vendaId   Int?
+
+  @@index([pedido_venda_id], map: "produtos_movimentacoes_pedido_venda_id_fkey")
 }
 
 model certificado {

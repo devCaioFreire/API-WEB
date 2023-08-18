@@ -1,4 +1,5 @@
 import { prisma } from "../../prisma";
+import { atualizarSaldo, criarMovimentacao } from "./BalanceControl";
 
 interface DataItems {
   produto_id: number;
@@ -62,6 +63,13 @@ export class DataSaleService {
         itens: true,
       }
     })
+
+    for (const item of itens) {
+      const { produto_id, quantidade } = item;
+
+      await criarMovimentacao(dataSales.id, produto_id, quantidade);
+      await atualizarSaldo(produto_id, quantidade);
+    }
 
     return dataSales;
   }
