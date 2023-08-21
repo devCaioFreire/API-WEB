@@ -1,5 +1,6 @@
 generator client {
   provider = "prisma-client-js"
+  output   = "./databases/main"
 }
 
 datasource db {
@@ -55,7 +56,6 @@ model pedidos_venda_itens {
   ean               String?       @map("ean")
   codigo            String?       @map("codigo")
   pedidos_venda     pedidos_venda @relation(fields: [pedido_id], references: [id])
-  pedido_venda_id   Int?
 
   @@index([pedido_id], map: "pedidos_venda_itens_pedido_id_fkey")
 }
