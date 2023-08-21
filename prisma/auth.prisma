@@ -9,7 +9,7 @@ datasource db {
 }
 
 model acoes {
-  id               BigInt           @id @unique(map: "id") @default(autoincrement())
+  id               Int              @id @unique(map: "id") @default(autoincrement())
   descricao        String           @db.VarChar(100)
   descricao_titulo String           @db.VarChar(100)
   tabela           String           @db.VarChar(40)
@@ -19,9 +19,9 @@ model acoes {
 }
 
 model acoes_x_grupos {
-  id               BigInt          @id @unique(map: "id") @default(autoincrement())
-  id_acao          BigInt
-  id_grupo_usuario BigInt
+  id               Int             @id @unique(map: "id") @default(autoincrement())
+  id_acao          Int
+  id_grupo_usuario Int
   permite          Int
   acoes            acoes           @relation(fields: [id_acao], references: [id], onUpdate: Restrict, map: "acoes_x_grupos_ibfk_1")
   grupos_usuarios  grupos_usuarios @relation(fields: [id_grupo_usuario], references: [id], onUpdate: Restrict, map: "acoes_x_grupos_ibfk_2")
@@ -31,7 +31,7 @@ model acoes_x_grupos {
 }
 
 model empresas {
-  id                  BigInt                @id @unique(map: "id") @default(autoincrement())
+  id                  Int                   @id @unique(map: "id") @default(autoincrement())
   cnpj                String                @db.VarChar(18)
   xRazaoSocial        String                @db.VarChar(60)
   xFant               String                @db.VarChar(60)
@@ -46,7 +46,7 @@ model empresas {
   fone                String                @db.VarChar(14)
   ie                  String                @db.VarChar(14)
   crt                 String                @db.VarChar(1)
-  token               String                @unique(map: "token") @db.VarChar(100)
+  token               String                @unique(map: "token") @db.VarChar(128)
   banco               String                @db.VarChar(100)
   status              String                @db.VarChar(1)
   email               String?               @db.VarChar(129)
@@ -55,9 +55,9 @@ model empresas {
 }
 
 model grupos_usuarios {
-  id                  BigInt                @id @unique(map: "id") @default(autoincrement())
+  id                  Int                   @id @unique(map: "id") @default(autoincrement())
   nome                String                @db.VarChar(50)
-  id_empresa          BigInt
+  id_empresa          Int
   pagina_inicial      String                @default("notas-fiscais") @db.VarChar(20)
   acoes_x_grupos      acoes_x_grupos[]
   empresas            empresas              @relation(fields: [id_empresa], references: [id], onUpdate: Restrict, map: "grupos_usuarios_ibfk_1")
@@ -67,23 +67,23 @@ model grupos_usuarios {
 }
 
 model usuarios {
-  id                  BigInt                @id @unique(map: "id") @default(autoincrement())
+  id                  Int                   @id @unique(map: "id") @default(autoincrement())
   nome                String?               @db.VarChar(60)
   ultimo_nome         String?               @db.VarChar(60)
   email               String?               @db.VarChar(150)
   senha               String?               @db.VarChar(250)
   celular             String?               @db.VarChar(14)
-  status              String?               @db.Char(1)
-  user_token          String                @unique(map: "user_token") @db.VarChar(100)
+  status              String?               @default("A") @db.Char(1)
+  user_token          String                @unique(map: "user_token") @db.VarChar(128)
   exclusivo           String?               @default("N") @db.Char(1)
   usuarios_x_empresas usuarios_x_empresas[]
 }
 
 model usuarios_x_empresas {
-  id               BigInt          @id @unique(map: "id") @default(autoincrement())
-  id_empresa       BigInt
-  id_usuario       BigInt
-  id_grupo_usuario BigInt
+  id               Int             @id @unique(map: "id") @default(autoincrement())
+  id_empresa       Int
+  id_usuario       Int
+  id_grupo_usuario Int
   empresas         empresas        @relation(fields: [id_empresa], references: [id], onUpdate: Restrict, map: "usuarios_x_empresas_ibfk_1")
   usuarios         usuarios        @relation(fields: [id_usuario], references: [id], onUpdate: Restrict, map: "usuarios_x_empresas_ibfk_2")
   grupos_usuarios  grupos_usuarios @relation(fields: [id_grupo_usuario], references: [id], onUpdate: Restrict, map: "usuarios_x_empresas_ibfk_3")

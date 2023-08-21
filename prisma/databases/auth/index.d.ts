@@ -1438,12 +1438,12 @@ export namespace Prisma {
   }
 
   export type AcoesSumAggregateOutputType = {
-    id: bigint | null
+    id: number | null
     valor_padrao: number | null
   }
 
   export type AcoesMinAggregateOutputType = {
-    id: bigint | null
+    id: number | null
     descricao: string | null
     descricao_titulo: string | null
     tabela: string | null
@@ -1452,7 +1452,7 @@ export namespace Prisma {
   }
 
   export type AcoesMaxAggregateOutputType = {
-    id: bigint | null
+    id: number | null
     descricao: string | null
     descricao_titulo: string | null
     tabela: string | null
@@ -1596,7 +1596,7 @@ export namespace Prisma {
   }
 
   export type AcoesGroupByOutputType = {
-    id: bigint
+    id: number
     descricao: string
     descricao_titulo: string
     tabela: string
@@ -1655,7 +1655,7 @@ export namespace Prisma {
       acoes_x_grupos: Prisma.$acoes_x_gruposPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetResult<{
-      id: bigint
+      id: number
       descricao: string
       descricao_titulo: string
       tabela: string
@@ -2056,7 +2056,7 @@ export namespace Prisma {
    * Fields of the acoes model
    */ 
   interface acoesFieldRefs {
-    readonly id: FieldRef<"acoes", 'BigInt'>
+    readonly id: FieldRef<"acoes", 'Int'>
     readonly descricao: FieldRef<"acoes", 'String'>
     readonly descricao_titulo: FieldRef<"acoes", 'String'>
     readonly tabela: FieldRef<"acoes", 'String'>
@@ -2430,23 +2430,23 @@ export namespace Prisma {
   }
 
   export type Acoes_x_gruposSumAggregateOutputType = {
-    id: bigint | null
-    id_acao: bigint | null
-    id_grupo_usuario: bigint | null
+    id: number | null
+    id_acao: number | null
+    id_grupo_usuario: number | null
     permite: number | null
   }
 
   export type Acoes_x_gruposMinAggregateOutputType = {
-    id: bigint | null
-    id_acao: bigint | null
-    id_grupo_usuario: bigint | null
+    id: number | null
+    id_acao: number | null
+    id_grupo_usuario: number | null
     permite: number | null
   }
 
   export type Acoes_x_gruposMaxAggregateOutputType = {
-    id: bigint | null
-    id_acao: bigint | null
-    id_grupo_usuario: bigint | null
+    id: number | null
+    id_acao: number | null
+    id_grupo_usuario: number | null
     permite: number | null
   }
 
@@ -2582,9 +2582,9 @@ export namespace Prisma {
   }
 
   export type Acoes_x_gruposGroupByOutputType = {
-    id: bigint
-    id_acao: bigint
-    id_grupo_usuario: bigint
+    id: number
+    id_acao: number
+    id_grupo_usuario: number
     permite: number
     _count: Acoes_x_gruposCountAggregateOutputType | null
     _avg: Acoes_x_gruposAvgAggregateOutputType | null
@@ -2636,9 +2636,9 @@ export namespace Prisma {
       grupos_usuarios: Prisma.$grupos_usuariosPayload<ExtArgs>
     }
     scalars: $Extensions.GetResult<{
-      id: bigint
-      id_acao: bigint
-      id_grupo_usuario: bigint
+      id: number
+      id_acao: number
+      id_grupo_usuario: number
       permite: number
     }, ExtArgs["result"]["acoes_x_grupos"]>
     composites: {}
@@ -3037,9 +3037,9 @@ export namespace Prisma {
    * Fields of the acoes_x_grupos model
    */ 
   interface acoes_x_gruposFieldRefs {
-    readonly id: FieldRef<"acoes_x_grupos", 'BigInt'>
-    readonly id_acao: FieldRef<"acoes_x_grupos", 'BigInt'>
-    readonly id_grupo_usuario: FieldRef<"acoes_x_grupos", 'BigInt'>
+    readonly id: FieldRef<"acoes_x_grupos", 'Int'>
+    readonly id_acao: FieldRef<"acoes_x_grupos", 'Int'>
+    readonly id_grupo_usuario: FieldRef<"acoes_x_grupos", 'Int'>
     readonly permite: FieldRef<"acoes_x_grupos", 'Int'>
   }
     
@@ -3385,11 +3385,11 @@ export namespace Prisma {
   }
 
   export type EmpresasSumAggregateOutputType = {
-    id: bigint | null
+    id: number | null
   }
 
   export type EmpresasMinAggregateOutputType = {
-    id: bigint | null
+    id: number | null
     cnpj: string | null
     xRazaoSocial: string | null
     xFant: string | null
@@ -3411,7 +3411,7 @@ export namespace Prisma {
   }
 
   export type EmpresasMaxAggregateOutputType = {
-    id: bigint | null
+    id: number | null
     cnpj: string | null
     xRazaoSocial: string | null
     xFant: string | null
@@ -3618,7 +3618,7 @@ export namespace Prisma {
   }
 
   export type EmpresasGroupByOutputType = {
-    id: bigint
+    id: number
     cnpj: string
     xRazaoSocial: string
     xFant: string
@@ -3719,7 +3719,7 @@ export namespace Prisma {
       usuarios_x_empresas: Prisma.$usuarios_x_empresasPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetResult<{
-      id: bigint
+      id: number
       cnpj: string
       xRazaoSocial: string
       xFant: string
@@ -4135,7 +4135,7 @@ export namespace Prisma {
    * Fields of the empresas model
    */ 
   interface empresasFieldRefs {
-    readonly id: FieldRef<"empresas", 'BigInt'>
+    readonly id: FieldRef<"empresas", 'Int'>
     readonly cnpj: FieldRef<"empresas", 'String'>
     readonly xRazaoSocial: FieldRef<"empresas", 'String'>
     readonly xFant: FieldRef<"empresas", 'String'>
@@ -4541,21 +4541,21 @@ export namespace Prisma {
   }
 
   export type Grupos_usuariosSumAggregateOutputType = {
-    id: bigint | null
-    id_empresa: bigint | null
+    id: number | null
+    id_empresa: number | null
   }
 
   export type Grupos_usuariosMinAggregateOutputType = {
-    id: bigint | null
+    id: number | null
     nome: string | null
-    id_empresa: bigint | null
+    id_empresa: number | null
     pagina_inicial: string | null
   }
 
   export type Grupos_usuariosMaxAggregateOutputType = {
-    id: bigint | null
+    id: number | null
     nome: string | null
-    id_empresa: bigint | null
+    id_empresa: number | null
     pagina_inicial: string | null
   }
 
@@ -4687,9 +4687,9 @@ export namespace Prisma {
   }
 
   export type Grupos_usuariosGroupByOutputType = {
-    id: bigint
+    id: number
     nome: string
-    id_empresa: bigint
+    id_empresa: number
     pagina_inicial: string
     _count: Grupos_usuariosCountAggregateOutputType | null
     _avg: Grupos_usuariosAvgAggregateOutputType | null
@@ -4746,9 +4746,9 @@ export namespace Prisma {
       usuarios_x_empresas: Prisma.$usuarios_x_empresasPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetResult<{
-      id: bigint
+      id: number
       nome: string
-      id_empresa: bigint
+      id_empresa: number
       pagina_inicial: string
     }, ExtArgs["result"]["grupos_usuarios"]>
     composites: {}
@@ -5149,9 +5149,9 @@ export namespace Prisma {
    * Fields of the grupos_usuarios model
    */ 
   interface grupos_usuariosFieldRefs {
-    readonly id: FieldRef<"grupos_usuarios", 'BigInt'>
+    readonly id: FieldRef<"grupos_usuarios", 'Int'>
     readonly nome: FieldRef<"grupos_usuarios", 'String'>
-    readonly id_empresa: FieldRef<"grupos_usuarios", 'BigInt'>
+    readonly id_empresa: FieldRef<"grupos_usuarios", 'Int'>
     readonly pagina_inicial: FieldRef<"grupos_usuarios", 'String'>
   }
     
@@ -5539,11 +5539,11 @@ export namespace Prisma {
   }
 
   export type UsuariosSumAggregateOutputType = {
-    id: bigint | null
+    id: number | null
   }
 
   export type UsuariosMinAggregateOutputType = {
-    id: bigint | null
+    id: number | null
     nome: string | null
     ultimo_nome: string | null
     email: string | null
@@ -5555,7 +5555,7 @@ export namespace Prisma {
   }
 
   export type UsuariosMaxAggregateOutputType = {
-    id: bigint | null
+    id: number | null
     nome: string | null
     ultimo_nome: string | null
     email: string | null
@@ -5712,7 +5712,7 @@ export namespace Prisma {
   }
 
   export type UsuariosGroupByOutputType = {
-    id: bigint
+    id: number
     nome: string | null
     ultimo_nome: string | null
     email: string | null
@@ -5780,7 +5780,7 @@ export namespace Prisma {
       usuarios_x_empresas: Prisma.$usuarios_x_empresasPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetResult<{
-      id: bigint
+      id: number
       nome: string | null
       ultimo_nome: string | null
       email: string | null
@@ -6184,7 +6184,7 @@ export namespace Prisma {
    * Fields of the usuarios model
    */ 
   interface usuariosFieldRefs {
-    readonly id: FieldRef<"usuarios", 'BigInt'>
+    readonly id: FieldRef<"usuarios", 'Int'>
     readonly nome: FieldRef<"usuarios", 'String'>
     readonly ultimo_nome: FieldRef<"usuarios", 'String'>
     readonly email: FieldRef<"usuarios", 'String'>
@@ -6561,24 +6561,24 @@ export namespace Prisma {
   }
 
   export type Usuarios_x_empresasSumAggregateOutputType = {
-    id: bigint | null
-    id_empresa: bigint | null
-    id_usuario: bigint | null
-    id_grupo_usuario: bigint | null
+    id: number | null
+    id_empresa: number | null
+    id_usuario: number | null
+    id_grupo_usuario: number | null
   }
 
   export type Usuarios_x_empresasMinAggregateOutputType = {
-    id: bigint | null
-    id_empresa: bigint | null
-    id_usuario: bigint | null
-    id_grupo_usuario: bigint | null
+    id: number | null
+    id_empresa: number | null
+    id_usuario: number | null
+    id_grupo_usuario: number | null
   }
 
   export type Usuarios_x_empresasMaxAggregateOutputType = {
-    id: bigint | null
-    id_empresa: bigint | null
-    id_usuario: bigint | null
-    id_grupo_usuario: bigint | null
+    id: number | null
+    id_empresa: number | null
+    id_usuario: number | null
+    id_grupo_usuario: number | null
   }
 
   export type Usuarios_x_empresasCountAggregateOutputType = {
@@ -6713,10 +6713,10 @@ export namespace Prisma {
   }
 
   export type Usuarios_x_empresasGroupByOutputType = {
-    id: bigint
-    id_empresa: bigint
-    id_usuario: bigint
-    id_grupo_usuario: bigint
+    id: number
+    id_empresa: number
+    id_usuario: number
+    id_grupo_usuario: number
     _count: Usuarios_x_empresasCountAggregateOutputType | null
     _avg: Usuarios_x_empresasAvgAggregateOutputType | null
     _sum: Usuarios_x_empresasSumAggregateOutputType | null
@@ -6770,10 +6770,10 @@ export namespace Prisma {
       grupos_usuarios: Prisma.$grupos_usuariosPayload<ExtArgs>
     }
     scalars: $Extensions.GetResult<{
-      id: bigint
-      id_empresa: bigint
-      id_usuario: bigint
-      id_grupo_usuario: bigint
+      id: number
+      id_empresa: number
+      id_usuario: number
+      id_grupo_usuario: number
     }, ExtArgs["result"]["usuarios_x_empresas"]>
     composites: {}
   }
@@ -7173,10 +7173,10 @@ export namespace Prisma {
    * Fields of the usuarios_x_empresas model
    */ 
   interface usuarios_x_empresasFieldRefs {
-    readonly id: FieldRef<"usuarios_x_empresas", 'BigInt'>
-    readonly id_empresa: FieldRef<"usuarios_x_empresas", 'BigInt'>
-    readonly id_usuario: FieldRef<"usuarios_x_empresas", 'BigInt'>
-    readonly id_grupo_usuario: FieldRef<"usuarios_x_empresas", 'BigInt'>
+    readonly id: FieldRef<"usuarios_x_empresas", 'Int'>
+    readonly id_empresa: FieldRef<"usuarios_x_empresas", 'Int'>
+    readonly id_usuario: FieldRef<"usuarios_x_empresas", 'Int'>
+    readonly id_grupo_usuario: FieldRef<"usuarios_x_empresas", 'Int'>
   }
     
 
@@ -7622,9 +7622,9 @@ export namespace Prisma {
 
 
   /**
-   * Reference to a field of type 'BigInt'
+   * Reference to a field of type 'Int'
    */
-  export type BigIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'BigInt'>
+  export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
     
 
 
@@ -7632,13 +7632,6 @@ export namespace Prisma {
    * Reference to a field of type 'String'
    */
   export type StringFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'String'>
-    
-
-
-  /**
-   * Reference to a field of type 'Int'
-   */
-  export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
     
 
 
@@ -7656,7 +7649,7 @@ export namespace Prisma {
     AND?: acoesWhereInput | acoesWhereInput[]
     OR?: acoesWhereInput[]
     NOT?: acoesWhereInput | acoesWhereInput[]
-    id?: BigIntFilter<"acoes"> | bigint | number
+    id?: IntFilter<"acoes"> | number
     descricao?: StringFilter<"acoes"> | string
     descricao_titulo?: StringFilter<"acoes"> | string
     tabela?: StringFilter<"acoes"> | string
@@ -7676,7 +7669,7 @@ export namespace Prisma {
   }
 
   export type acoesWhereUniqueInput = Prisma.AtLeast<{
-    id?: bigint | number
+    id?: number
     AND?: acoesWhereInput | acoesWhereInput[]
     OR?: acoesWhereInput[]
     NOT?: acoesWhereInput | acoesWhereInput[]
@@ -7706,7 +7699,7 @@ export namespace Prisma {
     AND?: acoesScalarWhereWithAggregatesInput | acoesScalarWhereWithAggregatesInput[]
     OR?: acoesScalarWhereWithAggregatesInput[]
     NOT?: acoesScalarWhereWithAggregatesInput | acoesScalarWhereWithAggregatesInput[]
-    id?: BigIntWithAggregatesFilter<"acoes"> | bigint | number
+    id?: IntWithAggregatesFilter<"acoes"> | number
     descricao?: StringWithAggregatesFilter<"acoes"> | string
     descricao_titulo?: StringWithAggregatesFilter<"acoes"> | string
     tabela?: StringWithAggregatesFilter<"acoes"> | string
@@ -7718,9 +7711,9 @@ export namespace Prisma {
     AND?: acoes_x_gruposWhereInput | acoes_x_gruposWhereInput[]
     OR?: acoes_x_gruposWhereInput[]
     NOT?: acoes_x_gruposWhereInput | acoes_x_gruposWhereInput[]
-    id?: BigIntFilter<"acoes_x_grupos"> | bigint | number
-    id_acao?: BigIntFilter<"acoes_x_grupos"> | bigint | number
-    id_grupo_usuario?: BigIntFilter<"acoes_x_grupos"> | bigint | number
+    id?: IntFilter<"acoes_x_grupos"> | number
+    id_acao?: IntFilter<"acoes_x_grupos"> | number
+    id_grupo_usuario?: IntFilter<"acoes_x_grupos"> | number
     permite?: IntFilter<"acoes_x_grupos"> | number
     acoes?: XOR<AcoesRelationFilter, acoesWhereInput>
     grupos_usuarios?: XOR<Grupos_usuariosRelationFilter, grupos_usuariosWhereInput>
@@ -7736,12 +7729,12 @@ export namespace Prisma {
   }
 
   export type acoes_x_gruposWhereUniqueInput = Prisma.AtLeast<{
-    id?: bigint | number
+    id?: number
     AND?: acoes_x_gruposWhereInput | acoes_x_gruposWhereInput[]
     OR?: acoes_x_gruposWhereInput[]
     NOT?: acoes_x_gruposWhereInput | acoes_x_gruposWhereInput[]
-    id_acao?: BigIntFilter<"acoes_x_grupos"> | bigint | number
-    id_grupo_usuario?: BigIntFilter<"acoes_x_grupos"> | bigint | number
+    id_acao?: IntFilter<"acoes_x_grupos"> | number
+    id_grupo_usuario?: IntFilter<"acoes_x_grupos"> | number
     permite?: IntFilter<"acoes_x_grupos"> | number
     acoes?: XOR<AcoesRelationFilter, acoesWhereInput>
     grupos_usuarios?: XOR<Grupos_usuariosRelationFilter, grupos_usuariosWhereInput>
@@ -7763,9 +7756,9 @@ export namespace Prisma {
     AND?: acoes_x_gruposScalarWhereWithAggregatesInput | acoes_x_gruposScalarWhereWithAggregatesInput[]
     OR?: acoes_x_gruposScalarWhereWithAggregatesInput[]
     NOT?: acoes_x_gruposScalarWhereWithAggregatesInput | acoes_x_gruposScalarWhereWithAggregatesInput[]
-    id?: BigIntWithAggregatesFilter<"acoes_x_grupos"> | bigint | number
-    id_acao?: BigIntWithAggregatesFilter<"acoes_x_grupos"> | bigint | number
-    id_grupo_usuario?: BigIntWithAggregatesFilter<"acoes_x_grupos"> | bigint | number
+    id?: IntWithAggregatesFilter<"acoes_x_grupos"> | number
+    id_acao?: IntWithAggregatesFilter<"acoes_x_grupos"> | number
+    id_grupo_usuario?: IntWithAggregatesFilter<"acoes_x_grupos"> | number
     permite?: IntWithAggregatesFilter<"acoes_x_grupos"> | number
   }
 
@@ -7773,7 +7766,7 @@ export namespace Prisma {
     AND?: empresasWhereInput | empresasWhereInput[]
     OR?: empresasWhereInput[]
     NOT?: empresasWhereInput | empresasWhereInput[]
-    id?: BigIntFilter<"empresas"> | bigint | number
+    id?: IntFilter<"empresas"> | number
     cnpj?: StringFilter<"empresas"> | string
     xRazaoSocial?: StringFilter<"empresas"> | string
     xFant?: StringFilter<"empresas"> | string
@@ -7821,7 +7814,7 @@ export namespace Prisma {
   }
 
   export type empresasWhereUniqueInput = Prisma.AtLeast<{
-    id?: bigint | number
+    id?: number
     token?: string
     AND?: empresasWhereInput | empresasWhereInput[]
     OR?: empresasWhereInput[]
@@ -7878,7 +7871,7 @@ export namespace Prisma {
     AND?: empresasScalarWhereWithAggregatesInput | empresasScalarWhereWithAggregatesInput[]
     OR?: empresasScalarWhereWithAggregatesInput[]
     NOT?: empresasScalarWhereWithAggregatesInput | empresasScalarWhereWithAggregatesInput[]
-    id?: BigIntWithAggregatesFilter<"empresas"> | bigint | number
+    id?: IntWithAggregatesFilter<"empresas"> | number
     cnpj?: StringWithAggregatesFilter<"empresas"> | string
     xRazaoSocial?: StringWithAggregatesFilter<"empresas"> | string
     xFant?: StringWithAggregatesFilter<"empresas"> | string
@@ -7903,9 +7896,9 @@ export namespace Prisma {
     AND?: grupos_usuariosWhereInput | grupos_usuariosWhereInput[]
     OR?: grupos_usuariosWhereInput[]
     NOT?: grupos_usuariosWhereInput | grupos_usuariosWhereInput[]
-    id?: BigIntFilter<"grupos_usuarios"> | bigint | number
+    id?: IntFilter<"grupos_usuarios"> | number
     nome?: StringFilter<"grupos_usuarios"> | string
-    id_empresa?: BigIntFilter<"grupos_usuarios"> | bigint | number
+    id_empresa?: IntFilter<"grupos_usuarios"> | number
     pagina_inicial?: StringFilter<"grupos_usuarios"> | string
     acoes_x_grupos?: Acoes_x_gruposListRelationFilter
     empresas?: XOR<EmpresasRelationFilter, empresasWhereInput>
@@ -7923,12 +7916,12 @@ export namespace Prisma {
   }
 
   export type grupos_usuariosWhereUniqueInput = Prisma.AtLeast<{
-    id?: bigint | number
+    id?: number
     AND?: grupos_usuariosWhereInput | grupos_usuariosWhereInput[]
     OR?: grupos_usuariosWhereInput[]
     NOT?: grupos_usuariosWhereInput | grupos_usuariosWhereInput[]
     nome?: StringFilter<"grupos_usuarios"> | string
-    id_empresa?: BigIntFilter<"grupos_usuarios"> | bigint | number
+    id_empresa?: IntFilter<"grupos_usuarios"> | number
     pagina_inicial?: StringFilter<"grupos_usuarios"> | string
     acoes_x_grupos?: Acoes_x_gruposListRelationFilter
     empresas?: XOR<EmpresasRelationFilter, empresasWhereInput>
@@ -7951,9 +7944,9 @@ export namespace Prisma {
     AND?: grupos_usuariosScalarWhereWithAggregatesInput | grupos_usuariosScalarWhereWithAggregatesInput[]
     OR?: grupos_usuariosScalarWhereWithAggregatesInput[]
     NOT?: grupos_usuariosScalarWhereWithAggregatesInput | grupos_usuariosScalarWhereWithAggregatesInput[]
-    id?: BigIntWithAggregatesFilter<"grupos_usuarios"> | bigint | number
+    id?: IntWithAggregatesFilter<"grupos_usuarios"> | number
     nome?: StringWithAggregatesFilter<"grupos_usuarios"> | string
-    id_empresa?: BigIntWithAggregatesFilter<"grupos_usuarios"> | bigint | number
+    id_empresa?: IntWithAggregatesFilter<"grupos_usuarios"> | number
     pagina_inicial?: StringWithAggregatesFilter<"grupos_usuarios"> | string
   }
 
@@ -7961,7 +7954,7 @@ export namespace Prisma {
     AND?: usuariosWhereInput | usuariosWhereInput[]
     OR?: usuariosWhereInput[]
     NOT?: usuariosWhereInput | usuariosWhereInput[]
-    id?: BigIntFilter<"usuarios"> | bigint | number
+    id?: IntFilter<"usuarios"> | number
     nome?: StringNullableFilter<"usuarios"> | string | null
     ultimo_nome?: StringNullableFilter<"usuarios"> | string | null
     email?: StringNullableFilter<"usuarios"> | string | null
@@ -7987,7 +7980,7 @@ export namespace Prisma {
   }
 
   export type usuariosWhereUniqueInput = Prisma.AtLeast<{
-    id?: bigint | number
+    id?: number
     user_token?: string
     AND?: usuariosWhereInput | usuariosWhereInput[]
     OR?: usuariosWhereInput[]
@@ -8023,7 +8016,7 @@ export namespace Prisma {
     AND?: usuariosScalarWhereWithAggregatesInput | usuariosScalarWhereWithAggregatesInput[]
     OR?: usuariosScalarWhereWithAggregatesInput[]
     NOT?: usuariosScalarWhereWithAggregatesInput | usuariosScalarWhereWithAggregatesInput[]
-    id?: BigIntWithAggregatesFilter<"usuarios"> | bigint | number
+    id?: IntWithAggregatesFilter<"usuarios"> | number
     nome?: StringNullableWithAggregatesFilter<"usuarios"> | string | null
     ultimo_nome?: StringNullableWithAggregatesFilter<"usuarios"> | string | null
     email?: StringNullableWithAggregatesFilter<"usuarios"> | string | null
@@ -8038,10 +8031,10 @@ export namespace Prisma {
     AND?: usuarios_x_empresasWhereInput | usuarios_x_empresasWhereInput[]
     OR?: usuarios_x_empresasWhereInput[]
     NOT?: usuarios_x_empresasWhereInput | usuarios_x_empresasWhereInput[]
-    id?: BigIntFilter<"usuarios_x_empresas"> | bigint | number
-    id_empresa?: BigIntFilter<"usuarios_x_empresas"> | bigint | number
-    id_usuario?: BigIntFilter<"usuarios_x_empresas"> | bigint | number
-    id_grupo_usuario?: BigIntFilter<"usuarios_x_empresas"> | bigint | number
+    id?: IntFilter<"usuarios_x_empresas"> | number
+    id_empresa?: IntFilter<"usuarios_x_empresas"> | number
+    id_usuario?: IntFilter<"usuarios_x_empresas"> | number
+    id_grupo_usuario?: IntFilter<"usuarios_x_empresas"> | number
     empresas?: XOR<EmpresasRelationFilter, empresasWhereInput>
     usuarios?: XOR<UsuariosRelationFilter, usuariosWhereInput>
     grupos_usuarios?: XOR<Grupos_usuariosRelationFilter, grupos_usuariosWhereInput>
@@ -8058,13 +8051,13 @@ export namespace Prisma {
   }
 
   export type usuarios_x_empresasWhereUniqueInput = Prisma.AtLeast<{
-    id?: bigint | number
+    id?: number
     AND?: usuarios_x_empresasWhereInput | usuarios_x_empresasWhereInput[]
     OR?: usuarios_x_empresasWhereInput[]
     NOT?: usuarios_x_empresasWhereInput | usuarios_x_empresasWhereInput[]
-    id_empresa?: BigIntFilter<"usuarios_x_empresas"> | bigint | number
-    id_usuario?: BigIntFilter<"usuarios_x_empresas"> | bigint | number
-    id_grupo_usuario?: BigIntFilter<"usuarios_x_empresas"> | bigint | number
+    id_empresa?: IntFilter<"usuarios_x_empresas"> | number
+    id_usuario?: IntFilter<"usuarios_x_empresas"> | number
+    id_grupo_usuario?: IntFilter<"usuarios_x_empresas"> | number
     empresas?: XOR<EmpresasRelationFilter, empresasWhereInput>
     usuarios?: XOR<UsuariosRelationFilter, usuariosWhereInput>
     grupos_usuarios?: XOR<Grupos_usuariosRelationFilter, grupos_usuariosWhereInput>
@@ -8086,14 +8079,13 @@ export namespace Prisma {
     AND?: usuarios_x_empresasScalarWhereWithAggregatesInput | usuarios_x_empresasScalarWhereWithAggregatesInput[]
     OR?: usuarios_x_empresasScalarWhereWithAggregatesInput[]
     NOT?: usuarios_x_empresasScalarWhereWithAggregatesInput | usuarios_x_empresasScalarWhereWithAggregatesInput[]
-    id?: BigIntWithAggregatesFilter<"usuarios_x_empresas"> | bigint | number
-    id_empresa?: BigIntWithAggregatesFilter<"usuarios_x_empresas"> | bigint | number
-    id_usuario?: BigIntWithAggregatesFilter<"usuarios_x_empresas"> | bigint | number
-    id_grupo_usuario?: BigIntWithAggregatesFilter<"usuarios_x_empresas"> | bigint | number
+    id?: IntWithAggregatesFilter<"usuarios_x_empresas"> | number
+    id_empresa?: IntWithAggregatesFilter<"usuarios_x_empresas"> | number
+    id_usuario?: IntWithAggregatesFilter<"usuarios_x_empresas"> | number
+    id_grupo_usuario?: IntWithAggregatesFilter<"usuarios_x_empresas"> | number
   }
 
   export type acoesCreateInput = {
-    id?: bigint | number
     descricao: string
     descricao_titulo: string
     tabela: string
@@ -8103,7 +8095,7 @@ export namespace Prisma {
   }
 
   export type acoesUncheckedCreateInput = {
-    id?: bigint | number
+    id?: number
     descricao: string
     descricao_titulo: string
     tabela: string
@@ -8113,7 +8105,6 @@ export namespace Prisma {
   }
 
   export type acoesUpdateInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
     descricao?: StringFieldUpdateOperationsInput | string
     descricao_titulo?: StringFieldUpdateOperationsInput | string
     tabela?: StringFieldUpdateOperationsInput | string
@@ -8123,7 +8114,7 @@ export namespace Prisma {
   }
 
   export type acoesUncheckedUpdateInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    id?: IntFieldUpdateOperationsInput | number
     descricao?: StringFieldUpdateOperationsInput | string
     descricao_titulo?: StringFieldUpdateOperationsInput | string
     tabela?: StringFieldUpdateOperationsInput | string
@@ -8133,7 +8124,7 @@ export namespace Prisma {
   }
 
   export type acoesCreateManyInput = {
-    id?: bigint | number
+    id?: number
     descricao: string
     descricao_titulo: string
     tabela: string
@@ -8142,7 +8133,6 @@ export namespace Prisma {
   }
 
   export type acoesUpdateManyMutationInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
     descricao?: StringFieldUpdateOperationsInput | string
     descricao_titulo?: StringFieldUpdateOperationsInput | string
     tabela?: StringFieldUpdateOperationsInput | string
@@ -8151,7 +8141,7 @@ export namespace Prisma {
   }
 
   export type acoesUncheckedUpdateManyInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    id?: IntFieldUpdateOperationsInput | number
     descricao?: StringFieldUpdateOperationsInput | string
     descricao_titulo?: StringFieldUpdateOperationsInput | string
     tabela?: StringFieldUpdateOperationsInput | string
@@ -8160,54 +8150,50 @@ export namespace Prisma {
   }
 
   export type acoes_x_gruposCreateInput = {
-    id?: bigint | number
     permite: number
     acoes: acoesCreateNestedOneWithoutAcoes_x_gruposInput
     grupos_usuarios: grupos_usuariosCreateNestedOneWithoutAcoes_x_gruposInput
   }
 
   export type acoes_x_gruposUncheckedCreateInput = {
-    id?: bigint | number
-    id_acao: bigint | number
-    id_grupo_usuario: bigint | number
+    id?: number
+    id_acao: number
+    id_grupo_usuario: number
     permite: number
   }
 
   export type acoes_x_gruposUpdateInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
     permite?: IntFieldUpdateOperationsInput | number
     acoes?: acoesUpdateOneRequiredWithoutAcoes_x_gruposNestedInput
     grupos_usuarios?: grupos_usuariosUpdateOneRequiredWithoutAcoes_x_gruposNestedInput
   }
 
   export type acoes_x_gruposUncheckedUpdateInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
-    id_acao?: BigIntFieldUpdateOperationsInput | bigint | number
-    id_grupo_usuario?: BigIntFieldUpdateOperationsInput | bigint | number
+    id?: IntFieldUpdateOperationsInput | number
+    id_acao?: IntFieldUpdateOperationsInput | number
+    id_grupo_usuario?: IntFieldUpdateOperationsInput | number
     permite?: IntFieldUpdateOperationsInput | number
   }
 
   export type acoes_x_gruposCreateManyInput = {
-    id?: bigint | number
-    id_acao: bigint | number
-    id_grupo_usuario: bigint | number
+    id?: number
+    id_acao: number
+    id_grupo_usuario: number
     permite: number
   }
 
   export type acoes_x_gruposUpdateManyMutationInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
     permite?: IntFieldUpdateOperationsInput | number
   }
 
   export type acoes_x_gruposUncheckedUpdateManyInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
-    id_acao?: BigIntFieldUpdateOperationsInput | bigint | number
-    id_grupo_usuario?: BigIntFieldUpdateOperationsInput | bigint | number
+    id?: IntFieldUpdateOperationsInput | number
+    id_acao?: IntFieldUpdateOperationsInput | number
+    id_grupo_usuario?: IntFieldUpdateOperationsInput | number
     permite?: IntFieldUpdateOperationsInput | number
   }
 
   export type empresasCreateInput = {
-    id?: bigint | number
     cnpj: string
     xRazaoSocial: string
     xFant: string
@@ -8231,7 +8217,7 @@ export namespace Prisma {
   }
 
   export type empresasUncheckedCreateInput = {
-    id?: bigint | number
+    id?: number
     cnpj: string
     xRazaoSocial: string
     xFant: string
@@ -8255,7 +8241,6 @@ export namespace Prisma {
   }
 
   export type empresasUpdateInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
     cnpj?: StringFieldUpdateOperationsInput | string
     xRazaoSocial?: StringFieldUpdateOperationsInput | string
     xFant?: StringFieldUpdateOperationsInput | string
@@ -8279,7 +8264,7 @@ export namespace Prisma {
   }
 
   export type empresasUncheckedUpdateInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    id?: IntFieldUpdateOperationsInput | number
     cnpj?: StringFieldUpdateOperationsInput | string
     xRazaoSocial?: StringFieldUpdateOperationsInput | string
     xFant?: StringFieldUpdateOperationsInput | string
@@ -8303,7 +8288,7 @@ export namespace Prisma {
   }
 
   export type empresasCreateManyInput = {
-    id?: bigint | number
+    id?: number
     cnpj: string
     xRazaoSocial: string
     xFant: string
@@ -8325,7 +8310,6 @@ export namespace Prisma {
   }
 
   export type empresasUpdateManyMutationInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
     cnpj?: StringFieldUpdateOperationsInput | string
     xRazaoSocial?: StringFieldUpdateOperationsInput | string
     xFant?: StringFieldUpdateOperationsInput | string
@@ -8347,7 +8331,7 @@ export namespace Prisma {
   }
 
   export type empresasUncheckedUpdateManyInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    id?: IntFieldUpdateOperationsInput | number
     cnpj?: StringFieldUpdateOperationsInput | string
     xRazaoSocial?: StringFieldUpdateOperationsInput | string
     xFant?: StringFieldUpdateOperationsInput | string
@@ -8369,7 +8353,6 @@ export namespace Prisma {
   }
 
   export type grupos_usuariosCreateInput = {
-    id?: bigint | number
     nome: string
     pagina_inicial?: string
     acoes_x_grupos?: acoes_x_gruposCreateNestedManyWithoutGrupos_usuariosInput
@@ -8378,16 +8361,15 @@ export namespace Prisma {
   }
 
   export type grupos_usuariosUncheckedCreateInput = {
-    id?: bigint | number
+    id?: number
     nome: string
-    id_empresa: bigint | number
+    id_empresa: number
     pagina_inicial?: string
     acoes_x_grupos?: acoes_x_gruposUncheckedCreateNestedManyWithoutGrupos_usuariosInput
     usuarios_x_empresas?: usuarios_x_empresasUncheckedCreateNestedManyWithoutGrupos_usuariosInput
   }
 
   export type grupos_usuariosUpdateInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
     nome?: StringFieldUpdateOperationsInput | string
     pagina_inicial?: StringFieldUpdateOperationsInput | string
     acoes_x_grupos?: acoes_x_gruposUpdateManyWithoutGrupos_usuariosNestedInput
@@ -8396,36 +8378,34 @@ export namespace Prisma {
   }
 
   export type grupos_usuariosUncheckedUpdateInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    id?: IntFieldUpdateOperationsInput | number
     nome?: StringFieldUpdateOperationsInput | string
-    id_empresa?: BigIntFieldUpdateOperationsInput | bigint | number
+    id_empresa?: IntFieldUpdateOperationsInput | number
     pagina_inicial?: StringFieldUpdateOperationsInput | string
     acoes_x_grupos?: acoes_x_gruposUncheckedUpdateManyWithoutGrupos_usuariosNestedInput
     usuarios_x_empresas?: usuarios_x_empresasUncheckedUpdateManyWithoutGrupos_usuariosNestedInput
   }
 
   export type grupos_usuariosCreateManyInput = {
-    id?: bigint | number
+    id?: number
     nome: string
-    id_empresa: bigint | number
+    id_empresa: number
     pagina_inicial?: string
   }
 
   export type grupos_usuariosUpdateManyMutationInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
     nome?: StringFieldUpdateOperationsInput | string
     pagina_inicial?: StringFieldUpdateOperationsInput | string
   }
 
   export type grupos_usuariosUncheckedUpdateManyInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    id?: IntFieldUpdateOperationsInput | number
     nome?: StringFieldUpdateOperationsInput | string
-    id_empresa?: BigIntFieldUpdateOperationsInput | bigint | number
+    id_empresa?: IntFieldUpdateOperationsInput | number
     pagina_inicial?: StringFieldUpdateOperationsInput | string
   }
 
   export type usuariosCreateInput = {
-    id?: bigint | number
     nome?: string | null
     ultimo_nome?: string | null
     email?: string | null
@@ -8438,7 +8418,7 @@ export namespace Prisma {
   }
 
   export type usuariosUncheckedCreateInput = {
-    id?: bigint | number
+    id?: number
     nome?: string | null
     ultimo_nome?: string | null
     email?: string | null
@@ -8451,7 +8431,6 @@ export namespace Prisma {
   }
 
   export type usuariosUpdateInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
     nome?: NullableStringFieldUpdateOperationsInput | string | null
     ultimo_nome?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
@@ -8464,7 +8443,7 @@ export namespace Prisma {
   }
 
   export type usuariosUncheckedUpdateInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    id?: IntFieldUpdateOperationsInput | number
     nome?: NullableStringFieldUpdateOperationsInput | string | null
     ultimo_nome?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
@@ -8477,7 +8456,7 @@ export namespace Prisma {
   }
 
   export type usuariosCreateManyInput = {
-    id?: bigint | number
+    id?: number
     nome?: string | null
     ultimo_nome?: string | null
     email?: string | null
@@ -8489,7 +8468,6 @@ export namespace Prisma {
   }
 
   export type usuariosUpdateManyMutationInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
     nome?: NullableStringFieldUpdateOperationsInput | string | null
     ultimo_nome?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
@@ -8501,7 +8479,7 @@ export namespace Prisma {
   }
 
   export type usuariosUncheckedUpdateManyInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    id?: IntFieldUpdateOperationsInput | number
     nome?: NullableStringFieldUpdateOperationsInput | string | null
     ultimo_nome?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
@@ -8513,60 +8491,58 @@ export namespace Prisma {
   }
 
   export type usuarios_x_empresasCreateInput = {
-    id?: bigint | number
     empresas: empresasCreateNestedOneWithoutUsuarios_x_empresasInput
     usuarios: usuariosCreateNestedOneWithoutUsuarios_x_empresasInput
     grupos_usuarios: grupos_usuariosCreateNestedOneWithoutUsuarios_x_empresasInput
   }
 
   export type usuarios_x_empresasUncheckedCreateInput = {
-    id?: bigint | number
-    id_empresa: bigint | number
-    id_usuario: bigint | number
-    id_grupo_usuario: bigint | number
+    id?: number
+    id_empresa: number
+    id_usuario: number
+    id_grupo_usuario: number
   }
 
   export type usuarios_x_empresasUpdateInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
     empresas?: empresasUpdateOneRequiredWithoutUsuarios_x_empresasNestedInput
     usuarios?: usuariosUpdateOneRequiredWithoutUsuarios_x_empresasNestedInput
     grupos_usuarios?: grupos_usuariosUpdateOneRequiredWithoutUsuarios_x_empresasNestedInput
   }
 
   export type usuarios_x_empresasUncheckedUpdateInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
-    id_empresa?: BigIntFieldUpdateOperationsInput | bigint | number
-    id_usuario?: BigIntFieldUpdateOperationsInput | bigint | number
-    id_grupo_usuario?: BigIntFieldUpdateOperationsInput | bigint | number
+    id?: IntFieldUpdateOperationsInput | number
+    id_empresa?: IntFieldUpdateOperationsInput | number
+    id_usuario?: IntFieldUpdateOperationsInput | number
+    id_grupo_usuario?: IntFieldUpdateOperationsInput | number
   }
 
   export type usuarios_x_empresasCreateManyInput = {
-    id?: bigint | number
-    id_empresa: bigint | number
-    id_usuario: bigint | number
-    id_grupo_usuario: bigint | number
+    id?: number
+    id_empresa: number
+    id_usuario: number
+    id_grupo_usuario: number
   }
 
   export type usuarios_x_empresasUpdateManyMutationInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
+
   }
 
   export type usuarios_x_empresasUncheckedUpdateManyInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
-    id_empresa?: BigIntFieldUpdateOperationsInput | bigint | number
-    id_usuario?: BigIntFieldUpdateOperationsInput | bigint | number
-    id_grupo_usuario?: BigIntFieldUpdateOperationsInput | bigint | number
+    id?: IntFieldUpdateOperationsInput | number
+    id_empresa?: IntFieldUpdateOperationsInput | number
+    id_usuario?: IntFieldUpdateOperationsInput | number
+    id_grupo_usuario?: IntFieldUpdateOperationsInput | number
   }
 
-  export type BigIntFilter<$PrismaModel = never> = {
-    equals?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    in?: bigint[] | number[]
-    notIn?: bigint[] | number[]
-    lt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    lte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    gt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    gte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    not?: NestedBigIntFilter<$PrismaModel> | bigint | number
+  export type IntFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[]
+    notIn?: number[]
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntFilter<$PrismaModel> | number
   }
 
   export type StringFilter<$PrismaModel = never> = {
@@ -8646,20 +8622,20 @@ export namespace Prisma {
     valor_padrao?: SortOrder
   }
 
-  export type BigIntWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    in?: bigint[] | number[]
-    notIn?: bigint[] | number[]
-    lt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    lte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    gt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    gte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    not?: NestedBigIntWithAggregatesFilter<$PrismaModel> | bigint | number
+  export type IntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[]
+    notIn?: number[]
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
     _count?: NestedIntFilter<$PrismaModel>
     _avg?: NestedFloatFilter<$PrismaModel>
-    _sum?: NestedBigIntFilter<$PrismaModel>
-    _min?: NestedBigIntFilter<$PrismaModel>
-    _max?: NestedBigIntFilter<$PrismaModel>
+    _sum?: NestedIntFilter<$PrismaModel>
+    _min?: NestedIntFilter<$PrismaModel>
+    _max?: NestedIntFilter<$PrismaModel>
   }
 
   export type StringWithAggregatesFilter<$PrismaModel = never> = {
@@ -8693,17 +8669,6 @@ export namespace Prisma {
     _sum?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedIntNullableFilter<$PrismaModel>
     _max?: NestedIntNullableFilter<$PrismaModel>
-  }
-
-  export type IntFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[]
-    notIn?: number[]
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntFilter<$PrismaModel> | number
   }
 
   export type AcoesRelationFilter = {
@@ -8749,22 +8714,6 @@ export namespace Prisma {
     id_acao?: SortOrder
     id_grupo_usuario?: SortOrder
     permite?: SortOrder
-  }
-
-  export type IntWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[]
-    notIn?: number[]
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
-    _count?: NestedIntFilter<$PrismaModel>
-    _avg?: NestedFloatFilter<$PrismaModel>
-    _sum?: NestedIntFilter<$PrismaModel>
-    _min?: NestedIntFilter<$PrismaModel>
-    _max?: NestedIntFilter<$PrismaModel>
   }
 
   export type StringNullableFilter<$PrismaModel = never> = {
@@ -9026,14 +8975,6 @@ export namespace Prisma {
     connect?: acoes_x_gruposWhereUniqueInput | acoes_x_gruposWhereUniqueInput[]
   }
 
-  export type BigIntFieldUpdateOperationsInput = {
-    set?: bigint | number
-    increment?: bigint | number
-    decrement?: bigint | number
-    multiply?: bigint | number
-    divide?: bigint | number
-  }
-
   export type StringFieldUpdateOperationsInput = {
     set?: string
   }
@@ -9060,6 +9001,14 @@ export namespace Prisma {
     deleteMany?: acoes_x_gruposScalarWhereInput | acoes_x_gruposScalarWhereInput[]
   }
 
+  export type IntFieldUpdateOperationsInput = {
+    set?: number
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
+  }
+
   export type acoes_x_gruposUncheckedUpdateManyWithoutAcoesNestedInput = {
     create?: XOR<acoes_x_gruposCreateWithoutAcoesInput, acoes_x_gruposUncheckedCreateWithoutAcoesInput> | acoes_x_gruposCreateWithoutAcoesInput[] | acoes_x_gruposUncheckedCreateWithoutAcoesInput[]
     connectOrCreate?: acoes_x_gruposCreateOrConnectWithoutAcoesInput | acoes_x_gruposCreateOrConnectWithoutAcoesInput[]
@@ -9084,14 +9033,6 @@ export namespace Prisma {
     create?: XOR<grupos_usuariosCreateWithoutAcoes_x_gruposInput, grupos_usuariosUncheckedCreateWithoutAcoes_x_gruposInput>
     connectOrCreate?: grupos_usuariosCreateOrConnectWithoutAcoes_x_gruposInput
     connect?: grupos_usuariosWhereUniqueInput
-  }
-
-  export type IntFieldUpdateOperationsInput = {
-    set?: number
-    increment?: number
-    decrement?: number
-    multiply?: number
-    divide?: number
   }
 
   export type acoesUpdateOneRequiredWithoutAcoes_x_gruposNestedInput = {
@@ -9380,15 +9321,15 @@ export namespace Prisma {
     update?: XOR<XOR<grupos_usuariosUpdateToOneWithWhereWithoutUsuarios_x_empresasInput, grupos_usuariosUpdateWithoutUsuarios_x_empresasInput>, grupos_usuariosUncheckedUpdateWithoutUsuarios_x_empresasInput>
   }
 
-  export type NestedBigIntFilter<$PrismaModel = never> = {
-    equals?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    in?: bigint[] | number[]
-    notIn?: bigint[] | number[]
-    lt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    lte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    gt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    gte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    not?: NestedBigIntFilter<$PrismaModel> | bigint | number
+  export type NestedIntFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[]
+    notIn?: number[]
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntFilter<$PrismaModel> | number
   }
 
   export type NestedStringFilter<$PrismaModel = never> = {
@@ -9416,23 +9357,7 @@ export namespace Prisma {
     not?: NestedIntNullableFilter<$PrismaModel> | number | null
   }
 
-  export type NestedBigIntWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    in?: bigint[] | number[]
-    notIn?: bigint[] | number[]
-    lt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    lte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    gt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    gte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    not?: NestedBigIntWithAggregatesFilter<$PrismaModel> | bigint | number
-    _count?: NestedIntFilter<$PrismaModel>
-    _avg?: NestedFloatFilter<$PrismaModel>
-    _sum?: NestedBigIntFilter<$PrismaModel>
-    _min?: NestedBigIntFilter<$PrismaModel>
-    _max?: NestedBigIntFilter<$PrismaModel>
-  }
-
-  export type NestedIntFilter<$PrismaModel = never> = {
+  export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel>
     in?: number[]
     notIn?: number[]
@@ -9440,7 +9365,12 @@ export namespace Prisma {
     lte?: number | IntFieldRefInput<$PrismaModel>
     gt?: number | IntFieldRefInput<$PrismaModel>
     gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntFilter<$PrismaModel> | number
+    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedIntFilter<$PrismaModel>
+    _min?: NestedIntFilter<$PrismaModel>
+    _max?: NestedIntFilter<$PrismaModel>
   }
 
   export type NestedFloatFilter<$PrismaModel = never> = {
@@ -9498,22 +9428,6 @@ export namespace Prisma {
     not?: NestedFloatNullableFilter<$PrismaModel> | number | null
   }
 
-  export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[]
-    notIn?: number[]
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
-    _count?: NestedIntFilter<$PrismaModel>
-    _avg?: NestedFloatFilter<$PrismaModel>
-    _sum?: NestedIntFilter<$PrismaModel>
-    _min?: NestedIntFilter<$PrismaModel>
-    _max?: NestedIntFilter<$PrismaModel>
-  }
-
   export type NestedStringNullableFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel> | null
     in?: string[] | null
@@ -9546,14 +9460,13 @@ export namespace Prisma {
   }
 
   export type acoes_x_gruposCreateWithoutAcoesInput = {
-    id?: bigint | number
     permite: number
     grupos_usuarios: grupos_usuariosCreateNestedOneWithoutAcoes_x_gruposInput
   }
 
   export type acoes_x_gruposUncheckedCreateWithoutAcoesInput = {
-    id?: bigint | number
-    id_grupo_usuario: bigint | number
+    id?: number
+    id_grupo_usuario: number
     permite: number
   }
 
@@ -9587,14 +9500,13 @@ export namespace Prisma {
     AND?: acoes_x_gruposScalarWhereInput | acoes_x_gruposScalarWhereInput[]
     OR?: acoes_x_gruposScalarWhereInput[]
     NOT?: acoes_x_gruposScalarWhereInput | acoes_x_gruposScalarWhereInput[]
-    id?: BigIntFilter<"acoes_x_grupos"> | bigint | number
-    id_acao?: BigIntFilter<"acoes_x_grupos"> | bigint | number
-    id_grupo_usuario?: BigIntFilter<"acoes_x_grupos"> | bigint | number
+    id?: IntFilter<"acoes_x_grupos"> | number
+    id_acao?: IntFilter<"acoes_x_grupos"> | number
+    id_grupo_usuario?: IntFilter<"acoes_x_grupos"> | number
     permite?: IntFilter<"acoes_x_grupos"> | number
   }
 
   export type acoesCreateWithoutAcoes_x_gruposInput = {
-    id?: bigint | number
     descricao: string
     descricao_titulo: string
     tabela: string
@@ -9603,7 +9515,7 @@ export namespace Prisma {
   }
 
   export type acoesUncheckedCreateWithoutAcoes_x_gruposInput = {
-    id?: bigint | number
+    id?: number
     descricao: string
     descricao_titulo: string
     tabela: string
@@ -9617,7 +9529,6 @@ export namespace Prisma {
   }
 
   export type grupos_usuariosCreateWithoutAcoes_x_gruposInput = {
-    id?: bigint | number
     nome: string
     pagina_inicial?: string
     empresas: empresasCreateNestedOneWithoutGrupos_usuariosInput
@@ -9625,9 +9536,9 @@ export namespace Prisma {
   }
 
   export type grupos_usuariosUncheckedCreateWithoutAcoes_x_gruposInput = {
-    id?: bigint | number
+    id?: number
     nome: string
-    id_empresa: bigint | number
+    id_empresa: number
     pagina_inicial?: string
     usuarios_x_empresas?: usuarios_x_empresasUncheckedCreateNestedManyWithoutGrupos_usuariosInput
   }
@@ -9649,7 +9560,6 @@ export namespace Prisma {
   }
 
   export type acoesUpdateWithoutAcoes_x_gruposInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
     descricao?: StringFieldUpdateOperationsInput | string
     descricao_titulo?: StringFieldUpdateOperationsInput | string
     tabela?: StringFieldUpdateOperationsInput | string
@@ -9658,7 +9568,7 @@ export namespace Prisma {
   }
 
   export type acoesUncheckedUpdateWithoutAcoes_x_gruposInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    id?: IntFieldUpdateOperationsInput | number
     descricao?: StringFieldUpdateOperationsInput | string
     descricao_titulo?: StringFieldUpdateOperationsInput | string
     tabela?: StringFieldUpdateOperationsInput | string
@@ -9678,7 +9588,6 @@ export namespace Prisma {
   }
 
   export type grupos_usuariosUpdateWithoutAcoes_x_gruposInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
     nome?: StringFieldUpdateOperationsInput | string
     pagina_inicial?: StringFieldUpdateOperationsInput | string
     empresas?: empresasUpdateOneRequiredWithoutGrupos_usuariosNestedInput
@@ -9686,15 +9595,14 @@ export namespace Prisma {
   }
 
   export type grupos_usuariosUncheckedUpdateWithoutAcoes_x_gruposInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    id?: IntFieldUpdateOperationsInput | number
     nome?: StringFieldUpdateOperationsInput | string
-    id_empresa?: BigIntFieldUpdateOperationsInput | bigint | number
+    id_empresa?: IntFieldUpdateOperationsInput | number
     pagina_inicial?: StringFieldUpdateOperationsInput | string
     usuarios_x_empresas?: usuarios_x_empresasUncheckedUpdateManyWithoutGrupos_usuariosNestedInput
   }
 
   export type grupos_usuariosCreateWithoutEmpresasInput = {
-    id?: bigint | number
     nome: string
     pagina_inicial?: string
     acoes_x_grupos?: acoes_x_gruposCreateNestedManyWithoutGrupos_usuariosInput
@@ -9702,7 +9610,7 @@ export namespace Prisma {
   }
 
   export type grupos_usuariosUncheckedCreateWithoutEmpresasInput = {
-    id?: bigint | number
+    id?: number
     nome: string
     pagina_inicial?: string
     acoes_x_grupos?: acoes_x_gruposUncheckedCreateNestedManyWithoutGrupos_usuariosInput
@@ -9720,15 +9628,14 @@ export namespace Prisma {
   }
 
   export type usuarios_x_empresasCreateWithoutEmpresasInput = {
-    id?: bigint | number
     usuarios: usuariosCreateNestedOneWithoutUsuarios_x_empresasInput
     grupos_usuarios: grupos_usuariosCreateNestedOneWithoutUsuarios_x_empresasInput
   }
 
   export type usuarios_x_empresasUncheckedCreateWithoutEmpresasInput = {
-    id?: bigint | number
-    id_usuario: bigint | number
-    id_grupo_usuario: bigint | number
+    id?: number
+    id_usuario: number
+    id_grupo_usuario: number
   }
 
   export type usuarios_x_empresasCreateOrConnectWithoutEmpresasInput = {
@@ -9761,9 +9668,9 @@ export namespace Prisma {
     AND?: grupos_usuariosScalarWhereInput | grupos_usuariosScalarWhereInput[]
     OR?: grupos_usuariosScalarWhereInput[]
     NOT?: grupos_usuariosScalarWhereInput | grupos_usuariosScalarWhereInput[]
-    id?: BigIntFilter<"grupos_usuarios"> | bigint | number
+    id?: IntFilter<"grupos_usuarios"> | number
     nome?: StringFilter<"grupos_usuarios"> | string
-    id_empresa?: BigIntFilter<"grupos_usuarios"> | bigint | number
+    id_empresa?: IntFilter<"grupos_usuarios"> | number
     pagina_inicial?: StringFilter<"grupos_usuarios"> | string
   }
 
@@ -9787,21 +9694,20 @@ export namespace Prisma {
     AND?: usuarios_x_empresasScalarWhereInput | usuarios_x_empresasScalarWhereInput[]
     OR?: usuarios_x_empresasScalarWhereInput[]
     NOT?: usuarios_x_empresasScalarWhereInput | usuarios_x_empresasScalarWhereInput[]
-    id?: BigIntFilter<"usuarios_x_empresas"> | bigint | number
-    id_empresa?: BigIntFilter<"usuarios_x_empresas"> | bigint | number
-    id_usuario?: BigIntFilter<"usuarios_x_empresas"> | bigint | number
-    id_grupo_usuario?: BigIntFilter<"usuarios_x_empresas"> | bigint | number
+    id?: IntFilter<"usuarios_x_empresas"> | number
+    id_empresa?: IntFilter<"usuarios_x_empresas"> | number
+    id_usuario?: IntFilter<"usuarios_x_empresas"> | number
+    id_grupo_usuario?: IntFilter<"usuarios_x_empresas"> | number
   }
 
   export type acoes_x_gruposCreateWithoutGrupos_usuariosInput = {
-    id?: bigint | number
     permite: number
     acoes: acoesCreateNestedOneWithoutAcoes_x_gruposInput
   }
 
   export type acoes_x_gruposUncheckedCreateWithoutGrupos_usuariosInput = {
-    id?: bigint | number
-    id_acao: bigint | number
+    id?: number
+    id_acao: number
     permite: number
   }
 
@@ -9816,7 +9722,6 @@ export namespace Prisma {
   }
 
   export type empresasCreateWithoutGrupos_usuariosInput = {
-    id?: bigint | number
     cnpj: string
     xRazaoSocial: string
     xFant: string
@@ -9839,7 +9744,7 @@ export namespace Prisma {
   }
 
   export type empresasUncheckedCreateWithoutGrupos_usuariosInput = {
-    id?: bigint | number
+    id?: number
     cnpj: string
     xRazaoSocial: string
     xFant: string
@@ -9867,15 +9772,14 @@ export namespace Prisma {
   }
 
   export type usuarios_x_empresasCreateWithoutGrupos_usuariosInput = {
-    id?: bigint | number
     empresas: empresasCreateNestedOneWithoutUsuarios_x_empresasInput
     usuarios: usuariosCreateNestedOneWithoutUsuarios_x_empresasInput
   }
 
   export type usuarios_x_empresasUncheckedCreateWithoutGrupos_usuariosInput = {
-    id?: bigint | number
-    id_empresa: bigint | number
-    id_usuario: bigint | number
+    id?: number
+    id_empresa: number
+    id_usuario: number
   }
 
   export type usuarios_x_empresasCreateOrConnectWithoutGrupos_usuariosInput = {
@@ -9916,7 +9820,6 @@ export namespace Prisma {
   }
 
   export type empresasUpdateWithoutGrupos_usuariosInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
     cnpj?: StringFieldUpdateOperationsInput | string
     xRazaoSocial?: StringFieldUpdateOperationsInput | string
     xFant?: StringFieldUpdateOperationsInput | string
@@ -9939,7 +9842,7 @@ export namespace Prisma {
   }
 
   export type empresasUncheckedUpdateWithoutGrupos_usuariosInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    id?: IntFieldUpdateOperationsInput | number
     cnpj?: StringFieldUpdateOperationsInput | string
     xRazaoSocial?: StringFieldUpdateOperationsInput | string
     xFant?: StringFieldUpdateOperationsInput | string
@@ -9978,15 +9881,14 @@ export namespace Prisma {
   }
 
   export type usuarios_x_empresasCreateWithoutUsuariosInput = {
-    id?: bigint | number
     empresas: empresasCreateNestedOneWithoutUsuarios_x_empresasInput
     grupos_usuarios: grupos_usuariosCreateNestedOneWithoutUsuarios_x_empresasInput
   }
 
   export type usuarios_x_empresasUncheckedCreateWithoutUsuariosInput = {
-    id?: bigint | number
-    id_empresa: bigint | number
-    id_grupo_usuario: bigint | number
+    id?: number
+    id_empresa: number
+    id_grupo_usuario: number
   }
 
   export type usuarios_x_empresasCreateOrConnectWithoutUsuariosInput = {
@@ -10016,7 +9918,6 @@ export namespace Prisma {
   }
 
   export type empresasCreateWithoutUsuarios_x_empresasInput = {
-    id?: bigint | number
     cnpj: string
     xRazaoSocial: string
     xFant: string
@@ -10039,7 +9940,7 @@ export namespace Prisma {
   }
 
   export type empresasUncheckedCreateWithoutUsuarios_x_empresasInput = {
-    id?: bigint | number
+    id?: number
     cnpj: string
     xRazaoSocial: string
     xFant: string
@@ -10067,7 +9968,6 @@ export namespace Prisma {
   }
 
   export type usuariosCreateWithoutUsuarios_x_empresasInput = {
-    id?: bigint | number
     nome?: string | null
     ultimo_nome?: string | null
     email?: string | null
@@ -10079,7 +9979,7 @@ export namespace Prisma {
   }
 
   export type usuariosUncheckedCreateWithoutUsuarios_x_empresasInput = {
-    id?: bigint | number
+    id?: number
     nome?: string | null
     ultimo_nome?: string | null
     email?: string | null
@@ -10096,7 +9996,6 @@ export namespace Prisma {
   }
 
   export type grupos_usuariosCreateWithoutUsuarios_x_empresasInput = {
-    id?: bigint | number
     nome: string
     pagina_inicial?: string
     acoes_x_grupos?: acoes_x_gruposCreateNestedManyWithoutGrupos_usuariosInput
@@ -10104,9 +10003,9 @@ export namespace Prisma {
   }
 
   export type grupos_usuariosUncheckedCreateWithoutUsuarios_x_empresasInput = {
-    id?: bigint | number
+    id?: number
     nome: string
-    id_empresa: bigint | number
+    id_empresa: number
     pagina_inicial?: string
     acoes_x_grupos?: acoes_x_gruposUncheckedCreateNestedManyWithoutGrupos_usuariosInput
   }
@@ -10128,7 +10027,6 @@ export namespace Prisma {
   }
 
   export type empresasUpdateWithoutUsuarios_x_empresasInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
     cnpj?: StringFieldUpdateOperationsInput | string
     xRazaoSocial?: StringFieldUpdateOperationsInput | string
     xFant?: StringFieldUpdateOperationsInput | string
@@ -10151,7 +10049,7 @@ export namespace Prisma {
   }
 
   export type empresasUncheckedUpdateWithoutUsuarios_x_empresasInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    id?: IntFieldUpdateOperationsInput | number
     cnpj?: StringFieldUpdateOperationsInput | string
     xRazaoSocial?: StringFieldUpdateOperationsInput | string
     xFant?: StringFieldUpdateOperationsInput | string
@@ -10185,7 +10083,6 @@ export namespace Prisma {
   }
 
   export type usuariosUpdateWithoutUsuarios_x_empresasInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
     nome?: NullableStringFieldUpdateOperationsInput | string | null
     ultimo_nome?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
@@ -10197,7 +10094,7 @@ export namespace Prisma {
   }
 
   export type usuariosUncheckedUpdateWithoutUsuarios_x_empresasInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    id?: IntFieldUpdateOperationsInput | number
     nome?: NullableStringFieldUpdateOperationsInput | string | null
     ultimo_nome?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
@@ -10220,7 +10117,6 @@ export namespace Prisma {
   }
 
   export type grupos_usuariosUpdateWithoutUsuarios_x_empresasInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
     nome?: StringFieldUpdateOperationsInput | string
     pagina_inicial?: StringFieldUpdateOperationsInput | string
     acoes_x_grupos?: acoes_x_gruposUpdateManyWithoutGrupos_usuariosNestedInput
@@ -10228,51 +10124,49 @@ export namespace Prisma {
   }
 
   export type grupos_usuariosUncheckedUpdateWithoutUsuarios_x_empresasInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    id?: IntFieldUpdateOperationsInput | number
     nome?: StringFieldUpdateOperationsInput | string
-    id_empresa?: BigIntFieldUpdateOperationsInput | bigint | number
+    id_empresa?: IntFieldUpdateOperationsInput | number
     pagina_inicial?: StringFieldUpdateOperationsInput | string
     acoes_x_grupos?: acoes_x_gruposUncheckedUpdateManyWithoutGrupos_usuariosNestedInput
   }
 
   export type acoes_x_gruposCreateManyAcoesInput = {
-    id?: bigint | number
-    id_grupo_usuario: bigint | number
+    id?: number
+    id_grupo_usuario: number
     permite: number
   }
 
   export type acoes_x_gruposUpdateWithoutAcoesInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
     permite?: IntFieldUpdateOperationsInput | number
     grupos_usuarios?: grupos_usuariosUpdateOneRequiredWithoutAcoes_x_gruposNestedInput
   }
 
   export type acoes_x_gruposUncheckedUpdateWithoutAcoesInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
-    id_grupo_usuario?: BigIntFieldUpdateOperationsInput | bigint | number
+    id?: IntFieldUpdateOperationsInput | number
+    id_grupo_usuario?: IntFieldUpdateOperationsInput | number
     permite?: IntFieldUpdateOperationsInput | number
   }
 
   export type acoes_x_gruposUncheckedUpdateManyWithoutAcoesInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
-    id_grupo_usuario?: BigIntFieldUpdateOperationsInput | bigint | number
+    id?: IntFieldUpdateOperationsInput | number
+    id_grupo_usuario?: IntFieldUpdateOperationsInput | number
     permite?: IntFieldUpdateOperationsInput | number
   }
 
   export type grupos_usuariosCreateManyEmpresasInput = {
-    id?: bigint | number
+    id?: number
     nome: string
     pagina_inicial?: string
   }
 
   export type usuarios_x_empresasCreateManyEmpresasInput = {
-    id?: bigint | number
-    id_usuario: bigint | number
-    id_grupo_usuario: bigint | number
+    id?: number
+    id_usuario: number
+    id_grupo_usuario: number
   }
 
   export type grupos_usuariosUpdateWithoutEmpresasInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
     nome?: StringFieldUpdateOperationsInput | string
     pagina_inicial?: StringFieldUpdateOperationsInput | string
     acoes_x_grupos?: acoes_x_gruposUpdateManyWithoutGrupos_usuariosNestedInput
@@ -10280,7 +10174,7 @@ export namespace Prisma {
   }
 
   export type grupos_usuariosUncheckedUpdateWithoutEmpresasInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    id?: IntFieldUpdateOperationsInput | number
     nome?: StringFieldUpdateOperationsInput | string
     pagina_inicial?: StringFieldUpdateOperationsInput | string
     acoes_x_grupos?: acoes_x_gruposUncheckedUpdateManyWithoutGrupos_usuariosNestedInput
@@ -10288,99 +10182,95 @@ export namespace Prisma {
   }
 
   export type grupos_usuariosUncheckedUpdateManyWithoutEmpresasInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    id?: IntFieldUpdateOperationsInput | number
     nome?: StringFieldUpdateOperationsInput | string
     pagina_inicial?: StringFieldUpdateOperationsInput | string
   }
 
   export type usuarios_x_empresasUpdateWithoutEmpresasInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
     usuarios?: usuariosUpdateOneRequiredWithoutUsuarios_x_empresasNestedInput
     grupos_usuarios?: grupos_usuariosUpdateOneRequiredWithoutUsuarios_x_empresasNestedInput
   }
 
   export type usuarios_x_empresasUncheckedUpdateWithoutEmpresasInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
-    id_usuario?: BigIntFieldUpdateOperationsInput | bigint | number
-    id_grupo_usuario?: BigIntFieldUpdateOperationsInput | bigint | number
+    id?: IntFieldUpdateOperationsInput | number
+    id_usuario?: IntFieldUpdateOperationsInput | number
+    id_grupo_usuario?: IntFieldUpdateOperationsInput | number
   }
 
   export type usuarios_x_empresasUncheckedUpdateManyWithoutEmpresasInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
-    id_usuario?: BigIntFieldUpdateOperationsInput | bigint | number
-    id_grupo_usuario?: BigIntFieldUpdateOperationsInput | bigint | number
+    id?: IntFieldUpdateOperationsInput | number
+    id_usuario?: IntFieldUpdateOperationsInput | number
+    id_grupo_usuario?: IntFieldUpdateOperationsInput | number
   }
 
   export type acoes_x_gruposCreateManyGrupos_usuariosInput = {
-    id?: bigint | number
-    id_acao: bigint | number
+    id?: number
+    id_acao: number
     permite: number
   }
 
   export type usuarios_x_empresasCreateManyGrupos_usuariosInput = {
-    id?: bigint | number
-    id_empresa: bigint | number
-    id_usuario: bigint | number
+    id?: number
+    id_empresa: number
+    id_usuario: number
   }
 
   export type acoes_x_gruposUpdateWithoutGrupos_usuariosInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
     permite?: IntFieldUpdateOperationsInput | number
     acoes?: acoesUpdateOneRequiredWithoutAcoes_x_gruposNestedInput
   }
 
   export type acoes_x_gruposUncheckedUpdateWithoutGrupos_usuariosInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
-    id_acao?: BigIntFieldUpdateOperationsInput | bigint | number
+    id?: IntFieldUpdateOperationsInput | number
+    id_acao?: IntFieldUpdateOperationsInput | number
     permite?: IntFieldUpdateOperationsInput | number
   }
 
   export type acoes_x_gruposUncheckedUpdateManyWithoutGrupos_usuariosInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
-    id_acao?: BigIntFieldUpdateOperationsInput | bigint | number
+    id?: IntFieldUpdateOperationsInput | number
+    id_acao?: IntFieldUpdateOperationsInput | number
     permite?: IntFieldUpdateOperationsInput | number
   }
 
   export type usuarios_x_empresasUpdateWithoutGrupos_usuariosInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
     empresas?: empresasUpdateOneRequiredWithoutUsuarios_x_empresasNestedInput
     usuarios?: usuariosUpdateOneRequiredWithoutUsuarios_x_empresasNestedInput
   }
 
   export type usuarios_x_empresasUncheckedUpdateWithoutGrupos_usuariosInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
-    id_empresa?: BigIntFieldUpdateOperationsInput | bigint | number
-    id_usuario?: BigIntFieldUpdateOperationsInput | bigint | number
+    id?: IntFieldUpdateOperationsInput | number
+    id_empresa?: IntFieldUpdateOperationsInput | number
+    id_usuario?: IntFieldUpdateOperationsInput | number
   }
 
   export type usuarios_x_empresasUncheckedUpdateManyWithoutGrupos_usuariosInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
-    id_empresa?: BigIntFieldUpdateOperationsInput | bigint | number
-    id_usuario?: BigIntFieldUpdateOperationsInput | bigint | number
+    id?: IntFieldUpdateOperationsInput | number
+    id_empresa?: IntFieldUpdateOperationsInput | number
+    id_usuario?: IntFieldUpdateOperationsInput | number
   }
 
   export type usuarios_x_empresasCreateManyUsuariosInput = {
-    id?: bigint | number
-    id_empresa: bigint | number
-    id_grupo_usuario: bigint | number
+    id?: number
+    id_empresa: number
+    id_grupo_usuario: number
   }
 
   export type usuarios_x_empresasUpdateWithoutUsuariosInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
     empresas?: empresasUpdateOneRequiredWithoutUsuarios_x_empresasNestedInput
     grupos_usuarios?: grupos_usuariosUpdateOneRequiredWithoutUsuarios_x_empresasNestedInput
   }
 
   export type usuarios_x_empresasUncheckedUpdateWithoutUsuariosInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
-    id_empresa?: BigIntFieldUpdateOperationsInput | bigint | number
-    id_grupo_usuario?: BigIntFieldUpdateOperationsInput | bigint | number
+    id?: IntFieldUpdateOperationsInput | number
+    id_empresa?: IntFieldUpdateOperationsInput | number
+    id_grupo_usuario?: IntFieldUpdateOperationsInput | number
   }
 
   export type usuarios_x_empresasUncheckedUpdateManyWithoutUsuariosInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
-    id_empresa?: BigIntFieldUpdateOperationsInput | bigint | number
-    id_grupo_usuario?: BigIntFieldUpdateOperationsInput | bigint | number
+    id?: IntFieldUpdateOperationsInput | number
+    id_empresa?: IntFieldUpdateOperationsInput | number
+    id_grupo_usuario?: IntFieldUpdateOperationsInput | number
   }
 
 
