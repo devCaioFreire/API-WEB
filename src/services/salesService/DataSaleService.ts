@@ -1,4 +1,4 @@
-import { prisma } from "../../prisma";
+import { prismaMain } from "../../prisma";
 import { atualizarSaldo, criarMovimentacao } from "./BalanceControl";
 
 interface DataItems {
@@ -37,7 +37,7 @@ export class DataSaleService {
       itens,
       status
     }: DataSaleRequest) {
-    const dataSales = await prisma.pedidos_venda.create({
+    const dataSales = await prismaMain.pedidos_venda.create({
       data: {
         status,
         vendedor_id,

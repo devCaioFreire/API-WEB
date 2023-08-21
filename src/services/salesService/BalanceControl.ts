@@ -1,8 +1,8 @@
-import { prisma } from "../../prisma";
+import { prismaMain } from "../../prisma";
 
 export async function atualizarSaldo(produto_id: number, quantidade: number) {
   // Lógica para atualizar o saldo do produto
-  await prisma.produtos.update({
+  await prismaMain.produtos.update({
     where: { id: produto_id },
     data: {
       saldo: {
@@ -13,7 +13,7 @@ export async function atualizarSaldo(produto_id: number, quantidade: number) {
 }
 
 export async function criarMovimentacao(pedido_venda_id: number, produto_id: number, quantidade: number) {
-  await prisma.produtos_movimentacoes.create({
+  await prismaMain.produtos_movimentacoes.create({
     data: {
       pedido_venda_id: pedido_venda_id,
       produto_id: produto_id,

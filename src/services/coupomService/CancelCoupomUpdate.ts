@@ -1,4 +1,4 @@
-import { prisma } from "../../prisma";
+import { prismaMain } from "../../prisma";
 
 interface UpdateCoupomStatusRequest {
   id: number;
@@ -9,7 +9,7 @@ export class UpdateCoupomStatusService {
   async execute({ id, status }: UpdateCoupomStatusRequest) {
     try {
       // Atualizar o status do cupom no banco de dados
-      await prisma.pedidos_venda.update({
+      await prismaMain.pedidos_venda.update({
         where: { id },
         data: { status },
       });

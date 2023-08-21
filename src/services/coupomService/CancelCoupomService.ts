@@ -1,4 +1,4 @@
-import { prisma } from "../../prisma";
+import { prismaMain } from "../../prisma";
 
 interface CancelCoupomRequest {
   id: number;
@@ -9,7 +9,7 @@ interface CancelCoupomRequest {
 
 export class CancelCoupomService {
   async execute({ }: CancelCoupomRequest) {
-    const cancelCoupom = await prisma.pedidos_venda.findMany({
+    const cancelCoupom = await prismaMain.pedidos_venda.findMany({
       where: {
         status: "R",
       },
