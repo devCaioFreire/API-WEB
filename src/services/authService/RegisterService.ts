@@ -2,7 +2,7 @@ import bcrypt from 'bcrypt';
 import { randomBytes } from 'crypto';
 import { prismaAuth } from "../../prisma";
 
-interface AuthData {
+interface RegisterData {
   nome: string;
   ultimo_nome: string;
   email: string;
@@ -13,7 +13,7 @@ interface AuthData {
   user_token: string;
 };
 
-export class AuthService {
+export class RegisterService {
   async execute(
     {
       nome,
@@ -24,7 +24,7 @@ export class AuthService {
       status,
       exclusivo,
       user_token
-    }: AuthData) {
+    }: RegisterData) {
 
     const hashPassword = await bcrypt.hash(senha, 12);
 

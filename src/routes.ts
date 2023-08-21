@@ -1,4 +1,5 @@
 import { Router } from "express";
+import { LoginController } from "./controllers/authController/LoginController";
 import { AuthRegisterController } from "./controllers/authController/RegisterController";
 import { CancelCoupomController } from "./controllers/coupomController/CancelCoupomController";
 import { UpdateCoupomStatusController } from "./controllers/coupomController/CancelCoupomUpdate";
@@ -7,6 +8,7 @@ import { DataSaleController } from "./controllers/salesController/DataSaleContro
 const router = Router();
 
 // GET
+router.get("/login", new LoginController().handle);
 router.get("/cancelCoupom", new CancelCoupomController().handle);
 
 // POST

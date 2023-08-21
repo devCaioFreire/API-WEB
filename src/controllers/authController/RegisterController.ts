@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { AuthService } from "../../services/authService/RegisterService";
+import { RegisterService } from "../../services/authService/RegisterService";
 
 export class AuthRegisterController {
   async handle(req: Request, res: Response) {
@@ -14,7 +14,7 @@ export class AuthRegisterController {
         exclusivo,
         user_token
       } = req.body;
-      const authRegisterService = new AuthService();
+      const authRegisterService = new RegisterService();
       const userData = await authRegisterService.execute({
         nome,
         ultimo_nome,
@@ -26,15 +26,10 @@ export class AuthRegisterController {
         user_token
       })
       return res.status(201).json(userData);
-    } catch (err) {
-      if (err instanceof TypeError) {
-        // Trate o erro de TypeError (possível erro de BigInt) como sucesso
-        return res.status(201).json({ message: "Usuário cadastrado com sucesso" });
 
-      } else {
-        console.error("Erro ao registrar o usuário: " + err)
-        return res.status(500).json({ erro: "Erro ao registrar o usuário" })
-      }
+    } catch (err) {
+      console.error("Erro ao registrar o usuário: " + err)
+      return res.status(500).json({ erro: "Erro ao registrar o usuário" })
     }
   }
 }
