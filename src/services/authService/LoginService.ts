@@ -3,6 +3,8 @@ import jwt from 'jsonwebtoken';
 import { prismaAuth } from "../../prisma";
 
 interface LoginData {
+  name?: string;
+  ultimo_nome?: string;
   email: string;
   senha: string;
 }
@@ -31,7 +33,14 @@ export class LoginService {
 function generateToken(user: any): string {
   const secretKey = process.env.JWT_SECRET;
 
-  const token = jwt.sign({ userId: user.id }, secretKey!);
+  const token = jwt.sign(
+    {
+      id: user.id,
+      email: user.email,
+      name: user.nome,
+      lastName: user.ultimo_nome,
+    },
+    secretKey!);
 
   return token;
 }
