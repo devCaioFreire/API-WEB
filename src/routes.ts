@@ -8,10 +8,10 @@ import { DataSaleController } from "./controllers/salesController/DataSaleContro
 const router = Router();
 
 // GET
-router.get("/login", new LoginController().handle);
 router.get("/cancelCoupom", new CancelCoupomController().handle);
 
 // POST
+router.post("/login", new LoginController().handle);
 router.post("/register", new AuthRegisterController().handle);
 router.post("/dataSale", new DataSaleController().handle);
 router.post("/updateCoupomStatus", new UpdateCoupomStatusController().handle);
