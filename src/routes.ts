@@ -4,10 +4,12 @@ import { AuthRegisterController } from "./controllers/authController/RegisterCon
 import { CancelCoupomController } from "./controllers/coupomController/CancelCoupomController";
 import { UpdateCoupomStatusController } from "./controllers/coupomController/CancelCoupomUpdate";
 import { DataSaleController } from "./controllers/salesController/DataSaleController";
+import { getNextOrderNumberController } from "./controllers/salesController/OrderController";
 
 const router = Router();
 
 // GET
+router.get("/getOrder", new getNextOrderNumberController().handle)
 router.get("/cancelCoupom", new CancelCoupomController().handle);
 
 // POST
