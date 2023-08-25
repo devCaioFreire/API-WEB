@@ -1,12 +1,17 @@
 import { prismaMain } from "../../prisma";
 
-export class GetAllProductService {
+export class AllProductsService {
   async execute() {
     try {
-      const getAllProducts = await prismaMain.produtos.findMany();
-      return getAllProducts;
+      const products = await prismaMain.produtos.findMany();
+      // Converter campos BigInt para strings
+      const productsWithBigIntToString = products.map(product => ({
+        ...product,
+        id: product.id.toString(),
+        id_sirius: product.id_sirius?.toString() || null,
+      }));
+      return productsWithBigIntToString;
     } catch (err) {
-      console.error("Erro ao buscar produtos no banco de dados:", err);
       throw new Error('Erro ao buscar produtos no banco de dados');
     }
   }

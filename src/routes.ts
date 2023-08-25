@@ -3,7 +3,7 @@ import { LoginController } from "./controllers/authController/LoginController";
 import { AuthRegisterController } from "./controllers/authController/RegisterController";
 import { CancelCoupomController } from "./controllers/coupomController/CancelCoupomController";
 import { UpdateCoupomStatusController } from "./controllers/coupomController/CancelCoupomUpdate";
-import { GetAllProductController } from "./controllers/productController/GetAllProductController";
+import { AllProductsController } from "./controllers/productController/GetAllProductController";
 import { ProductController } from "./controllers/productController/ProductController";
 import { DataSaleController } from "./controllers/salesController/DataSaleController";
 import { getNextOrderNumberController } from "./controllers/salesController/OrderController";
@@ -14,7 +14,7 @@ const router = Router();
 router.get("/getOrder", new getNextOrderNumberController().handle)
 router.get("/cancelCoupom", new CancelCoupomController().handle);
 router.get("/getProducts/:ean", new ProductController().handle);
-router.get("/getAllProducts", new GetAllProductController().handle);
+router.get("/getAllProducts", new AllProductsController().handle);
 
 // POST
 router.post("/login", new LoginController().handle);

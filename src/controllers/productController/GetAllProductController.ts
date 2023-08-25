@@ -1,22 +1,16 @@
 import { Request, Response } from "express";
-import { GetAllProductService } from "../../services/productsService/GetAllProductService";
+import { AllProductsService } from "../../services/productsService/GetAllProductService";
 
-export class GetAllProductController {
+export class AllProductsController {
   async handle(req: Request, res: Response) {
-    const createGetAllProductService = new GetAllProductService();
-    const getProducts = await createGetAllProductService.execute();
+    const allProductsService = new AllProductsService();
 
-    // Converter campos BigInt para números
-    const productsWithoutBigInt = getProducts.map((product) => {
-      return {
-        ...product,
-        id: Number(product.id),
-        codProduto: Number(product.codProduto),
-        vlrUnCom: Number(product.vlrUnCom),
-        saldo: Number(product.saldo),
-      };
-    });
-
-    return res.json(productsWithoutBigInt);
+    try {
+      const products = await allProductsService.execute();
+      return res.json(products);
+    } catch (error) {
+      console.error(error);
+      return res.status(500).json({ error: 'Erro ao buscar produtos' });
+    }
   }
 }
