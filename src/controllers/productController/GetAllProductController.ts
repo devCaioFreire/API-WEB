@@ -3,10 +3,12 @@ import { AllProductsService } from "../../services/productsService/GetAllProduct
 
 export class AllProductsController {
   async handle(req: Request, res: Response) {
+    const { offset, limit } = req.query; 
+
     const allProductsService = new AllProductsService();
 
     try {
-      const products = await allProductsService.execute();
+      const products = await allProductsService.execute(Number(offset), Number(limit));
       return res.json(products);
     } catch (error) {
       console.error(error);
