@@ -26,5 +26,8 @@ router.post("/dataSale", new DataSaleController().handle);
 router.post("/updateCoupomStatus", new UpdateCoupomStatusController().handle);
 router.post("/addProduct", new AddProductController().handle);
 
+// UPDATE
+router.post("/updateProduct", new AddProductController().handle);
+
 export { router };
 
