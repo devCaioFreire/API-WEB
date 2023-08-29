@@ -7,6 +7,7 @@ import { AddProductController } from "./controllers/productController/AddProduct
 import { AllProductsController } from "./controllers/productController/GetAllProductController";
 import { getLastProductController } from "./controllers/productController/LastProductController";
 import { ProductController } from "./controllers/productController/ProductController";
+import { UpdateProductController } from "./controllers/productController/UpdateProductController";
 import { DataSaleController } from "./controllers/salesController/DataSaleController";
 import { getNextOrderNumberController } from "./controllers/salesController/OrderController";
 
@@ -27,7 +28,7 @@ router.post("/updateCoupomStatus", new UpdateCoupomStatusController().handle);
 router.post("/addProduct", new AddProductController().handle);
 
 // UPDATE
-router.post("/updateProduct", new AddProductController().handle);
+router.post("/updateProduct", new UpdateProductController().handle);
 
 export { router };
 

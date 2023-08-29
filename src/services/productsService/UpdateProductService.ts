@@ -1,6 +1,7 @@
 import { prismaMain } from "../../prisma";
 
 interface ProductProps {
+  id: number;
   codProduto: string;
   descricao: string;
   vlrUnCom: number;
@@ -15,6 +16,7 @@ interface ProductProps {
 export class UpdateProductService {
   async execute(
     {
+      id,
       codProduto,
       descricao,
       vlrUnCom,
@@ -26,6 +28,9 @@ export class UpdateProductService {
       cfop
     }: ProductProps) {
     const updateProduct = await prismaMain.produtos.updateMany({
+      where: {
+        id
+      },
       data: {
         codProduto,
         descricao,
