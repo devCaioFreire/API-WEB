@@ -4,6 +4,7 @@ import { AuthRegisterController } from "./controllers/authController/RegisterCon
 import { CancelCoupomController } from "./controllers/coupomController/CancelCoupomController";
 import { UpdateCoupomStatusController } from "./controllers/coupomController/CancelCoupomUpdate";
 import { AddProductController } from "./controllers/productController/AddProductController";
+import { DeleteProductController } from "./controllers/productController/DeleteProductService";
 import { AllProductsController } from "./controllers/productController/GetAllProductController";
 import { getLastProductController } from "./controllers/productController/LastProductController";
 import { ProductController } from "./controllers/productController/ProductController";
@@ -29,6 +30,9 @@ router.post("/addProduct", new AddProductController().handle);
 
 // UPDATE
 router.post("/updateProduct", new UpdateProductController().handle);
+
+// DELETE
+router.delete("/deleteProduct/:id", new DeleteProductController().handle);
 
 export { router };
 
