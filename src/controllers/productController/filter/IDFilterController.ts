@@ -7,10 +7,6 @@ export class GetIDProductsController {
     console.log('productID:', id);
     const idAsNumber = parseInt(id);
 
-    // if (isNaN(idAsNumber)) {
-    //   return res.status(400).json({ error: 'ID inválido' });
-    // }
-
     const idProduct = new GetIDProductsService();
 
     try {
