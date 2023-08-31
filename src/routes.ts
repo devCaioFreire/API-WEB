@@ -9,6 +9,7 @@ import { AllProductsController } from "./controllers/productController/GetAllPro
 import { getLastProductController } from "./controllers/productController/LastProductController";
 import { ProductController } from "./controllers/productController/ProductController";
 import { UpdateProductController } from "./controllers/productController/UpdateProductController";
+import { GetIDProductsController } from "./controllers/productController/filter/IDFilterController";
 import { DataSaleController } from "./controllers/salesController/DataSaleController";
 import { getNextOrderNumberController } from "./controllers/salesController/OrderController";
 
@@ -20,6 +21,7 @@ router.get("/getLastProduct", new getLastProductController().handle)
 router.get("/cancelCoupom", new CancelCoupomController().handle);
 router.get("/getProducts/:ean", new ProductController().handle);
 router.get("/getAllProducts", new AllProductsController().handle);
+router.get("/getIDProductFilter/:id", new GetIDProductsController().handle);
 
 // POST
 router.post("/login", new LoginController().handle);
