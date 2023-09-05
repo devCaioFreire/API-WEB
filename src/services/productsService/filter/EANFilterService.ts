@@ -1,8 +1,9 @@
 import { prismaMain } from "../../../prisma";
 
 export class GetEANProductsService {
-  async execute(codEAN: string) {
+  async execute(ean: string) {
     try {
+      const codEAN = ean;
       const product = await prismaMain.produtos.findFirst({
         where: { codEAN }
       });

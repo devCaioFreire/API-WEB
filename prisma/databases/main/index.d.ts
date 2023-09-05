@@ -2874,13 +2874,11 @@ export namespace Prisma {
 
   export type NotafiscalCountOutputType = {
     docreferenciado: number
-    notafiscalitem: number
     notafiscalpagamentos: number
   }
 
   export type NotafiscalCountOutputTypeSelect<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     docreferenciado?: boolean | NotafiscalCountOutputTypeCountDocreferenciadoArgs
-    notafiscalitem?: boolean | NotafiscalCountOutputTypeCountNotafiscalitemArgs
     notafiscalpagamentos?: boolean | NotafiscalCountOutputTypeCountNotafiscalpagamentosArgs
   }
 
@@ -2908,50 +2906,8 @@ export namespace Prisma {
   /**
    * NotafiscalCountOutputType without action
    */
-  export type NotafiscalCountOutputTypeCountNotafiscalitemArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    where?: notafiscalitemWhereInput
-  }
-
-
-  /**
-   * NotafiscalCountOutputType without action
-   */
   export type NotafiscalCountOutputTypeCountNotafiscalpagamentosArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     where?: notafiscalpagamentosWhereInput
-  }
-
-
-
-  /**
-   * Count Type ProdutosCountOutputType
-   */
-
-  export type ProdutosCountOutputType = {
-    notafiscalitem: number
-  }
-
-  export type ProdutosCountOutputTypeSelect<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    notafiscalitem?: boolean | ProdutosCountOutputTypeCountNotafiscalitemArgs
-  }
-
-  // Custom InputTypes
-
-  /**
-   * ProdutosCountOutputType without action
-   */
-  export type ProdutosCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the ProdutosCountOutputType
-     */
-    select?: ProdutosCountOutputTypeSelect<ExtArgs> | null
-  }
-
-
-  /**
-   * ProdutosCountOutputType without action
-   */
-  export type ProdutosCountOutputTypeCountNotafiscalitemArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    where?: notafiscalitemWhereInput
   }
 
 
@@ -18014,7 +17970,6 @@ export namespace Prisma {
     docreferenciado?: boolean | notafiscal$docreferenciadoArgs<ExtArgs>
     clientes?: boolean | notafiscal$clientesArgs<ExtArgs>
     enderecos?: boolean | notafiscal$enderecosArgs<ExtArgs>
-    notafiscalitem?: boolean | notafiscal$notafiscalitemArgs<ExtArgs>
     notafiscalpagamentos?: boolean | notafiscal$notafiscalpagamentosArgs<ExtArgs>
     _count?: boolean | NotafiscalCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["notafiscal"]>
@@ -18109,7 +18064,6 @@ export namespace Prisma {
     docreferenciado?: boolean | notafiscal$docreferenciadoArgs<ExtArgs>
     clientes?: boolean | notafiscal$clientesArgs<ExtArgs>
     enderecos?: boolean | notafiscal$enderecosArgs<ExtArgs>
-    notafiscalitem?: boolean | notafiscal$notafiscalitemArgs<ExtArgs>
     notafiscalpagamentos?: boolean | notafiscal$notafiscalpagamentosArgs<ExtArgs>
     _count?: boolean | NotafiscalCountOutputTypeDefaultArgs<ExtArgs>
   }
@@ -18121,7 +18075,6 @@ export namespace Prisma {
       docreferenciado: Prisma.$docreferenciadoPayload<ExtArgs>[]
       clientes: Prisma.$clientesPayload<ExtArgs> | null
       enderecos: Prisma.$enderecosPayload<ExtArgs> | null
-      notafiscalitem: Prisma.$notafiscalitemPayload<ExtArgs>[]
       notafiscalpagamentos: Prisma.$notafiscalpagamentosPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetResult<{
@@ -18578,8 +18531,6 @@ export namespace Prisma {
     clientes<T extends notafiscal$clientesArgs<ExtArgs> = {}>(args?: Subset<T, notafiscal$clientesArgs<ExtArgs>>): Prisma__clientesClient<$Result.GetResult<Prisma.$clientesPayload<ExtArgs>, T, 'findUniqueOrThrow'> | null, null, ExtArgs>;
 
     enderecos<T extends notafiscal$enderecosArgs<ExtArgs> = {}>(args?: Subset<T, notafiscal$enderecosArgs<ExtArgs>>): Prisma__enderecosClient<$Result.GetResult<Prisma.$enderecosPayload<ExtArgs>, T, 'findUniqueOrThrow'> | null, null, ExtArgs>;
-
-    notafiscalitem<T extends notafiscal$notafiscalitemArgs<ExtArgs> = {}>(args?: Subset<T, notafiscal$notafiscalitemArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$notafiscalitemPayload<ExtArgs>, T, 'findMany'> | Null>;
 
     notafiscalpagamentos<T extends notafiscal$notafiscalpagamentosArgs<ExtArgs> = {}>(args?: Subset<T, notafiscal$notafiscalpagamentosArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$notafiscalpagamentosPayload<ExtArgs>, T, 'findMany'> | Null>;
 
@@ -19059,27 +19010,6 @@ export namespace Prisma {
 
 
   /**
-   * notafiscal.notafiscalitem
-   */
-  export type notafiscal$notafiscalitemArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the notafiscalitem
-     */
-    select?: notafiscalitemSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well.
-     */
-    include?: notafiscalitemInclude<ExtArgs> | null
-    where?: notafiscalitemWhereInput
-    orderBy?: notafiscalitemOrderByWithRelationInput | notafiscalitemOrderByWithRelationInput[]
-    cursor?: notafiscalitemWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: NotafiscalitemScalarFieldEnum | NotafiscalitemScalarFieldEnum[]
-  }
-
-
-  /**
    * notafiscal.notafiscalpagamentos
    */
   export type notafiscal$notafiscalpagamentosArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
@@ -19184,7 +19114,7 @@ export namespace Prisma {
   }
 
   export type NotafiscalitemSumAggregateOutputType = {
-    id: bigint | null
+    id: number | null
     qCom: Decimal | null
     vUnCom: Decimal | null
     vProd: Decimal | null
@@ -19216,9 +19146,9 @@ export namespace Prisma {
     pBCOp: Decimal | null
     pCredSN: Decimal | null
     vCredICMSSN: Decimal | null
-    notafiscal_id: bigint | null
+    notafiscal_id: number | null
     vUnTrib: Decimal | null
-    produto_id: bigint | null
+    produto_id: number | null
     vFrete: Decimal | null
     vOutro: Decimal | null
     vDesc: Decimal | null
@@ -19239,7 +19169,7 @@ export namespace Prisma {
   }
 
   export type NotafiscalitemMinAggregateOutputType = {
-    id: bigint | null
+    id: number | null
     cProd: string | null
     cEAN: string | null
     xProd: string | null
@@ -19288,9 +19218,9 @@ export namespace Prisma {
     CSOSN: string | null
     pCredSN: Decimal | null
     vCredICMSSN: Decimal | null
-    notafiscal_id: bigint | null
+    notafiscal_id: number | null
     vUnTrib: Decimal | null
-    produto_id: bigint | null
+    produto_id: number | null
     vFrete: Decimal | null
     vOutro: Decimal | null
     vDesc: Decimal | null
@@ -19313,7 +19243,7 @@ export namespace Prisma {
   }
 
   export type NotafiscalitemMaxAggregateOutputType = {
-    id: bigint | null
+    id: number | null
     cProd: string | null
     cEAN: string | null
     xProd: string | null
@@ -19362,9 +19292,9 @@ export namespace Prisma {
     CSOSN: string | null
     pCredSN: Decimal | null
     vCredICMSSN: Decimal | null
-    notafiscal_id: bigint | null
+    notafiscal_id: number | null
     vUnTrib: Decimal | null
-    produto_id: bigint | null
+    produto_id: number | null
     vFrete: Decimal | null
     vOutro: Decimal | null
     vDesc: Decimal | null
@@ -19882,7 +19812,7 @@ export namespace Prisma {
   }
 
   export type NotafiscalitemGroupByOutputType = {
-    id: bigint
+    id: number
     cProd: string
     cEAN: string
     xProd: string
@@ -19931,9 +19861,9 @@ export namespace Prisma {
     CSOSN: string | null
     pCredSN: Decimal | null
     vCredICMSSN: Decimal | null
-    notafiscal_id: bigint
+    notafiscal_id: number
     vUnTrib: Decimal | null
-    produto_id: bigint | null
+    produto_id: number | null
     vFrete: Decimal | null
     vOutro: Decimal | null
     vDesc: Decimal | null
@@ -20046,8 +19976,6 @@ export namespace Prisma {
     vIPIDevol?: boolean
     pRedBCST?: boolean
     pMVAST?: boolean
-    notafiscal?: boolean | notafiscalDefaultArgs<ExtArgs>
-    produtos?: boolean | notafiscalitem$produtosArgs<ExtArgs>
   }, ExtArgs["result"]["notafiscalitem"]>
 
   export type notafiscalitemSelectScalar = {
@@ -20124,20 +20052,12 @@ export namespace Prisma {
     pMVAST?: boolean
   }
 
-  export type notafiscalitemInclude<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    notafiscal?: boolean | notafiscalDefaultArgs<ExtArgs>
-    produtos?: boolean | notafiscalitem$produtosArgs<ExtArgs>
-  }
-
 
   export type $notafiscalitemPayload<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     name: "notafiscalitem"
-    objects: {
-      notafiscal: Prisma.$notafiscalPayload<ExtArgs>
-      produtos: Prisma.$produtosPayload<ExtArgs> | null
-    }
+    objects: {}
     scalars: $Extensions.GetResult<{
-      id: bigint
+      id: number
       cProd: string
       cEAN: string
       xProd: string
@@ -20186,9 +20106,9 @@ export namespace Prisma {
       CSOSN: string | null
       pCredSN: Prisma.Decimal | null
       vCredICMSSN: Prisma.Decimal | null
-      notafiscal_id: bigint
+      notafiscal_id: number
       vUnTrib: Prisma.Decimal | null
-      produto_id: bigint | null
+      produto_id: number | null
       vFrete: Prisma.Decimal | null
       vOutro: Prisma.Decimal | null
       vDesc: Prisma.Decimal | null
@@ -20573,9 +20493,6 @@ export namespace Prisma {
   export interface Prisma__notafiscalitemClient<T, Null = never, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: 'PrismaPromise';
 
-    notafiscal<T extends notafiscalDefaultArgs<ExtArgs> = {}>(args?: Subset<T, notafiscalDefaultArgs<ExtArgs>>): Prisma__notafiscalClient<$Result.GetResult<Prisma.$notafiscalPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
-
-    produtos<T extends notafiscalitem$produtosArgs<ExtArgs> = {}>(args?: Subset<T, notafiscalitem$produtosArgs<ExtArgs>>): Prisma__produtosClient<$Result.GetResult<Prisma.$produtosPayload<ExtArgs>, T, 'findUniqueOrThrow'> | null, null, ExtArgs>;
 
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -20605,7 +20522,7 @@ export namespace Prisma {
    * Fields of the notafiscalitem model
    */ 
   interface notafiscalitemFieldRefs {
-    readonly id: FieldRef<"notafiscalitem", 'BigInt'>
+    readonly id: FieldRef<"notafiscalitem", 'Int'>
     readonly cProd: FieldRef<"notafiscalitem", 'String'>
     readonly cEAN: FieldRef<"notafiscalitem", 'String'>
     readonly xProd: FieldRef<"notafiscalitem", 'String'>
@@ -20654,9 +20571,9 @@ export namespace Prisma {
     readonly CSOSN: FieldRef<"notafiscalitem", 'String'>
     readonly pCredSN: FieldRef<"notafiscalitem", 'Decimal'>
     readonly vCredICMSSN: FieldRef<"notafiscalitem", 'Decimal'>
-    readonly notafiscal_id: FieldRef<"notafiscalitem", 'BigInt'>
+    readonly notafiscal_id: FieldRef<"notafiscalitem", 'Int'>
     readonly vUnTrib: FieldRef<"notafiscalitem", 'Decimal'>
-    readonly produto_id: FieldRef<"notafiscalitem", 'BigInt'>
+    readonly produto_id: FieldRef<"notafiscalitem", 'Int'>
     readonly vFrete: FieldRef<"notafiscalitem", 'Decimal'>
     readonly vOutro: FieldRef<"notafiscalitem", 'Decimal'>
     readonly vDesc: FieldRef<"notafiscalitem", 'Decimal'>
@@ -20690,10 +20607,6 @@ export namespace Prisma {
      */
     select?: notafiscalitemSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
-     */
-    include?: notafiscalitemInclude<ExtArgs> | null
-    /**
      * Filter, which notafiscalitem to fetch.
      */
     where: notafiscalitemWhereUniqueInput
@@ -20709,10 +20622,6 @@ export namespace Prisma {
      */
     select?: notafiscalitemSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
-     */
-    include?: notafiscalitemInclude<ExtArgs> | null
-    /**
      * Filter, which notafiscalitem to fetch.
      */
     where: notafiscalitemWhereUniqueInput
@@ -20727,10 +20636,6 @@ export namespace Prisma {
      * Select specific fields to fetch from the notafiscalitem
      */
     select?: notafiscalitemSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well.
-     */
-    include?: notafiscalitemInclude<ExtArgs> | null
     /**
      * Filter, which notafiscalitem to fetch.
      */
@@ -20777,10 +20682,6 @@ export namespace Prisma {
      */
     select?: notafiscalitemSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
-     */
-    include?: notafiscalitemInclude<ExtArgs> | null
-    /**
      * Filter, which notafiscalitem to fetch.
      */
     where?: notafiscalitemWhereInput
@@ -20826,10 +20727,6 @@ export namespace Prisma {
      */
     select?: notafiscalitemSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
-     */
-    include?: notafiscalitemInclude<ExtArgs> | null
-    /**
      * Filter, which notafiscalitems to fetch.
      */
     where?: notafiscalitemWhereInput
@@ -20870,10 +20767,6 @@ export namespace Prisma {
      */
     select?: notafiscalitemSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
-     */
-    include?: notafiscalitemInclude<ExtArgs> | null
-    /**
      * The data needed to create a notafiscalitem.
      */
     data: XOR<notafiscalitemCreateInput, notafiscalitemUncheckedCreateInput>
@@ -20900,10 +20793,6 @@ export namespace Prisma {
      * Select specific fields to fetch from the notafiscalitem
      */
     select?: notafiscalitemSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well.
-     */
-    include?: notafiscalitemInclude<ExtArgs> | null
     /**
      * The data needed to update a notafiscalitem.
      */
@@ -20939,10 +20828,6 @@ export namespace Prisma {
      */
     select?: notafiscalitemSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
-     */
-    include?: notafiscalitemInclude<ExtArgs> | null
-    /**
      * The filter to search for the notafiscalitem to update in case it exists.
      */
     where: notafiscalitemWhereUniqueInput
@@ -20966,10 +20851,6 @@ export namespace Prisma {
      */
     select?: notafiscalitemSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
-     */
-    include?: notafiscalitemInclude<ExtArgs> | null
-    /**
      * Filter which notafiscalitem to delete.
      */
     where: notafiscalitemWhereUniqueInput
@@ -20988,22 +20869,6 @@ export namespace Prisma {
 
 
   /**
-   * notafiscalitem.produtos
-   */
-  export type notafiscalitem$produtosArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the produtos
-     */
-    select?: produtosSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well.
-     */
-    include?: produtosInclude<ExtArgs> | null
-    where?: produtosWhereInput
-  }
-
-
-  /**
    * notafiscalitem without action
    */
   export type notafiscalitemDefaultArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
@@ -21011,10 +20876,6 @@ export namespace Prisma {
      * Select specific fields to fetch from the notafiscalitem
      */
     select?: notafiscalitemSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well.
-     */
-    include?: notafiscalitemInclude<ExtArgs> | null
   }
 
 
@@ -25839,8 +25700,8 @@ export namespace Prisma {
   }
 
   export type ProdutosSumAggregateOutputType = {
-    id: bigint | null
-    id_sirius: bigint | null
+    id: number | null
+    id_sirius: number | null
     qtdCom: Decimal | null
     vlrUnCom: Decimal | null
     vlrProd: Decimal | null
@@ -25850,8 +25711,8 @@ export namespace Prisma {
   }
 
   export type ProdutosMinAggregateOutputType = {
-    id: bigint | null
-    id_sirius: bigint | null
+    id: number | null
+    id_sirius: number | null
     codProduto: string | null
     descricao: string | null
     codEAN: string | null
@@ -25870,8 +25731,8 @@ export namespace Prisma {
   }
 
   export type ProdutosMaxAggregateOutputType = {
-    id: bigint | null
-    id_sirius: bigint | null
+    id: number | null
+    id_sirius: number | null
     codProduto: string | null
     descricao: string | null
     codEAN: string | null
@@ -26081,8 +25942,8 @@ export namespace Prisma {
   }
 
   export type ProdutosGroupByOutputType = {
-    id: bigint
-    id_sirius: bigint | null
+    id: number
+    id_sirius: number | null
     codProduto: string
     descricao: string
     codEAN: string
@@ -26137,8 +25998,6 @@ export namespace Prisma {
     vlrUnTrib?: boolean
     saldo?: boolean
     status?: boolean
-    notafiscalitem?: boolean | produtos$notafiscalitemArgs<ExtArgs>
-    _count?: boolean | ProdutosCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["produtos"]>
 
   export type produtosSelectScalar = {
@@ -26161,20 +26020,13 @@ export namespace Prisma {
     status?: boolean
   }
 
-  export type produtosInclude<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    notafiscalitem?: boolean | produtos$notafiscalitemArgs<ExtArgs>
-    _count?: boolean | ProdutosCountOutputTypeDefaultArgs<ExtArgs>
-  }
-
 
   export type $produtosPayload<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     name: "produtos"
-    objects: {
-      notafiscalitem: Prisma.$notafiscalitemPayload<ExtArgs>[]
-    }
+    objects: {}
     scalars: $Extensions.GetResult<{
-      id: bigint
-      id_sirius: bigint | null
+      id: number
+      id_sirius: number | null
       codProduto: string
       descricao: string
       codEAN: string
@@ -26555,7 +26407,6 @@ export namespace Prisma {
   export interface Prisma__produtosClient<T, Null = never, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: 'PrismaPromise';
 
-    notafiscalitem<T extends produtos$notafiscalitemArgs<ExtArgs> = {}>(args?: Subset<T, produtos$notafiscalitemArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$notafiscalitemPayload<ExtArgs>, T, 'findMany'> | Null>;
 
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -26585,8 +26436,8 @@ export namespace Prisma {
    * Fields of the produtos model
    */ 
   interface produtosFieldRefs {
-    readonly id: FieldRef<"produtos", 'BigInt'>
-    readonly id_sirius: FieldRef<"produtos", 'BigInt'>
+    readonly id: FieldRef<"produtos", 'Int'>
+    readonly id_sirius: FieldRef<"produtos", 'Int'>
     readonly codProduto: FieldRef<"produtos", 'String'>
     readonly descricao: FieldRef<"produtos", 'String'>
     readonly codEAN: FieldRef<"produtos", 'String'>
@@ -26616,10 +26467,6 @@ export namespace Prisma {
      */
     select?: produtosSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
-     */
-    include?: produtosInclude<ExtArgs> | null
-    /**
      * Filter, which produtos to fetch.
      */
     where: produtosWhereUniqueInput
@@ -26635,10 +26482,6 @@ export namespace Prisma {
      */
     select?: produtosSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
-     */
-    include?: produtosInclude<ExtArgs> | null
-    /**
      * Filter, which produtos to fetch.
      */
     where: produtosWhereUniqueInput
@@ -26653,10 +26496,6 @@ export namespace Prisma {
      * Select specific fields to fetch from the produtos
      */
     select?: produtosSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well.
-     */
-    include?: produtosInclude<ExtArgs> | null
     /**
      * Filter, which produtos to fetch.
      */
@@ -26703,10 +26542,6 @@ export namespace Prisma {
      */
     select?: produtosSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
-     */
-    include?: produtosInclude<ExtArgs> | null
-    /**
      * Filter, which produtos to fetch.
      */
     where?: produtosWhereInput
@@ -26752,10 +26587,6 @@ export namespace Prisma {
      */
     select?: produtosSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
-     */
-    include?: produtosInclude<ExtArgs> | null
-    /**
      * Filter, which produtos to fetch.
      */
     where?: produtosWhereInput
@@ -26796,10 +26627,6 @@ export namespace Prisma {
      */
     select?: produtosSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
-     */
-    include?: produtosInclude<ExtArgs> | null
-    /**
      * The data needed to create a produtos.
      */
     data: XOR<produtosCreateInput, produtosUncheckedCreateInput>
@@ -26826,10 +26653,6 @@ export namespace Prisma {
      * Select specific fields to fetch from the produtos
      */
     select?: produtosSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well.
-     */
-    include?: produtosInclude<ExtArgs> | null
     /**
      * The data needed to update a produtos.
      */
@@ -26865,10 +26688,6 @@ export namespace Prisma {
      */
     select?: produtosSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
-     */
-    include?: produtosInclude<ExtArgs> | null
-    /**
      * The filter to search for the produtos to update in case it exists.
      */
     where: produtosWhereUniqueInput
@@ -26892,10 +26711,6 @@ export namespace Prisma {
      */
     select?: produtosSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
-     */
-    include?: produtosInclude<ExtArgs> | null
-    /**
      * Filter which produtos to delete.
      */
     where: produtosWhereUniqueInput
@@ -26914,27 +26729,6 @@ export namespace Prisma {
 
 
   /**
-   * produtos.notafiscalitem
-   */
-  export type produtos$notafiscalitemArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the notafiscalitem
-     */
-    select?: notafiscalitemSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well.
-     */
-    include?: notafiscalitemInclude<ExtArgs> | null
-    where?: notafiscalitemWhereInput
-    orderBy?: notafiscalitemOrderByWithRelationInput | notafiscalitemOrderByWithRelationInput[]
-    cursor?: notafiscalitemWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: NotafiscalitemScalarFieldEnum | NotafiscalitemScalarFieldEnum[]
-  }
-
-
-  /**
    * produtos without action
    */
   export type produtosDefaultArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
@@ -26942,10 +26736,6 @@ export namespace Prisma {
      * Select specific fields to fetch from the produtos
      */
     select?: produtosSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well.
-     */
-    include?: produtosInclude<ExtArgs> | null
   }
 
 
@@ -30942,7 +30732,6 @@ export namespace Prisma {
     docreferenciado?: DocreferenciadoListRelationFilter
     clientes?: XOR<ClientesNullableRelationFilter, clientesWhereInput> | null
     enderecos?: XOR<EnderecosNullableRelationFilter, enderecosWhereInput> | null
-    notafiscalitem?: NotafiscalitemListRelationFilter
     notafiscalpagamentos?: NotafiscalpagamentosListRelationFilter
   }
 
@@ -31033,7 +30822,6 @@ export namespace Prisma {
     docreferenciado?: docreferenciadoOrderByRelationAggregateInput
     clientes?: clientesOrderByWithRelationInput
     enderecos?: enderecosOrderByWithRelationInput
-    notafiscalitem?: notafiscalitemOrderByRelationAggregateInput
     notafiscalpagamentos?: notafiscalpagamentosOrderByRelationAggregateInput
   }
 
@@ -31127,7 +30915,6 @@ export namespace Prisma {
     docreferenciado?: DocreferenciadoListRelationFilter
     clientes?: XOR<ClientesNullableRelationFilter, clientesWhereInput> | null
     enderecos?: XOR<EnderecosNullableRelationFilter, enderecosWhereInput> | null
-    notafiscalitem?: NotafiscalitemListRelationFilter
     notafiscalpagamentos?: NotafiscalpagamentosListRelationFilter
   }, "id" | "id">
 
@@ -31315,7 +31102,7 @@ export namespace Prisma {
     AND?: notafiscalitemWhereInput | notafiscalitemWhereInput[]
     OR?: notafiscalitemWhereInput[]
     NOT?: notafiscalitemWhereInput | notafiscalitemWhereInput[]
-    id?: BigIntFilter<"notafiscalitem"> | bigint | number
+    id?: IntFilter<"notafiscalitem"> | number
     cProd?: StringFilter<"notafiscalitem"> | string
     cEAN?: StringFilter<"notafiscalitem"> | string
     xProd?: StringFilter<"notafiscalitem"> | string
@@ -31364,9 +31151,9 @@ export namespace Prisma {
     CSOSN?: StringNullableFilter<"notafiscalitem"> | string | null
     pCredSN?: DecimalNullableFilter<"notafiscalitem"> | Decimal | DecimalJsLike | number | string | null
     vCredICMSSN?: DecimalNullableFilter<"notafiscalitem"> | Decimal | DecimalJsLike | number | string | null
-    notafiscal_id?: BigIntFilter<"notafiscalitem"> | bigint | number
+    notafiscal_id?: IntFilter<"notafiscalitem"> | number
     vUnTrib?: DecimalNullableFilter<"notafiscalitem"> | Decimal | DecimalJsLike | number | string | null
-    produto_id?: BigIntNullableFilter<"notafiscalitem"> | bigint | number | null
+    produto_id?: IntNullableFilter<"notafiscalitem"> | number | null
     vFrete?: DecimalNullableFilter<"notafiscalitem"> | Decimal | DecimalJsLike | number | string | null
     vOutro?: DecimalNullableFilter<"notafiscalitem"> | Decimal | DecimalJsLike | number | string | null
     vDesc?: DecimalNullableFilter<"notafiscalitem"> | Decimal | DecimalJsLike | number | string | null
@@ -31386,8 +31173,6 @@ export namespace Prisma {
     vIPIDevol?: DecimalNullableFilter<"notafiscalitem"> | Decimal | DecimalJsLike | number | string | null
     pRedBCST?: DecimalNullableFilter<"notafiscalitem"> | Decimal | DecimalJsLike | number | string | null
     pMVAST?: DecimalNullableFilter<"notafiscalitem"> | Decimal | DecimalJsLike | number | string | null
-    notafiscal?: XOR<NotafiscalRelationFilter, notafiscalWhereInput>
-    produtos?: XOR<ProdutosNullableRelationFilter, produtosWhereInput> | null
   }
 
   export type notafiscalitemOrderByWithRelationInput = {
@@ -31462,12 +31247,10 @@ export namespace Prisma {
     vIPIDevol?: SortOrderInput | SortOrder
     pRedBCST?: SortOrderInput | SortOrder
     pMVAST?: SortOrderInput | SortOrder
-    notafiscal?: notafiscalOrderByWithRelationInput
-    produtos?: produtosOrderByWithRelationInput
   }
 
   export type notafiscalitemWhereUniqueInput = Prisma.AtLeast<{
-    id?: bigint | number
+    id?: number
     AND?: notafiscalitemWhereInput | notafiscalitemWhereInput[]
     OR?: notafiscalitemWhereInput[]
     NOT?: notafiscalitemWhereInput | notafiscalitemWhereInput[]
@@ -31519,9 +31302,9 @@ export namespace Prisma {
     CSOSN?: StringNullableFilter<"notafiscalitem"> | string | null
     pCredSN?: DecimalNullableFilter<"notafiscalitem"> | Decimal | DecimalJsLike | number | string | null
     vCredICMSSN?: DecimalNullableFilter<"notafiscalitem"> | Decimal | DecimalJsLike | number | string | null
-    notafiscal_id?: BigIntFilter<"notafiscalitem"> | bigint | number
+    notafiscal_id?: IntFilter<"notafiscalitem"> | number
     vUnTrib?: DecimalNullableFilter<"notafiscalitem"> | Decimal | DecimalJsLike | number | string | null
-    produto_id?: BigIntNullableFilter<"notafiscalitem"> | bigint | number | null
+    produto_id?: IntNullableFilter<"notafiscalitem"> | number | null
     vFrete?: DecimalNullableFilter<"notafiscalitem"> | Decimal | DecimalJsLike | number | string | null
     vOutro?: DecimalNullableFilter<"notafiscalitem"> | Decimal | DecimalJsLike | number | string | null
     vDesc?: DecimalNullableFilter<"notafiscalitem"> | Decimal | DecimalJsLike | number | string | null
@@ -31541,8 +31324,6 @@ export namespace Prisma {
     vIPIDevol?: DecimalNullableFilter<"notafiscalitem"> | Decimal | DecimalJsLike | number | string | null
     pRedBCST?: DecimalNullableFilter<"notafiscalitem"> | Decimal | DecimalJsLike | number | string | null
     pMVAST?: DecimalNullableFilter<"notafiscalitem"> | Decimal | DecimalJsLike | number | string | null
-    notafiscal?: XOR<NotafiscalRelationFilter, notafiscalWhereInput>
-    produtos?: XOR<ProdutosNullableRelationFilter, produtosWhereInput> | null
   }, "id" | "id">
 
   export type notafiscalitemOrderByWithAggregationInput = {
@@ -31628,7 +31409,7 @@ export namespace Prisma {
     AND?: notafiscalitemScalarWhereWithAggregatesInput | notafiscalitemScalarWhereWithAggregatesInput[]
     OR?: notafiscalitemScalarWhereWithAggregatesInput[]
     NOT?: notafiscalitemScalarWhereWithAggregatesInput | notafiscalitemScalarWhereWithAggregatesInput[]
-    id?: BigIntWithAggregatesFilter<"notafiscalitem"> | bigint | number
+    id?: IntWithAggregatesFilter<"notafiscalitem"> | number
     cProd?: StringWithAggregatesFilter<"notafiscalitem"> | string
     cEAN?: StringWithAggregatesFilter<"notafiscalitem"> | string
     xProd?: StringWithAggregatesFilter<"notafiscalitem"> | string
@@ -31677,9 +31458,9 @@ export namespace Prisma {
     CSOSN?: StringNullableWithAggregatesFilter<"notafiscalitem"> | string | null
     pCredSN?: DecimalNullableWithAggregatesFilter<"notafiscalitem"> | Decimal | DecimalJsLike | number | string | null
     vCredICMSSN?: DecimalNullableWithAggregatesFilter<"notafiscalitem"> | Decimal | DecimalJsLike | number | string | null
-    notafiscal_id?: BigIntWithAggregatesFilter<"notafiscalitem"> | bigint | number
+    notafiscal_id?: IntWithAggregatesFilter<"notafiscalitem"> | number
     vUnTrib?: DecimalNullableWithAggregatesFilter<"notafiscalitem"> | Decimal | DecimalJsLike | number | string | null
-    produto_id?: BigIntNullableWithAggregatesFilter<"notafiscalitem"> | bigint | number | null
+    produto_id?: IntNullableWithAggregatesFilter<"notafiscalitem"> | number | null
     vFrete?: DecimalNullableWithAggregatesFilter<"notafiscalitem"> | Decimal | DecimalJsLike | number | string | null
     vOutro?: DecimalNullableWithAggregatesFilter<"notafiscalitem"> | Decimal | DecimalJsLike | number | string | null
     vDesc?: DecimalNullableWithAggregatesFilter<"notafiscalitem"> | Decimal | DecimalJsLike | number | string | null
@@ -32058,8 +31839,8 @@ export namespace Prisma {
     AND?: produtosWhereInput | produtosWhereInput[]
     OR?: produtosWhereInput[]
     NOT?: produtosWhereInput | produtosWhereInput[]
-    id?: BigIntFilter<"produtos"> | bigint | number
-    id_sirius?: BigIntNullableFilter<"produtos"> | bigint | number | null
+    id?: IntFilter<"produtos"> | number
+    id_sirius?: IntNullableFilter<"produtos"> | number | null
     codProduto?: StringFilter<"produtos"> | string
     descricao?: StringFilter<"produtos"> | string
     codEAN?: StringFilter<"produtos"> | string
@@ -32075,7 +31856,6 @@ export namespace Prisma {
     vlrUnTrib?: DecimalNullableFilter<"produtos"> | Decimal | DecimalJsLike | number | string | null
     saldo?: DecimalNullableFilter<"produtos"> | Decimal | DecimalJsLike | number | string | null
     status?: StringFilter<"produtos"> | string
-    notafiscalitem?: NotafiscalitemListRelationFilter
   }
 
   export type produtosOrderByWithRelationInput = {
@@ -32096,15 +31876,14 @@ export namespace Prisma {
     vlrUnTrib?: SortOrderInput | SortOrder
     saldo?: SortOrderInput | SortOrder
     status?: SortOrder
-    notafiscalitem?: notafiscalitemOrderByRelationAggregateInput
   }
 
   export type produtosWhereUniqueInput = Prisma.AtLeast<{
-    id?: bigint | number
+    id?: number
     AND?: produtosWhereInput | produtosWhereInput[]
     OR?: produtosWhereInput[]
     NOT?: produtosWhereInput | produtosWhereInput[]
-    id_sirius?: BigIntNullableFilter<"produtos"> | bigint | number | null
+    id_sirius?: IntNullableFilter<"produtos"> | number | null
     codProduto?: StringFilter<"produtos"> | string
     descricao?: StringFilter<"produtos"> | string
     codEAN?: StringFilter<"produtos"> | string
@@ -32120,7 +31899,6 @@ export namespace Prisma {
     vlrUnTrib?: DecimalNullableFilter<"produtos"> | Decimal | DecimalJsLike | number | string | null
     saldo?: DecimalNullableFilter<"produtos"> | Decimal | DecimalJsLike | number | string | null
     status?: StringFilter<"produtos"> | string
-    notafiscalitem?: NotafiscalitemListRelationFilter
   }, "id">
 
   export type produtosOrderByWithAggregationInput = {
@@ -32152,8 +31930,8 @@ export namespace Prisma {
     AND?: produtosScalarWhereWithAggregatesInput | produtosScalarWhereWithAggregatesInput[]
     OR?: produtosScalarWhereWithAggregatesInput[]
     NOT?: produtosScalarWhereWithAggregatesInput | produtosScalarWhereWithAggregatesInput[]
-    id?: BigIntWithAggregatesFilter<"produtos"> | bigint | number
-    id_sirius?: BigIntNullableWithAggregatesFilter<"produtos"> | bigint | number | null
+    id?: IntWithAggregatesFilter<"produtos"> | number
+    id_sirius?: IntNullableWithAggregatesFilter<"produtos"> | number | null
     codProduto?: StringWithAggregatesFilter<"produtos"> | string
     descricao?: StringWithAggregatesFilter<"produtos"> | string
     codEAN?: StringWithAggregatesFilter<"produtos"> | string
@@ -33781,7 +33559,6 @@ export namespace Prisma {
     docreferenciado?: docreferenciadoCreateNestedManyWithoutNotafiscalInput
     clientes?: clientesCreateNestedOneWithoutNotafiscalInput
     enderecos?: enderecosCreateNestedOneWithoutNotafiscalInput
-    notafiscalitem?: notafiscalitemCreateNestedManyWithoutNotafiscalInput
     notafiscalpagamentos?: notafiscalpagamentosCreateNestedManyWithoutNotafiscalInput
   }
 
@@ -33870,7 +33647,6 @@ export namespace Prisma {
     xMotivo?: string | null
     retWS?: Buffer | null
     docreferenciado?: docreferenciadoUncheckedCreateNestedManyWithoutNotafiscalInput
-    notafiscalitem?: notafiscalitemUncheckedCreateNestedManyWithoutNotafiscalInput
     notafiscalpagamentos?: notafiscalpagamentosUncheckedCreateNestedManyWithoutNotafiscalInput
   }
 
@@ -33959,7 +33735,6 @@ export namespace Prisma {
     docreferenciado?: docreferenciadoUpdateManyWithoutNotafiscalNestedInput
     clientes?: clientesUpdateOneWithoutNotafiscalNestedInput
     enderecos?: enderecosUpdateOneWithoutNotafiscalNestedInput
-    notafiscalitem?: notafiscalitemUpdateManyWithoutNotafiscalNestedInput
     notafiscalpagamentos?: notafiscalpagamentosUpdateManyWithoutNotafiscalNestedInput
   }
 
@@ -34048,7 +33823,6 @@ export namespace Prisma {
     xMotivo?: NullableStringFieldUpdateOperationsInput | string | null
     retWS?: NullableBytesFieldUpdateOperationsInput | Buffer | null
     docreferenciado?: docreferenciadoUncheckedUpdateManyWithoutNotafiscalNestedInput
-    notafiscalitem?: notafiscalitemUncheckedUpdateManyWithoutNotafiscalNestedInput
     notafiscalpagamentos?: notafiscalpagamentosUncheckedUpdateManyWithoutNotafiscalNestedInput
   }
 
@@ -34309,7 +34083,7 @@ export namespace Prisma {
   }
 
   export type notafiscalitemCreateInput = {
-    id?: bigint | number
+    id: number
     cProd: string
     cEAN: string
     xProd: string
@@ -34358,7 +34132,9 @@ export namespace Prisma {
     CSOSN?: string | null
     pCredSN?: Decimal | DecimalJsLike | number | string | null
     vCredICMSSN?: Decimal | DecimalJsLike | number | string | null
+    notafiscal_id: number
     vUnTrib?: Decimal | DecimalJsLike | number | string | null
+    produto_id?: number | null
     vFrete?: Decimal | DecimalJsLike | number | string | null
     vOutro?: Decimal | DecimalJsLike | number | string | null
     vDesc?: Decimal | DecimalJsLike | number | string | null
@@ -34378,12 +34154,10 @@ export namespace Prisma {
     vIPIDevol?: Decimal | DecimalJsLike | number | string | null
     pRedBCST?: Decimal | DecimalJsLike | number | string | null
     pMVAST?: Decimal | DecimalJsLike | number | string | null
-    notafiscal: notafiscalCreateNestedOneWithoutNotafiscalitemInput
-    produtos?: produtosCreateNestedOneWithoutNotafiscalitemInput
   }
 
   export type notafiscalitemUncheckedCreateInput = {
-    id?: bigint | number
+    id: number
     cProd: string
     cEAN: string
     xProd: string
@@ -34432,9 +34206,9 @@ export namespace Prisma {
     CSOSN?: string | null
     pCredSN?: Decimal | DecimalJsLike | number | string | null
     vCredICMSSN?: Decimal | DecimalJsLike | number | string | null
-    notafiscal_id: bigint | number
+    notafiscal_id: number
     vUnTrib?: Decimal | DecimalJsLike | number | string | null
-    produto_id?: bigint | number | null
+    produto_id?: number | null
     vFrete?: Decimal | DecimalJsLike | number | string | null
     vOutro?: Decimal | DecimalJsLike | number | string | null
     vDesc?: Decimal | DecimalJsLike | number | string | null
@@ -34457,7 +34231,7 @@ export namespace Prisma {
   }
 
   export type notafiscalitemUpdateInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    id?: IntFieldUpdateOperationsInput | number
     cProd?: StringFieldUpdateOperationsInput | string
     cEAN?: StringFieldUpdateOperationsInput | string
     xProd?: StringFieldUpdateOperationsInput | string
@@ -34506,7 +34280,9 @@ export namespace Prisma {
     CSOSN?: NullableStringFieldUpdateOperationsInput | string | null
     pCredSN?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     vCredICMSSN?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    notafiscal_id?: IntFieldUpdateOperationsInput | number
     vUnTrib?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    produto_id?: NullableIntFieldUpdateOperationsInput | number | null
     vFrete?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     vOutro?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     vDesc?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
@@ -34526,12 +34302,10 @@ export namespace Prisma {
     vIPIDevol?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     pRedBCST?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     pMVAST?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    notafiscal?: notafiscalUpdateOneRequiredWithoutNotafiscalitemNestedInput
-    produtos?: produtosUpdateOneWithoutNotafiscalitemNestedInput
   }
 
   export type notafiscalitemUncheckedUpdateInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    id?: IntFieldUpdateOperationsInput | number
     cProd?: StringFieldUpdateOperationsInput | string
     cEAN?: StringFieldUpdateOperationsInput | string
     xProd?: StringFieldUpdateOperationsInput | string
@@ -34580,9 +34354,9 @@ export namespace Prisma {
     CSOSN?: NullableStringFieldUpdateOperationsInput | string | null
     pCredSN?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     vCredICMSSN?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    notafiscal_id?: BigIntFieldUpdateOperationsInput | bigint | number
+    notafiscal_id?: IntFieldUpdateOperationsInput | number
     vUnTrib?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    produto_id?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    produto_id?: NullableIntFieldUpdateOperationsInput | number | null
     vFrete?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     vOutro?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     vDesc?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
@@ -34605,7 +34379,7 @@ export namespace Prisma {
   }
 
   export type notafiscalitemCreateManyInput = {
-    id?: bigint | number
+    id: number
     cProd: string
     cEAN: string
     xProd: string
@@ -34654,9 +34428,9 @@ export namespace Prisma {
     CSOSN?: string | null
     pCredSN?: Decimal | DecimalJsLike | number | string | null
     vCredICMSSN?: Decimal | DecimalJsLike | number | string | null
-    notafiscal_id: bigint | number
+    notafiscal_id: number
     vUnTrib?: Decimal | DecimalJsLike | number | string | null
-    produto_id?: bigint | number | null
+    produto_id?: number | null
     vFrete?: Decimal | DecimalJsLike | number | string | null
     vOutro?: Decimal | DecimalJsLike | number | string | null
     vDesc?: Decimal | DecimalJsLike | number | string | null
@@ -34679,7 +34453,7 @@ export namespace Prisma {
   }
 
   export type notafiscalitemUpdateManyMutationInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    id?: IntFieldUpdateOperationsInput | number
     cProd?: StringFieldUpdateOperationsInput | string
     cEAN?: StringFieldUpdateOperationsInput | string
     xProd?: StringFieldUpdateOperationsInput | string
@@ -34728,7 +34502,9 @@ export namespace Prisma {
     CSOSN?: NullableStringFieldUpdateOperationsInput | string | null
     pCredSN?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     vCredICMSSN?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    notafiscal_id?: IntFieldUpdateOperationsInput | number
     vUnTrib?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    produto_id?: NullableIntFieldUpdateOperationsInput | number | null
     vFrete?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     vOutro?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     vDesc?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
@@ -34751,7 +34527,7 @@ export namespace Prisma {
   }
 
   export type notafiscalitemUncheckedUpdateManyInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    id?: IntFieldUpdateOperationsInput | number
     cProd?: StringFieldUpdateOperationsInput | string
     cEAN?: StringFieldUpdateOperationsInput | string
     xProd?: StringFieldUpdateOperationsInput | string
@@ -34800,9 +34576,9 @@ export namespace Prisma {
     CSOSN?: NullableStringFieldUpdateOperationsInput | string | null
     pCredSN?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     vCredICMSSN?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    notafiscal_id?: BigIntFieldUpdateOperationsInput | bigint | number
+    notafiscal_id?: IntFieldUpdateOperationsInput | number
     vUnTrib?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    produto_id?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    produto_id?: NullableIntFieldUpdateOperationsInput | number | null
     vFrete?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     vOutro?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     vDesc?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
@@ -35213,8 +34989,7 @@ export namespace Prisma {
   }
 
   export type produtosCreateInput = {
-    id?: bigint | number
-    id_sirius?: bigint | number | null
+    id_sirius?: number | null
     codProduto: string
     descricao: string
     codEAN: string
@@ -35230,12 +35005,11 @@ export namespace Prisma {
     vlrUnTrib?: Decimal | DecimalJsLike | number | string | null
     saldo?: Decimal | DecimalJsLike | number | string | null
     status: string
-    notafiscalitem?: notafiscalitemCreateNestedManyWithoutProdutosInput
   }
 
   export type produtosUncheckedCreateInput = {
-    id?: bigint | number
-    id_sirius?: bigint | number | null
+    id?: number
+    id_sirius?: number | null
     codProduto: string
     descricao: string
     codEAN: string
@@ -35251,12 +35025,10 @@ export namespace Prisma {
     vlrUnTrib?: Decimal | DecimalJsLike | number | string | null
     saldo?: Decimal | DecimalJsLike | number | string | null
     status: string
-    notafiscalitem?: notafiscalitemUncheckedCreateNestedManyWithoutProdutosInput
   }
 
   export type produtosUpdateInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
-    id_sirius?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    id_sirius?: NullableIntFieldUpdateOperationsInput | number | null
     codProduto?: StringFieldUpdateOperationsInput | string
     descricao?: StringFieldUpdateOperationsInput | string
     codEAN?: StringFieldUpdateOperationsInput | string
@@ -35272,12 +35044,11 @@ export namespace Prisma {
     vlrUnTrib?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     saldo?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     status?: StringFieldUpdateOperationsInput | string
-    notafiscalitem?: notafiscalitemUpdateManyWithoutProdutosNestedInput
   }
 
   export type produtosUncheckedUpdateInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
-    id_sirius?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    id?: IntFieldUpdateOperationsInput | number
+    id_sirius?: NullableIntFieldUpdateOperationsInput | number | null
     codProduto?: StringFieldUpdateOperationsInput | string
     descricao?: StringFieldUpdateOperationsInput | string
     codEAN?: StringFieldUpdateOperationsInput | string
@@ -35293,12 +35064,11 @@ export namespace Prisma {
     vlrUnTrib?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     saldo?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     status?: StringFieldUpdateOperationsInput | string
-    notafiscalitem?: notafiscalitemUncheckedUpdateManyWithoutProdutosNestedInput
   }
 
   export type produtosCreateManyInput = {
-    id?: bigint | number
-    id_sirius?: bigint | number | null
+    id?: number
+    id_sirius?: number | null
     codProduto: string
     descricao: string
     codEAN: string
@@ -35317,8 +35087,7 @@ export namespace Prisma {
   }
 
   export type produtosUpdateManyMutationInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
-    id_sirius?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    id_sirius?: NullableIntFieldUpdateOperationsInput | number | null
     codProduto?: StringFieldUpdateOperationsInput | string
     descricao?: StringFieldUpdateOperationsInput | string
     codEAN?: StringFieldUpdateOperationsInput | string
@@ -35337,8 +35106,8 @@ export namespace Prisma {
   }
 
   export type produtosUncheckedUpdateManyInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
-    id_sirius?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    id?: IntFieldUpdateOperationsInput | number
+    id_sirius?: NullableIntFieldUpdateOperationsInput | number | null
     codProduto?: StringFieldUpdateOperationsInput | string
     descricao?: StringFieldUpdateOperationsInput | string
     codEAN?: StringFieldUpdateOperationsInput | string
@@ -36807,12 +36576,6 @@ export namespace Prisma {
     isNot?: enderecosWhereInput | null
   }
 
-  export type NotafiscalitemListRelationFilter = {
-    every?: notafiscalitemWhereInput
-    some?: notafiscalitemWhereInput
-    none?: notafiscalitemWhereInput
-  }
-
   export type NotafiscalpagamentosListRelationFilter = {
     every?: notafiscalpagamentosWhereInput
     some?: notafiscalpagamentosWhereInput
@@ -36820,10 +36583,6 @@ export namespace Prisma {
   }
 
   export type docreferenciadoOrderByRelationAggregateInput = {
-    _count?: SortOrder
-  }
-
-  export type notafiscalitemOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -37151,16 +36910,6 @@ export namespace Prisma {
     _count?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedBytesNullableFilter<$PrismaModel>
     _max?: NestedBytesNullableFilter<$PrismaModel>
-  }
-
-  export type NotafiscalRelationFilter = {
-    is?: notafiscalWhereInput
-    isNot?: notafiscalWhereInput
-  }
-
-  export type ProdutosNullableRelationFilter = {
-    is?: produtosWhereInput | null
-    isNot?: produtosWhereInput | null
   }
 
   export type notafiscalitemCountOrderByAggregateInput = {
@@ -37493,6 +37242,11 @@ export namespace Prisma {
     vIPIDevol?: SortOrder
     pRedBCST?: SortOrder
     pMVAST?: SortOrder
+  }
+
+  export type NotafiscalRelationFilter = {
+    is?: notafiscalWhereInput
+    isNot?: notafiscalWhereInput
   }
 
   export type notafiscalpagamentosCountOrderByAggregateInput = {
@@ -38389,13 +38143,6 @@ export namespace Prisma {
     connect?: enderecosWhereUniqueInput
   }
 
-  export type notafiscalitemCreateNestedManyWithoutNotafiscalInput = {
-    create?: XOR<notafiscalitemCreateWithoutNotafiscalInput, notafiscalitemUncheckedCreateWithoutNotafiscalInput> | notafiscalitemCreateWithoutNotafiscalInput[] | notafiscalitemUncheckedCreateWithoutNotafiscalInput[]
-    connectOrCreate?: notafiscalitemCreateOrConnectWithoutNotafiscalInput | notafiscalitemCreateOrConnectWithoutNotafiscalInput[]
-    createMany?: notafiscalitemCreateManyNotafiscalInputEnvelope
-    connect?: notafiscalitemWhereUniqueInput | notafiscalitemWhereUniqueInput[]
-  }
-
   export type notafiscalpagamentosCreateNestedManyWithoutNotafiscalInput = {
     create?: XOR<notafiscalpagamentosCreateWithoutNotafiscalInput, notafiscalpagamentosUncheckedCreateWithoutNotafiscalInput> | notafiscalpagamentosCreateWithoutNotafiscalInput[] | notafiscalpagamentosUncheckedCreateWithoutNotafiscalInput[]
     connectOrCreate?: notafiscalpagamentosCreateOrConnectWithoutNotafiscalInput | notafiscalpagamentosCreateOrConnectWithoutNotafiscalInput[]
@@ -38408,13 +38155,6 @@ export namespace Prisma {
     connectOrCreate?: docreferenciadoCreateOrConnectWithoutNotafiscalInput | docreferenciadoCreateOrConnectWithoutNotafiscalInput[]
     createMany?: docreferenciadoCreateManyNotafiscalInputEnvelope
     connect?: docreferenciadoWhereUniqueInput | docreferenciadoWhereUniqueInput[]
-  }
-
-  export type notafiscalitemUncheckedCreateNestedManyWithoutNotafiscalInput = {
-    create?: XOR<notafiscalitemCreateWithoutNotafiscalInput, notafiscalitemUncheckedCreateWithoutNotafiscalInput> | notafiscalitemCreateWithoutNotafiscalInput[] | notafiscalitemUncheckedCreateWithoutNotafiscalInput[]
-    connectOrCreate?: notafiscalitemCreateOrConnectWithoutNotafiscalInput | notafiscalitemCreateOrConnectWithoutNotafiscalInput[]
-    createMany?: notafiscalitemCreateManyNotafiscalInputEnvelope
-    connect?: notafiscalitemWhereUniqueInput | notafiscalitemWhereUniqueInput[]
   }
 
   export type notafiscalpagamentosUncheckedCreateNestedManyWithoutNotafiscalInput = {
@@ -38462,20 +38202,6 @@ export namespace Prisma {
     update?: XOR<XOR<enderecosUpdateToOneWithWhereWithoutNotafiscalInput, enderecosUpdateWithoutNotafiscalInput>, enderecosUncheckedUpdateWithoutNotafiscalInput>
   }
 
-  export type notafiscalitemUpdateManyWithoutNotafiscalNestedInput = {
-    create?: XOR<notafiscalitemCreateWithoutNotafiscalInput, notafiscalitemUncheckedCreateWithoutNotafiscalInput> | notafiscalitemCreateWithoutNotafiscalInput[] | notafiscalitemUncheckedCreateWithoutNotafiscalInput[]
-    connectOrCreate?: notafiscalitemCreateOrConnectWithoutNotafiscalInput | notafiscalitemCreateOrConnectWithoutNotafiscalInput[]
-    upsert?: notafiscalitemUpsertWithWhereUniqueWithoutNotafiscalInput | notafiscalitemUpsertWithWhereUniqueWithoutNotafiscalInput[]
-    createMany?: notafiscalitemCreateManyNotafiscalInputEnvelope
-    set?: notafiscalitemWhereUniqueInput | notafiscalitemWhereUniqueInput[]
-    disconnect?: notafiscalitemWhereUniqueInput | notafiscalitemWhereUniqueInput[]
-    delete?: notafiscalitemWhereUniqueInput | notafiscalitemWhereUniqueInput[]
-    connect?: notafiscalitemWhereUniqueInput | notafiscalitemWhereUniqueInput[]
-    update?: notafiscalitemUpdateWithWhereUniqueWithoutNotafiscalInput | notafiscalitemUpdateWithWhereUniqueWithoutNotafiscalInput[]
-    updateMany?: notafiscalitemUpdateManyWithWhereWithoutNotafiscalInput | notafiscalitemUpdateManyWithWhereWithoutNotafiscalInput[]
-    deleteMany?: notafiscalitemScalarWhereInput | notafiscalitemScalarWhereInput[]
-  }
-
   export type notafiscalpagamentosUpdateManyWithoutNotafiscalNestedInput = {
     create?: XOR<notafiscalpagamentosCreateWithoutNotafiscalInput, notafiscalpagamentosUncheckedCreateWithoutNotafiscalInput> | notafiscalpagamentosCreateWithoutNotafiscalInput[] | notafiscalpagamentosUncheckedCreateWithoutNotafiscalInput[]
     connectOrCreate?: notafiscalpagamentosCreateOrConnectWithoutNotafiscalInput | notafiscalpagamentosCreateOrConnectWithoutNotafiscalInput[]
@@ -38504,20 +38230,6 @@ export namespace Prisma {
     deleteMany?: docreferenciadoScalarWhereInput | docreferenciadoScalarWhereInput[]
   }
 
-  export type notafiscalitemUncheckedUpdateManyWithoutNotafiscalNestedInput = {
-    create?: XOR<notafiscalitemCreateWithoutNotafiscalInput, notafiscalitemUncheckedCreateWithoutNotafiscalInput> | notafiscalitemCreateWithoutNotafiscalInput[] | notafiscalitemUncheckedCreateWithoutNotafiscalInput[]
-    connectOrCreate?: notafiscalitemCreateOrConnectWithoutNotafiscalInput | notafiscalitemCreateOrConnectWithoutNotafiscalInput[]
-    upsert?: notafiscalitemUpsertWithWhereUniqueWithoutNotafiscalInput | notafiscalitemUpsertWithWhereUniqueWithoutNotafiscalInput[]
-    createMany?: notafiscalitemCreateManyNotafiscalInputEnvelope
-    set?: notafiscalitemWhereUniqueInput | notafiscalitemWhereUniqueInput[]
-    disconnect?: notafiscalitemWhereUniqueInput | notafiscalitemWhereUniqueInput[]
-    delete?: notafiscalitemWhereUniqueInput | notafiscalitemWhereUniqueInput[]
-    connect?: notafiscalitemWhereUniqueInput | notafiscalitemWhereUniqueInput[]
-    update?: notafiscalitemUpdateWithWhereUniqueWithoutNotafiscalInput | notafiscalitemUpdateWithWhereUniqueWithoutNotafiscalInput[]
-    updateMany?: notafiscalitemUpdateManyWithWhereWithoutNotafiscalInput | notafiscalitemUpdateManyWithWhereWithoutNotafiscalInput[]
-    deleteMany?: notafiscalitemScalarWhereInput | notafiscalitemScalarWhereInput[]
-  }
-
   export type notafiscalpagamentosUncheckedUpdateManyWithoutNotafiscalNestedInput = {
     create?: XOR<notafiscalpagamentosCreateWithoutNotafiscalInput, notafiscalpagamentosUncheckedCreateWithoutNotafiscalInput> | notafiscalpagamentosCreateWithoutNotafiscalInput[] | notafiscalpagamentosUncheckedCreateWithoutNotafiscalInput[]
     connectOrCreate?: notafiscalpagamentosCreateOrConnectWithoutNotafiscalInput | notafiscalpagamentosCreateOrConnectWithoutNotafiscalInput[]
@@ -38532,36 +38244,6 @@ export namespace Prisma {
     deleteMany?: notafiscalpagamentosScalarWhereInput | notafiscalpagamentosScalarWhereInput[]
   }
 
-  export type notafiscalCreateNestedOneWithoutNotafiscalitemInput = {
-    create?: XOR<notafiscalCreateWithoutNotafiscalitemInput, notafiscalUncheckedCreateWithoutNotafiscalitemInput>
-    connectOrCreate?: notafiscalCreateOrConnectWithoutNotafiscalitemInput
-    connect?: notafiscalWhereUniqueInput
-  }
-
-  export type produtosCreateNestedOneWithoutNotafiscalitemInput = {
-    create?: XOR<produtosCreateWithoutNotafiscalitemInput, produtosUncheckedCreateWithoutNotafiscalitemInput>
-    connectOrCreate?: produtosCreateOrConnectWithoutNotafiscalitemInput
-    connect?: produtosWhereUniqueInput
-  }
-
-  export type notafiscalUpdateOneRequiredWithoutNotafiscalitemNestedInput = {
-    create?: XOR<notafiscalCreateWithoutNotafiscalitemInput, notafiscalUncheckedCreateWithoutNotafiscalitemInput>
-    connectOrCreate?: notafiscalCreateOrConnectWithoutNotafiscalitemInput
-    upsert?: notafiscalUpsertWithoutNotafiscalitemInput
-    connect?: notafiscalWhereUniqueInput
-    update?: XOR<XOR<notafiscalUpdateToOneWithWhereWithoutNotafiscalitemInput, notafiscalUpdateWithoutNotafiscalitemInput>, notafiscalUncheckedUpdateWithoutNotafiscalitemInput>
-  }
-
-  export type produtosUpdateOneWithoutNotafiscalitemNestedInput = {
-    create?: XOR<produtosCreateWithoutNotafiscalitemInput, produtosUncheckedCreateWithoutNotafiscalitemInput>
-    connectOrCreate?: produtosCreateOrConnectWithoutNotafiscalitemInput
-    upsert?: produtosUpsertWithoutNotafiscalitemInput
-    disconnect?: produtosWhereInput | boolean
-    delete?: produtosWhereInput | boolean
-    connect?: produtosWhereUniqueInput
-    update?: XOR<XOR<produtosUpdateToOneWithWhereWithoutNotafiscalitemInput, produtosUpdateWithoutNotafiscalitemInput>, produtosUncheckedUpdateWithoutNotafiscalitemInput>
-  }
-
   export type notafiscalCreateNestedOneWithoutNotafiscalpagamentosInput = {
     create?: XOR<notafiscalCreateWithoutNotafiscalpagamentosInput, notafiscalUncheckedCreateWithoutNotafiscalpagamentosInput>
     connectOrCreate?: notafiscalCreateOrConnectWithoutNotafiscalpagamentosInput
@@ -38574,48 +38256,6 @@ export namespace Prisma {
     upsert?: notafiscalUpsertWithoutNotafiscalpagamentosInput
     connect?: notafiscalWhereUniqueInput
     update?: XOR<XOR<notafiscalUpdateToOneWithWhereWithoutNotafiscalpagamentosInput, notafiscalUpdateWithoutNotafiscalpagamentosInput>, notafiscalUncheckedUpdateWithoutNotafiscalpagamentosInput>
-  }
-
-  export type notafiscalitemCreateNestedManyWithoutProdutosInput = {
-    create?: XOR<notafiscalitemCreateWithoutProdutosInput, notafiscalitemUncheckedCreateWithoutProdutosInput> | notafiscalitemCreateWithoutProdutosInput[] | notafiscalitemUncheckedCreateWithoutProdutosInput[]
-    connectOrCreate?: notafiscalitemCreateOrConnectWithoutProdutosInput | notafiscalitemCreateOrConnectWithoutProdutosInput[]
-    createMany?: notafiscalitemCreateManyProdutosInputEnvelope
-    connect?: notafiscalitemWhereUniqueInput | notafiscalitemWhereUniqueInput[]
-  }
-
-  export type notafiscalitemUncheckedCreateNestedManyWithoutProdutosInput = {
-    create?: XOR<notafiscalitemCreateWithoutProdutosInput, notafiscalitemUncheckedCreateWithoutProdutosInput> | notafiscalitemCreateWithoutProdutosInput[] | notafiscalitemUncheckedCreateWithoutProdutosInput[]
-    connectOrCreate?: notafiscalitemCreateOrConnectWithoutProdutosInput | notafiscalitemCreateOrConnectWithoutProdutosInput[]
-    createMany?: notafiscalitemCreateManyProdutosInputEnvelope
-    connect?: notafiscalitemWhereUniqueInput | notafiscalitemWhereUniqueInput[]
-  }
-
-  export type notafiscalitemUpdateManyWithoutProdutosNestedInput = {
-    create?: XOR<notafiscalitemCreateWithoutProdutosInput, notafiscalitemUncheckedCreateWithoutProdutosInput> | notafiscalitemCreateWithoutProdutosInput[] | notafiscalitemUncheckedCreateWithoutProdutosInput[]
-    connectOrCreate?: notafiscalitemCreateOrConnectWithoutProdutosInput | notafiscalitemCreateOrConnectWithoutProdutosInput[]
-    upsert?: notafiscalitemUpsertWithWhereUniqueWithoutProdutosInput | notafiscalitemUpsertWithWhereUniqueWithoutProdutosInput[]
-    createMany?: notafiscalitemCreateManyProdutosInputEnvelope
-    set?: notafiscalitemWhereUniqueInput | notafiscalitemWhereUniqueInput[]
-    disconnect?: notafiscalitemWhereUniqueInput | notafiscalitemWhereUniqueInput[]
-    delete?: notafiscalitemWhereUniqueInput | notafiscalitemWhereUniqueInput[]
-    connect?: notafiscalitemWhereUniqueInput | notafiscalitemWhereUniqueInput[]
-    update?: notafiscalitemUpdateWithWhereUniqueWithoutProdutosInput | notafiscalitemUpdateWithWhereUniqueWithoutProdutosInput[]
-    updateMany?: notafiscalitemUpdateManyWithWhereWithoutProdutosInput | notafiscalitemUpdateManyWithWhereWithoutProdutosInput[]
-    deleteMany?: notafiscalitemScalarWhereInput | notafiscalitemScalarWhereInput[]
-  }
-
-  export type notafiscalitemUncheckedUpdateManyWithoutProdutosNestedInput = {
-    create?: XOR<notafiscalitemCreateWithoutProdutosInput, notafiscalitemUncheckedCreateWithoutProdutosInput> | notafiscalitemCreateWithoutProdutosInput[] | notafiscalitemUncheckedCreateWithoutProdutosInput[]
-    connectOrCreate?: notafiscalitemCreateOrConnectWithoutProdutosInput | notafiscalitemCreateOrConnectWithoutProdutosInput[]
-    upsert?: notafiscalitemUpsertWithWhereUniqueWithoutProdutosInput | notafiscalitemUpsertWithWhereUniqueWithoutProdutosInput[]
-    createMany?: notafiscalitemCreateManyProdutosInputEnvelope
-    set?: notafiscalitemWhereUniqueInput | notafiscalitemWhereUniqueInput[]
-    disconnect?: notafiscalitemWhereUniqueInput | notafiscalitemWhereUniqueInput[]
-    delete?: notafiscalitemWhereUniqueInput | notafiscalitemWhereUniqueInput[]
-    connect?: notafiscalitemWhereUniqueInput | notafiscalitemWhereUniqueInput[]
-    update?: notafiscalitemUpdateWithWhereUniqueWithoutProdutosInput | notafiscalitemUpdateWithWhereUniqueWithoutProdutosInput[]
-    updateMany?: notafiscalitemUpdateManyWithWhereWithoutProdutosInput | notafiscalitemUpdateManyWithWhereWithoutProdutosInput[]
-    deleteMany?: notafiscalitemScalarWhereInput | notafiscalitemScalarWhereInput[]
   }
 
   export type NestedIntFilter<$PrismaModel = never> = {
@@ -39525,7 +39165,6 @@ export namespace Prisma {
     retWS?: Buffer | null
     docreferenciado?: docreferenciadoCreateNestedManyWithoutNotafiscalInput
     enderecos?: enderecosCreateNestedOneWithoutNotafiscalInput
-    notafiscalitem?: notafiscalitemCreateNestedManyWithoutNotafiscalInput
     notafiscalpagamentos?: notafiscalpagamentosCreateNestedManyWithoutNotafiscalInput
   }
 
@@ -39613,7 +39252,6 @@ export namespace Prisma {
     xMotivo?: string | null
     retWS?: Buffer | null
     docreferenciado?: docreferenciadoUncheckedCreateNestedManyWithoutNotafiscalInput
-    notafiscalitem?: notafiscalitemUncheckedCreateNestedManyWithoutNotafiscalInput
     notafiscalpagamentos?: notafiscalpagamentosUncheckedCreateNestedManyWithoutNotafiscalInput
   }
 
@@ -40005,7 +39643,6 @@ export namespace Prisma {
     retWS?: Buffer | null
     clientes?: clientesCreateNestedOneWithoutNotafiscalInput
     enderecos?: enderecosCreateNestedOneWithoutNotafiscalInput
-    notafiscalitem?: notafiscalitemCreateNestedManyWithoutNotafiscalInput
     notafiscalpagamentos?: notafiscalpagamentosCreateNestedManyWithoutNotafiscalInput
   }
 
@@ -40093,7 +39730,6 @@ export namespace Prisma {
     statusCode?: number | null
     xMotivo?: string | null
     retWS?: Buffer | null
-    notafiscalitem?: notafiscalitemUncheckedCreateNestedManyWithoutNotafiscalInput
     notafiscalpagamentos?: notafiscalpagamentosUncheckedCreateNestedManyWithoutNotafiscalInput
   }
 
@@ -40197,7 +39833,6 @@ export namespace Prisma {
     retWS?: NullableBytesFieldUpdateOperationsInput | Buffer | null
     clientes?: clientesUpdateOneWithoutNotafiscalNestedInput
     enderecos?: enderecosUpdateOneWithoutNotafiscalNestedInput
-    notafiscalitem?: notafiscalitemUpdateManyWithoutNotafiscalNestedInput
     notafiscalpagamentos?: notafiscalpagamentosUpdateManyWithoutNotafiscalNestedInput
   }
 
@@ -40285,7 +39920,6 @@ export namespace Prisma {
     statusCode?: NullableIntFieldUpdateOperationsInput | number | null
     xMotivo?: NullableStringFieldUpdateOperationsInput | string | null
     retWS?: NullableBytesFieldUpdateOperationsInput | Buffer | null
-    notafiscalitem?: notafiscalitemUncheckedUpdateManyWithoutNotafiscalNestedInput
     notafiscalpagamentos?: notafiscalpagamentosUncheckedUpdateManyWithoutNotafiscalNestedInput
   }
 
@@ -40434,7 +40068,6 @@ export namespace Prisma {
     retWS?: Buffer | null
     docreferenciado?: docreferenciadoCreateNestedManyWithoutNotafiscalInput
     clientes?: clientesCreateNestedOneWithoutNotafiscalInput
-    notafiscalitem?: notafiscalitemCreateNestedManyWithoutNotafiscalInput
     notafiscalpagamentos?: notafiscalpagamentosCreateNestedManyWithoutNotafiscalInput
   }
 
@@ -40522,7 +40155,6 @@ export namespace Prisma {
     xMotivo?: string | null
     retWS?: Buffer | null
     docreferenciado?: docreferenciadoUncheckedCreateNestedManyWithoutNotafiscalInput
-    notafiscalitem?: notafiscalitemUncheckedCreateNestedManyWithoutNotafiscalInput
     notafiscalpagamentos?: notafiscalpagamentosUncheckedCreateNestedManyWithoutNotafiscalInput
   }
 
@@ -40738,162 +40370,6 @@ export namespace Prisma {
     create: XOR<enderecosCreateWithoutNotafiscalInput, enderecosUncheckedCreateWithoutNotafiscalInput>
   }
 
-  export type notafiscalitemCreateWithoutNotafiscalInput = {
-    id?: bigint | number
-    cProd: string
-    cEAN: string
-    xProd: string
-    ncm: string
-    cest: string
-    cfop: string
-    uCom: string
-    qCom: Decimal | DecimalJsLike | number | string
-    vUnCom: Decimal | DecimalJsLike | number | string
-    vProd?: Decimal | DecimalJsLike | number | string | null
-    cEANTrib: string
-    uTrib: string
-    qTrib: Decimal | DecimalJsLike | number | string
-    indTotal: string
-    cst: string
-    modBc?: string | null
-    vBc?: Decimal | DecimalJsLike | number | string | null
-    pIcms?: Decimal | DecimalJsLike | number | string | null
-    vIcms?: Decimal | DecimalJsLike | number | string | null
-    pFcp?: Decimal | DecimalJsLike | number | string | null
-    vFcp?: Decimal | DecimalJsLike | number | string | null
-    vBCFCP?: Decimal | DecimalJsLike | number | string | null
-    modBCST?: string | null
-    vBCST?: Decimal | DecimalJsLike | number | string | null
-    pICMSST?: Decimal | DecimalJsLike | number | string | null
-    vICMSST?: Decimal | DecimalJsLike | number | string | null
-    vBCFCPST?: Decimal | DecimalJsLike | number | string | null
-    pFCPST?: Decimal | DecimalJsLike | number | string | null
-    vFCPST?: Decimal | DecimalJsLike | number | string | null
-    pRedBC?: Decimal | DecimalJsLike | number | string | null
-    vICMSDeson?: Decimal | DecimalJsLike | number | string | null
-    motDesICMS?: string | null
-    vBCSTRet?: Decimal | DecimalJsLike | number | string | null
-    orig: string
-    pST?: Decimal | DecimalJsLike | number | string | null
-    vICMSSTRet?: Decimal | DecimalJsLike | number | string | null
-    vBCFCPSTRet?: Decimal | DecimalJsLike | number | string | null
-    pFCPSTRet?: Decimal | DecimalJsLike | number | string | null
-    vFCPSTRet?: Decimal | DecimalJsLike | number | string | null
-    pRedBCEfet?: Decimal | DecimalJsLike | number | string | null
-    vBCEfet?: Decimal | DecimalJsLike | number | string | null
-    pICMSEfet?: Decimal | DecimalJsLike | number | string | null
-    vICMSEfet?: Decimal | DecimalJsLike | number | string | null
-    pBCOp?: Decimal | DecimalJsLike | number | string | null
-    UFST?: string | null
-    CSOSN?: string | null
-    pCredSN?: Decimal | DecimalJsLike | number | string | null
-    vCredICMSSN?: Decimal | DecimalJsLike | number | string | null
-    vUnTrib?: Decimal | DecimalJsLike | number | string | null
-    vFrete?: Decimal | DecimalJsLike | number | string | null
-    vOutro?: Decimal | DecimalJsLike | number | string | null
-    vDesc?: Decimal | DecimalJsLike | number | string | null
-    cstPIS?: string | null
-    vBCPIS?: Decimal | DecimalJsLike | number | string | null
-    pPIS?: Decimal | DecimalJsLike | number | string | null
-    vPIS?: Decimal | DecimalJsLike | number | string | null
-    qBCPISProd?: Decimal | DecimalJsLike | number | string | null
-    vAliqPISProd?: Decimal | DecimalJsLike | number | string | null
-    cstCOFINS?: string | null
-    vBCCOFINS?: Decimal | DecimalJsLike | number | string | null
-    pCOFINS?: Decimal | DecimalJsLike | number | string | null
-    vCOFINS?: Decimal | DecimalJsLike | number | string | null
-    qBCCOFINSProd?: Decimal | DecimalJsLike | number | string | null
-    vAliqCOFINSProd?: Decimal | DecimalJsLike | number | string | null
-    pDevol?: Decimal | DecimalJsLike | number | string | null
-    vIPIDevol?: Decimal | DecimalJsLike | number | string | null
-    pRedBCST?: Decimal | DecimalJsLike | number | string | null
-    pMVAST?: Decimal | DecimalJsLike | number | string | null
-    produtos?: produtosCreateNestedOneWithoutNotafiscalitemInput
-  }
-
-  export type notafiscalitemUncheckedCreateWithoutNotafiscalInput = {
-    id?: bigint | number
-    cProd: string
-    cEAN: string
-    xProd: string
-    ncm: string
-    cest: string
-    cfop: string
-    uCom: string
-    qCom: Decimal | DecimalJsLike | number | string
-    vUnCom: Decimal | DecimalJsLike | number | string
-    vProd?: Decimal | DecimalJsLike | number | string | null
-    cEANTrib: string
-    uTrib: string
-    qTrib: Decimal | DecimalJsLike | number | string
-    indTotal: string
-    cst: string
-    modBc?: string | null
-    vBc?: Decimal | DecimalJsLike | number | string | null
-    pIcms?: Decimal | DecimalJsLike | number | string | null
-    vIcms?: Decimal | DecimalJsLike | number | string | null
-    pFcp?: Decimal | DecimalJsLike | number | string | null
-    vFcp?: Decimal | DecimalJsLike | number | string | null
-    vBCFCP?: Decimal | DecimalJsLike | number | string | null
-    modBCST?: string | null
-    vBCST?: Decimal | DecimalJsLike | number | string | null
-    pICMSST?: Decimal | DecimalJsLike | number | string | null
-    vICMSST?: Decimal | DecimalJsLike | number | string | null
-    vBCFCPST?: Decimal | DecimalJsLike | number | string | null
-    pFCPST?: Decimal | DecimalJsLike | number | string | null
-    vFCPST?: Decimal | DecimalJsLike | number | string | null
-    pRedBC?: Decimal | DecimalJsLike | number | string | null
-    vICMSDeson?: Decimal | DecimalJsLike | number | string | null
-    motDesICMS?: string | null
-    vBCSTRet?: Decimal | DecimalJsLike | number | string | null
-    orig: string
-    pST?: Decimal | DecimalJsLike | number | string | null
-    vICMSSTRet?: Decimal | DecimalJsLike | number | string | null
-    vBCFCPSTRet?: Decimal | DecimalJsLike | number | string | null
-    pFCPSTRet?: Decimal | DecimalJsLike | number | string | null
-    vFCPSTRet?: Decimal | DecimalJsLike | number | string | null
-    pRedBCEfet?: Decimal | DecimalJsLike | number | string | null
-    vBCEfet?: Decimal | DecimalJsLike | number | string | null
-    pICMSEfet?: Decimal | DecimalJsLike | number | string | null
-    vICMSEfet?: Decimal | DecimalJsLike | number | string | null
-    pBCOp?: Decimal | DecimalJsLike | number | string | null
-    UFST?: string | null
-    CSOSN?: string | null
-    pCredSN?: Decimal | DecimalJsLike | number | string | null
-    vCredICMSSN?: Decimal | DecimalJsLike | number | string | null
-    vUnTrib?: Decimal | DecimalJsLike | number | string | null
-    produto_id?: bigint | number | null
-    vFrete?: Decimal | DecimalJsLike | number | string | null
-    vOutro?: Decimal | DecimalJsLike | number | string | null
-    vDesc?: Decimal | DecimalJsLike | number | string | null
-    cstPIS?: string | null
-    vBCPIS?: Decimal | DecimalJsLike | number | string | null
-    pPIS?: Decimal | DecimalJsLike | number | string | null
-    vPIS?: Decimal | DecimalJsLike | number | string | null
-    qBCPISProd?: Decimal | DecimalJsLike | number | string | null
-    vAliqPISProd?: Decimal | DecimalJsLike | number | string | null
-    cstCOFINS?: string | null
-    vBCCOFINS?: Decimal | DecimalJsLike | number | string | null
-    pCOFINS?: Decimal | DecimalJsLike | number | string | null
-    vCOFINS?: Decimal | DecimalJsLike | number | string | null
-    qBCCOFINSProd?: Decimal | DecimalJsLike | number | string | null
-    vAliqCOFINSProd?: Decimal | DecimalJsLike | number | string | null
-    pDevol?: Decimal | DecimalJsLike | number | string | null
-    vIPIDevol?: Decimal | DecimalJsLike | number | string | null
-    pRedBCST?: Decimal | DecimalJsLike | number | string | null
-    pMVAST?: Decimal | DecimalJsLike | number | string | null
-  }
-
-  export type notafiscalitemCreateOrConnectWithoutNotafiscalInput = {
-    where: notafiscalitemWhereUniqueInput
-    create: XOR<notafiscalitemCreateWithoutNotafiscalInput, notafiscalitemUncheckedCreateWithoutNotafiscalInput>
-  }
-
-  export type notafiscalitemCreateManyNotafiscalInputEnvelope = {
-    data: notafiscalitemCreateManyNotafiscalInput | notafiscalitemCreateManyNotafiscalInput[]
-    skipDuplicates?: boolean
-  }
-
   export type notafiscalpagamentosCreateWithoutNotafiscalInput = {
     indicacao?: string | null
     tipo?: string | null
@@ -41057,99 +40533,6 @@ export namespace Prisma {
     status?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
-  export type notafiscalitemUpsertWithWhereUniqueWithoutNotafiscalInput = {
-    where: notafiscalitemWhereUniqueInput
-    update: XOR<notafiscalitemUpdateWithoutNotafiscalInput, notafiscalitemUncheckedUpdateWithoutNotafiscalInput>
-    create: XOR<notafiscalitemCreateWithoutNotafiscalInput, notafiscalitemUncheckedCreateWithoutNotafiscalInput>
-  }
-
-  export type notafiscalitemUpdateWithWhereUniqueWithoutNotafiscalInput = {
-    where: notafiscalitemWhereUniqueInput
-    data: XOR<notafiscalitemUpdateWithoutNotafiscalInput, notafiscalitemUncheckedUpdateWithoutNotafiscalInput>
-  }
-
-  export type notafiscalitemUpdateManyWithWhereWithoutNotafiscalInput = {
-    where: notafiscalitemScalarWhereInput
-    data: XOR<notafiscalitemUpdateManyMutationInput, notafiscalitemUncheckedUpdateManyWithoutNotafiscalInput>
-  }
-
-  export type notafiscalitemScalarWhereInput = {
-    AND?: notafiscalitemScalarWhereInput | notafiscalitemScalarWhereInput[]
-    OR?: notafiscalitemScalarWhereInput[]
-    NOT?: notafiscalitemScalarWhereInput | notafiscalitemScalarWhereInput[]
-    id?: BigIntFilter<"notafiscalitem"> | bigint | number
-    cProd?: StringFilter<"notafiscalitem"> | string
-    cEAN?: StringFilter<"notafiscalitem"> | string
-    xProd?: StringFilter<"notafiscalitem"> | string
-    ncm?: StringFilter<"notafiscalitem"> | string
-    cest?: StringFilter<"notafiscalitem"> | string
-    cfop?: StringFilter<"notafiscalitem"> | string
-    uCom?: StringFilter<"notafiscalitem"> | string
-    qCom?: DecimalFilter<"notafiscalitem"> | Decimal | DecimalJsLike | number | string
-    vUnCom?: DecimalFilter<"notafiscalitem"> | Decimal | DecimalJsLike | number | string
-    vProd?: DecimalNullableFilter<"notafiscalitem"> | Decimal | DecimalJsLike | number | string | null
-    cEANTrib?: StringFilter<"notafiscalitem"> | string
-    uTrib?: StringFilter<"notafiscalitem"> | string
-    qTrib?: DecimalFilter<"notafiscalitem"> | Decimal | DecimalJsLike | number | string
-    indTotal?: StringFilter<"notafiscalitem"> | string
-    cst?: StringFilter<"notafiscalitem"> | string
-    modBc?: StringNullableFilter<"notafiscalitem"> | string | null
-    vBc?: DecimalNullableFilter<"notafiscalitem"> | Decimal | DecimalJsLike | number | string | null
-    pIcms?: DecimalNullableFilter<"notafiscalitem"> | Decimal | DecimalJsLike | number | string | null
-    vIcms?: DecimalNullableFilter<"notafiscalitem"> | Decimal | DecimalJsLike | number | string | null
-    pFcp?: DecimalNullableFilter<"notafiscalitem"> | Decimal | DecimalJsLike | number | string | null
-    vFcp?: DecimalNullableFilter<"notafiscalitem"> | Decimal | DecimalJsLike | number | string | null
-    vBCFCP?: DecimalNullableFilter<"notafiscalitem"> | Decimal | DecimalJsLike | number | string | null
-    modBCST?: StringNullableFilter<"notafiscalitem"> | string | null
-    vBCST?: DecimalNullableFilter<"notafiscalitem"> | Decimal | DecimalJsLike | number | string | null
-    pICMSST?: DecimalNullableFilter<"notafiscalitem"> | Decimal | DecimalJsLike | number | string | null
-    vICMSST?: DecimalNullableFilter<"notafiscalitem"> | Decimal | DecimalJsLike | number | string | null
-    vBCFCPST?: DecimalNullableFilter<"notafiscalitem"> | Decimal | DecimalJsLike | number | string | null
-    pFCPST?: DecimalNullableFilter<"notafiscalitem"> | Decimal | DecimalJsLike | number | string | null
-    vFCPST?: DecimalNullableFilter<"notafiscalitem"> | Decimal | DecimalJsLike | number | string | null
-    pRedBC?: DecimalNullableFilter<"notafiscalitem"> | Decimal | DecimalJsLike | number | string | null
-    vICMSDeson?: DecimalNullableFilter<"notafiscalitem"> | Decimal | DecimalJsLike | number | string | null
-    motDesICMS?: StringNullableFilter<"notafiscalitem"> | string | null
-    vBCSTRet?: DecimalNullableFilter<"notafiscalitem"> | Decimal | DecimalJsLike | number | string | null
-    orig?: StringFilter<"notafiscalitem"> | string
-    pST?: DecimalNullableFilter<"notafiscalitem"> | Decimal | DecimalJsLike | number | string | null
-    vICMSSTRet?: DecimalNullableFilter<"notafiscalitem"> | Decimal | DecimalJsLike | number | string | null
-    vBCFCPSTRet?: DecimalNullableFilter<"notafiscalitem"> | Decimal | DecimalJsLike | number | string | null
-    pFCPSTRet?: DecimalNullableFilter<"notafiscalitem"> | Decimal | DecimalJsLike | number | string | null
-    vFCPSTRet?: DecimalNullableFilter<"notafiscalitem"> | Decimal | DecimalJsLike | number | string | null
-    pRedBCEfet?: DecimalNullableFilter<"notafiscalitem"> | Decimal | DecimalJsLike | number | string | null
-    vBCEfet?: DecimalNullableFilter<"notafiscalitem"> | Decimal | DecimalJsLike | number | string | null
-    pICMSEfet?: DecimalNullableFilter<"notafiscalitem"> | Decimal | DecimalJsLike | number | string | null
-    vICMSEfet?: DecimalNullableFilter<"notafiscalitem"> | Decimal | DecimalJsLike | number | string | null
-    pBCOp?: DecimalNullableFilter<"notafiscalitem"> | Decimal | DecimalJsLike | number | string | null
-    UFST?: StringNullableFilter<"notafiscalitem"> | string | null
-    CSOSN?: StringNullableFilter<"notafiscalitem"> | string | null
-    pCredSN?: DecimalNullableFilter<"notafiscalitem"> | Decimal | DecimalJsLike | number | string | null
-    vCredICMSSN?: DecimalNullableFilter<"notafiscalitem"> | Decimal | DecimalJsLike | number | string | null
-    notafiscal_id?: BigIntFilter<"notafiscalitem"> | bigint | number
-    vUnTrib?: DecimalNullableFilter<"notafiscalitem"> | Decimal | DecimalJsLike | number | string | null
-    produto_id?: BigIntNullableFilter<"notafiscalitem"> | bigint | number | null
-    vFrete?: DecimalNullableFilter<"notafiscalitem"> | Decimal | DecimalJsLike | number | string | null
-    vOutro?: DecimalNullableFilter<"notafiscalitem"> | Decimal | DecimalJsLike | number | string | null
-    vDesc?: DecimalNullableFilter<"notafiscalitem"> | Decimal | DecimalJsLike | number | string | null
-    cstPIS?: StringNullableFilter<"notafiscalitem"> | string | null
-    vBCPIS?: DecimalNullableFilter<"notafiscalitem"> | Decimal | DecimalJsLike | number | string | null
-    pPIS?: DecimalNullableFilter<"notafiscalitem"> | Decimal | DecimalJsLike | number | string | null
-    vPIS?: DecimalNullableFilter<"notafiscalitem"> | Decimal | DecimalJsLike | number | string | null
-    qBCPISProd?: DecimalNullableFilter<"notafiscalitem"> | Decimal | DecimalJsLike | number | string | null
-    vAliqPISProd?: DecimalNullableFilter<"notafiscalitem"> | Decimal | DecimalJsLike | number | string | null
-    cstCOFINS?: StringNullableFilter<"notafiscalitem"> | string | null
-    vBCCOFINS?: DecimalNullableFilter<"notafiscalitem"> | Decimal | DecimalJsLike | number | string | null
-    pCOFINS?: DecimalNullableFilter<"notafiscalitem"> | Decimal | DecimalJsLike | number | string | null
-    vCOFINS?: DecimalNullableFilter<"notafiscalitem"> | Decimal | DecimalJsLike | number | string | null
-    qBCCOFINSProd?: DecimalNullableFilter<"notafiscalitem"> | Decimal | DecimalJsLike | number | string | null
-    vAliqCOFINSProd?: DecimalNullableFilter<"notafiscalitem"> | Decimal | DecimalJsLike | number | string | null
-    pDevol?: DecimalNullableFilter<"notafiscalitem"> | Decimal | DecimalJsLike | number | string | null
-    vIPIDevol?: DecimalNullableFilter<"notafiscalitem"> | Decimal | DecimalJsLike | number | string | null
-    pRedBCST?: DecimalNullableFilter<"notafiscalitem"> | Decimal | DecimalJsLike | number | string | null
-    pMVAST?: DecimalNullableFilter<"notafiscalitem"> | Decimal | DecimalJsLike | number | string | null
-  }
-
   export type notafiscalpagamentosUpsertWithWhereUniqueWithoutNotafiscalInput = {
     where: notafiscalpagamentosWhereUniqueInput
     update: XOR<notafiscalpagamentosUpdateWithoutNotafiscalInput, notafiscalpagamentosUncheckedUpdateWithoutNotafiscalInput>
@@ -41177,470 +40560,6 @@ export namespace Prisma {
     data_criacao?: DateTimeNullableFilter<"notafiscalpagamentos"> | Date | string | null
     data_vencimento?: DateTimeNullableFilter<"notafiscalpagamentos"> | Date | string | null
     notaFiscal_id?: BigIntFilter<"notafiscalpagamentos"> | bigint | number
-  }
-
-  export type notafiscalCreateWithoutNotafiscalitemInput = {
-    id?: bigint | number
-    versao: string
-    chave?: string | null
-    status?: string | null
-    cUf: string
-    cNf: string
-    natOp: string
-    modelo: string
-    serie: string
-    nNf: number
-    dhEmi: Date | string
-    tpNf: string
-    idDest: string
-    cMunFG: string
-    tpImp: string
-    tpEmis: string
-    cDV: string
-    tpAmb: string
-    finNfe: string
-    indFinal: string
-    indPres: string
-    procEmi: string
-    verProc: string
-    vBC?: Decimal | DecimalJsLike | number | string | null
-    vICMS?: Decimal | DecimalJsLike | number | string | null
-    vICMSDeson?: Decimal | DecimalJsLike | number | string | null
-    vFCP?: Decimal | DecimalJsLike | number | string | null
-    vBCST?: Decimal | DecimalJsLike | number | string | null
-    vST?: Decimal | DecimalJsLike | number | string | null
-    vFCPST?: Decimal | DecimalJsLike | number | string | null
-    vFCPSTRet?: Decimal | DecimalJsLike | number | string | null
-    vProd?: Decimal | DecimalJsLike | number | string | null
-    vFrete?: Decimal | DecimalJsLike | number | string | null
-    vDesc?: Decimal | DecimalJsLike | number | string | null
-    vII?: Decimal | DecimalJsLike | number | string | null
-    vIPI?: Decimal | DecimalJsLike | number | string | null
-    vIPIDevol?: Decimal | DecimalJsLike | number | string | null
-    vPIS?: Decimal | DecimalJsLike | number | string | null
-    vCOFINS?: Decimal | DecimalJsLike | number | string | null
-    vOutro?: Decimal | DecimalJsLike | number | string | null
-    vNF?: Decimal | DecimalJsLike | number | string | null
-    vTotTrib?: Decimal | DecimalJsLike | number | string | null
-    modFrete?: string | null
-    emitCnpjcpf?: string | null
-    emitxNome?: string | null
-    enderEmitxLgr?: string | null
-    enderEmitNro?: string | null
-    enderEmitxCpl?: string | null
-    enderEmitxBairro?: string | null
-    enderEmitcMun?: string | null
-    enderEmitxMun?: string | null
-    enderEmitUF?: string | null
-    enderEmitCEP?: string | null
-    enderEmitFone?: string | null
-    enderEmitIE?: string | null
-    emitCrt?: string | null
-    destCNPJCPF?: string | null
-    destIdEstrangeiro?: string | null
-    destxNome?: string | null
-    destIE?: string | null
-    destEmail?: string | null
-    destFone?: string | null
-    enderDestxLgr?: string | null
-    enderDestnro?: string | null
-    enderDestxCpl?: string | null
-    enderDestxBairro?: string | null
-    enderDestcMun?: string | null
-    enderDestxMun?: string | null
-    enderDestUF?: string | null
-    enderDestCep?: string | null
-    enderDestFone?: string | null
-    indIEDest?: string | null
-    emitInscEstadual?: string | null
-    xml?: Buffer | null
-    protocolo?: string | null
-    dhRecbto?: Date | string | null
-    infCpl?: Buffer | null
-    infAdFisco?: Buffer | null
-    statusCode?: number | null
-    xMotivo?: string | null
-    retWS?: Buffer | null
-    docreferenciado?: docreferenciadoCreateNestedManyWithoutNotafiscalInput
-    clientes?: clientesCreateNestedOneWithoutNotafiscalInput
-    enderecos?: enderecosCreateNestedOneWithoutNotafiscalInput
-    notafiscalpagamentos?: notafiscalpagamentosCreateNestedManyWithoutNotafiscalInput
-  }
-
-  export type notafiscalUncheckedCreateWithoutNotafiscalitemInput = {
-    id?: bigint | number
-    versao: string
-    chave?: string | null
-    status?: string | null
-    cUf: string
-    cNf: string
-    natOp: string
-    modelo: string
-    serie: string
-    nNf: number
-    dhEmi: Date | string
-    tpNf: string
-    idDest: string
-    cMunFG: string
-    tpImp: string
-    tpEmis: string
-    cDV: string
-    tpAmb: string
-    finNfe: string
-    indFinal: string
-    indPres: string
-    procEmi: string
-    verProc: string
-    vBC?: Decimal | DecimalJsLike | number | string | null
-    vICMS?: Decimal | DecimalJsLike | number | string | null
-    vICMSDeson?: Decimal | DecimalJsLike | number | string | null
-    vFCP?: Decimal | DecimalJsLike | number | string | null
-    vBCST?: Decimal | DecimalJsLike | number | string | null
-    vST?: Decimal | DecimalJsLike | number | string | null
-    vFCPST?: Decimal | DecimalJsLike | number | string | null
-    vFCPSTRet?: Decimal | DecimalJsLike | number | string | null
-    vProd?: Decimal | DecimalJsLike | number | string | null
-    vFrete?: Decimal | DecimalJsLike | number | string | null
-    vDesc?: Decimal | DecimalJsLike | number | string | null
-    vII?: Decimal | DecimalJsLike | number | string | null
-    vIPI?: Decimal | DecimalJsLike | number | string | null
-    vIPIDevol?: Decimal | DecimalJsLike | number | string | null
-    vPIS?: Decimal | DecimalJsLike | number | string | null
-    vCOFINS?: Decimal | DecimalJsLike | number | string | null
-    vOutro?: Decimal | DecimalJsLike | number | string | null
-    vNF?: Decimal | DecimalJsLike | number | string | null
-    vTotTrib?: Decimal | DecimalJsLike | number | string | null
-    modFrete?: string | null
-    emitCnpjcpf?: string | null
-    emitxNome?: string | null
-    enderEmitxLgr?: string | null
-    enderEmitNro?: string | null
-    enderEmitxCpl?: string | null
-    enderEmitxBairro?: string | null
-    enderEmitcMun?: string | null
-    enderEmitxMun?: string | null
-    enderEmitUF?: string | null
-    enderEmitCEP?: string | null
-    enderEmitFone?: string | null
-    enderEmitIE?: string | null
-    emitCrt?: string | null
-    destCNPJCPF?: string | null
-    destIdEstrangeiro?: string | null
-    destxNome?: string | null
-    destIE?: string | null
-    destEmail?: string | null
-    destFone?: string | null
-    cliente_id?: bigint | number | null
-    enderDestxLgr?: string | null
-    enderDestnro?: string | null
-    enderDestxCpl?: string | null
-    enderDestxBairro?: string | null
-    enderDestcMun?: string | null
-    enderDestxMun?: string | null
-    enderDestUF?: string | null
-    enderDestCep?: string | null
-    enderDestFone?: string | null
-    endereco_id?: bigint | number | null
-    indIEDest?: string | null
-    emitInscEstadual?: string | null
-    xml?: Buffer | null
-    protocolo?: string | null
-    dhRecbto?: Date | string | null
-    infCpl?: Buffer | null
-    infAdFisco?: Buffer | null
-    statusCode?: number | null
-    xMotivo?: string | null
-    retWS?: Buffer | null
-    docreferenciado?: docreferenciadoUncheckedCreateNestedManyWithoutNotafiscalInput
-    notafiscalpagamentos?: notafiscalpagamentosUncheckedCreateNestedManyWithoutNotafiscalInput
-  }
-
-  export type notafiscalCreateOrConnectWithoutNotafiscalitemInput = {
-    where: notafiscalWhereUniqueInput
-    create: XOR<notafiscalCreateWithoutNotafiscalitemInput, notafiscalUncheckedCreateWithoutNotafiscalitemInput>
-  }
-
-  export type produtosCreateWithoutNotafiscalitemInput = {
-    id?: bigint | number
-    id_sirius?: bigint | number | null
-    codProduto: string
-    descricao: string
-    codEAN: string
-    ncm: string
-    cfop: string
-    unCom?: string | null
-    qtdCom?: Decimal | DecimalJsLike | number | string | null
-    vlrUnCom?: Decimal | DecimalJsLike | number | string | null
-    vlrProd?: Decimal | DecimalJsLike | number | string | null
-    codEANTrib?: string | null
-    unTrib?: string | null
-    qtdTrib?: Decimal | DecimalJsLike | number | string | null
-    vlrUnTrib?: Decimal | DecimalJsLike | number | string | null
-    saldo?: Decimal | DecimalJsLike | number | string | null
-    status: string
-  }
-
-  export type produtosUncheckedCreateWithoutNotafiscalitemInput = {
-    id?: bigint | number
-    id_sirius?: bigint | number | null
-    codProduto: string
-    descricao: string
-    codEAN: string
-    ncm: string
-    cfop: string
-    unCom?: string | null
-    qtdCom?: Decimal | DecimalJsLike | number | string | null
-    vlrUnCom?: Decimal | DecimalJsLike | number | string | null
-    vlrProd?: Decimal | DecimalJsLike | number | string | null
-    codEANTrib?: string | null
-    unTrib?: string | null
-    qtdTrib?: Decimal | DecimalJsLike | number | string | null
-    vlrUnTrib?: Decimal | DecimalJsLike | number | string | null
-    saldo?: Decimal | DecimalJsLike | number | string | null
-    status: string
-  }
-
-  export type produtosCreateOrConnectWithoutNotafiscalitemInput = {
-    where: produtosWhereUniqueInput
-    create: XOR<produtosCreateWithoutNotafiscalitemInput, produtosUncheckedCreateWithoutNotafiscalitemInput>
-  }
-
-  export type notafiscalUpsertWithoutNotafiscalitemInput = {
-    update: XOR<notafiscalUpdateWithoutNotafiscalitemInput, notafiscalUncheckedUpdateWithoutNotafiscalitemInput>
-    create: XOR<notafiscalCreateWithoutNotafiscalitemInput, notafiscalUncheckedCreateWithoutNotafiscalitemInput>
-    where?: notafiscalWhereInput
-  }
-
-  export type notafiscalUpdateToOneWithWhereWithoutNotafiscalitemInput = {
-    where?: notafiscalWhereInput
-    data: XOR<notafiscalUpdateWithoutNotafiscalitemInput, notafiscalUncheckedUpdateWithoutNotafiscalitemInput>
-  }
-
-  export type notafiscalUpdateWithoutNotafiscalitemInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
-    versao?: StringFieldUpdateOperationsInput | string
-    chave?: NullableStringFieldUpdateOperationsInput | string | null
-    status?: NullableStringFieldUpdateOperationsInput | string | null
-    cUf?: StringFieldUpdateOperationsInput | string
-    cNf?: StringFieldUpdateOperationsInput | string
-    natOp?: StringFieldUpdateOperationsInput | string
-    modelo?: StringFieldUpdateOperationsInput | string
-    serie?: StringFieldUpdateOperationsInput | string
-    nNf?: IntFieldUpdateOperationsInput | number
-    dhEmi?: DateTimeFieldUpdateOperationsInput | Date | string
-    tpNf?: StringFieldUpdateOperationsInput | string
-    idDest?: StringFieldUpdateOperationsInput | string
-    cMunFG?: StringFieldUpdateOperationsInput | string
-    tpImp?: StringFieldUpdateOperationsInput | string
-    tpEmis?: StringFieldUpdateOperationsInput | string
-    cDV?: StringFieldUpdateOperationsInput | string
-    tpAmb?: StringFieldUpdateOperationsInput | string
-    finNfe?: StringFieldUpdateOperationsInput | string
-    indFinal?: StringFieldUpdateOperationsInput | string
-    indPres?: StringFieldUpdateOperationsInput | string
-    procEmi?: StringFieldUpdateOperationsInput | string
-    verProc?: StringFieldUpdateOperationsInput | string
-    vBC?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    vICMS?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    vICMSDeson?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    vFCP?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    vBCST?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    vST?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    vFCPST?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    vFCPSTRet?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    vProd?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    vFrete?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    vDesc?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    vII?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    vIPI?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    vIPIDevol?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    vPIS?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    vCOFINS?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    vOutro?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    vNF?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    vTotTrib?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    modFrete?: NullableStringFieldUpdateOperationsInput | string | null
-    emitCnpjcpf?: NullableStringFieldUpdateOperationsInput | string | null
-    emitxNome?: NullableStringFieldUpdateOperationsInput | string | null
-    enderEmitxLgr?: NullableStringFieldUpdateOperationsInput | string | null
-    enderEmitNro?: NullableStringFieldUpdateOperationsInput | string | null
-    enderEmitxCpl?: NullableStringFieldUpdateOperationsInput | string | null
-    enderEmitxBairro?: NullableStringFieldUpdateOperationsInput | string | null
-    enderEmitcMun?: NullableStringFieldUpdateOperationsInput | string | null
-    enderEmitxMun?: NullableStringFieldUpdateOperationsInput | string | null
-    enderEmitUF?: NullableStringFieldUpdateOperationsInput | string | null
-    enderEmitCEP?: NullableStringFieldUpdateOperationsInput | string | null
-    enderEmitFone?: NullableStringFieldUpdateOperationsInput | string | null
-    enderEmitIE?: NullableStringFieldUpdateOperationsInput | string | null
-    emitCrt?: NullableStringFieldUpdateOperationsInput | string | null
-    destCNPJCPF?: NullableStringFieldUpdateOperationsInput | string | null
-    destIdEstrangeiro?: NullableStringFieldUpdateOperationsInput | string | null
-    destxNome?: NullableStringFieldUpdateOperationsInput | string | null
-    destIE?: NullableStringFieldUpdateOperationsInput | string | null
-    destEmail?: NullableStringFieldUpdateOperationsInput | string | null
-    destFone?: NullableStringFieldUpdateOperationsInput | string | null
-    enderDestxLgr?: NullableStringFieldUpdateOperationsInput | string | null
-    enderDestnro?: NullableStringFieldUpdateOperationsInput | string | null
-    enderDestxCpl?: NullableStringFieldUpdateOperationsInput | string | null
-    enderDestxBairro?: NullableStringFieldUpdateOperationsInput | string | null
-    enderDestcMun?: NullableStringFieldUpdateOperationsInput | string | null
-    enderDestxMun?: NullableStringFieldUpdateOperationsInput | string | null
-    enderDestUF?: NullableStringFieldUpdateOperationsInput | string | null
-    enderDestCep?: NullableStringFieldUpdateOperationsInput | string | null
-    enderDestFone?: NullableStringFieldUpdateOperationsInput | string | null
-    indIEDest?: NullableStringFieldUpdateOperationsInput | string | null
-    emitInscEstadual?: NullableStringFieldUpdateOperationsInput | string | null
-    xml?: NullableBytesFieldUpdateOperationsInput | Buffer | null
-    protocolo?: NullableStringFieldUpdateOperationsInput | string | null
-    dhRecbto?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    infCpl?: NullableBytesFieldUpdateOperationsInput | Buffer | null
-    infAdFisco?: NullableBytesFieldUpdateOperationsInput | Buffer | null
-    statusCode?: NullableIntFieldUpdateOperationsInput | number | null
-    xMotivo?: NullableStringFieldUpdateOperationsInput | string | null
-    retWS?: NullableBytesFieldUpdateOperationsInput | Buffer | null
-    docreferenciado?: docreferenciadoUpdateManyWithoutNotafiscalNestedInput
-    clientes?: clientesUpdateOneWithoutNotafiscalNestedInput
-    enderecos?: enderecosUpdateOneWithoutNotafiscalNestedInput
-    notafiscalpagamentos?: notafiscalpagamentosUpdateManyWithoutNotafiscalNestedInput
-  }
-
-  export type notafiscalUncheckedUpdateWithoutNotafiscalitemInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
-    versao?: StringFieldUpdateOperationsInput | string
-    chave?: NullableStringFieldUpdateOperationsInput | string | null
-    status?: NullableStringFieldUpdateOperationsInput | string | null
-    cUf?: StringFieldUpdateOperationsInput | string
-    cNf?: StringFieldUpdateOperationsInput | string
-    natOp?: StringFieldUpdateOperationsInput | string
-    modelo?: StringFieldUpdateOperationsInput | string
-    serie?: StringFieldUpdateOperationsInput | string
-    nNf?: IntFieldUpdateOperationsInput | number
-    dhEmi?: DateTimeFieldUpdateOperationsInput | Date | string
-    tpNf?: StringFieldUpdateOperationsInput | string
-    idDest?: StringFieldUpdateOperationsInput | string
-    cMunFG?: StringFieldUpdateOperationsInput | string
-    tpImp?: StringFieldUpdateOperationsInput | string
-    tpEmis?: StringFieldUpdateOperationsInput | string
-    cDV?: StringFieldUpdateOperationsInput | string
-    tpAmb?: StringFieldUpdateOperationsInput | string
-    finNfe?: StringFieldUpdateOperationsInput | string
-    indFinal?: StringFieldUpdateOperationsInput | string
-    indPres?: StringFieldUpdateOperationsInput | string
-    procEmi?: StringFieldUpdateOperationsInput | string
-    verProc?: StringFieldUpdateOperationsInput | string
-    vBC?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    vICMS?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    vICMSDeson?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    vFCP?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    vBCST?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    vST?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    vFCPST?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    vFCPSTRet?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    vProd?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    vFrete?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    vDesc?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    vII?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    vIPI?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    vIPIDevol?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    vPIS?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    vCOFINS?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    vOutro?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    vNF?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    vTotTrib?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    modFrete?: NullableStringFieldUpdateOperationsInput | string | null
-    emitCnpjcpf?: NullableStringFieldUpdateOperationsInput | string | null
-    emitxNome?: NullableStringFieldUpdateOperationsInput | string | null
-    enderEmitxLgr?: NullableStringFieldUpdateOperationsInput | string | null
-    enderEmitNro?: NullableStringFieldUpdateOperationsInput | string | null
-    enderEmitxCpl?: NullableStringFieldUpdateOperationsInput | string | null
-    enderEmitxBairro?: NullableStringFieldUpdateOperationsInput | string | null
-    enderEmitcMun?: NullableStringFieldUpdateOperationsInput | string | null
-    enderEmitxMun?: NullableStringFieldUpdateOperationsInput | string | null
-    enderEmitUF?: NullableStringFieldUpdateOperationsInput | string | null
-    enderEmitCEP?: NullableStringFieldUpdateOperationsInput | string | null
-    enderEmitFone?: NullableStringFieldUpdateOperationsInput | string | null
-    enderEmitIE?: NullableStringFieldUpdateOperationsInput | string | null
-    emitCrt?: NullableStringFieldUpdateOperationsInput | string | null
-    destCNPJCPF?: NullableStringFieldUpdateOperationsInput | string | null
-    destIdEstrangeiro?: NullableStringFieldUpdateOperationsInput | string | null
-    destxNome?: NullableStringFieldUpdateOperationsInput | string | null
-    destIE?: NullableStringFieldUpdateOperationsInput | string | null
-    destEmail?: NullableStringFieldUpdateOperationsInput | string | null
-    destFone?: NullableStringFieldUpdateOperationsInput | string | null
-    cliente_id?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
-    enderDestxLgr?: NullableStringFieldUpdateOperationsInput | string | null
-    enderDestnro?: NullableStringFieldUpdateOperationsInput | string | null
-    enderDestxCpl?: NullableStringFieldUpdateOperationsInput | string | null
-    enderDestxBairro?: NullableStringFieldUpdateOperationsInput | string | null
-    enderDestcMun?: NullableStringFieldUpdateOperationsInput | string | null
-    enderDestxMun?: NullableStringFieldUpdateOperationsInput | string | null
-    enderDestUF?: NullableStringFieldUpdateOperationsInput | string | null
-    enderDestCep?: NullableStringFieldUpdateOperationsInput | string | null
-    enderDestFone?: NullableStringFieldUpdateOperationsInput | string | null
-    endereco_id?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
-    indIEDest?: NullableStringFieldUpdateOperationsInput | string | null
-    emitInscEstadual?: NullableStringFieldUpdateOperationsInput | string | null
-    xml?: NullableBytesFieldUpdateOperationsInput | Buffer | null
-    protocolo?: NullableStringFieldUpdateOperationsInput | string | null
-    dhRecbto?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    infCpl?: NullableBytesFieldUpdateOperationsInput | Buffer | null
-    infAdFisco?: NullableBytesFieldUpdateOperationsInput | Buffer | null
-    statusCode?: NullableIntFieldUpdateOperationsInput | number | null
-    xMotivo?: NullableStringFieldUpdateOperationsInput | string | null
-    retWS?: NullableBytesFieldUpdateOperationsInput | Buffer | null
-    docreferenciado?: docreferenciadoUncheckedUpdateManyWithoutNotafiscalNestedInput
-    notafiscalpagamentos?: notafiscalpagamentosUncheckedUpdateManyWithoutNotafiscalNestedInput
-  }
-
-  export type produtosUpsertWithoutNotafiscalitemInput = {
-    update: XOR<produtosUpdateWithoutNotafiscalitemInput, produtosUncheckedUpdateWithoutNotafiscalitemInput>
-    create: XOR<produtosCreateWithoutNotafiscalitemInput, produtosUncheckedCreateWithoutNotafiscalitemInput>
-    where?: produtosWhereInput
-  }
-
-  export type produtosUpdateToOneWithWhereWithoutNotafiscalitemInput = {
-    where?: produtosWhereInput
-    data: XOR<produtosUpdateWithoutNotafiscalitemInput, produtosUncheckedUpdateWithoutNotafiscalitemInput>
-  }
-
-  export type produtosUpdateWithoutNotafiscalitemInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
-    id_sirius?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
-    codProduto?: StringFieldUpdateOperationsInput | string
-    descricao?: StringFieldUpdateOperationsInput | string
-    codEAN?: StringFieldUpdateOperationsInput | string
-    ncm?: StringFieldUpdateOperationsInput | string
-    cfop?: StringFieldUpdateOperationsInput | string
-    unCom?: NullableStringFieldUpdateOperationsInput | string | null
-    qtdCom?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    vlrUnCom?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    vlrProd?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    codEANTrib?: NullableStringFieldUpdateOperationsInput | string | null
-    unTrib?: NullableStringFieldUpdateOperationsInput | string | null
-    qtdTrib?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    vlrUnTrib?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    saldo?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    status?: StringFieldUpdateOperationsInput | string
-  }
-
-  export type produtosUncheckedUpdateWithoutNotafiscalitemInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
-    id_sirius?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
-    codProduto?: StringFieldUpdateOperationsInput | string
-    descricao?: StringFieldUpdateOperationsInput | string
-    codEAN?: StringFieldUpdateOperationsInput | string
-    ncm?: StringFieldUpdateOperationsInput | string
-    cfop?: StringFieldUpdateOperationsInput | string
-    unCom?: NullableStringFieldUpdateOperationsInput | string | null
-    qtdCom?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    vlrUnCom?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    vlrProd?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    codEANTrib?: NullableStringFieldUpdateOperationsInput | string | null
-    unTrib?: NullableStringFieldUpdateOperationsInput | string | null
-    qtdTrib?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    vlrUnTrib?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    saldo?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    status?: StringFieldUpdateOperationsInput | string
   }
 
   export type notafiscalCreateWithoutNotafiscalpagamentosInput = {
@@ -41728,7 +40647,6 @@ export namespace Prisma {
     docreferenciado?: docreferenciadoCreateNestedManyWithoutNotafiscalInput
     clientes?: clientesCreateNestedOneWithoutNotafiscalInput
     enderecos?: enderecosCreateNestedOneWithoutNotafiscalInput
-    notafiscalitem?: notafiscalitemCreateNestedManyWithoutNotafiscalInput
   }
 
   export type notafiscalUncheckedCreateWithoutNotafiscalpagamentosInput = {
@@ -41816,7 +40734,6 @@ export namespace Prisma {
     xMotivo?: string | null
     retWS?: Buffer | null
     docreferenciado?: docreferenciadoUncheckedCreateNestedManyWithoutNotafiscalInput
-    notafiscalitem?: notafiscalitemUncheckedCreateNestedManyWithoutNotafiscalInput
   }
 
   export type notafiscalCreateOrConnectWithoutNotafiscalpagamentosInput = {
@@ -41920,7 +40837,6 @@ export namespace Prisma {
     docreferenciado?: docreferenciadoUpdateManyWithoutNotafiscalNestedInput
     clientes?: clientesUpdateOneWithoutNotafiscalNestedInput
     enderecos?: enderecosUpdateOneWithoutNotafiscalNestedInput
-    notafiscalitem?: notafiscalitemUpdateManyWithoutNotafiscalNestedInput
   }
 
   export type notafiscalUncheckedUpdateWithoutNotafiscalpagamentosInput = {
@@ -42008,179 +40924,6 @@ export namespace Prisma {
     xMotivo?: NullableStringFieldUpdateOperationsInput | string | null
     retWS?: NullableBytesFieldUpdateOperationsInput | Buffer | null
     docreferenciado?: docreferenciadoUncheckedUpdateManyWithoutNotafiscalNestedInput
-    notafiscalitem?: notafiscalitemUncheckedUpdateManyWithoutNotafiscalNestedInput
-  }
-
-  export type notafiscalitemCreateWithoutProdutosInput = {
-    id?: bigint | number
-    cProd: string
-    cEAN: string
-    xProd: string
-    ncm: string
-    cest: string
-    cfop: string
-    uCom: string
-    qCom: Decimal | DecimalJsLike | number | string
-    vUnCom: Decimal | DecimalJsLike | number | string
-    vProd?: Decimal | DecimalJsLike | number | string | null
-    cEANTrib: string
-    uTrib: string
-    qTrib: Decimal | DecimalJsLike | number | string
-    indTotal: string
-    cst: string
-    modBc?: string | null
-    vBc?: Decimal | DecimalJsLike | number | string | null
-    pIcms?: Decimal | DecimalJsLike | number | string | null
-    vIcms?: Decimal | DecimalJsLike | number | string | null
-    pFcp?: Decimal | DecimalJsLike | number | string | null
-    vFcp?: Decimal | DecimalJsLike | number | string | null
-    vBCFCP?: Decimal | DecimalJsLike | number | string | null
-    modBCST?: string | null
-    vBCST?: Decimal | DecimalJsLike | number | string | null
-    pICMSST?: Decimal | DecimalJsLike | number | string | null
-    vICMSST?: Decimal | DecimalJsLike | number | string | null
-    vBCFCPST?: Decimal | DecimalJsLike | number | string | null
-    pFCPST?: Decimal | DecimalJsLike | number | string | null
-    vFCPST?: Decimal | DecimalJsLike | number | string | null
-    pRedBC?: Decimal | DecimalJsLike | number | string | null
-    vICMSDeson?: Decimal | DecimalJsLike | number | string | null
-    motDesICMS?: string | null
-    vBCSTRet?: Decimal | DecimalJsLike | number | string | null
-    orig: string
-    pST?: Decimal | DecimalJsLike | number | string | null
-    vICMSSTRet?: Decimal | DecimalJsLike | number | string | null
-    vBCFCPSTRet?: Decimal | DecimalJsLike | number | string | null
-    pFCPSTRet?: Decimal | DecimalJsLike | number | string | null
-    vFCPSTRet?: Decimal | DecimalJsLike | number | string | null
-    pRedBCEfet?: Decimal | DecimalJsLike | number | string | null
-    vBCEfet?: Decimal | DecimalJsLike | number | string | null
-    pICMSEfet?: Decimal | DecimalJsLike | number | string | null
-    vICMSEfet?: Decimal | DecimalJsLike | number | string | null
-    pBCOp?: Decimal | DecimalJsLike | number | string | null
-    UFST?: string | null
-    CSOSN?: string | null
-    pCredSN?: Decimal | DecimalJsLike | number | string | null
-    vCredICMSSN?: Decimal | DecimalJsLike | number | string | null
-    vUnTrib?: Decimal | DecimalJsLike | number | string | null
-    vFrete?: Decimal | DecimalJsLike | number | string | null
-    vOutro?: Decimal | DecimalJsLike | number | string | null
-    vDesc?: Decimal | DecimalJsLike | number | string | null
-    cstPIS?: string | null
-    vBCPIS?: Decimal | DecimalJsLike | number | string | null
-    pPIS?: Decimal | DecimalJsLike | number | string | null
-    vPIS?: Decimal | DecimalJsLike | number | string | null
-    qBCPISProd?: Decimal | DecimalJsLike | number | string | null
-    vAliqPISProd?: Decimal | DecimalJsLike | number | string | null
-    cstCOFINS?: string | null
-    vBCCOFINS?: Decimal | DecimalJsLike | number | string | null
-    pCOFINS?: Decimal | DecimalJsLike | number | string | null
-    vCOFINS?: Decimal | DecimalJsLike | number | string | null
-    qBCCOFINSProd?: Decimal | DecimalJsLike | number | string | null
-    vAliqCOFINSProd?: Decimal | DecimalJsLike | number | string | null
-    pDevol?: Decimal | DecimalJsLike | number | string | null
-    vIPIDevol?: Decimal | DecimalJsLike | number | string | null
-    pRedBCST?: Decimal | DecimalJsLike | number | string | null
-    pMVAST?: Decimal | DecimalJsLike | number | string | null
-    notafiscal: notafiscalCreateNestedOneWithoutNotafiscalitemInput
-  }
-
-  export type notafiscalitemUncheckedCreateWithoutProdutosInput = {
-    id?: bigint | number
-    cProd: string
-    cEAN: string
-    xProd: string
-    ncm: string
-    cest: string
-    cfop: string
-    uCom: string
-    qCom: Decimal | DecimalJsLike | number | string
-    vUnCom: Decimal | DecimalJsLike | number | string
-    vProd?: Decimal | DecimalJsLike | number | string | null
-    cEANTrib: string
-    uTrib: string
-    qTrib: Decimal | DecimalJsLike | number | string
-    indTotal: string
-    cst: string
-    modBc?: string | null
-    vBc?: Decimal | DecimalJsLike | number | string | null
-    pIcms?: Decimal | DecimalJsLike | number | string | null
-    vIcms?: Decimal | DecimalJsLike | number | string | null
-    pFcp?: Decimal | DecimalJsLike | number | string | null
-    vFcp?: Decimal | DecimalJsLike | number | string | null
-    vBCFCP?: Decimal | DecimalJsLike | number | string | null
-    modBCST?: string | null
-    vBCST?: Decimal | DecimalJsLike | number | string | null
-    pICMSST?: Decimal | DecimalJsLike | number | string | null
-    vICMSST?: Decimal | DecimalJsLike | number | string | null
-    vBCFCPST?: Decimal | DecimalJsLike | number | string | null
-    pFCPST?: Decimal | DecimalJsLike | number | string | null
-    vFCPST?: Decimal | DecimalJsLike | number | string | null
-    pRedBC?: Decimal | DecimalJsLike | number | string | null
-    vICMSDeson?: Decimal | DecimalJsLike | number | string | null
-    motDesICMS?: string | null
-    vBCSTRet?: Decimal | DecimalJsLike | number | string | null
-    orig: string
-    pST?: Decimal | DecimalJsLike | number | string | null
-    vICMSSTRet?: Decimal | DecimalJsLike | number | string | null
-    vBCFCPSTRet?: Decimal | DecimalJsLike | number | string | null
-    pFCPSTRet?: Decimal | DecimalJsLike | number | string | null
-    vFCPSTRet?: Decimal | DecimalJsLike | number | string | null
-    pRedBCEfet?: Decimal | DecimalJsLike | number | string | null
-    vBCEfet?: Decimal | DecimalJsLike | number | string | null
-    pICMSEfet?: Decimal | DecimalJsLike | number | string | null
-    vICMSEfet?: Decimal | DecimalJsLike | number | string | null
-    pBCOp?: Decimal | DecimalJsLike | number | string | null
-    UFST?: string | null
-    CSOSN?: string | null
-    pCredSN?: Decimal | DecimalJsLike | number | string | null
-    vCredICMSSN?: Decimal | DecimalJsLike | number | string | null
-    notafiscal_id: bigint | number
-    vUnTrib?: Decimal | DecimalJsLike | number | string | null
-    vFrete?: Decimal | DecimalJsLike | number | string | null
-    vOutro?: Decimal | DecimalJsLike | number | string | null
-    vDesc?: Decimal | DecimalJsLike | number | string | null
-    cstPIS?: string | null
-    vBCPIS?: Decimal | DecimalJsLike | number | string | null
-    pPIS?: Decimal | DecimalJsLike | number | string | null
-    vPIS?: Decimal | DecimalJsLike | number | string | null
-    qBCPISProd?: Decimal | DecimalJsLike | number | string | null
-    vAliqPISProd?: Decimal | DecimalJsLike | number | string | null
-    cstCOFINS?: string | null
-    vBCCOFINS?: Decimal | DecimalJsLike | number | string | null
-    pCOFINS?: Decimal | DecimalJsLike | number | string | null
-    vCOFINS?: Decimal | DecimalJsLike | number | string | null
-    qBCCOFINSProd?: Decimal | DecimalJsLike | number | string | null
-    vAliqCOFINSProd?: Decimal | DecimalJsLike | number | string | null
-    pDevol?: Decimal | DecimalJsLike | number | string | null
-    vIPIDevol?: Decimal | DecimalJsLike | number | string | null
-    pRedBCST?: Decimal | DecimalJsLike | number | string | null
-    pMVAST?: Decimal | DecimalJsLike | number | string | null
-  }
-
-  export type notafiscalitemCreateOrConnectWithoutProdutosInput = {
-    where: notafiscalitemWhereUniqueInput
-    create: XOR<notafiscalitemCreateWithoutProdutosInput, notafiscalitemUncheckedCreateWithoutProdutosInput>
-  }
-
-  export type notafiscalitemCreateManyProdutosInputEnvelope = {
-    data: notafiscalitemCreateManyProdutosInput | notafiscalitemCreateManyProdutosInput[]
-    skipDuplicates?: boolean
-  }
-
-  export type notafiscalitemUpsertWithWhereUniqueWithoutProdutosInput = {
-    where: notafiscalitemWhereUniqueInput
-    update: XOR<notafiscalitemUpdateWithoutProdutosInput, notafiscalitemUncheckedUpdateWithoutProdutosInput>
-    create: XOR<notafiscalitemCreateWithoutProdutosInput, notafiscalitemUncheckedCreateWithoutProdutosInput>
-  }
-
-  export type notafiscalitemUpdateWithWhereUniqueWithoutProdutosInput = {
-    where: notafiscalitemWhereUniqueInput
-    data: XOR<notafiscalitemUpdateWithoutProdutosInput, notafiscalitemUncheckedUpdateWithoutProdutosInput>
-  }
-
-  export type notafiscalitemUpdateManyWithWhereWithoutProdutosInput = {
-    where: notafiscalitemScalarWhereInput
-    data: XOR<notafiscalitemUpdateManyMutationInput, notafiscalitemUncheckedUpdateManyWithoutProdutosInput>
   }
 
   export type pedidos_venda_itensCreateManyPedidos_vendaInput = {
@@ -42532,7 +41275,6 @@ export namespace Prisma {
     retWS?: NullableBytesFieldUpdateOperationsInput | Buffer | null
     docreferenciado?: docreferenciadoUpdateManyWithoutNotafiscalNestedInput
     enderecos?: enderecosUpdateOneWithoutNotafiscalNestedInput
-    notafiscalitem?: notafiscalitemUpdateManyWithoutNotafiscalNestedInput
     notafiscalpagamentos?: notafiscalpagamentosUpdateManyWithoutNotafiscalNestedInput
   }
 
@@ -42620,7 +41362,6 @@ export namespace Prisma {
     xMotivo?: NullableStringFieldUpdateOperationsInput | string | null
     retWS?: NullableBytesFieldUpdateOperationsInput | Buffer | null
     docreferenciado?: docreferenciadoUncheckedUpdateManyWithoutNotafiscalNestedInput
-    notafiscalitem?: notafiscalitemUncheckedUpdateManyWithoutNotafiscalNestedInput
     notafiscalpagamentos?: notafiscalpagamentosUncheckedUpdateManyWithoutNotafiscalNestedInput
   }
 
@@ -42878,7 +41619,6 @@ export namespace Prisma {
     retWS?: NullableBytesFieldUpdateOperationsInput | Buffer | null
     docreferenciado?: docreferenciadoUpdateManyWithoutNotafiscalNestedInput
     clientes?: clientesUpdateOneWithoutNotafiscalNestedInput
-    notafiscalitem?: notafiscalitemUpdateManyWithoutNotafiscalNestedInput
     notafiscalpagamentos?: notafiscalpagamentosUpdateManyWithoutNotafiscalNestedInput
   }
 
@@ -42966,7 +41706,6 @@ export namespace Prisma {
     xMotivo?: NullableStringFieldUpdateOperationsInput | string | null
     retWS?: NullableBytesFieldUpdateOperationsInput | Buffer | null
     docreferenciado?: docreferenciadoUncheckedUpdateManyWithoutNotafiscalNestedInput
-    notafiscalitem?: notafiscalitemUncheckedUpdateManyWithoutNotafiscalNestedInput
     notafiscalpagamentos?: notafiscalpagamentosUncheckedUpdateManyWithoutNotafiscalNestedInput
   }
 
@@ -43061,79 +41800,6 @@ export namespace Prisma {
     chave?: string | null
   }
 
-  export type notafiscalitemCreateManyNotafiscalInput = {
-    id?: bigint | number
-    cProd: string
-    cEAN: string
-    xProd: string
-    ncm: string
-    cest: string
-    cfop: string
-    uCom: string
-    qCom: Decimal | DecimalJsLike | number | string
-    vUnCom: Decimal | DecimalJsLike | number | string
-    vProd?: Decimal | DecimalJsLike | number | string | null
-    cEANTrib: string
-    uTrib: string
-    qTrib: Decimal | DecimalJsLike | number | string
-    indTotal: string
-    cst: string
-    modBc?: string | null
-    vBc?: Decimal | DecimalJsLike | number | string | null
-    pIcms?: Decimal | DecimalJsLike | number | string | null
-    vIcms?: Decimal | DecimalJsLike | number | string | null
-    pFcp?: Decimal | DecimalJsLike | number | string | null
-    vFcp?: Decimal | DecimalJsLike | number | string | null
-    vBCFCP?: Decimal | DecimalJsLike | number | string | null
-    modBCST?: string | null
-    vBCST?: Decimal | DecimalJsLike | number | string | null
-    pICMSST?: Decimal | DecimalJsLike | number | string | null
-    vICMSST?: Decimal | DecimalJsLike | number | string | null
-    vBCFCPST?: Decimal | DecimalJsLike | number | string | null
-    pFCPST?: Decimal | DecimalJsLike | number | string | null
-    vFCPST?: Decimal | DecimalJsLike | number | string | null
-    pRedBC?: Decimal | DecimalJsLike | number | string | null
-    vICMSDeson?: Decimal | DecimalJsLike | number | string | null
-    motDesICMS?: string | null
-    vBCSTRet?: Decimal | DecimalJsLike | number | string | null
-    orig: string
-    pST?: Decimal | DecimalJsLike | number | string | null
-    vICMSSTRet?: Decimal | DecimalJsLike | number | string | null
-    vBCFCPSTRet?: Decimal | DecimalJsLike | number | string | null
-    pFCPSTRet?: Decimal | DecimalJsLike | number | string | null
-    vFCPSTRet?: Decimal | DecimalJsLike | number | string | null
-    pRedBCEfet?: Decimal | DecimalJsLike | number | string | null
-    vBCEfet?: Decimal | DecimalJsLike | number | string | null
-    pICMSEfet?: Decimal | DecimalJsLike | number | string | null
-    vICMSEfet?: Decimal | DecimalJsLike | number | string | null
-    pBCOp?: Decimal | DecimalJsLike | number | string | null
-    UFST?: string | null
-    CSOSN?: string | null
-    pCredSN?: Decimal | DecimalJsLike | number | string | null
-    vCredICMSSN?: Decimal | DecimalJsLike | number | string | null
-    vUnTrib?: Decimal | DecimalJsLike | number | string | null
-    produto_id?: bigint | number | null
-    vFrete?: Decimal | DecimalJsLike | number | string | null
-    vOutro?: Decimal | DecimalJsLike | number | string | null
-    vDesc?: Decimal | DecimalJsLike | number | string | null
-    cstPIS?: string | null
-    vBCPIS?: Decimal | DecimalJsLike | number | string | null
-    pPIS?: Decimal | DecimalJsLike | number | string | null
-    vPIS?: Decimal | DecimalJsLike | number | string | null
-    qBCPISProd?: Decimal | DecimalJsLike | number | string | null
-    vAliqPISProd?: Decimal | DecimalJsLike | number | string | null
-    cstCOFINS?: string | null
-    vBCCOFINS?: Decimal | DecimalJsLike | number | string | null
-    pCOFINS?: Decimal | DecimalJsLike | number | string | null
-    vCOFINS?: Decimal | DecimalJsLike | number | string | null
-    qBCCOFINSProd?: Decimal | DecimalJsLike | number | string | null
-    vAliqCOFINSProd?: Decimal | DecimalJsLike | number | string | null
-    pDevol?: Decimal | DecimalJsLike | number | string | null
-    vIPIDevol?: Decimal | DecimalJsLike | number | string | null
-    pRedBCST?: Decimal | DecimalJsLike | number | string | null
-    pMVAST?: Decimal | DecimalJsLike | number | string | null
-  }
-
   export type notafiscalpagamentosCreateManyNotafiscalInput = {
     id?: number
     indicacao?: string | null
@@ -43160,225 +41826,6 @@ export namespace Prisma {
     chave?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
-  export type notafiscalitemUpdateWithoutNotafiscalInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
-    cProd?: StringFieldUpdateOperationsInput | string
-    cEAN?: StringFieldUpdateOperationsInput | string
-    xProd?: StringFieldUpdateOperationsInput | string
-    ncm?: StringFieldUpdateOperationsInput | string
-    cest?: StringFieldUpdateOperationsInput | string
-    cfop?: StringFieldUpdateOperationsInput | string
-    uCom?: StringFieldUpdateOperationsInput | string
-    qCom?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    vUnCom?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    vProd?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    cEANTrib?: StringFieldUpdateOperationsInput | string
-    uTrib?: StringFieldUpdateOperationsInput | string
-    qTrib?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    indTotal?: StringFieldUpdateOperationsInput | string
-    cst?: StringFieldUpdateOperationsInput | string
-    modBc?: NullableStringFieldUpdateOperationsInput | string | null
-    vBc?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    pIcms?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    vIcms?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    pFcp?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    vFcp?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    vBCFCP?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    modBCST?: NullableStringFieldUpdateOperationsInput | string | null
-    vBCST?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    pICMSST?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    vICMSST?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    vBCFCPST?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    pFCPST?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    vFCPST?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    pRedBC?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    vICMSDeson?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    motDesICMS?: NullableStringFieldUpdateOperationsInput | string | null
-    vBCSTRet?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    orig?: StringFieldUpdateOperationsInput | string
-    pST?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    vICMSSTRet?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    vBCFCPSTRet?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    pFCPSTRet?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    vFCPSTRet?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    pRedBCEfet?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    vBCEfet?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    pICMSEfet?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    vICMSEfet?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    pBCOp?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    UFST?: NullableStringFieldUpdateOperationsInput | string | null
-    CSOSN?: NullableStringFieldUpdateOperationsInput | string | null
-    pCredSN?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    vCredICMSSN?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    vUnTrib?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    vFrete?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    vOutro?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    vDesc?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    cstPIS?: NullableStringFieldUpdateOperationsInput | string | null
-    vBCPIS?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    pPIS?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    vPIS?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    qBCPISProd?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    vAliqPISProd?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    cstCOFINS?: NullableStringFieldUpdateOperationsInput | string | null
-    vBCCOFINS?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    pCOFINS?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    vCOFINS?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    qBCCOFINSProd?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    vAliqCOFINSProd?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    pDevol?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    vIPIDevol?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    pRedBCST?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    pMVAST?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    produtos?: produtosUpdateOneWithoutNotafiscalitemNestedInput
-  }
-
-  export type notafiscalitemUncheckedUpdateWithoutNotafiscalInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
-    cProd?: StringFieldUpdateOperationsInput | string
-    cEAN?: StringFieldUpdateOperationsInput | string
-    xProd?: StringFieldUpdateOperationsInput | string
-    ncm?: StringFieldUpdateOperationsInput | string
-    cest?: StringFieldUpdateOperationsInput | string
-    cfop?: StringFieldUpdateOperationsInput | string
-    uCom?: StringFieldUpdateOperationsInput | string
-    qCom?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    vUnCom?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    vProd?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    cEANTrib?: StringFieldUpdateOperationsInput | string
-    uTrib?: StringFieldUpdateOperationsInput | string
-    qTrib?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    indTotal?: StringFieldUpdateOperationsInput | string
-    cst?: StringFieldUpdateOperationsInput | string
-    modBc?: NullableStringFieldUpdateOperationsInput | string | null
-    vBc?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    pIcms?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    vIcms?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    pFcp?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    vFcp?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    vBCFCP?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    modBCST?: NullableStringFieldUpdateOperationsInput | string | null
-    vBCST?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    pICMSST?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    vICMSST?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    vBCFCPST?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    pFCPST?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    vFCPST?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    pRedBC?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    vICMSDeson?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    motDesICMS?: NullableStringFieldUpdateOperationsInput | string | null
-    vBCSTRet?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    orig?: StringFieldUpdateOperationsInput | string
-    pST?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    vICMSSTRet?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    vBCFCPSTRet?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    pFCPSTRet?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    vFCPSTRet?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    pRedBCEfet?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    vBCEfet?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    pICMSEfet?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    vICMSEfet?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    pBCOp?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    UFST?: NullableStringFieldUpdateOperationsInput | string | null
-    CSOSN?: NullableStringFieldUpdateOperationsInput | string | null
-    pCredSN?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    vCredICMSSN?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    vUnTrib?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    produto_id?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
-    vFrete?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    vOutro?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    vDesc?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    cstPIS?: NullableStringFieldUpdateOperationsInput | string | null
-    vBCPIS?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    pPIS?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    vPIS?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    qBCPISProd?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    vAliqPISProd?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    cstCOFINS?: NullableStringFieldUpdateOperationsInput | string | null
-    vBCCOFINS?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    pCOFINS?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    vCOFINS?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    qBCCOFINSProd?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    vAliqCOFINSProd?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    pDevol?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    vIPIDevol?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    pRedBCST?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    pMVAST?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-  }
-
-  export type notafiscalitemUncheckedUpdateManyWithoutNotafiscalInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
-    cProd?: StringFieldUpdateOperationsInput | string
-    cEAN?: StringFieldUpdateOperationsInput | string
-    xProd?: StringFieldUpdateOperationsInput | string
-    ncm?: StringFieldUpdateOperationsInput | string
-    cest?: StringFieldUpdateOperationsInput | string
-    cfop?: StringFieldUpdateOperationsInput | string
-    uCom?: StringFieldUpdateOperationsInput | string
-    qCom?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    vUnCom?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    vProd?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    cEANTrib?: StringFieldUpdateOperationsInput | string
-    uTrib?: StringFieldUpdateOperationsInput | string
-    qTrib?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    indTotal?: StringFieldUpdateOperationsInput | string
-    cst?: StringFieldUpdateOperationsInput | string
-    modBc?: NullableStringFieldUpdateOperationsInput | string | null
-    vBc?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    pIcms?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    vIcms?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    pFcp?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    vFcp?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    vBCFCP?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    modBCST?: NullableStringFieldUpdateOperationsInput | string | null
-    vBCST?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    pICMSST?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    vICMSST?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    vBCFCPST?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    pFCPST?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    vFCPST?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    pRedBC?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    vICMSDeson?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    motDesICMS?: NullableStringFieldUpdateOperationsInput | string | null
-    vBCSTRet?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    orig?: StringFieldUpdateOperationsInput | string
-    pST?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    vICMSSTRet?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    vBCFCPSTRet?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    pFCPSTRet?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    vFCPSTRet?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    pRedBCEfet?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    vBCEfet?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    pICMSEfet?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    vICMSEfet?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    pBCOp?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    UFST?: NullableStringFieldUpdateOperationsInput | string | null
-    CSOSN?: NullableStringFieldUpdateOperationsInput | string | null
-    pCredSN?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    vCredICMSSN?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    vUnTrib?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    produto_id?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
-    vFrete?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    vOutro?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    vDesc?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    cstPIS?: NullableStringFieldUpdateOperationsInput | string | null
-    vBCPIS?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    pPIS?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    vPIS?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    qBCPISProd?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    vAliqPISProd?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    cstCOFINS?: NullableStringFieldUpdateOperationsInput | string | null
-    vBCCOFINS?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    pCOFINS?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    vCOFINS?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    qBCCOFINSProd?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    vAliqCOFINSProd?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    pDevol?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    vIPIDevol?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    pRedBCST?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    pMVAST?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-  }
-
   export type notafiscalpagamentosUpdateWithoutNotafiscalInput = {
     indicacao?: NullableStringFieldUpdateOperationsInput | string | null
     tipo?: NullableStringFieldUpdateOperationsInput | string | null
@@ -43403,298 +41850,6 @@ export namespace Prisma {
     valor?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     data_criacao?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     data_vencimento?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  }
-
-  export type notafiscalitemCreateManyProdutosInput = {
-    id?: bigint | number
-    cProd: string
-    cEAN: string
-    xProd: string
-    ncm: string
-    cest: string
-    cfop: string
-    uCom: string
-    qCom: Decimal | DecimalJsLike | number | string
-    vUnCom: Decimal | DecimalJsLike | number | string
-    vProd?: Decimal | DecimalJsLike | number | string | null
-    cEANTrib: string
-    uTrib: string
-    qTrib: Decimal | DecimalJsLike | number | string
-    indTotal: string
-    cst: string
-    modBc?: string | null
-    vBc?: Decimal | DecimalJsLike | number | string | null
-    pIcms?: Decimal | DecimalJsLike | number | string | null
-    vIcms?: Decimal | DecimalJsLike | number | string | null
-    pFcp?: Decimal | DecimalJsLike | number | string | null
-    vFcp?: Decimal | DecimalJsLike | number | string | null
-    vBCFCP?: Decimal | DecimalJsLike | number | string | null
-    modBCST?: string | null
-    vBCST?: Decimal | DecimalJsLike | number | string | null
-    pICMSST?: Decimal | DecimalJsLike | number | string | null
-    vICMSST?: Decimal | DecimalJsLike | number | string | null
-    vBCFCPST?: Decimal | DecimalJsLike | number | string | null
-    pFCPST?: Decimal | DecimalJsLike | number | string | null
-    vFCPST?: Decimal | DecimalJsLike | number | string | null
-    pRedBC?: Decimal | DecimalJsLike | number | string | null
-    vICMSDeson?: Decimal | DecimalJsLike | number | string | null
-    motDesICMS?: string | null
-    vBCSTRet?: Decimal | DecimalJsLike | number | string | null
-    orig: string
-    pST?: Decimal | DecimalJsLike | number | string | null
-    vICMSSTRet?: Decimal | DecimalJsLike | number | string | null
-    vBCFCPSTRet?: Decimal | DecimalJsLike | number | string | null
-    pFCPSTRet?: Decimal | DecimalJsLike | number | string | null
-    vFCPSTRet?: Decimal | DecimalJsLike | number | string | null
-    pRedBCEfet?: Decimal | DecimalJsLike | number | string | null
-    vBCEfet?: Decimal | DecimalJsLike | number | string | null
-    pICMSEfet?: Decimal | DecimalJsLike | number | string | null
-    vICMSEfet?: Decimal | DecimalJsLike | number | string | null
-    pBCOp?: Decimal | DecimalJsLike | number | string | null
-    UFST?: string | null
-    CSOSN?: string | null
-    pCredSN?: Decimal | DecimalJsLike | number | string | null
-    vCredICMSSN?: Decimal | DecimalJsLike | number | string | null
-    notafiscal_id: bigint | number
-    vUnTrib?: Decimal | DecimalJsLike | number | string | null
-    vFrete?: Decimal | DecimalJsLike | number | string | null
-    vOutro?: Decimal | DecimalJsLike | number | string | null
-    vDesc?: Decimal | DecimalJsLike | number | string | null
-    cstPIS?: string | null
-    vBCPIS?: Decimal | DecimalJsLike | number | string | null
-    pPIS?: Decimal | DecimalJsLike | number | string | null
-    vPIS?: Decimal | DecimalJsLike | number | string | null
-    qBCPISProd?: Decimal | DecimalJsLike | number | string | null
-    vAliqPISProd?: Decimal | DecimalJsLike | number | string | null
-    cstCOFINS?: string | null
-    vBCCOFINS?: Decimal | DecimalJsLike | number | string | null
-    pCOFINS?: Decimal | DecimalJsLike | number | string | null
-    vCOFINS?: Decimal | DecimalJsLike | number | string | null
-    qBCCOFINSProd?: Decimal | DecimalJsLike | number | string | null
-    vAliqCOFINSProd?: Decimal | DecimalJsLike | number | string | null
-    pDevol?: Decimal | DecimalJsLike | number | string | null
-    vIPIDevol?: Decimal | DecimalJsLike | number | string | null
-    pRedBCST?: Decimal | DecimalJsLike | number | string | null
-    pMVAST?: Decimal | DecimalJsLike | number | string | null
-  }
-
-  export type notafiscalitemUpdateWithoutProdutosInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
-    cProd?: StringFieldUpdateOperationsInput | string
-    cEAN?: StringFieldUpdateOperationsInput | string
-    xProd?: StringFieldUpdateOperationsInput | string
-    ncm?: StringFieldUpdateOperationsInput | string
-    cest?: StringFieldUpdateOperationsInput | string
-    cfop?: StringFieldUpdateOperationsInput | string
-    uCom?: StringFieldUpdateOperationsInput | string
-    qCom?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    vUnCom?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    vProd?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    cEANTrib?: StringFieldUpdateOperationsInput | string
-    uTrib?: StringFieldUpdateOperationsInput | string
-    qTrib?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    indTotal?: StringFieldUpdateOperationsInput | string
-    cst?: StringFieldUpdateOperationsInput | string
-    modBc?: NullableStringFieldUpdateOperationsInput | string | null
-    vBc?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    pIcms?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    vIcms?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    pFcp?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    vFcp?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    vBCFCP?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    modBCST?: NullableStringFieldUpdateOperationsInput | string | null
-    vBCST?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    pICMSST?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    vICMSST?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    vBCFCPST?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    pFCPST?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    vFCPST?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    pRedBC?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    vICMSDeson?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    motDesICMS?: NullableStringFieldUpdateOperationsInput | string | null
-    vBCSTRet?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    orig?: StringFieldUpdateOperationsInput | string
-    pST?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    vICMSSTRet?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    vBCFCPSTRet?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    pFCPSTRet?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    vFCPSTRet?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    pRedBCEfet?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    vBCEfet?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    pICMSEfet?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    vICMSEfet?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    pBCOp?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    UFST?: NullableStringFieldUpdateOperationsInput | string | null
-    CSOSN?: NullableStringFieldUpdateOperationsInput | string | null
-    pCredSN?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    vCredICMSSN?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    vUnTrib?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    vFrete?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    vOutro?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    vDesc?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    cstPIS?: NullableStringFieldUpdateOperationsInput | string | null
-    vBCPIS?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    pPIS?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    vPIS?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    qBCPISProd?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    vAliqPISProd?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    cstCOFINS?: NullableStringFieldUpdateOperationsInput | string | null
-    vBCCOFINS?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    pCOFINS?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    vCOFINS?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    qBCCOFINSProd?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    vAliqCOFINSProd?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    pDevol?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    vIPIDevol?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    pRedBCST?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    pMVAST?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    notafiscal?: notafiscalUpdateOneRequiredWithoutNotafiscalitemNestedInput
-  }
-
-  export type notafiscalitemUncheckedUpdateWithoutProdutosInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
-    cProd?: StringFieldUpdateOperationsInput | string
-    cEAN?: StringFieldUpdateOperationsInput | string
-    xProd?: StringFieldUpdateOperationsInput | string
-    ncm?: StringFieldUpdateOperationsInput | string
-    cest?: StringFieldUpdateOperationsInput | string
-    cfop?: StringFieldUpdateOperationsInput | string
-    uCom?: StringFieldUpdateOperationsInput | string
-    qCom?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    vUnCom?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    vProd?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    cEANTrib?: StringFieldUpdateOperationsInput | string
-    uTrib?: StringFieldUpdateOperationsInput | string
-    qTrib?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    indTotal?: StringFieldUpdateOperationsInput | string
-    cst?: StringFieldUpdateOperationsInput | string
-    modBc?: NullableStringFieldUpdateOperationsInput | string | null
-    vBc?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    pIcms?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    vIcms?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    pFcp?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    vFcp?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    vBCFCP?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    modBCST?: NullableStringFieldUpdateOperationsInput | string | null
-    vBCST?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    pICMSST?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    vICMSST?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    vBCFCPST?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    pFCPST?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    vFCPST?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    pRedBC?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    vICMSDeson?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    motDesICMS?: NullableStringFieldUpdateOperationsInput | string | null
-    vBCSTRet?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    orig?: StringFieldUpdateOperationsInput | string
-    pST?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    vICMSSTRet?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    vBCFCPSTRet?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    pFCPSTRet?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    vFCPSTRet?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    pRedBCEfet?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    vBCEfet?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    pICMSEfet?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    vICMSEfet?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    pBCOp?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    UFST?: NullableStringFieldUpdateOperationsInput | string | null
-    CSOSN?: NullableStringFieldUpdateOperationsInput | string | null
-    pCredSN?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    vCredICMSSN?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    notafiscal_id?: BigIntFieldUpdateOperationsInput | bigint | number
-    vUnTrib?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    vFrete?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    vOutro?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    vDesc?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    cstPIS?: NullableStringFieldUpdateOperationsInput | string | null
-    vBCPIS?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    pPIS?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    vPIS?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    qBCPISProd?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    vAliqPISProd?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    cstCOFINS?: NullableStringFieldUpdateOperationsInput | string | null
-    vBCCOFINS?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    pCOFINS?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    vCOFINS?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    qBCCOFINSProd?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    vAliqCOFINSProd?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    pDevol?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    vIPIDevol?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    pRedBCST?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    pMVAST?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-  }
-
-  export type notafiscalitemUncheckedUpdateManyWithoutProdutosInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
-    cProd?: StringFieldUpdateOperationsInput | string
-    cEAN?: StringFieldUpdateOperationsInput | string
-    xProd?: StringFieldUpdateOperationsInput | string
-    ncm?: StringFieldUpdateOperationsInput | string
-    cest?: StringFieldUpdateOperationsInput | string
-    cfop?: StringFieldUpdateOperationsInput | string
-    uCom?: StringFieldUpdateOperationsInput | string
-    qCom?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    vUnCom?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    vProd?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    cEANTrib?: StringFieldUpdateOperationsInput | string
-    uTrib?: StringFieldUpdateOperationsInput | string
-    qTrib?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    indTotal?: StringFieldUpdateOperationsInput | string
-    cst?: StringFieldUpdateOperationsInput | string
-    modBc?: NullableStringFieldUpdateOperationsInput | string | null
-    vBc?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    pIcms?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    vIcms?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    pFcp?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    vFcp?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    vBCFCP?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    modBCST?: NullableStringFieldUpdateOperationsInput | string | null
-    vBCST?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    pICMSST?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    vICMSST?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    vBCFCPST?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    pFCPST?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    vFCPST?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    pRedBC?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    vICMSDeson?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    motDesICMS?: NullableStringFieldUpdateOperationsInput | string | null
-    vBCSTRet?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    orig?: StringFieldUpdateOperationsInput | string
-    pST?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    vICMSSTRet?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    vBCFCPSTRet?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    pFCPSTRet?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    vFCPSTRet?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    pRedBCEfet?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    vBCEfet?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    pICMSEfet?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    vICMSEfet?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    pBCOp?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    UFST?: NullableStringFieldUpdateOperationsInput | string | null
-    CSOSN?: NullableStringFieldUpdateOperationsInput | string | null
-    pCredSN?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    vCredICMSSN?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    notafiscal_id?: BigIntFieldUpdateOperationsInput | bigint | number
-    vUnTrib?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    vFrete?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    vOutro?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    vDesc?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    cstPIS?: NullableStringFieldUpdateOperationsInput | string | null
-    vBCPIS?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    pPIS?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    vPIS?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    qBCPISProd?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    vAliqPISProd?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    cstCOFINS?: NullableStringFieldUpdateOperationsInput | string | null
-    vBCCOFINS?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    pCOFINS?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    vCOFINS?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    qBCCOFINSProd?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    vAliqCOFINSProd?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    pDevol?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    vIPIDevol?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    pRedBCST?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    pMVAST?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
   }
 
 

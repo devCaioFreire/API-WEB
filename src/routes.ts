@@ -20,7 +20,7 @@ const router = Router();
 router.get("/getOrder", new getNextOrderNumberController().handle)
 router.get("/getLastProduct", new getLastProductController().handle)
 router.get("/cancelCoupom", new CancelCoupomController().handle);
-router.get("/getProducts/:ean", new ProductController().handle);
+router.get("/getProducts", new ProductController().handle);
 router.get("/getAllProducts", new AllProductsController().handle);
 router.get("/getIDProductFilter/:id", new GetIDProductsController().handle);
 router.get("/getEANProductFilter/:ean", new GetEANProductsController().handle);

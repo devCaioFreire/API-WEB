@@ -1,35 +1,37 @@
 import { Request, Response } from "express";
-import { ProductService } from "../../services/productsService/ProductService";
+import { ParamProps, ProductService, ParamFilter } from '../../services/productsService/ProductService';
 
 
 export class ProductController {
   async handle(req: Request, res: Response) {
-    const { ean } = req.params; // Recupere o código EAN dos parâmetros da URL
-    const productService = new ProductService();
+    const requisition = req;
+    const params = req.query;
+    let ParamConfig: ParamProps[]=[];
+    const ParamFilter: ParamFilter[]=[];
 
-    try {
-      const product = await productService.execute(ean);
+    Object.entries(params).map(([field, value]) => (
+      ParamConfig.push({field:field,value:value})
+      )); 
+
+    const filters = ParamConfig.filter(element => element.field === 'filter');
+
+    ParamConfig = ParamConfig.filter(element => element.field != 'filter');
+    if(filters != undefined && filters != null){
+      for( const filter of filters){
+        const json = JSON.parse(filter.value)
+        json.forEach(element => {
+          ParamFilter.push({field:element.field,value:element.value})
+        });
+      }
+    
+    // // Recupere o código EAN dos parâmetros da URL
+
+      const productService = new ProductService();
+      const product = await productService.get(productService.ParamPropsFormater(ParamFilter),ParamConfig);
       if (!product) {
         return res.status(404).json({ error: 'Produto não encontrado' });
       }
-      // Função para converter campos BigInt em strings
-      const convertBigIntToString = (obj: any) => {
-        for (const key in obj) {
-          if (Object.prototype.hasOwnProperty.call(obj, key)) {
-            if (typeof obj[key] === 'bigint') {
-              obj[key] = obj[key].toString();
-            }
-          }
-        }
-      };
-
-      // Converter campos BigInt para strings
-      convertBigIntToString(product);
-
       return res.json(product);
-    } catch (error) {
-      console.error(error);
-      return res.status(500).json({ error: 'Erro ao buscar produto' });
-    }
   }
+}
 }
