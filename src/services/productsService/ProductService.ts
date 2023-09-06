@@ -48,7 +48,7 @@ export class ProductService {
             query.skip = (param.value) * query.take;
             break;
           case 'orderBy':
-            query.orderBy = {id: 'asc',};
+            query.orderBy = { id: 'asc', };
             break;
         }
       }
@@ -62,7 +62,7 @@ export class ProductService {
     for (const param of Params) {
       switch (param.field) {
         case 'saldo':
-          if (param.value == 0 || param.value == '0') {
+          if (param.value === 0 || param.value ===  '0') {
             param.value = { lte: param.value }
             break;
           }
