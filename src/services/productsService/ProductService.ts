@@ -33,6 +33,8 @@ export class ProductService {
       if (selectors && selectors.length > 0) {
         query.where = {};
         for (const filter of selectors) {
+          if(filter.value === '' || filter.value === undefined || filter.value === null) continue;
+          console.log(filter.field, filter.value)
           const { field, value } = filter;
           query.where[field] = field === 'id' ? parseInt(value) : value;
         }
@@ -43,6 +45,8 @@ export class ProductService {
       if (params && params.length > 0) {
         for (const param of params) {
           switch (param.field) {
+            case 'take':
+              query.take = parseInt(param.value);
             case 'page':
               query.skip = (param.value) * query.take;
               break;
@@ -54,13 +58,11 @@ export class ProductService {
       }
       const produtos = await prismaMain.produtos.findMany({ where: query.where, skip: query.skip, take: query.take, orderBy: query.orderBy });
       // await prismaMain.$disconnect();
-      console.log(produtos)
       return produtos;
     }catch (error) {
       console.log(error);
-      throw new ErrorResponse(400,'Bad Request');
+      throw new ErrorResponse(400,'Bad Request nos produtos');
     }
-    
   }
   ParamPropsFormater(Params: ParamFilter[]) {
     for (const param of Params) {
