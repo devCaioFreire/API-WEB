@@ -51,7 +51,7 @@ export class ProductService {
               query.skip = (param.value) * query.take;
               break;
             case 'orderBy':
-              query.orderBy = { id: 'asc', };
+              query.orderBy = { [param.value]: 'asc' };
               break;
           }
         }
