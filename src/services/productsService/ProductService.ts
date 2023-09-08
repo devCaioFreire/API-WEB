@@ -1,4 +1,5 @@
 import { prismaMain } from "../../prisma";
+import { ErrorResponse } from "../errorService/ErrorService";
 
 export interface ParamProps {
   field: string;
@@ -26,37 +27,40 @@ export class ProductService {
     }
   }
   async get(selectors?: ParamFilter[], params?: ParamProps[]) {
+    try {
+      const query: IQuery = {};
+      //Criando o Where
+      if (selectors && selectors.length > 0) {
+        query.where = {};
+        for (const filter of selectors) {
+          const { field, value } = filter;
+          query.where[field] = field === 'id' ? parseInt(value) : value;
+        }
+      }
 
-    const query: IQuery = {};
-    //where
-    if (selectors && selectors.length > 0) {
-      query.where = {};
-      for (const filter of selectors) {
-        if (filter.field == 'id') {
-          query.where[filter.field] = parseInt(filter.value);
-          continue
-        }
-        query.where[filter.field] = filter.value;
-      }
-    }
-    query.take = 20
-    //propriedades
-    if (params && params.length > 0) {
-      for (const param of params) {
-        switch (param.field) {
-          case 'page':
-            query.skip = (param.value) * query.take;
-            break;
-          case 'orderBy':
-            query.orderBy = { id: 'asc', };
-            break;
+      query.take = 20
+      //Criando os Filtros
+      if (params && params.length > 0) {
+        for (const param of params) {
+          switch (param.field) {
+            case 'page':
+              query.skip = (param.value) * query.take;
+              break;
+            case 'orderBy':
+              query.orderBy = { id: 'asc', };
+              break;
+          }
         }
       }
+      const produtos = await prismaMain.produtos.findMany({ where: query.where, skip: query.skip, take: query.take, orderBy: query.orderBy });
+      // await prismaMain.$disconnect();
+      console.log(produtos)
+      return produtos;
+    }catch (error) {
+      console.log(error);
+      throw new ErrorResponse(400,'Bad Request');
     }
-    const produtos = await prismaMain.produtos.findMany({ where: query.where, skip: query.skip, take: query.take, orderBy: query.orderBy });
-    // await prismaMain.$disconnect();
-    console.log(produtos)
-    return produtos;
+    
   }
   ParamPropsFormater(Params: ParamFilter[]) {
     for (const param of Params) {

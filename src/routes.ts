@@ -13,14 +13,17 @@ import { GetEANProductsController } from "./controllers/productController/filter
 import { GetIDProductsController } from "./controllers/productController/filter/IDFilterController";
 import { DataSaleController } from "./controllers/salesController/DataSaleController";
 import { getNextOrderNumberController } from "./controllers/salesController/OrderController";
+import { ErrorMiddleware } from "./middlewares/errorMiddleware/ErrorMiddleware";
 
 const router = Router();
+const errorMiddleware = new ErrorMiddleware();
 
 // GET
 router.get("/getOrder", new getNextOrderNumberController().handle)
 router.get("/getLastProduct", new getLastProductController().handle)
 router.get("/cancelCoupom", new CancelCoupomController().handle);
-router.get("/getProducts", new ProductController().handle);
+// router.get("/getProducts", new ProductController().handle);
+router.get("/getProducts", errorMiddleware.handleAsync(new ProductController().handle))
 router.get("/getAllProducts", new AllProductsController().handle);
 router.get("/getIDProductFilter/:id", new GetIDProductsController().handle);
 router.get("/getEANProductFilter/:ean", new GetEANProductsController().handle);
