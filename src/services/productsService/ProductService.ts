@@ -51,11 +51,12 @@ export class ProductService {
               query.skip = (param.value) * query.take;
               break;
             case 'orderBy':
-              query.orderBy = { id: 'asc', };
+            query.orderBy = { [param.value]: 'asc' };
               break;
           }
         }
       }
+      console.log(query);
       const produtos = await prismaMain.produtos.findMany({ where: query.where, skip: query.skip, take: query.take, orderBy: query.orderBy });
       // await prismaMain.$disconnect();
       return produtos;
@@ -66,6 +67,11 @@ export class ProductService {
   }
   ParamPropsFormater(Params: ParamFilter[]) {
     for (const param of Params) {
+      if (param.value === '' || param.value === undefined || param.value === null){
+        console.log(param.field + 'está com valor vazio');
+        continue;
+      }
+      
       switch (param.field) {
         case 'saldo':
           if (param.value === 0 || param.value ===  '0') {
