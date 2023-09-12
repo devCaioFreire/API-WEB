@@ -10,7 +10,7 @@ import { getLastProductController } from "./controllers/productController/LastPr
 import { ProductController } from "./controllers/productController/ProductController";
 import { UpdateProductController } from "./controllers/productController/UpdateProductController";
 import { GetEANProductsController } from "./controllers/productController/filter/EANFilterController";
-import { GetIDProductsController } from "./controllers/productController/filter/IDFilterController";
+import { GetDescriptionProductsController } from "./controllers/productController/filter/IDFilterController";
 import { DataSaleController } from "./controllers/salesController/DataSaleController";
 import { getNextOrderNumberController } from "./controllers/salesController/OrderController";
 import { ErrorMiddleware } from "./middlewares/errorMiddleware/ErrorMiddleware";
@@ -25,7 +25,7 @@ router.get("/cancelCoupom", new CancelCoupomController().handle);
 // router.get("/getProducts", new ProductController().handle);
 router.get("/getProducts", errorMiddleware.handleAsync(new ProductController().handle))
 router.get("/getAllProducts", new AllProductsController().handle);
-router.get("/getIDProductFilter/:id", new GetIDProductsController().handle);
+router.get("/getDescriptionProductFilter", new GetDescriptionProductsController().handle);
 router.get("/getEANProductFilter/:ean", new GetEANProductsController().handle);
 
 // POST
