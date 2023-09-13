@@ -15,8 +15,10 @@ export class GetDescriptionProductsService {
         skip: (page - 1) * 20,
         take: 20,
         select: {
+          id: true,
           descricao: true,
-          saldo: true
+          saldo: true,
+          vlrUnCom: true
         }
       });
 
