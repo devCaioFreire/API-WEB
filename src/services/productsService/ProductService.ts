@@ -60,7 +60,7 @@ export class ProductService {
         query.skip = (query.skip ?? 0) * query.take;
       }
       const produtos = await prismaMain.produtos.findMany({ where: query.where, skip: query.skip, take: query.take, orderBy: query.orderBy });
-      // await prismaMain.$disconnect();
+      prismaMain.$disconnect();
       return produtos;
     }catch (error) {
       console.log(error);
