@@ -34,29 +34,31 @@ export class ProductService {
         query.where = {};
         for (const filter of selectors) {
           if(filter.value === '' || filter.value === undefined || filter.value === null) continue;
-          console.log(filter.field, filter.value)
+
           const { field, value } = filter;
           query.where[field] = field === 'id' ? parseInt(value) : value;
         }
       }
-
-      query.take = 20
+      let page = 0;
+      query.take = 20;
       //Criando os Filtros
       if (params && params.length > 0) {
         for (const param of params) {
           switch (param.field) {
             case 'take':
               query.take = parseInt(param.value);
+              break;
             case 'page':
-              query.skip = (param.value) * query.take;
+              query.skip = param.value;
               break;
             case 'orderBy':
             query.orderBy = { [param.value]: 'asc' };
               break;
           }
         }
+        //Calculando o Skip
+        query.skip = (query.skip ?? 0) * query.take;
       }
-      console.log(query);
       const produtos = await prismaMain.produtos.findMany({ where: query.where, skip: query.skip, take: query.take, orderBy: query.orderBy });
       // await prismaMain.$disconnect();
       return produtos;
