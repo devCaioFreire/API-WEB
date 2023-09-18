@@ -28,7 +28,7 @@ export class ProductService {
   }
   async get(selectors?: ParamFilter[], params?: ParamProps[]) {
     try {
-      const query: IQuery = {};
+      const query: IQuery = {orderBy:{id:'asc'},skip:0,take:20,where:{}};
       //Criando o Where
       if (selectors && selectors.length > 0) {
         query.where = {};
@@ -39,8 +39,6 @@ export class ProductService {
           query.where[field] = field === 'id' ? parseInt(value) : value;
         }
       }
-      let page = 0;
-      query.take = 20;
       //Criando os Filtros
       if (params && params.length > 0) {
         for (const param of params) {
@@ -54,10 +52,14 @@ export class ProductService {
             case 'orderBy':
             query.orderBy = { [param.value]: 'asc' };
               break;
+            case 'order':
+              const campo = Object.getOwnPropertyNames(query.orderBy)[0];
+              query.orderBy = { [campo]: param.value };
+            break;
           }
         }
         //Calculando o Skip
-        query.skip = (query.skip ?? 0) * query.take;
+        query.skip = (query.skip ?? 0) * (query.take ?? 0);
       }
       const produtos = await prismaMain.produtos.findMany({ where: query.where, skip: query.skip, take: query.take, orderBy: query.orderBy });
       prismaMain.$disconnect();
