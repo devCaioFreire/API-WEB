@@ -1,6 +1,7 @@
 generator client {
-  provider = "prisma-client-js"
-  output   = "./databases/main"
+  provider        = "prisma-client-js"
+  output          = "./databases/main"
+  previewFeatures = ["views"]
 }
 
 datasource db {
@@ -503,4 +504,19 @@ model vendedores_x_usuarios {
   id_usuario         BigInt?
   id_vendedor        BigInt?
   id_vendedor_sirius BigInt?
+}
+
+/// The underlying view does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+view relatorio_pedidos_venda {
+  id_pvi          Int       @default(0)
+  id_pv           Int?      @default(0)
+  valor_liquido   Float?
+  forma_pagamento String?
+  data_realizacao DateTime?
+  descricao       String?
+  valor_unitario  Float?
+  unCom           String?   @db.VarChar(6)
+  quantidade      Int?
+
+  @@ignore
 }

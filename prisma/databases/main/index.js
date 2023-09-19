@@ -599,7 +599,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "C:\\Users\\usuario022\\Desktop\\GitHub\\API-WEB\\prisma\\databases\\main",
+      "value": "C:\\Users\\Natan\\Documents\\GitHub\\API-WEB\\prisma\\databases\\main",
       "fromEnvVar": null
     },
     "config": {
@@ -612,7 +612,9 @@ const config = {
         "native": true
       }
     ],
-    "previewFeatures": [],
+    "previewFeatures": [
+      "views"
+    ],
     "isCustomOutput": true
   },
   "relativeEnvPaths": {

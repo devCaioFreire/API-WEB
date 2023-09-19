@@ -7,6 +7,8 @@ import { AddProductController } from "./controllers/productController/AddProduct
 import { DeleteProductController } from "./controllers/productController/DeleteProductService";
 import { AllProductsController } from "./controllers/productController/GetAllProductController";
 import { getLastProductController } from "./controllers/productController/LastProductController";
+import { OrderController } from "./controllers/productController/OrderController";
+import { OrderItemsController } from "./controllers/productController/OrderItemsController";
 import { ProductController } from "./controllers/productController/ProductController";
 import { UpdateProductController } from "./controllers/productController/UpdateProductController";
 import { GetEANProductsController } from "./controllers/productController/filter/EANFilterController";
@@ -22,8 +24,9 @@ const errorMiddleware = new ErrorMiddleware();
 router.get("/getOrder", new getNextOrderNumberController().handle)
 router.get("/getLastProduct", new getLastProductController().handle)
 router.get("/cancelCoupom", new CancelCoupomController().handle);
-// router.get("/getProducts", new ProductController().handle);
 router.get("/getProducts", errorMiddleware.handleAsync(new ProductController().handle))
+router.get("/getSalesOrders", errorMiddleware.handleAsync(new OrderController().handle))
+router.get("/getOrderItems", errorMiddleware.handleAsync(new OrderItemsController().handle))
 router.get("/getAllProducts", new AllProductsController().handle);
 router.get("/getDescriptionProductFilter", new GetDescriptionProductsController().handle);
 router.get("/getEANProductFilter/:ean", new GetEANProductsController().handle);
