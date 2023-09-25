@@ -47,7 +47,7 @@ model empresas {
   fone                String                @db.VarChar(14)
   ie                  String                @db.VarChar(14)
   crt                 String                @db.VarChar(1)
-  token               String                @unique(map: "token") @db.VarChar(100)
+  token               String                @unique(map: "token") @db.VarChar(128)
   banco               String                @db.VarChar(100)
   status              String                @db.VarChar(1)
   email               String?               @db.VarChar(129)
@@ -74,8 +74,8 @@ model usuarios {
   email               String?               @db.VarChar(150)
   senha               String?               @db.VarChar(250)
   celular             String?               @db.VarChar(14)
-  status              String?               @db.Char(1)
-  user_token          String                @unique(map: "user_token") @db.VarChar(100)
+  status              String?               @default("A") @db.Char(1)
+  user_token          String                @unique(map: "user_token") @db.VarChar(128)
   exclusivo           String?               @default("N") @db.Char(1)
   usuarios_x_empresas usuarios_x_empresas[]
 }
