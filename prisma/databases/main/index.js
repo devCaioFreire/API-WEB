@@ -610,6 +610,10 @@ const config = {
         "fromEnvVar": null,
         "value": "windows",
         "native": true
+      },
+      {
+        "fromEnvVar": null,
+        "value": "debian-openssl-1.1.x"
       }
     ],
     "previewFeatures": [
@@ -669,5 +673,8 @@ Object.assign(exports, Prisma)
 
 path.join(__dirname, "query_engine-windows.dll.node");
 path.join(process.cwd(), "prisma/databases/main/query_engine-windows.dll.node")
+
+path.join(__dirname, "libquery_engine-debian-openssl-1.1.x.so.node");
+path.join(process.cwd(), "prisma/databases/main/libquery_engine-debian-openssl-1.1.x.so.node")
 path.join(__dirname, "schema.prisma");
 path.join(process.cwd(), "prisma/databases/main/schema.prisma")
