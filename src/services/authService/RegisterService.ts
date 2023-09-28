@@ -11,43 +11,44 @@ interface RegisterData {
   status: string;
   exclusivo: string;
   user_token: string;
+  id_empresa: string;
 };
 
 export class RegisterService {
-  async execute(
-    {
-      nome,
-      ultimo_nome,
-      email,
-      senha,
-      celular,
-      status,
-      exclusivo,
-      user_token
-    }: RegisterData) {
+  async execute(data: RegisterData) {
 
-    const hashPassword = await bcrypt.hash(senha, 12);
+    const hashPassword = await bcrypt.hash(data.senha, 12);
 
-    const existingUser = await prismaAuth.usuarios.findFirst({ where: { email } })
+    const existingUser = await prismaAuth.usuarios.findFirst({ where: { email: data.email } })
 
     if (existingUser) {
       throw new Error("O email já está em uso");
     }
     const token = generateUniqueToken();
 
-    const AuthRegister = await prismaAuth.usuarios.create({
+    const user = await prismaAuth.usuarios.create({
       data: {
-        nome,
-        ultimo_nome,
-        email,
+        nome: data.nome,
+        ultimo_nome: data.ultimo_nome,
+        email: data.email,
         senha: hashPassword,
-        celular,
-        status,
-        exclusivo,
-        user_token: token
+        celular: data.celular,
+        status: data.status,
+        exclusivo: data.exclusivo,
+        user_token: token,
       },
     })
-    return AuthRegister;
+
+    // Associar o usuário à empresa
+    await prismaAuth.usuarios_x_empresas.create({
+      data: {
+        id_empresa: parseInt(data.id_empresa),
+        id_usuario: user.id,
+        // Você pode adicionar outros campos aqui, como id_grupo_usuario, se necessário
+      },
+    });
+
+    return user;
   }
 }
 

@@ -3,9 +3,10 @@
 // export const prisma = new PrismaClient();
 
 // import { PrismaClient as PrismaClientMain } from "../../prisma/databases/main";
-
-// export const prismaAuth = new PrismaClientAuth();
 // export const prismaMain = new PrismaClientMain();
+
+import { PrismaClient as PrismaClientAuth } from "../../prisma/databases/auth";
+export const prismaAuth = new PrismaClientAuth();
 
 import { PrismaClient } from "@prisma/client";
 import jwt from "jsonwebtoken";
@@ -20,14 +21,6 @@ function getDatabaseConnectionStringForCompany(companyId: string): string {
 
   return databaseConfig[companyId];
 }
-
-export const prismaAuth = new PrismaClient({
-  datasources: {
-    db: {
-      url: "mysql://root:soft@1973@localhost:3306/bancao?schema=public"
-    }
-  }
-});
 
 // Função para criar uma instância dinâmica do Prisma Client com base no JWT
 export function createPrismaClientFromJWT(token: string): PrismaClient {

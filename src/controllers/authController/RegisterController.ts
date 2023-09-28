@@ -12,7 +12,8 @@ export class AuthRegisterController {
         celular,
         status,
         exclusivo,
-        user_token
+        user_token,
+        id_empresa
       } = req.body;
       const authRegisterService = new RegisterService();
       const userData = await authRegisterService.execute({
@@ -23,7 +24,8 @@ export class AuthRegisterController {
         celular,
         status,
         exclusivo,
-        user_token
+        user_token,
+        id_empresa
       })
       return res.status(201).json(userData);
 
