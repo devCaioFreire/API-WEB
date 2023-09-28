@@ -1,5 +1,6 @@
 import { Router } from "express";
 import { LoginController } from "./controllers/authController/LoginController";
+import { CompanyController } from "./controllers/authController/RegisterCompanyController";
 import { AuthRegisterController } from "./controllers/authController/RegisterController";
 import { CancelCoupomController } from "./controllers/coupomController/CancelCoupomController";
 import { UpdateCoupomStatusController } from "./controllers/coupomController/CancelCoupomUpdate";
@@ -37,6 +38,8 @@ router.post("/register", new AuthRegisterController().handle);
 router.post("/dataSale", new DataSaleController().handle);
 router.post("/updateCoupomStatus", new UpdateCoupomStatusController().handle);
 router.post("/addProduct", new AddProductController().handle);
+
+router.post("/companies", new CompanyController().create);
 
 // UPDATE
 router.post("/updateProduct", new UpdateProductController().handle);
