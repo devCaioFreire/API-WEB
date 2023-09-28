@@ -16,6 +16,7 @@ export class GetDescriptionProductsService {
         take: 20,
         select: {
           id: true,
+          codEAN: true,
           descricao: true,
           saldo: true,
           vlrUnCom: true

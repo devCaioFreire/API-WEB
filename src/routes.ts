@@ -11,8 +11,8 @@ import { OrderController } from "./controllers/productController/OrderController
 import { OrderItemsController } from "./controllers/productController/OrderItemsController";
 import { ProductController } from "./controllers/productController/ProductController";
 import { UpdateProductController } from "./controllers/productController/UpdateProductController";
+import { GetDescriptionProductsController } from "./controllers/productController/filter/DescriptionFilterController";
 import { GetEANProductsController } from "./controllers/productController/filter/EANFilterController";
-import { GetDescriptionProductsController } from "./controllers/productController/filter/IDFilterController";
 import { DataSaleController } from "./controllers/salesController/DataSaleController";
 import { getNextOrderNumberController } from "./controllers/salesController/OrderController";
 import { ErrorMiddleware } from "./middlewares/errorMiddleware/ErrorMiddleware";
