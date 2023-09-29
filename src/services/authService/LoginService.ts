@@ -20,10 +20,15 @@ export class LoginService {
     }
 
     const passwordMatch = await bcrypt.compare(senha, user.senha!);
+    console.log('Provided Email:', user.email);
+    console.log('Provided Password:', senha);
+    console.log('Stored Hashed Password:', user.senha);
+    console.log('Is Password Match:', passwordMatch);
 
     if (!passwordMatch) {
       throw new Error('Credenciais inválidas');
     }
+
     const token = generateToken(user);
 
     return { user, token };
@@ -39,13 +44,9 @@ function generateToken(user: any): string {
       email: user.email,
       name: user.nome,
       lastName: user.ultimo_nome,
+      id_company: user.id_empresa
     },
     secretKey!);
 
   return token;
 }
-
-// function generateUniqueToken() {
-//   const uniqueToken = randomBytes(64).toString('hex');
-//   return uniqueToken;
-// }

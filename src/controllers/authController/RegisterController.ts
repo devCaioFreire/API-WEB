@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import { RegisterService } from "../../services/authService/RegisterService";
 
-export class AuthRegisterController {
+export class RegisterController {
   async handle(req: Request, res: Response) {
     try {
       const {
@@ -13,10 +13,13 @@ export class AuthRegisterController {
         status,
         exclusivo,
         user_token,
-        id_empresa
+        id_empresa,
+        id_grupo_usuario
       } = req.body;
-      const authRegisterService = new RegisterService();
-      const userData = await authRegisterService.execute({
+
+      const registerService = new RegisterService();
+
+      const user = await registerService.execute({
         nome,
         ultimo_nome,
         email,
@@ -25,13 +28,15 @@ export class AuthRegisterController {
         status,
         exclusivo,
         user_token,
-        id_empresa
-      })
-      return res.status(201).json(userData);
+        id_empresa,
+        id_grupo_usuario
+      });
+
+      return res.status(201).json(user);
 
     } catch (err) {
       console.error("Erro ao registrar o usuário: " + err)
-      return res.status(500).json({ erro: "Erro ao registrar o usuário" })
+      return res.status(500).json({ erro: "Erro ao registrar o usuário: " + err })
     }
   }
 }
