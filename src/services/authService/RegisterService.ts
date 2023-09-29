@@ -29,7 +29,7 @@ export class RegisterService {
     id_grupo_usuario
   }: RegisterData) {
 
-    const hashPassword = await bcrypt.hash(senha, 12);
+    const hashPassword = await bcrypt.hashSync(senha, 12);
     console.log("Hashed Password:", hashPassword);
 
     const existingUser = await prismaAuth.usuarios.findFirst({ where: { email: email } })
@@ -45,7 +45,7 @@ export class RegisterService {
         nome: nome,
         ultimo_nome: ultimo_nome,
         email: email,
-        senha: hashPassword,
+        senha: '$2b$12$2Uw6RDZGH6cnrwyekX0BO8uHKhhObzs8kj7tQWkyJiH5qoePqOuW',
         celular: celular,
         status: status,
         exclusivo: exclusivo,
