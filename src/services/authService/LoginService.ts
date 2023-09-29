@@ -19,11 +19,10 @@ export class LoginService {
       throw new Error('Usuário não encontrado');
     }
 
-    const passwordMatch = await bcrypt.compare(senha, user.senha!);
-    console.log('Provided Email:', user.email);
-    console.log('Provided Password:', senha);
-    console.log('Stored Hashed Password:', user.senha);
-    console.log('Is Password Match:', passwordMatch);
+    const passwordMatch = await bcrypt.compare(user.senha!, senha);
+    console.log("Stored Hash from DB:", user.senha!);
+    console.log("Provided Password:", senha);
+
 
     if (!passwordMatch) {
       throw new Error('Credenciais inválidas');

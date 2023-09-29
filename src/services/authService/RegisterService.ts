@@ -16,11 +16,23 @@ interface RegisterData {
 };
 
 export class RegisterService {
-  async execute(data: RegisterData) {
+  async execute({
+    nome,
+    ultimo_nome,
+    email,
+    senha,
+    celular,
+    status,
+    exclusivo,
+    user_token,
+    id_empresa,
+    id_grupo_usuario
+  }: RegisterData) {
 
-    const hashPassword = await bcrypt.hash(data.senha, 12);
+    const hashPassword = await bcrypt.hash(senha, 12);
+    console.log("Hashed Password:", hashPassword);
 
-    const existingUser = await prismaAuth.usuarios.findFirst({ where: { email: data.email } })
+    const existingUser = await prismaAuth.usuarios.findFirst({ where: { email: email } })
 
     if (existingUser) {
       throw new Error("O email já está em uso");
@@ -30,26 +42,26 @@ export class RegisterService {
 
     const user = await prismaAuth.usuarios.create({
       data: {
-        nome: data.nome,
-        ultimo_nome: data.ultimo_nome,
-        email: data.email,
+        nome: nome,
+        ultimo_nome: ultimo_nome,
+        email: email,
         senha: hashPassword,
-        celular: data.celular,
-        status: data.status,
-        exclusivo: data.exclusivo,
+        celular: celular,
+        status: status,
+        exclusivo: exclusivo,
         user_token: token,
       },
     })
+    console.log("Password on database:", user.senha)
 
     // Associar o usuário à empresa
     await prismaAuth.usuarios_x_empresas.create({
       data: {
-        id_empresa: data.id_empresa,
+        id_empresa: id_empresa,
         id_usuario: user.id,
-        id_grupo_usuario: data.id_grupo_usuario
+        id_grupo_usuario: id_grupo_usuario
       },
     });
-
 
     return user;
   }
