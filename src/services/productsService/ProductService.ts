@@ -1,4 +1,4 @@
-import { prismaMain } from "../../prisma";
+import { createPrismaClientFromJWT } from "../../prisma";
 import { ErrorResponse } from "../errorService/ErrorService";
 
 export interface ParamProps {
@@ -16,24 +16,29 @@ export interface IQuery {
   orderBy?: any;
 }
 export class ProductService {
-  async execute(ean: string) {
+  async execute(ean: string, token: string) {
+    const prisma = createPrismaClientFromJWT(token);
+
     try {
-      const products = await prismaMain.produtos.findFirst({
+      const products = await prisma.produtos.findFirst({
         where: { codEAN: ean }
       });
       return products;
     } catch (err) {
       throw new Error('Erro ao buscar produtos no banco de dados');
+    } finally {
+      prisma.$disconnect();
     }
   }
-  async get(selectors?: ParamFilter[], params?: ParamProps[]) {
+  async get(token?: string, selectors?: ParamFilter[], params?: ParamProps[] ) {
+    const prisma = createPrismaClientFromJWT(token!);
     try {
-      const query: IQuery = {orderBy:{id:'asc'},skip:0,take:20,where:{}};
+      const query: IQuery = { orderBy: { id: 'asc' }, skip: 0, take: 20, where: {} };
       //Criando o Where
       if (selectors && selectors.length > 0) {
         query.where = {};
         for (const filter of selectors) {
-          if(filter.value === '' || filter.value === undefined || filter.value === null) continue;
+          if (filter.value === '' || filter.value === undefined || filter.value === null) continue;
 
           const { field, value } = filter;
           query.where[field] = field === 'id' ? parseInt(value) : value;
@@ -50,35 +55,36 @@ export class ProductService {
               query.skip = param.value;
               break;
             case 'orderBy':
-            query.orderBy = { [param.value]: 'asc' };
+              query.orderBy = { [param.value]: 'asc' };
               break;
             case 'order':
               const campo = Object.getOwnPropertyNames(query.orderBy)[0];
               query.orderBy = { [campo]: param.value };
-            break;
+              break;
           }
         }
         //Calculando o Skip
         query.skip = (query.skip ?? 0) * (query.take ?? 0);
       }
-      const produtos = await prismaMain.produtos.findMany({ where: query.where, skip: query.skip, take: query.take, orderBy: query.orderBy });
-      prismaMain.$disconnect();
+
+      const produtos = await prisma.produtos.findMany({ where: query.where, skip: query.skip, take: query.take, orderBy: query.orderBy });
+      prisma.$disconnect();
       return produtos;
-    }catch (error) {
+    } catch (error) {
       console.log(error);
-      throw new ErrorResponse(400,'Bad Request nos produtos');
+      throw new ErrorResponse(400, 'Bad Request nos produtos');
     }
   }
   ParamPropsFormater(Params: ParamFilter[]) {
     for (const param of Params) {
-      if (param.value === '' || param.value === undefined || param.value === null){
+      if (param.value === '' || param.value === undefined || param.value === null) {
         console.log(param.field + 'está com valor vazio');
         continue;
       }
-      
+
       switch (param.field) {
         case 'saldo':
-          if (param.value === 0 || param.value ===  '0') {
+          if (param.value === 0 || param.value === '0') {
             param.value = { lte: param.value }
             break;
           }

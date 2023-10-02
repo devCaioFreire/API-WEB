@@ -7,7 +7,7 @@ interface LoginData {
   ultimo_nome?: string;
   email: string;
   senha: string;
-  id_empresa: number;
+  id_empresa?: number;
 }
 
 export class LoginService {
@@ -20,16 +20,13 @@ export class LoginService {
       where: { id_usuario: user?.id }
     });
 
-
     if (!user) {
       throw new Error('Usuário não encontrado');
     }
 
     const passwordMatch = await bcrypt.compareSync(senha, user.senha!);
-    console.log("NO BANCO DE DADOS:", user.senha!);
-    console.log("SENHA DIGITADA:", senha);
 
-    if (passwordMatch) {
+    if (!passwordMatch) {
       throw new Error('Credenciais inválidas');
     }
 
@@ -39,7 +36,7 @@ export class LoginService {
   }
 }
 
-function generateToken(user: any, id_empresa: number): string {
+function generateToken(user: any, id_company?: number): string {
   const secretKey = process.env.JWT_SECRET;
 
   const token = jwt.sign(
@@ -48,7 +45,7 @@ function generateToken(user: any, id_empresa: number): string {
       email: user.email,
       name: user.nome,
       lastName: user.ultimo_nome,
-      id_company: user.id_empresa
+      id_company: id_company
     },
     secretKey!);
 

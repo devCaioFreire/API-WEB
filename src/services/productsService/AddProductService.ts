@@ -1,4 +1,4 @@
-import { prismaMain } from "../../prisma";
+import { createPrismaClientFromJWT } from "../../prisma";
 
 interface ProductProps {
   codProduto: string;
@@ -24,8 +24,9 @@ export class AddProductService {
       codEAN,
       ncm,
       cfop
-    }: ProductProps) {
-    const addProduct = await prismaMain.produtos.create({
+    }: ProductProps, token: string) {
+    const prisma = createPrismaClientFromJWT(token);
+    const addProduct = await prisma.produtos.create({
       data: {
         codProduto,
         descricao,

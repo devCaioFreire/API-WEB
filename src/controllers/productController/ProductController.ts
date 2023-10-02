@@ -27,7 +27,7 @@ export class ProductController {
       // Recupere o código EAN dos parâmetros da URL
 
       const productService = new ProductService();
-      const product = await productService.get(productService.ParamPropsFormater(ParamFilter), ParamConfig);
+      const product = await productService.get(req.headers.authorization, productService.ParamPropsFormater(ParamFilter), ParamConfig);
       if (!product) {
         return res.status(404).json({ error: 'Produto não encontrado' });
       }

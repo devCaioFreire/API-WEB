@@ -45,7 +45,7 @@ export class RegisterService {
         nome: nome,
         ultimo_nome: ultimo_nome,
         email: email,
-        senha: '$2b$12$2Uw6RDZGH6cnrwyekX0BO8uHKhhObzs8kj7tQWkyJiH5qoePqOuW',
+        senha: hashPassword,
         celular: celular,
         status: status,
         exclusivo: exclusivo,
