@@ -10,7 +10,7 @@ export interface ParamFilter {
   value: any;
 }
 export interface IQuery {
-  where?: Record<string, string | number | boolean>;
+  where?: Record<string, string | number | boolean| {gte : any}| {lte : any}>;
   take?: number;
   skip?: number;
   orderBy?: any;
@@ -26,11 +26,18 @@ export class OrderService {
         query.where = {};
         for (const filter of selectors) {
           if (filter.value === '' || filter.value === undefined || filter.value === null) continue;
-
-          const { field, value } = filter;
-          query.where[field] = field === 'id' ? parseInt(value) : value;
+          if (filter.field === 'dateInitial') {
+            query.where['data_realizacao'] = { gte: filter.value };
+          }
+          if (filter.field === 'dateFinal') {
+            query.where['data_realizacao'] = { lte: filter.value };
+          }
+           else {
+            query.where[filter.field] = filter.field === 'id' ? parseInt(filter.value) : filter.value;
+          }
         }
       }
+      
       //Criando os Filtros
       if (params && params.length > 0) {
         for (const param of params) {
@@ -54,9 +61,9 @@ export class OrderService {
         query.skip = (query.skip ?? 0) * (query.take ?? 0);
       }
       
-      const produtos = await prisma.pedidos_venda.findMany({ where: query.where, skip: query.skip, take: query.take, orderBy: query.orderBy });
+      const PedidoVenda = await prisma.pedidos_venda.findMany({ where: query.where, skip: query.skip, take: query.take, orderBy: query.orderBy });
       prisma.$disconnect();
-      return produtos;
+      return PedidoVenda;
     } catch (error) {
       console.log(error);
       throw new ErrorResponse(400, 'Bad Request nos produtos');
