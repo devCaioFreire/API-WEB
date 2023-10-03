@@ -10,19 +10,21 @@ export class CancelCoupomController {
       valor_liquido,
       data_criacao,
     } = req.body;
-    const {authorization} = req.headers;
-    if( authorization && typeof authorization !== 'string' )throw new ErrorResponse(400,'Token Invalid Or NotFound');
+
+    const { authorization } = req.headers;
+    if (authorization && typeof authorization !== 'string') throw new ErrorResponse(400, 'Token Invalid Or NotFound');
+
     const createCancelCoupomService = new CancelCoupomService();
     const cancelCoupom = await createCancelCoupomService.
-    execute(
-      {
-        id,
-        cpf_cnpj,
-        valor_liquido,
-        data_criacao
-      },
-      authorization!
-    );
+      execute(
+        {
+          id,
+          cpf_cnpj,
+          valor_liquido,
+          data_criacao
+        },
+        authorization!
+      );
 
     return res.json(cancelCoupom);
   }

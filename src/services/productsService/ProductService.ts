@@ -30,8 +30,8 @@ export class ProductService {
       prisma.$disconnect();
     }
   }
-  async get(token?: string, selectors?: ParamFilter[], params?: ParamProps[] ) {
-    const prisma = createPrismaClientFromJWT(token!);
+  async get(token: string, selectors?: ParamFilter[], params?: ParamProps[] ) {
+    const prisma = createPrismaClientFromJWT(token);
     try {
       const query: IQuery = { orderBy: { id: 'asc' }, skip: 0, take: 20, where: {} };
       //Criando o Where

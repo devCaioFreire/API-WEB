@@ -14,6 +14,11 @@ export class AddProductController {
       ncm,
       cfop
     } = req.body;
+
+    let { authorization } = req.headers;
+    if (!authorization) throw new Error('Token Invalid Or Not Found');
+    authorization = authorization.split(' ')[1];
+
     const addNewProduct = new AddProductService();
     const addProduct = await addNewProduct.execute(
       {
@@ -26,7 +31,8 @@ export class AddProductController {
         codEAN,
         ncm,
         cfop
-      }
+      },
+      authorization
     );
 
     // Função para converter campos BigInt em strings

@@ -24,23 +24,25 @@ function getDatabaseConnectionStringForCompany(companyId: string): string {
   return databaseConfig[companyId];
 }
 
-// Função para criar uma instância dinâmica do Prisma Client com base no JWT
 export function createPrismaClientFromJWT(token: string): PrismaClient {
   const decoded: any = jwt.verify(token, process.env.JWT_SECRET!);
   if (!decoded || !decoded.id_company) {
     throw new Error("Invalid JWT");
   }
+
   console.log(decoded);
-  
+
 
   const companyId = decoded.id_company;
   const connectionString = getDatabaseConnectionStringForCompany(companyId);
 
-  const prisma=  new PrismaClient({datasources: {
-    db: {
-      url: connectionString
+  const prisma = new PrismaClient({
+    datasources: {
+      db: {
+        url: connectionString
+      }
     }
-  }});
+  });
 
   return prisma;
 }

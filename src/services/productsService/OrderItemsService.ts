@@ -15,9 +15,11 @@ export interface IQuery {
   skip?: number;
   orderBy?: any;
 }
+
 export class OrderItemsService {
-  async get(selectors?: ParamFilter[], params?: ParamProps[], token?: string) {
-    const prisma = createPrismaClientFromJWT(token!);
+  async get(token: string, selectors?: ParamFilter[], params?: ParamProps[], ) {
+
+    const prisma = createPrismaClientFromJWT(token);
 
     try {
       const query: IQuery = { orderBy: { id: 'asc' }, skip: 0, take: 1000, where: {} };
@@ -61,6 +63,7 @@ export class OrderItemsService {
       throw new ErrorResponse(400, 'Bad Request on Sales Order');
     }
   }
+
   ParamPropsFormater(Params: ParamFilter[]) {
     for (const param of Params) {
       if (param.value === '' || param.value === undefined || param.value === null) {
