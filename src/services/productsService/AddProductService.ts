@@ -5,7 +5,7 @@ interface ProductProps {
   descricao: string;
   vlrUnCom: number;
   unCom: string;
-  saldo: number;
+  saldo: number | string;
   status: string;
   codEAN: string;
   ncm: string;
@@ -26,7 +26,7 @@ export class AddProductService {
       cfop
     }: ProductProps, token: string) {
     const prisma = createPrismaClientFromJWT(token);
-    
+
     const addProduct = await prisma.produtos.create({
       data: {
         codProduto,
