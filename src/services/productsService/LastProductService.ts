@@ -8,6 +8,7 @@ export async function getLastProductService(token: string) {
         id: 'desc',
       },
     });
+    prisma.$disconnect();
 
     if (lastProduct) {
       const lastProductID = Number(lastProduct.id);

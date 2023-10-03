@@ -1,16 +1,8 @@
-// import { PrismaClient } from "@prisma/client";
-
-// export const prisma = new PrismaClient();
-
-// import { PrismaClient as PrismaClientMain } from "../../prisma/databases/main";
-// export const prismaMain = new PrismaClientMain();
-
-import { PrismaClient as PrismaClientAuth } from "../../prisma/databases/auth";
-export const prismaAuth = new PrismaClientAuth();
-
-
 import jwt from "jsonwebtoken";
+import { PrismaClient as PrismaClientAuth } from "../../prisma/databases/auth";
 import { PrismaClient } from "../../prisma/databases/main";
+
+export const prismaAuth = new PrismaClientAuth();
 
 // Função para obter a string de conexão do banco de dados com base na empresa
 function getDatabaseConnectionStringForCompany(companyId: string): string {

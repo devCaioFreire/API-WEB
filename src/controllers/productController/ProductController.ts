@@ -4,7 +4,6 @@ import { ParamFilter, ParamProps, ProductService } from '../../services/products
 
 export class ProductController {
   async handle(req: Request, res: Response) {
-    const requisition = req;
     const params = req.query;
     let ParamConfig: ParamProps[] = [];
     const ParamFilter: ParamFilter[] = [];

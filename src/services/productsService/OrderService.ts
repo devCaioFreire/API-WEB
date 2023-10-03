@@ -5,19 +5,21 @@ export interface ParamProps {
   field: string;
   value: any;
 }
+
 export interface ParamFilter {
   field: string;
   value: any;
 }
+
 export interface IQuery {
   where?: Record<string, string | number | boolean>;
   take?: number;
   skip?: number;
   orderBy?: any;
 }
-export class OrderService {
 
-  async get(token:string, selectors?: ParamFilter[], params?: ParamProps[] ) {
+export class OrderService {
+  async get(token: string, selectors?: ParamFilter[], params?: ParamProps[]) {
     try {
       const prisma = createPrismaClientFromJWT(token!);
       const query: IQuery = { orderBy: { id: 'asc' }, skip: 0, take: 20, where: {} };
@@ -53,7 +55,7 @@ export class OrderService {
         //Calculando o Skip
         query.skip = (query.skip ?? 0) * (query.take ?? 0);
       }
-      
+
       const produtos = await prisma.pedidos_venda.findMany({ where: query.where, skip: query.skip, take: query.take, orderBy: query.orderBy });
       prisma.$disconnect();
       return produtos;
@@ -62,6 +64,7 @@ export class OrderService {
       throw new ErrorResponse(400, 'Bad Request nos produtos');
     }
   }
+
   ParamPropsFormater(Params: ParamFilter[]) {
     for (const param of Params) {
       if (param.value === '' || param.value === undefined || param.value === null) {

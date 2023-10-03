@@ -10,7 +10,7 @@ export class OrderItemsController {
     let { authorization } = req.headers;
     if (!authorization) throw new Error('Token Invalid Or Not Found');
     authorization = authorization.split(' ')[1];
-    
+
     const params = req.query;
     let ParamConfig: ParamProps[] = [];
     const ParamFilter: ParamFilter[] = [];
@@ -33,7 +33,7 @@ export class OrderItemsController {
       // Recupere o código EAN dos parâmetros da URL
 
       const orderItemsService = new OrderItemsService();
-      const Order = await orderItemsService.get(authorization , orderItemsService.ParamPropsFormater(ParamFilter), ParamConfig);
+      const Order = await orderItemsService.get(authorization, orderItemsService.ParamPropsFormater(ParamFilter), ParamConfig);
       if (!Order) {
         return res.status(404).json({ error: 'Produto não encontrado' });
       }

@@ -1,4 +1,4 @@
-import { prismaMain } from "../../prisma";
+import { createPrismaClientFromJWT } from "../../prisma";
 
 interface UpdateCoupomStatusRequest {
   id: number;
@@ -6,13 +6,18 @@ interface UpdateCoupomStatusRequest {
 }
 
 export class UpdateCoupomStatusService {
-  async execute({ id, status }: UpdateCoupomStatusRequest) {
+  async execute({ id, status }: UpdateCoupomStatusRequest, token: string) {
+
+    token = token.slice(7)
+    const prisma = createPrismaClientFromJWT(token);
+
     try {
       // Atualizar o status do cupom no banco de dados
-      await prismaMain.pedidos_venda.update({
+      await prisma.pedidos_venda.update({
         where: { id },
         data: { status },
       });
+      prisma.$disconnect();
 
       // Retorna uma mensagem de sucesso
       return { success: true, message: "Coupom status updated successfully." };

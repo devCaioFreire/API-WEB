@@ -5,16 +5,19 @@ export interface ParamProps {
   field: string;
   value: any;
 }
+
 export interface ParamFilter {
   field: string;
   value: any;
 }
+
 export interface IQuery {
   where?: Record<string, string | number | boolean>;
   take?: number;
   skip?: number;
   orderBy?: any;
 }
+
 export class ProductService {
   async execute(ean: string, token: string) {
     const prisma = createPrismaClientFromJWT(token);

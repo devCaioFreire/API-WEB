@@ -40,6 +40,7 @@ export class AddProductService {
         cfop
       }
     });
+    prisma.$disconnect();
     return addProduct;
   }
 }
