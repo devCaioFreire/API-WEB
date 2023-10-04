@@ -15,10 +15,12 @@ export class LoginService {
     const user = await prismaAuth.usuarios.findFirst({
       where: { email }
     })
+    prismaAuth.$disconnect();
 
     const userEmpresa = await prismaAuth.usuarios_x_empresas.findFirst({
       where: { id_usuario: user?.id }
     });
+    prismaAuth.$disconnect();
 
     if (!user) {
       throw new Error('Usuário não encontrado');

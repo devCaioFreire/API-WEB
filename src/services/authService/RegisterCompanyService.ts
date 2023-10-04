@@ -24,6 +24,7 @@ interface CompanyData {
 export class CompanyService {
   async create(data: CompanyData) {
     const existingCompany = await prismaAuth.empresas.findFirst({ where: { cnpj: data.cnpj } });
+    prismaAuth.$disconnect();
 
     if (existingCompany) {
       throw new Error("A empresa com este CNPJ já está registrada.");

@@ -20,7 +20,7 @@ export class CancelCoupomService {
       take: 10,
       orderBy: { data_criacao: "desc" },
     })
-    prisma.$disconnect;
+    prisma.$disconnect();
     return cancelCoupom;
   }
 } 

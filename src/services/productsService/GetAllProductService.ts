@@ -1,9 +1,13 @@
-import { prismaMain } from "../../prisma";
+import { createPrismaClientFromJWT } from "../../prisma";
 
 export class AllProductsService {
-  async execute(offset = 0, limit = 20) {
+  async execute(offset = 0, limit = 20, token: string) {
+
+    token = token.slice(7)
+    const prisma = createPrismaClientFromJWT(token);
+
     try {
-      const products = await prismaMain.produtos.findMany({
+      const products = await prisma.produtos.findMany({
         skip: offset,
         take: limit,
       });

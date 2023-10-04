@@ -1,12 +1,15 @@
 import { Request, Response } from "express";
-import { ErrorResponse } from "../../services/errorService/ErrorService";
 import { OrderService } from "../../services/productsService/OrderService";
 import { ParamFilter, ParamProps } from '../../services/productsService/ProductService';
 
 
 export class OrderController {
   async handle(req: Request, res: Response) {
-    const requisition = req;
+
+    let { authorization } = req.headers;
+    if (!authorization) throw new Error('Token Invalid Or Not Found');
+    authorization = authorization.split(' ')[1];
+
     const params = req.query;
     let ParamConfig: ParamProps[] = [];
     const ParamFilter: ParamFilter[] = [];
@@ -26,11 +29,8 @@ export class OrderController {
         });
       }
 
-      // Recupere o código EAN dos parâmetros da URL
-      if (!requisition.headers.authorization) throw new ErrorResponse(400,'Bad Resquest - Token not found');
-      
       const orderService = new OrderService();
-      const Order = await orderService.get(requisition.headers.authorization, orderService.ParamPropsFormater(ParamFilter), ParamConfig);
+      const Order = await orderService.get(authorization, orderService.ParamPropsFormater(ParamFilter), ParamConfig);
       if (!Order) {
         return res.status(404).json({ error: 'Produto não encontrado' });
       }

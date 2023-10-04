@@ -62,6 +62,7 @@ export class RegisterService {
         id_grupo_usuario: id_grupo_usuario
       },
     });
+    prismaAuth.$disconnect();
 
     return user;
   }
