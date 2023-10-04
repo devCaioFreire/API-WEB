@@ -1,12 +1,14 @@
-import { prismaMain } from "../../prisma";
+import { createPrismaClientFromJWT } from "../../prisma";
 
-export async function getLastProductService() {
+export async function getLastProductService(token: string) {
+  const prisma = createPrismaClientFromJWT(token);
   try {
-    const lastProduct = await prismaMain.produtos.findFirst({
+    const lastProduct = await prisma.produtos.findFirst({
       orderBy: {
         id: 'desc',
       },
     });
+    prisma.$disconnect();
 
     if (lastProduct) {
       const lastProductID = Number(lastProduct.id);

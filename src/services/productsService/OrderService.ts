@@ -1,4 +1,4 @@
-import { prismaMain } from "../../prisma";
+import { createPrismaClientFromJWT } from "../../prisma";
 import { ErrorResponse } from "../errorService/ErrorService";
 
 export interface ParamProps {
@@ -19,9 +19,9 @@ export interface IQuery {
 }
 
 export class OrderService {
-
-  async get(selectors?: ParamFilter[], params?: ParamProps[]) {
+  async get(token: string, selectors?: ParamFilter[], params?: ParamProps[]) {
     try {
+      const prisma = createPrismaClientFromJWT(token!);
       const query: IQuery = { orderBy: { id: 'asc' }, skip: 0, take: 20, where: {} };
       //Criando o Where
       if (selectors && selectors.length > 0) {
@@ -61,14 +61,16 @@ export class OrderService {
         //Calculando o Skip
         query.skip = (query.skip ?? 0) * (query.take ?? 0);
       }
-      const produtos = await prismaMain.pedidos_venda.findMany({ where: query.where, skip: query.skip, take: query.take, orderBy: query.orderBy });
-      prismaMain.$disconnect();
+
+      const produtos = await prisma.pedidos_venda.findMany({ where: query.where, skip: query.skip, take: query.take, orderBy: query.orderBy });
+      prisma.$disconnect();
       return produtos;
     } catch (error) {
       console.log(error);
       throw new ErrorResponse(400, 'Bad Request nos produtos');
     }
   }
+
   ParamPropsFormater(Params: ParamFilter[]) {
     for (const param of Params) {
       if (param.value === '' || param.value === undefined || param.value === null) {

@@ -1,6 +1,7 @@
 import { Router } from "express";
 import { LoginController } from "./controllers/authController/LoginController";
-import { AuthRegisterController } from "./controllers/authController/RegisterController";
+import { CompanyController } from "./controllers/authController/RegisterCompanyController";
+import { RegisterController } from "./controllers/authController/RegisterController";
 import { CancelCoupomController } from "./controllers/coupomController/CancelCoupomController";
 import { UpdateCoupomStatusController } from "./controllers/coupomController/CancelCoupomUpdate";
 import { AddProductController } from "./controllers/productController/AddProductController";
@@ -33,10 +34,14 @@ router.get("/getEANProductFilter/:ean", new GetEANProductsController().handle);
 
 // POST
 router.post("/login", new LoginController().handle);
-router.post("/register", new AuthRegisterController().handle);
+// router.post("/register", new AuthRegisterController().handle);
 router.post("/dataSale", new DataSaleController().handle);
 router.post("/updateCoupomStatus", new UpdateCoupomStatusController().handle);
 router.post("/addProduct", new AddProductController().handle);
+
+// TESTING
+router.post("/registerUser", new RegisterController().handle);
+router.post("/companies", new CompanyController().create);
 
 // UPDATE
 router.post("/updateProduct", new UpdateProductController().handle);

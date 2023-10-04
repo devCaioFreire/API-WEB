@@ -4,10 +4,13 @@ import { ParamFilter, ParamProps, ProductService } from '../../services/products
 
 export class ProductController {
   async handle(req: Request, res: Response) {
-    const requisition = req;
     const params = req.query;
     let ParamConfig: ParamProps[] = [];
     const ParamFilter: ParamFilter[] = [];
+
+    let { authorization } = req.headers;
+    if (!authorization) throw new Error('Token Invalid Or Not Found');
+    authorization = authorization.split(' ')[1];
 
     Object.entries(params).map(([field, value]) => (
       ParamConfig.push({ field: field, value: value })
@@ -27,7 +30,7 @@ export class ProductController {
       // Recupere o código EAN dos parâmetros da URL
 
       const productService = new ProductService();
-      const product = await productService.get(productService.ParamPropsFormater(ParamFilter), ParamConfig);
+      const product = await productService.get(authorization, productService.ParamPropsFormater(ParamFilter), ParamConfig);
       if (!product) {
         return res.status(404).json({ error: 'Produto não encontrado' });
       }

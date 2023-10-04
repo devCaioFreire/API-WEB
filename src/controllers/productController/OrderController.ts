@@ -5,7 +5,11 @@ import { ParamFilter, ParamProps } from '../../services/productsService/ProductS
 
 export class OrderController {
   async handle(req: Request, res: Response) {
-    const requisition = req;
+
+    let { authorization } = req.headers;
+    if (!authorization) throw new Error('Token Invalid Or Not Found');
+    authorization = authorization.split(' ')[1];
+
     const params = req.query;
     let ParamConfig: ParamProps[] = [];
     const ParamFilter: ParamFilter[] = [];
@@ -25,10 +29,8 @@ export class OrderController {
         });
       }
 
-      // Recupere o código EAN dos parâmetros da URL
-
       const orderService = new OrderService();
-      const Order = await orderService.get(orderService.ParamPropsFormater(ParamFilter), ParamConfig);
+      const Order = await orderService.get(authorization, orderService.ParamPropsFormater(ParamFilter), ParamConfig);
       if (!Order) {
         return res.status(404).json({ error: 'Produto não encontrado' });
       }

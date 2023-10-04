@@ -7,6 +7,7 @@ interface LoginData {
   ultimo_nome?: string;
   email: string;
   senha: string;
+  id_empresa?: number;
 }
 
 export class LoginService {
@@ -14,23 +15,30 @@ export class LoginService {
     const user = await prismaAuth.usuarios.findFirst({
       where: { email }
     })
+    prismaAuth.$disconnect();
+
+    const userEmpresa = await prismaAuth.usuarios_x_empresas.findFirst({
+      where: { id_usuario: user?.id }
+    });
+    prismaAuth.$disconnect();
 
     if (!user) {
       throw new Error('Usuário não encontrado');
     }
 
-    const passwordMatch = await bcrypt.compare(senha, user.senha!);
+    const passwordMatch = await bcrypt.compareSync(senha, user.senha!);
 
     if (!passwordMatch) {
       throw new Error('Credenciais inválidas');
     }
-    const token = generateToken(user);
+
+    const token = generateToken(user, userEmpresa!.id_empresa);
 
     return { user, token };
   }
 }
 
-function generateToken(user: any): string {
+function generateToken(user: any, id_company?: number): string {
   const secretKey = process.env.JWT_SECRET;
 
   const token = jwt.sign(
@@ -39,13 +47,9 @@ function generateToken(user: any): string {
       email: user.email,
       name: user.nome,
       lastName: user.ultimo_nome,
+      id_company: id_company
     },
     secretKey!);
 
   return token;
 }
-
-// function generateUniqueToken() {
-//   const uniqueToken = randomBytes(64).toString('hex');
-//   return uniqueToken;
-// }

@@ -1,12 +1,13 @@
 import cors from "cors";
 import express, { NextFunction, Request, Response } from "express";
+import { prismaMiddleware } from "./middlewares/MultiTenant/MultiTenant";
 import { router } from "./routes";
 
 const app = express();
 app.use(express.json());
 app.use(cors());
 
-app.use(router);
+app.use(router, prismaMiddleware);
 
 app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
   if (err instanceof Error) {

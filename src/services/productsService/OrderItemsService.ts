@@ -1,33 +1,28 @@
-import { prismaMain } from "../../prisma";
+import { createPrismaClientFromJWT } from "../../prisma";
 import { ErrorResponse } from "../errorService/ErrorService";
 
 export interface ParamProps {
   field: string;
   value: any;
 }
+
 export interface ParamFilter {
   field: string;
   value: any;
 }
+
 export interface IQuery {
   where?: Record<string, string | number | boolean>;
   take?: number;
   skip?: number;
   orderBy?: any;
 }
-export class OrderItemsService {
-  // async execute(id: number) {
-  //   try {
-  //     const orders = await prismaMain.pedidos_venda_itens.findMany({
-  //       where: { pedido_id: id }
-  //     });
-  //     return orders;
-  //   } catch (err) {
-  //     throw new Error('Erro ao buscar produtos no banco de dados');
-  //   }
-  // }
 
-  async get(selectors?: ParamFilter[], params?: ParamProps[]) {
+export class OrderItemsService {
+  async get(token: string, selectors?: ParamFilter[], params?: ParamProps[], ) {
+
+    const prisma = createPrismaClientFromJWT(token);
+
     try {
       const query: IQuery = { orderBy: { id: 'asc' }, skip: 0, take: 1000, where: {} };
       //Criando o Where
@@ -62,14 +57,15 @@ export class OrderItemsService {
         //Calculando o Skip
         query.skip = (query.skip ?? 0) * (query.take ?? 0);
       }
-      const orders = await prismaMain.pedidos_venda_itens.findMany({ where: query.where, skip: query.skip, take: query.take, orderBy: query.orderBy });
-      prismaMain.$disconnect();
+      const orders = await prisma.pedidos_venda_itens.findMany({ where: query.where, skip: query.skip, take: query.take, orderBy: query.orderBy });
+      prisma.$disconnect();
       return orders;
     } catch (error) {
       console.log(error);
       throw new ErrorResponse(400, 'Bad Request on Sales Order');
     }
   }
+
   ParamPropsFormater(Params: ParamFilter[]) {
     for (const param of Params) {
       if (param.value === '' || param.value === undefined || param.value === null) {

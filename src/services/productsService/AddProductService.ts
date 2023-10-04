@@ -1,11 +1,11 @@
-import { prismaMain } from "../../prisma";
+import { createPrismaClientFromJWT } from "../../prisma";
 
 interface ProductProps {
   codProduto: string;
   descricao: string;
   vlrUnCom: number;
   unCom: string;
-  saldo: number;
+  saldo: number | string;
   status: string;
   codEAN: string;
   ncm: string;
@@ -24,8 +24,10 @@ export class AddProductService {
       codEAN,
       ncm,
       cfop
-    }: ProductProps) {
-    const addProduct = await prismaMain.produtos.create({
+    }: ProductProps, token: string) {
+    const prisma = createPrismaClientFromJWT(token);
+
+    const addProduct = await prisma.produtos.create({
       data: {
         codProduto,
         descricao,
@@ -38,6 +40,7 @@ export class AddProductService {
         cfop
       }
     });
+    prisma.$disconnect();
     return addProduct;
   }
 }
