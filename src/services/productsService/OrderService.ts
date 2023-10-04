@@ -28,14 +28,17 @@ export class OrderService {
         query.where = {};
         for (const filter of selectors) {
           if (filter.value === '' || filter.value === undefined || filter.value === null) continue;
+          
           if (filter.field === 'dateInitial') {
-            query.where['data_realizacao'].gte = filter.value;
+            query.where['data_realizacao'] = { ...query.where['data_realizacao'], gte: new Date(filter.value) };
+            continue;
           }
           if (filter.field === 'dateFinal') {
-            query.where['data_realizacao'].lte = filter.value;
+            query.where['data_realizacao'] = { ...query.where['data_realizacao'], lte: new Date(filter.value) };
+            continue;
           }
-          else {
-            query.where[filter.field] = filter.field === 'id' ? parseInt(filter.value) : filter.value;
+          if (filter.field === 'id') {
+            query.where[filter.field] =  parseInt(filter.value);
           }
         }
       }
@@ -62,12 +65,12 @@ export class OrderService {
         query.skip = (query.skip ?? 0) * (query.take ?? 0);
       }
 
-      const produtos = await prisma.pedidos_venda.findMany({ where: query.where, skip: query.skip, take: query.take, orderBy: query.orderBy });
+      const pedidos = await prisma.pedidos_venda.findMany({ where: query.where, skip: query.skip, take: query.take, orderBy: query.orderBy });
       prisma.$disconnect();
-      return produtos;
+      return pedidos;
     } catch (error) {
       console.log(error);
-      throw new ErrorResponse(400, 'Bad Request nos produtos');
+      throw new ErrorResponse(400, 'Bad Request nos pedidos');
     }
   }
 
