@@ -12,7 +12,7 @@ export interface ParamFilter {
 }
 
 export interface IQuery {
-  where?: Record<string, string | number | boolean | { gte: any } | { lte: any }>;
+  where?: Record<string, any >;
   take?: number;
   skip?: number;
   orderBy?: any;
@@ -20,19 +20,19 @@ export interface IQuery {
 
 export class OrderService {
   async get(token: string, selectors?: ParamFilter[], params?: ParamProps[]) {
-    try {
+    try {     
       const prisma = createPrismaClientFromJWT(token!);
-      const query: IQuery = { orderBy: { id: 'asc' }, skip: 0, take: 20, where: {} };
+      const query: IQuery = { orderBy: { id: 'asc' }, skip: 0, take: 20, where: {}} ;
       //Criando o Where
       if (selectors && selectors.length > 0) {
         query.where = {};
         for (const filter of selectors) {
           if (filter.value === '' || filter.value === undefined || filter.value === null) continue;
           if (filter.field === 'dateInitial') {
-            query.where['data_realizacao'] = { gte: filter.value };
+            query.where['data_realizacao'].gte = filter.value;
           }
           if (filter.field === 'dateFinal') {
-            query.where['data_realizacao'] = { lte: filter.value };
+            query.where['data_realizacao'].lte = filter.value;
           }
           else {
             query.where[filter.field] = filter.field === 'id' ? parseInt(filter.value) : filter.value;
