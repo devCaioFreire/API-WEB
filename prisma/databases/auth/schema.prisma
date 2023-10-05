@@ -75,7 +75,7 @@ model usuarios {
   senha               String?               @db.VarChar(250)
   celular             String?               @db.VarChar(14)
   status              String?               @default("A") @db.Char(1)
-  user_token          String                @unique(map: "user_token") @db.VarChar(128)
+  user_token          String                @unique(map: "user_token")
   exclusivo           String?               @default("N") @db.Char(1)
   usuarios_x_empresas usuarios_x_empresas[]
 }
