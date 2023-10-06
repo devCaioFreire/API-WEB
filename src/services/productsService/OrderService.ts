@@ -30,13 +30,16 @@ export class OrderService {
           if (filter.value === '' || filter.value === undefined || filter.value === null) continue;
           
           if (filter.field === 'dateInitial') {
-            query.where['data_realizacao'] = { ...query.where['data_realizacao'], gte: new Date(filter.value) };
+            const dateCondition = query.where['data_realizacao'] || {};
+            query.where['data_realizacao'] = { ...dateCondition, gte: new Date(filter.value) };
             continue;
           }
           if (filter.field === 'dateFinal') {
-            query.where['data_realizacao'] = { ...query.where['data_realizacao'], lte: new Date(filter.value) };
+            const dateCondition = query.where['data_realizacao'] || {};
+            query.where['data_realizacao'] = { ...dateCondition, lte: new Date(filter.value) };
             continue;
           }
+          
            else {
             query.where[filter.field] = filter.field === 'id' ? parseInt(filter.value) : filter.value;
           }
