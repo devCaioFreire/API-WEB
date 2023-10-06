@@ -622,8 +622,7 @@ const config = {
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
-    "rootEnvPath": "../../../.env",
-    "schemaEnvPath": "../../../.env"
+    "rootEnvPath": null
   },
   "relativePath": "../..",
   "clientVersion": "5.1.1",
@@ -633,7 +632,7 @@ const config = {
   ],
   "activeProvider": "mysql",
   "dataProxy": false,
-  "postinstall": false
+  "postinstall": true
 }
 
 const fs = require('fs')
