@@ -17,7 +17,6 @@ import { GetEANProductsController } from "./controllers/productController/filter
 import { DataSaleController } from "./controllers/salesController/DataSaleController";
 import { getNextOrderNumberController } from "./controllers/salesController/OrderController";
 import { ErrorMiddleware } from "./middlewares/errorMiddleware/ErrorMiddleware";
-import { BalanceController } from "./controllers/salesController/BalanceController";
 
 const router = Router();
 const errorMiddleware = new ErrorMiddleware();
@@ -39,14 +38,13 @@ router.post("/login", new LoginController().handle);
 router.post("/dataSale", new DataSaleController().handle);
 router.post("/updateCoupomStatus", new UpdateCoupomStatusController().handle);
 router.post("/addProduct", new AddProductController().handle);
-router.post("/addBalance/", errorMiddleware.handleAsync(new BalanceController().handle));
 
 // TESTING
-router.post("/registerUser", errorMiddleware.handleAsync(new RegisterController().handle));
-router.post("/registerCompanies", errorMiddleware.handleAsync(new CompanyController().create));
+router.post("/registerUser", new RegisterController().handle);
+router.post("/companies", new CompanyController().create);
 
 // UPDATE
-router.post("/updateProduct", errorMiddleware.handleAsync(new UpdateProductController().handle));
+router.post("/updateProduct", new UpdateProductController().handle);
 
 // DELETE
 router.delete("/deleteProduct/:id", new DeleteProductController().handle);

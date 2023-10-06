@@ -183,7 +183,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "C:\\Users\\usuario027\\Desktop\\SoftClever\\API-WEB\\prisma\\databases\\auth",
+      "value": "C:\\Users\\Natan\\Documents\\GitHub\\API-WEB\\prisma\\databases\\auth",
       "fromEnvVar": null
     },
     "config": {
@@ -214,7 +214,8 @@ const config = {
     "db"
   ],
   "activeProvider": "mysql",
-  "dataProxy": false
+  "dataProxy": false,
+  "postinstall": false
 }
 
 const fs = require('fs')
