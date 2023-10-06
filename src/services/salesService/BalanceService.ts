@@ -45,6 +45,8 @@ interface ProductMovimentacion {
   pm_usuario_id: number | null;
   pm_quantidade: number | null;
   pm_tipo_movimentacao: string;
+  pm_numero_nota_fiscal: number | null;
+  pm_observacao: string | null;
 }
 
 export interface ParamFilter {

@@ -23,14 +23,6 @@ interface DataSaleRequest {
   itens: Array<DataItems>
 }
 
-interface ProductMovimentacion {
-  pm_pedido_venda_id: number;
-  pm_produto_id: number;
-  pm_usuario_id: number | null;
-  pm_quantidade: number | null;
-  pm_tipo_movimentacao: string;
-}
-
 export class DataSaleService {
   async create(
     {
@@ -83,7 +75,9 @@ export class DataSaleService {
         pm_produto_id: produto_id,
         pm_usuario_id: dataSales.usuario_id,
         pm_quantidade: quantidade,
-        pm_tipo_movimentacao: 'Venda'
+        pm_tipo_movimentacao: 'Venda',
+        pm_numero_nota_fiscal: null,
+        pm_observacao: null
       };
       // Adicione o objeto à matriz productMovimentacion
       productMovimentacion.push(productMov);
