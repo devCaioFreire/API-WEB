@@ -1,5 +1,5 @@
-import { createPrismaClientFromJWT } from "../../prisma";
-import { BalanceService } from "./BalanceService";
+import { prismaMain } from "../../prisma";
+import { atualizarSaldo, criarMovimentacao } from "./BalanceControl";
 
 interface DataItems {
   produto_id: number;
@@ -11,7 +11,6 @@ interface DataItems {
 };
 
 interface DataSaleRequest {
-  usuario_id: number,
   cpf_cnpj: string;
   status: string;
   valor_bruto: number;
@@ -19,20 +18,13 @@ interface DataSaleRequest {
   forma_pagamento: string;
   desconto: number;
   troco: number;
+  vendedor_id: number;
   pagamento: number;
   itens: Array<DataItems>
 }
 
-interface ProductMovimentacion {
-  pm_pedido_venda_id: number;
-  pm_produto_id: number;
-  pm_usuario_id: number | null;
-  pm_quantidade: number | null;
-  pm_tipo_movimentacao: string;
-}
-
 export class DataSaleService {
-  async create(
+  async execute(
     {
       cpf_cnpj,
       valor_bruto,
@@ -40,25 +32,24 @@ export class DataSaleService {
       forma_pagamento,
       desconto,
       troco,
-      usuario_id,
+      vendedor_id,
       pagamento,
       itens,
       status
-    }: DataSaleRequest, token:string) {
-      const prisma = createPrismaClientFromJWT(token);
-      const dataSales = await prisma.pedidos_venda.create({
-        data: {
-          status,
-          usuario_id,
-          valor_bruto,
-          valor_liquido,
-          forma_pagamento,
-          desconto,
-          pagamento,
-          troco,
-          cpf_cnpj: cpf_cnpj,
-          itens: {
-            create: itens.map(item => ({
+    }: DataSaleRequest) {
+    const dataSales = await prismaMain.pedidos_venda.create({
+      data: {
+        status,
+        vendedor_id,
+        valor_bruto,
+        valor_liquido,
+        forma_pagamento,
+        desconto,
+        pagamento,
+        troco,
+        cpf_cnpj: cpf_cnpj,
+        itens: {
+          create: itens.map(item => ({
             produto_id: item.produto_id,
             ean: item.ean,
             descricao: item.descricao,
@@ -72,27 +63,14 @@ export class DataSaleService {
         itens: true,
       }
     })
-    const productMovimentacion = []; // Inicialize a matriz vazia
-    const produtos = dataSales.itens;
 
-    for (const produto of produtos) {
-      const { produto_id, quantidade } = produto;
-      // Crie o objeto de movimentação para cada produto vendido
-      const productMov = {
-        pm_pedido_venda_id: dataSales.id,
-        pm_produto_id: produto_id,
-        pm_usuario_id: dataSales.usuario_id,
-        pm_quantidade: quantidade,
-        pm_tipo_movimentacao: 'Venda'
-      };
-      // Adicione o objeto à matriz productMovimentacion
-      productMovimentacion.push(productMov);
+    for (const item of itens) {
+      const { produto_id, quantidade } = item;
+
+      await criarMovimentacao(dataSales.id, produto_id, quantidade);
+      await atualizarSaldo(produto_id, quantidade);
     }
 
-    const balanceService = new BalanceService();
-    await balanceService.create(productMovimentacion, token);
-    
-    prisma.$disconnect();
     return dataSales;
   }
 }

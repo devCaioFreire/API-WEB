@@ -2913,40 +2913,6 @@ export namespace Prisma {
 
 
   /**
-   * Count Type ProdutosCountOutputType
-   */
-
-  export type ProdutosCountOutputType = {
-    produtos_movimentacoes: number
-  }
-
-  export type ProdutosCountOutputTypeSelect<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    produtos_movimentacoes?: boolean | ProdutosCountOutputTypeCountProdutos_movimentacoesArgs
-  }
-
-  // Custom InputTypes
-
-  /**
-   * ProdutosCountOutputType without action
-   */
-  export type ProdutosCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the ProdutosCountOutputType
-     */
-    select?: ProdutosCountOutputTypeSelect<ExtArgs> | null
-  }
-
-
-  /**
-   * ProdutosCountOutputType without action
-   */
-  export type ProdutosCountOutputTypeCountProdutos_movimentacoesArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    where?: produtos_movimentacoesWhereInput
-  }
-
-
-
-  /**
    * Models
    */
 
@@ -5329,117 +5295,117 @@ export namespace Prisma {
   }
 
   export type Produtos_movimentacoesAvgAggregateOutputType = {
-    pm_id: number | null
-    pm_pedido_venda_id: number | null
-    pm_produto_id: number | null
-    pm_usuario_id: number | null
-    pm_saldo_anterior: Decimal | null
-    pm_saldo_atual: Decimal | null
-    pm_quantidade: Decimal | null
+    id: number | null
+    pedido_venda_id: number | null
+    produto_id: number | null
+    saldo_anterior: number | null
+    saldo_atual: number | null
+    quantidade: number | null
+    pedidos_vendaId: number | null
   }
 
   export type Produtos_movimentacoesSumAggregateOutputType = {
-    pm_id: number | null
-    pm_pedido_venda_id: number | null
-    pm_produto_id: number | null
-    pm_usuario_id: number | null
-    pm_saldo_anterior: Decimal | null
-    pm_saldo_atual: Decimal | null
-    pm_quantidade: Decimal | null
+    id: number | null
+    pedido_venda_id: number | null
+    produto_id: number | null
+    saldo_anterior: number | null
+    saldo_atual: number | null
+    quantidade: number | null
+    pedidos_vendaId: number | null
   }
 
   export type Produtos_movimentacoesMinAggregateOutputType = {
-    pm_id: number | null
-    pm_pedido_venda_id: number | null
-    pm_produto_id: number | null
-    pm_usuario_id: number | null
-    pm_saldo_anterior: Decimal | null
-    pm_saldo_atual: Decimal | null
-    pm_quantidade: Decimal | null
-    pm_tipo_movimentacao: string | null
-    pm_data_hora: Date | null
+    id: number | null
+    pedido_venda_id: number | null
+    produto_id: number | null
+    saldo_anterior: number | null
+    saldo_atual: number | null
+    quantidade: number | null
+    tipo_movimentacao: string | null
+    data_hora: Date | null
+    pedidos_vendaId: number | null
   }
 
   export type Produtos_movimentacoesMaxAggregateOutputType = {
-    pm_id: number | null
-    pm_pedido_venda_id: number | null
-    pm_produto_id: number | null
-    pm_usuario_id: number | null
-    pm_saldo_anterior: Decimal | null
-    pm_saldo_atual: Decimal | null
-    pm_quantidade: Decimal | null
-    pm_tipo_movimentacao: string | null
-    pm_data_hora: Date | null
+    id: number | null
+    pedido_venda_id: number | null
+    produto_id: number | null
+    saldo_anterior: number | null
+    saldo_atual: number | null
+    quantidade: number | null
+    tipo_movimentacao: string | null
+    data_hora: Date | null
+    pedidos_vendaId: number | null
   }
 
   export type Produtos_movimentacoesCountAggregateOutputType = {
-    pm_id: number
-    pm_pedido_venda_id: number
-    pm_produto_id: number
-    pm_usuario_id: number
-    pm_saldo_anterior: number
-    pm_saldo_atual: number
-    pm_quantidade: number
-    pm_tipo_movimentacao: number
-    pm_data_hora: number
+    id: number
+    pedido_venda_id: number
+    produto_id: number
+    saldo_anterior: number
+    saldo_atual: number
+    quantidade: number
+    tipo_movimentacao: number
+    data_hora: number
+    pedidos_vendaId: number
     _all: number
   }
 
 
   export type Produtos_movimentacoesAvgAggregateInputType = {
-    pm_id?: true
-    pm_pedido_venda_id?: true
-    pm_produto_id?: true
-    pm_usuario_id?: true
-    pm_saldo_anterior?: true
-    pm_saldo_atual?: true
-    pm_quantidade?: true
+    id?: true
+    pedido_venda_id?: true
+    produto_id?: true
+    saldo_anterior?: true
+    saldo_atual?: true
+    quantidade?: true
+    pedidos_vendaId?: true
   }
 
   export type Produtos_movimentacoesSumAggregateInputType = {
-    pm_id?: true
-    pm_pedido_venda_id?: true
-    pm_produto_id?: true
-    pm_usuario_id?: true
-    pm_saldo_anterior?: true
-    pm_saldo_atual?: true
-    pm_quantidade?: true
+    id?: true
+    pedido_venda_id?: true
+    produto_id?: true
+    saldo_anterior?: true
+    saldo_atual?: true
+    quantidade?: true
+    pedidos_vendaId?: true
   }
 
   export type Produtos_movimentacoesMinAggregateInputType = {
-    pm_id?: true
-    pm_pedido_venda_id?: true
-    pm_produto_id?: true
-    pm_usuario_id?: true
-    pm_saldo_anterior?: true
-    pm_saldo_atual?: true
-    pm_quantidade?: true
-    pm_tipo_movimentacao?: true
-    pm_data_hora?: true
+    id?: true
+    pedido_venda_id?: true
+    produto_id?: true
+    saldo_anterior?: true
+    saldo_atual?: true
+    quantidade?: true
+    tipo_movimentacao?: true
+    data_hora?: true
+    pedidos_vendaId?: true
   }
 
   export type Produtos_movimentacoesMaxAggregateInputType = {
-    pm_id?: true
-    pm_pedido_venda_id?: true
-    pm_produto_id?: true
-    pm_usuario_id?: true
-    pm_saldo_anterior?: true
-    pm_saldo_atual?: true
-    pm_quantidade?: true
-    pm_tipo_movimentacao?: true
-    pm_data_hora?: true
+    id?: true
+    pedido_venda_id?: true
+    produto_id?: true
+    saldo_anterior?: true
+    saldo_atual?: true
+    quantidade?: true
+    tipo_movimentacao?: true
+    data_hora?: true
+    pedidos_vendaId?: true
   }
 
   export type Produtos_movimentacoesCountAggregateInputType = {
-    pm_id?: true
-    pm_pedido_venda_id?: true
-    pm_produto_id?: true
-    pm_usuario_id?: true
-    pm_saldo_anterior?: true
-    pm_saldo_atual?: true
-    pm_quantidade?: true
-    pm_tipo_movimentacao?: true
-    pm_data_hora?: true
+    id?: true
+    pedido_venda_id?: true
+    produto_id?: true
+    saldo_anterior?: true
+    saldo_atual?: true
+    quantidade?: true
+    tipo_movimentacao?: true
+    data_hora?: true
+    pedidos_vendaId?: true
     _all?: true
   }
 
@@ -5530,15 +5496,15 @@ export namespace Prisma {
   }
 
   export type Produtos_movimentacoesGroupByOutputType = {
-    pm_id: number
-    pm_pedido_venda_id: number | null
-    pm_produto_id: number | null
-    pm_usuario_id: number | null
-    pm_saldo_anterior: Decimal | null
-    pm_saldo_atual: Decimal | null
-    pm_quantidade: Decimal | null
-    pm_tipo_movimentacao: string | null
-    pm_data_hora: Date | null
+    id: number
+    pedido_venda_id: number | null
+    produto_id: number
+    saldo_anterior: number | null
+    saldo_atual: number | null
+    quantidade: number | null
+    tipo_movimentacao: string | null
+    data_hora: Date
+    pedidos_vendaId: number | null
     _count: Produtos_movimentacoesCountAggregateOutputType | null
     _avg: Produtos_movimentacoesAvgAggregateOutputType | null
     _sum: Produtos_movimentacoesSumAggregateOutputType | null
@@ -5561,34 +5527,32 @@ export namespace Prisma {
 
 
   export type produtos_movimentacoesSelect<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    pm_id?: boolean
-    pm_pedido_venda_id?: boolean
-    pm_produto_id?: boolean
-    pm_usuario_id?: boolean
-    pm_saldo_anterior?: boolean
-    pm_saldo_atual?: boolean
-    pm_quantidade?: boolean
-    pm_tipo_movimentacao?: boolean
-    pm_data_hora?: boolean
+    id?: boolean
+    pedido_venda_id?: boolean
+    produto_id?: boolean
+    saldo_anterior?: boolean
+    saldo_atual?: boolean
+    quantidade?: boolean
+    tipo_movimentacao?: boolean
+    data_hora?: boolean
+    pedidos_vendaId?: boolean
     pedidos_venda?: boolean | produtos_movimentacoes$pedidos_vendaArgs<ExtArgs>
-    produtos?: boolean | produtos_movimentacoes$produtosArgs<ExtArgs>
   }, ExtArgs["result"]["produtos_movimentacoes"]>
 
   export type produtos_movimentacoesSelectScalar = {
-    pm_id?: boolean
-    pm_pedido_venda_id?: boolean
-    pm_produto_id?: boolean
-    pm_usuario_id?: boolean
-    pm_saldo_anterior?: boolean
-    pm_saldo_atual?: boolean
-    pm_quantidade?: boolean
-    pm_tipo_movimentacao?: boolean
-    pm_data_hora?: boolean
+    id?: boolean
+    pedido_venda_id?: boolean
+    produto_id?: boolean
+    saldo_anterior?: boolean
+    saldo_atual?: boolean
+    quantidade?: boolean
+    tipo_movimentacao?: boolean
+    data_hora?: boolean
+    pedidos_vendaId?: boolean
   }
 
   export type produtos_movimentacoesInclude<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     pedidos_venda?: boolean | produtos_movimentacoes$pedidos_vendaArgs<ExtArgs>
-    produtos?: boolean | produtos_movimentacoes$produtosArgs<ExtArgs>
   }
 
 
@@ -5596,18 +5560,17 @@ export namespace Prisma {
     name: "produtos_movimentacoes"
     objects: {
       pedidos_venda: Prisma.$pedidos_vendaPayload<ExtArgs> | null
-      produtos: Prisma.$produtosPayload<ExtArgs> | null
     }
     scalars: $Extensions.GetResult<{
-      pm_id: number
-      pm_pedido_venda_id: number | null
-      pm_produto_id: number | null
-      pm_usuario_id: number | null
-      pm_saldo_anterior: Prisma.Decimal | null
-      pm_saldo_atual: Prisma.Decimal | null
-      pm_quantidade: Prisma.Decimal | null
-      pm_tipo_movimentacao: string | null
-      pm_data_hora: Date | null
+      id: number
+      pedido_venda_id: number | null
+      produto_id: number
+      saldo_anterior: number | null
+      saldo_atual: number | null
+      quantidade: number | null
+      tipo_movimentacao: string | null
+      data_hora: Date
+      pedidos_vendaId: number | null
     }, ExtArgs["result"]["produtos_movimentacoes"]>
     composites: {}
   }
@@ -5700,8 +5663,8 @@ export namespace Prisma {
      * // Get first 10 Produtos_movimentacoes
      * const produtos_movimentacoes = await prisma.produtos_movimentacoes.findMany({ take: 10 })
      * 
-     * // Only select the `pm_id`
-     * const produtos_movimentacoesWithPm_idOnly = await prisma.produtos_movimentacoes.findMany({ select: { pm_id: true } })
+     * // Only select the `id`
+     * const produtos_movimentacoesWithIdOnly = await prisma.produtos_movimentacoes.findMany({ select: { id: true } })
      * 
     **/
     findMany<T extends produtos_movimentacoesFindManyArgs<ExtArgs>>(
@@ -5975,8 +5938,6 @@ export namespace Prisma {
 
     pedidos_venda<T extends produtos_movimentacoes$pedidos_vendaArgs<ExtArgs> = {}>(args?: Subset<T, produtos_movimentacoes$pedidos_vendaArgs<ExtArgs>>): Prisma__pedidos_vendaClient<$Result.GetResult<Prisma.$pedidos_vendaPayload<ExtArgs>, T, 'findUniqueOrThrow'> | null, null, ExtArgs>;
 
-    produtos<T extends produtos_movimentacoes$produtosArgs<ExtArgs> = {}>(args?: Subset<T, produtos_movimentacoes$produtosArgs<ExtArgs>>): Prisma__produtosClient<$Result.GetResult<Prisma.$produtosPayload<ExtArgs>, T, 'findUniqueOrThrow'> | null, null, ExtArgs>;
-
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -6005,15 +5966,15 @@ export namespace Prisma {
    * Fields of the produtos_movimentacoes model
    */ 
   interface produtos_movimentacoesFieldRefs {
-    readonly pm_id: FieldRef<"produtos_movimentacoes", 'Int'>
-    readonly pm_pedido_venda_id: FieldRef<"produtos_movimentacoes", 'Int'>
-    readonly pm_produto_id: FieldRef<"produtos_movimentacoes", 'Int'>
-    readonly pm_usuario_id: FieldRef<"produtos_movimentacoes", 'Int'>
-    readonly pm_saldo_anterior: FieldRef<"produtos_movimentacoes", 'Decimal'>
-    readonly pm_saldo_atual: FieldRef<"produtos_movimentacoes", 'Decimal'>
-    readonly pm_quantidade: FieldRef<"produtos_movimentacoes", 'Decimal'>
-    readonly pm_tipo_movimentacao: FieldRef<"produtos_movimentacoes", 'String'>
-    readonly pm_data_hora: FieldRef<"produtos_movimentacoes", 'DateTime'>
+    readonly id: FieldRef<"produtos_movimentacoes", 'Int'>
+    readonly pedido_venda_id: FieldRef<"produtos_movimentacoes", 'Int'>
+    readonly produto_id: FieldRef<"produtos_movimentacoes", 'Int'>
+    readonly saldo_anterior: FieldRef<"produtos_movimentacoes", 'Int'>
+    readonly saldo_atual: FieldRef<"produtos_movimentacoes", 'Int'>
+    readonly quantidade: FieldRef<"produtos_movimentacoes", 'Int'>
+    readonly tipo_movimentacao: FieldRef<"produtos_movimentacoes", 'String'>
+    readonly data_hora: FieldRef<"produtos_movimentacoes", 'DateTime'>
+    readonly pedidos_vendaId: FieldRef<"produtos_movimentacoes", 'Int'>
   }
     
 
@@ -6214,7 +6175,7 @@ export namespace Prisma {
     /**
      * The data needed to create a produtos_movimentacoes.
      */
-    data?: XOR<produtos_movimentacoesCreateInput, produtos_movimentacoesUncheckedCreateInput>
+    data: XOR<produtos_movimentacoesCreateInput, produtos_movimentacoesUncheckedCreateInput>
   }
 
 
@@ -6338,22 +6299,6 @@ export namespace Prisma {
      */
     include?: pedidos_vendaInclude<ExtArgs> | null
     where?: pedidos_vendaWhereInput
-  }
-
-
-  /**
-   * produtos_movimentacoes.produtos
-   */
-  export type produtos_movimentacoes$produtosArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the produtos
-     */
-    select?: produtosSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well.
-     */
-    include?: produtosInclude<ExtArgs> | null
-    where?: produtosWhereInput
   }
 
 
@@ -26053,8 +25998,6 @@ export namespace Prisma {
     vlrUnTrib?: boolean
     saldo?: boolean
     status?: boolean
-    produtos_movimentacoes?: boolean | produtos$produtos_movimentacoesArgs<ExtArgs>
-    _count?: boolean | ProdutosCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["produtos"]>
 
   export type produtosSelectScalar = {
@@ -26077,17 +26020,10 @@ export namespace Prisma {
     status?: boolean
   }
 
-  export type produtosInclude<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    produtos_movimentacoes?: boolean | produtos$produtos_movimentacoesArgs<ExtArgs>
-    _count?: boolean | ProdutosCountOutputTypeDefaultArgs<ExtArgs>
-  }
-
 
   export type $produtosPayload<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     name: "produtos"
-    objects: {
-      produtos_movimentacoes: Prisma.$produtos_movimentacoesPayload<ExtArgs>[]
-    }
+    objects: {}
     scalars: $Extensions.GetResult<{
       id: number
       id_sirius: number | null
@@ -26471,7 +26407,6 @@ export namespace Prisma {
   export interface Prisma__produtosClient<T, Null = never, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: 'PrismaPromise';
 
-    produtos_movimentacoes<T extends produtos$produtos_movimentacoesArgs<ExtArgs> = {}>(args?: Subset<T, produtos$produtos_movimentacoesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$produtos_movimentacoesPayload<ExtArgs>, T, 'findMany'> | Null>;
 
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -26532,10 +26467,6 @@ export namespace Prisma {
      */
     select?: produtosSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
-     */
-    include?: produtosInclude<ExtArgs> | null
-    /**
      * Filter, which produtos to fetch.
      */
     where: produtosWhereUniqueInput
@@ -26551,10 +26482,6 @@ export namespace Prisma {
      */
     select?: produtosSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
-     */
-    include?: produtosInclude<ExtArgs> | null
-    /**
      * Filter, which produtos to fetch.
      */
     where: produtosWhereUniqueInput
@@ -26569,10 +26496,6 @@ export namespace Prisma {
      * Select specific fields to fetch from the produtos
      */
     select?: produtosSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well.
-     */
-    include?: produtosInclude<ExtArgs> | null
     /**
      * Filter, which produtos to fetch.
      */
@@ -26619,10 +26542,6 @@ export namespace Prisma {
      */
     select?: produtosSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
-     */
-    include?: produtosInclude<ExtArgs> | null
-    /**
      * Filter, which produtos to fetch.
      */
     where?: produtosWhereInput
@@ -26668,10 +26587,6 @@ export namespace Prisma {
      */
     select?: produtosSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
-     */
-    include?: produtosInclude<ExtArgs> | null
-    /**
      * Filter, which produtos to fetch.
      */
     where?: produtosWhereInput
@@ -26712,10 +26627,6 @@ export namespace Prisma {
      */
     select?: produtosSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
-     */
-    include?: produtosInclude<ExtArgs> | null
-    /**
      * The data needed to create a produtos.
      */
     data: XOR<produtosCreateInput, produtosUncheckedCreateInput>
@@ -26742,10 +26653,6 @@ export namespace Prisma {
      * Select specific fields to fetch from the produtos
      */
     select?: produtosSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well.
-     */
-    include?: produtosInclude<ExtArgs> | null
     /**
      * The data needed to update a produtos.
      */
@@ -26781,10 +26688,6 @@ export namespace Prisma {
      */
     select?: produtosSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
-     */
-    include?: produtosInclude<ExtArgs> | null
-    /**
      * The filter to search for the produtos to update in case it exists.
      */
     where: produtosWhereUniqueInput
@@ -26808,10 +26711,6 @@ export namespace Prisma {
      */
     select?: produtosSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
-     */
-    include?: produtosInclude<ExtArgs> | null
-    /**
      * Filter which produtos to delete.
      */
     where: produtosWhereUniqueInput
@@ -26830,27 +26729,6 @@ export namespace Prisma {
 
 
   /**
-   * produtos.produtos_movimentacoes
-   */
-  export type produtos$produtos_movimentacoesArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the produtos_movimentacoes
-     */
-    select?: produtos_movimentacoesSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well.
-     */
-    include?: produtos_movimentacoesInclude<ExtArgs> | null
-    where?: produtos_movimentacoesWhereInput
-    orderBy?: produtos_movimentacoesOrderByWithRelationInput | produtos_movimentacoesOrderByWithRelationInput[]
-    cursor?: produtos_movimentacoesWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: Produtos_movimentacoesScalarFieldEnum | Produtos_movimentacoesScalarFieldEnum[]
-  }
-
-
-  /**
    * produtos without action
    */
   export type produtosDefaultArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
@@ -26858,10 +26736,6 @@ export namespace Prisma {
      * Select specific fields to fetch from the produtos
      */
     select?: produtosSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well.
-     */
-    include?: produtosInclude<ExtArgs> | null
   }
 
 
@@ -29071,15 +28945,15 @@ export namespace Prisma {
 
 
   export const Produtos_movimentacoesScalarFieldEnum: {
-    pm_id: 'pm_id',
-    pm_pedido_venda_id: 'pm_pedido_venda_id',
-    pm_produto_id: 'pm_produto_id',
-    pm_usuario_id: 'pm_usuario_id',
-    pm_saldo_anterior: 'pm_saldo_anterior',
-    pm_saldo_atual: 'pm_saldo_atual',
-    pm_quantidade: 'pm_quantidade',
-    pm_tipo_movimentacao: 'pm_tipo_movimentacao',
-    pm_data_hora: 'pm_data_hora'
+    id: 'id',
+    pedido_venda_id: 'pedido_venda_id',
+    produto_id: 'produto_id',
+    saldo_anterior: 'saldo_anterior',
+    saldo_atual: 'saldo_atual',
+    quantidade: 'quantidade',
+    tipo_movimentacao: 'tipo_movimentacao',
+    data_hora: 'data_hora',
+    pedidos_vendaId: 'pedidos_vendaId'
   };
 
   export type Produtos_movimentacoesScalarFieldEnum = (typeof Produtos_movimentacoesScalarFieldEnum)[keyof typeof Produtos_movimentacoesScalarFieldEnum]
@@ -29601,16 +29475,16 @@ export namespace Prisma {
 
 
   /**
-   * Reference to a field of type 'Decimal'
+   * Reference to a field of type 'BigInt'
    */
-  export type DecimalFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Decimal'>
+  export type BigIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'BigInt'>
     
 
 
   /**
-   * Reference to a field of type 'BigInt'
+   * Reference to a field of type 'Decimal'
    */
-  export type BigIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'BigInt'>
+  export type DecimalFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Decimal'>
     
 
 
@@ -29900,60 +29774,57 @@ export namespace Prisma {
     AND?: produtos_movimentacoesWhereInput | produtos_movimentacoesWhereInput[]
     OR?: produtos_movimentacoesWhereInput[]
     NOT?: produtos_movimentacoesWhereInput | produtos_movimentacoesWhereInput[]
-    pm_id?: IntFilter<"produtos_movimentacoes"> | number
-    pm_pedido_venda_id?: IntNullableFilter<"produtos_movimentacoes"> | number | null
-    pm_produto_id?: IntNullableFilter<"produtos_movimentacoes"> | number | null
-    pm_usuario_id?: IntNullableFilter<"produtos_movimentacoes"> | number | null
-    pm_saldo_anterior?: DecimalNullableFilter<"produtos_movimentacoes"> | Decimal | DecimalJsLike | number | string | null
-    pm_saldo_atual?: DecimalNullableFilter<"produtos_movimentacoes"> | Decimal | DecimalJsLike | number | string | null
-    pm_quantidade?: DecimalNullableFilter<"produtos_movimentacoes"> | Decimal | DecimalJsLike | number | string | null
-    pm_tipo_movimentacao?: StringNullableFilter<"produtos_movimentacoes"> | string | null
-    pm_data_hora?: DateTimeNullableFilter<"produtos_movimentacoes"> | Date | string | null
+    id?: IntFilter<"produtos_movimentacoes"> | number
+    pedido_venda_id?: IntNullableFilter<"produtos_movimentacoes"> | number | null
+    produto_id?: IntFilter<"produtos_movimentacoes"> | number
+    saldo_anterior?: IntNullableFilter<"produtos_movimentacoes"> | number | null
+    saldo_atual?: IntNullableFilter<"produtos_movimentacoes"> | number | null
+    quantidade?: IntNullableFilter<"produtos_movimentacoes"> | number | null
+    tipo_movimentacao?: StringNullableFilter<"produtos_movimentacoes"> | string | null
+    data_hora?: DateTimeFilter<"produtos_movimentacoes"> | Date | string
+    pedidos_vendaId?: IntNullableFilter<"produtos_movimentacoes"> | number | null
     pedidos_venda?: XOR<Pedidos_vendaNullableRelationFilter, pedidos_vendaWhereInput> | null
-    produtos?: XOR<ProdutosNullableRelationFilter, produtosWhereInput> | null
   }
 
   export type produtos_movimentacoesOrderByWithRelationInput = {
-    pm_id?: SortOrder
-    pm_pedido_venda_id?: SortOrderInput | SortOrder
-    pm_produto_id?: SortOrderInput | SortOrder
-    pm_usuario_id?: SortOrderInput | SortOrder
-    pm_saldo_anterior?: SortOrderInput | SortOrder
-    pm_saldo_atual?: SortOrderInput | SortOrder
-    pm_quantidade?: SortOrderInput | SortOrder
-    pm_tipo_movimentacao?: SortOrderInput | SortOrder
-    pm_data_hora?: SortOrderInput | SortOrder
+    id?: SortOrder
+    pedido_venda_id?: SortOrderInput | SortOrder
+    produto_id?: SortOrder
+    saldo_anterior?: SortOrderInput | SortOrder
+    saldo_atual?: SortOrderInput | SortOrder
+    quantidade?: SortOrderInput | SortOrder
+    tipo_movimentacao?: SortOrderInput | SortOrder
+    data_hora?: SortOrder
+    pedidos_vendaId?: SortOrderInput | SortOrder
     pedidos_venda?: pedidos_vendaOrderByWithRelationInput
-    produtos?: produtosOrderByWithRelationInput
   }
 
   export type produtos_movimentacoesWhereUniqueInput = Prisma.AtLeast<{
-    pm_id?: number
+    id?: number
     AND?: produtos_movimentacoesWhereInput | produtos_movimentacoesWhereInput[]
     OR?: produtos_movimentacoesWhereInput[]
     NOT?: produtos_movimentacoesWhereInput | produtos_movimentacoesWhereInput[]
-    pm_pedido_venda_id?: IntNullableFilter<"produtos_movimentacoes"> | number | null
-    pm_produto_id?: IntNullableFilter<"produtos_movimentacoes"> | number | null
-    pm_usuario_id?: IntNullableFilter<"produtos_movimentacoes"> | number | null
-    pm_saldo_anterior?: DecimalNullableFilter<"produtos_movimentacoes"> | Decimal | DecimalJsLike | number | string | null
-    pm_saldo_atual?: DecimalNullableFilter<"produtos_movimentacoes"> | Decimal | DecimalJsLike | number | string | null
-    pm_quantidade?: DecimalNullableFilter<"produtos_movimentacoes"> | Decimal | DecimalJsLike | number | string | null
-    pm_tipo_movimentacao?: StringNullableFilter<"produtos_movimentacoes"> | string | null
-    pm_data_hora?: DateTimeNullableFilter<"produtos_movimentacoes"> | Date | string | null
+    pedido_venda_id?: IntNullableFilter<"produtos_movimentacoes"> | number | null
+    produto_id?: IntFilter<"produtos_movimentacoes"> | number
+    saldo_anterior?: IntNullableFilter<"produtos_movimentacoes"> | number | null
+    saldo_atual?: IntNullableFilter<"produtos_movimentacoes"> | number | null
+    quantidade?: IntNullableFilter<"produtos_movimentacoes"> | number | null
+    tipo_movimentacao?: StringNullableFilter<"produtos_movimentacoes"> | string | null
+    data_hora?: DateTimeFilter<"produtos_movimentacoes"> | Date | string
+    pedidos_vendaId?: IntNullableFilter<"produtos_movimentacoes"> | number | null
     pedidos_venda?: XOR<Pedidos_vendaNullableRelationFilter, pedidos_vendaWhereInput> | null
-    produtos?: XOR<ProdutosNullableRelationFilter, produtosWhereInput> | null
-  }, "pm_id">
+  }, "id">
 
   export type produtos_movimentacoesOrderByWithAggregationInput = {
-    pm_id?: SortOrder
-    pm_pedido_venda_id?: SortOrderInput | SortOrder
-    pm_produto_id?: SortOrderInput | SortOrder
-    pm_usuario_id?: SortOrderInput | SortOrder
-    pm_saldo_anterior?: SortOrderInput | SortOrder
-    pm_saldo_atual?: SortOrderInput | SortOrder
-    pm_quantidade?: SortOrderInput | SortOrder
-    pm_tipo_movimentacao?: SortOrderInput | SortOrder
-    pm_data_hora?: SortOrderInput | SortOrder
+    id?: SortOrder
+    pedido_venda_id?: SortOrderInput | SortOrder
+    produto_id?: SortOrder
+    saldo_anterior?: SortOrderInput | SortOrder
+    saldo_atual?: SortOrderInput | SortOrder
+    quantidade?: SortOrderInput | SortOrder
+    tipo_movimentacao?: SortOrderInput | SortOrder
+    data_hora?: SortOrder
+    pedidos_vendaId?: SortOrderInput | SortOrder
     _count?: produtos_movimentacoesCountOrderByAggregateInput
     _avg?: produtos_movimentacoesAvgOrderByAggregateInput
     _max?: produtos_movimentacoesMaxOrderByAggregateInput
@@ -29965,15 +29836,15 @@ export namespace Prisma {
     AND?: produtos_movimentacoesScalarWhereWithAggregatesInput | produtos_movimentacoesScalarWhereWithAggregatesInput[]
     OR?: produtos_movimentacoesScalarWhereWithAggregatesInput[]
     NOT?: produtos_movimentacoesScalarWhereWithAggregatesInput | produtos_movimentacoesScalarWhereWithAggregatesInput[]
-    pm_id?: IntWithAggregatesFilter<"produtos_movimentacoes"> | number
-    pm_pedido_venda_id?: IntNullableWithAggregatesFilter<"produtos_movimentacoes"> | number | null
-    pm_produto_id?: IntNullableWithAggregatesFilter<"produtos_movimentacoes"> | number | null
-    pm_usuario_id?: IntNullableWithAggregatesFilter<"produtos_movimentacoes"> | number | null
-    pm_saldo_anterior?: DecimalNullableWithAggregatesFilter<"produtos_movimentacoes"> | Decimal | DecimalJsLike | number | string | null
-    pm_saldo_atual?: DecimalNullableWithAggregatesFilter<"produtos_movimentacoes"> | Decimal | DecimalJsLike | number | string | null
-    pm_quantidade?: DecimalNullableWithAggregatesFilter<"produtos_movimentacoes"> | Decimal | DecimalJsLike | number | string | null
-    pm_tipo_movimentacao?: StringNullableWithAggregatesFilter<"produtos_movimentacoes"> | string | null
-    pm_data_hora?: DateTimeNullableWithAggregatesFilter<"produtos_movimentacoes"> | Date | string | null
+    id?: IntWithAggregatesFilter<"produtos_movimentacoes"> | number
+    pedido_venda_id?: IntNullableWithAggregatesFilter<"produtos_movimentacoes"> | number | null
+    produto_id?: IntWithAggregatesFilter<"produtos_movimentacoes"> | number
+    saldo_anterior?: IntNullableWithAggregatesFilter<"produtos_movimentacoes"> | number | null
+    saldo_atual?: IntNullableWithAggregatesFilter<"produtos_movimentacoes"> | number | null
+    quantidade?: IntNullableWithAggregatesFilter<"produtos_movimentacoes"> | number | null
+    tipo_movimentacao?: StringNullableWithAggregatesFilter<"produtos_movimentacoes"> | string | null
+    data_hora?: DateTimeWithAggregatesFilter<"produtos_movimentacoes"> | Date | string
+    pedidos_vendaId?: IntNullableWithAggregatesFilter<"produtos_movimentacoes"> | number | null
   }
 
   export type certificadoWhereInput = {
@@ -31985,7 +31856,6 @@ export namespace Prisma {
     vlrUnTrib?: DecimalNullableFilter<"produtos"> | Decimal | DecimalJsLike | number | string | null
     saldo?: DecimalNullableFilter<"produtos"> | Decimal | DecimalJsLike | number | string | null
     status?: StringFilter<"produtos"> | string
-    produtos_movimentacoes?: Produtos_movimentacoesListRelationFilter
   }
 
   export type produtosOrderByWithRelationInput = {
@@ -32006,7 +31876,6 @@ export namespace Prisma {
     vlrUnTrib?: SortOrderInput | SortOrder
     saldo?: SortOrderInput | SortOrder
     status?: SortOrder
-    produtos_movimentacoes?: produtos_movimentacoesOrderByRelationAggregateInput
   }
 
   export type produtosWhereUniqueInput = Prisma.AtLeast<{
@@ -32030,7 +31899,6 @@ export namespace Prisma {
     vlrUnTrib?: DecimalNullableFilter<"produtos"> | Decimal | DecimalJsLike | number | string | null
     saldo?: DecimalNullableFilter<"produtos"> | Decimal | DecimalJsLike | number | string | null
     status?: StringFilter<"produtos"> | string
-    produtos_movimentacoes?: Produtos_movimentacoesListRelationFilter
   }, "id">
 
   export type produtosOrderByWithAggregationInput = {
@@ -32655,82 +32523,83 @@ export namespace Prisma {
   }
 
   export type produtos_movimentacoesCreateInput = {
-    pm_usuario_id?: number | null
-    pm_saldo_anterior?: Decimal | DecimalJsLike | number | string | null
-    pm_saldo_atual?: Decimal | DecimalJsLike | number | string | null
-    pm_quantidade?: Decimal | DecimalJsLike | number | string | null
-    pm_tipo_movimentacao?: string | null
-    pm_data_hora?: Date | string | null
+    pedido_venda_id?: number | null
+    produto_id: number
+    saldo_anterior?: number | null
+    saldo_atual?: number | null
+    quantidade?: number | null
+    tipo_movimentacao?: string | null
+    data_hora?: Date | string
     pedidos_venda?: pedidos_vendaCreateNestedOneWithoutProdutos_movimentacoesInput
-    produtos?: produtosCreateNestedOneWithoutProdutos_movimentacoesInput
   }
 
   export type produtos_movimentacoesUncheckedCreateInput = {
-    pm_id?: number
-    pm_pedido_venda_id?: number | null
-    pm_produto_id?: number | null
-    pm_usuario_id?: number | null
-    pm_saldo_anterior?: Decimal | DecimalJsLike | number | string | null
-    pm_saldo_atual?: Decimal | DecimalJsLike | number | string | null
-    pm_quantidade?: Decimal | DecimalJsLike | number | string | null
-    pm_tipo_movimentacao?: string | null
-    pm_data_hora?: Date | string | null
+    id?: number
+    pedido_venda_id?: number | null
+    produto_id: number
+    saldo_anterior?: number | null
+    saldo_atual?: number | null
+    quantidade?: number | null
+    tipo_movimentacao?: string | null
+    data_hora?: Date | string
+    pedidos_vendaId?: number | null
   }
 
   export type produtos_movimentacoesUpdateInput = {
-    pm_usuario_id?: NullableIntFieldUpdateOperationsInput | number | null
-    pm_saldo_anterior?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    pm_saldo_atual?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    pm_quantidade?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    pm_tipo_movimentacao?: NullableStringFieldUpdateOperationsInput | string | null
-    pm_data_hora?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    pedido_venda_id?: NullableIntFieldUpdateOperationsInput | number | null
+    produto_id?: IntFieldUpdateOperationsInput | number
+    saldo_anterior?: NullableIntFieldUpdateOperationsInput | number | null
+    saldo_atual?: NullableIntFieldUpdateOperationsInput | number | null
+    quantidade?: NullableIntFieldUpdateOperationsInput | number | null
+    tipo_movimentacao?: NullableStringFieldUpdateOperationsInput | string | null
+    data_hora?: DateTimeFieldUpdateOperationsInput | Date | string
     pedidos_venda?: pedidos_vendaUpdateOneWithoutProdutos_movimentacoesNestedInput
-    produtos?: produtosUpdateOneWithoutProdutos_movimentacoesNestedInput
   }
 
   export type produtos_movimentacoesUncheckedUpdateInput = {
-    pm_id?: IntFieldUpdateOperationsInput | number
-    pm_pedido_venda_id?: NullableIntFieldUpdateOperationsInput | number | null
-    pm_produto_id?: NullableIntFieldUpdateOperationsInput | number | null
-    pm_usuario_id?: NullableIntFieldUpdateOperationsInput | number | null
-    pm_saldo_anterior?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    pm_saldo_atual?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    pm_quantidade?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    pm_tipo_movimentacao?: NullableStringFieldUpdateOperationsInput | string | null
-    pm_data_hora?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    id?: IntFieldUpdateOperationsInput | number
+    pedido_venda_id?: NullableIntFieldUpdateOperationsInput | number | null
+    produto_id?: IntFieldUpdateOperationsInput | number
+    saldo_anterior?: NullableIntFieldUpdateOperationsInput | number | null
+    saldo_atual?: NullableIntFieldUpdateOperationsInput | number | null
+    quantidade?: NullableIntFieldUpdateOperationsInput | number | null
+    tipo_movimentacao?: NullableStringFieldUpdateOperationsInput | string | null
+    data_hora?: DateTimeFieldUpdateOperationsInput | Date | string
+    pedidos_vendaId?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type produtos_movimentacoesCreateManyInput = {
-    pm_id?: number
-    pm_pedido_venda_id?: number | null
-    pm_produto_id?: number | null
-    pm_usuario_id?: number | null
-    pm_saldo_anterior?: Decimal | DecimalJsLike | number | string | null
-    pm_saldo_atual?: Decimal | DecimalJsLike | number | string | null
-    pm_quantidade?: Decimal | DecimalJsLike | number | string | null
-    pm_tipo_movimentacao?: string | null
-    pm_data_hora?: Date | string | null
+    id?: number
+    pedido_venda_id?: number | null
+    produto_id: number
+    saldo_anterior?: number | null
+    saldo_atual?: number | null
+    quantidade?: number | null
+    tipo_movimentacao?: string | null
+    data_hora?: Date | string
+    pedidos_vendaId?: number | null
   }
 
   export type produtos_movimentacoesUpdateManyMutationInput = {
-    pm_usuario_id?: NullableIntFieldUpdateOperationsInput | number | null
-    pm_saldo_anterior?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    pm_saldo_atual?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    pm_quantidade?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    pm_tipo_movimentacao?: NullableStringFieldUpdateOperationsInput | string | null
-    pm_data_hora?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    pedido_venda_id?: NullableIntFieldUpdateOperationsInput | number | null
+    produto_id?: IntFieldUpdateOperationsInput | number
+    saldo_anterior?: NullableIntFieldUpdateOperationsInput | number | null
+    saldo_atual?: NullableIntFieldUpdateOperationsInput | number | null
+    quantidade?: NullableIntFieldUpdateOperationsInput | number | null
+    tipo_movimentacao?: NullableStringFieldUpdateOperationsInput | string | null
+    data_hora?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type produtos_movimentacoesUncheckedUpdateManyInput = {
-    pm_id?: IntFieldUpdateOperationsInput | number
-    pm_pedido_venda_id?: NullableIntFieldUpdateOperationsInput | number | null
-    pm_produto_id?: NullableIntFieldUpdateOperationsInput | number | null
-    pm_usuario_id?: NullableIntFieldUpdateOperationsInput | number | null
-    pm_saldo_anterior?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    pm_saldo_atual?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    pm_quantidade?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    pm_tipo_movimentacao?: NullableStringFieldUpdateOperationsInput | string | null
-    pm_data_hora?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    id?: IntFieldUpdateOperationsInput | number
+    pedido_venda_id?: NullableIntFieldUpdateOperationsInput | number | null
+    produto_id?: IntFieldUpdateOperationsInput | number
+    saldo_anterior?: NullableIntFieldUpdateOperationsInput | number | null
+    saldo_atual?: NullableIntFieldUpdateOperationsInput | number | null
+    quantidade?: NullableIntFieldUpdateOperationsInput | number | null
+    tipo_movimentacao?: NullableStringFieldUpdateOperationsInput | string | null
+    data_hora?: DateTimeFieldUpdateOperationsInput | Date | string
+    pedidos_vendaId?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type certificadoCreateInput = {
@@ -35136,7 +35005,6 @@ export namespace Prisma {
     vlrUnTrib?: Decimal | DecimalJsLike | number | string | null
     saldo?: Decimal | DecimalJsLike | number | string | null
     status: string
-    produtos_movimentacoes?: produtos_movimentacoesCreateNestedManyWithoutProdutosInput
   }
 
   export type produtosUncheckedCreateInput = {
@@ -35157,7 +35025,6 @@ export namespace Prisma {
     vlrUnTrib?: Decimal | DecimalJsLike | number | string | null
     saldo?: Decimal | DecimalJsLike | number | string | null
     status: string
-    produtos_movimentacoes?: produtos_movimentacoesUncheckedCreateNestedManyWithoutProdutosInput
   }
 
   export type produtosUpdateInput = {
@@ -35177,7 +35044,6 @@ export namespace Prisma {
     vlrUnTrib?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     saldo?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     status?: StringFieldUpdateOperationsInput | string
-    produtos_movimentacoes?: produtos_movimentacoesUpdateManyWithoutProdutosNestedInput
   }
 
   export type produtosUncheckedUpdateInput = {
@@ -35198,7 +35064,6 @@ export namespace Prisma {
     vlrUnTrib?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     saldo?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     status?: StringFieldUpdateOperationsInput | string
-    produtos_movimentacoes?: produtos_movimentacoesUncheckedUpdateManyWithoutProdutosNestedInput
   }
 
   export type produtosCreateManyInput = {
@@ -35921,15 +35786,15 @@ export namespace Prisma {
     valor_total?: SortOrder
   }
 
-  export type DecimalNullableFilter<$PrismaModel = never> = {
-    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel> | null
-    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | null
-    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | null
-    lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    not?: NestedDecimalNullableFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string | null
+  export type DateTimeFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[]
+    notIn?: Date[] | string[]
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
   }
 
   export type Pedidos_vendaNullableRelationFilter = {
@@ -35937,81 +35802,74 @@ export namespace Prisma {
     isNot?: pedidos_vendaWhereInput | null
   }
 
-  export type ProdutosNullableRelationFilter = {
-    is?: produtosWhereInput | null
-    isNot?: produtosWhereInput | null
-  }
-
   export type produtos_movimentacoesCountOrderByAggregateInput = {
-    pm_id?: SortOrder
-    pm_pedido_venda_id?: SortOrder
-    pm_produto_id?: SortOrder
-    pm_usuario_id?: SortOrder
-    pm_saldo_anterior?: SortOrder
-    pm_saldo_atual?: SortOrder
-    pm_quantidade?: SortOrder
-    pm_tipo_movimentacao?: SortOrder
-    pm_data_hora?: SortOrder
+    id?: SortOrder
+    pedido_venda_id?: SortOrder
+    produto_id?: SortOrder
+    saldo_anterior?: SortOrder
+    saldo_atual?: SortOrder
+    quantidade?: SortOrder
+    tipo_movimentacao?: SortOrder
+    data_hora?: SortOrder
+    pedidos_vendaId?: SortOrder
   }
 
   export type produtos_movimentacoesAvgOrderByAggregateInput = {
-    pm_id?: SortOrder
-    pm_pedido_venda_id?: SortOrder
-    pm_produto_id?: SortOrder
-    pm_usuario_id?: SortOrder
-    pm_saldo_anterior?: SortOrder
-    pm_saldo_atual?: SortOrder
-    pm_quantidade?: SortOrder
+    id?: SortOrder
+    pedido_venda_id?: SortOrder
+    produto_id?: SortOrder
+    saldo_anterior?: SortOrder
+    saldo_atual?: SortOrder
+    quantidade?: SortOrder
+    pedidos_vendaId?: SortOrder
   }
 
   export type produtos_movimentacoesMaxOrderByAggregateInput = {
-    pm_id?: SortOrder
-    pm_pedido_venda_id?: SortOrder
-    pm_produto_id?: SortOrder
-    pm_usuario_id?: SortOrder
-    pm_saldo_anterior?: SortOrder
-    pm_saldo_atual?: SortOrder
-    pm_quantidade?: SortOrder
-    pm_tipo_movimentacao?: SortOrder
-    pm_data_hora?: SortOrder
+    id?: SortOrder
+    pedido_venda_id?: SortOrder
+    produto_id?: SortOrder
+    saldo_anterior?: SortOrder
+    saldo_atual?: SortOrder
+    quantidade?: SortOrder
+    tipo_movimentacao?: SortOrder
+    data_hora?: SortOrder
+    pedidos_vendaId?: SortOrder
   }
 
   export type produtos_movimentacoesMinOrderByAggregateInput = {
-    pm_id?: SortOrder
-    pm_pedido_venda_id?: SortOrder
-    pm_produto_id?: SortOrder
-    pm_usuario_id?: SortOrder
-    pm_saldo_anterior?: SortOrder
-    pm_saldo_atual?: SortOrder
-    pm_quantidade?: SortOrder
-    pm_tipo_movimentacao?: SortOrder
-    pm_data_hora?: SortOrder
+    id?: SortOrder
+    pedido_venda_id?: SortOrder
+    produto_id?: SortOrder
+    saldo_anterior?: SortOrder
+    saldo_atual?: SortOrder
+    quantidade?: SortOrder
+    tipo_movimentacao?: SortOrder
+    data_hora?: SortOrder
+    pedidos_vendaId?: SortOrder
   }
 
   export type produtos_movimentacoesSumOrderByAggregateInput = {
-    pm_id?: SortOrder
-    pm_pedido_venda_id?: SortOrder
-    pm_produto_id?: SortOrder
-    pm_usuario_id?: SortOrder
-    pm_saldo_anterior?: SortOrder
-    pm_saldo_atual?: SortOrder
-    pm_quantidade?: SortOrder
+    id?: SortOrder
+    pedido_venda_id?: SortOrder
+    produto_id?: SortOrder
+    saldo_anterior?: SortOrder
+    saldo_atual?: SortOrder
+    quantidade?: SortOrder
+    pedidos_vendaId?: SortOrder
   }
 
-  export type DecimalNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel> | null
-    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | null
-    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | null
-    lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    not?: NestedDecimalNullableWithAggregatesFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _avg?: NestedDecimalNullableFilter<$PrismaModel>
-    _sum?: NestedDecimalNullableFilter<$PrismaModel>
-    _min?: NestedDecimalNullableFilter<$PrismaModel>
-    _max?: NestedDecimalNullableFilter<$PrismaModel>
+  export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[]
+    notIn?: Date[] | string[]
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedDateTimeFilter<$PrismaModel>
+    _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
   export type certificadoCountOrderByAggregateInput = {
@@ -36080,17 +35938,6 @@ export namespace Prisma {
     startsWith?: string | StringFieldRefInput<$PrismaModel>
     endsWith?: string | StringFieldRefInput<$PrismaModel>
     not?: NestedStringFilter<$PrismaModel> | string
-  }
-
-  export type DateTimeFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    in?: Date[] | string[]
-    notIn?: Date[] | string[]
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
   }
 
   export type ContatosListRelationFilter = {
@@ -36268,20 +36115,6 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedStringFilter<$PrismaModel>
     _max?: NestedStringFilter<$PrismaModel>
-  }
-
-  export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    in?: Date[] | string[]
-    notIn?: Date[] | string[]
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedDateTimeFilter<$PrismaModel>
-    _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
   export type DecimalFilter<$PrismaModel = never> = {
@@ -36624,6 +36457,17 @@ export namespace Prisma {
     id_sirius?: SortOrder
   }
 
+  export type DecimalNullableFilter<$PrismaModel = never> = {
+    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel> | null
+    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | null
+    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | null
+    lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    not?: NestedDecimalNullableFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string | null
+  }
+
   export type listas_precos_x_produtosCountOrderByAggregateInput = {
     id?: SortOrder
     lista_id?: SortOrder
@@ -36665,6 +36509,22 @@ export namespace Prisma {
     produto_id?: SortOrder
     valor?: SortOrder
     id_sirius?: SortOrder
+  }
+
+  export type DecimalNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel> | null
+    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | null
+    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | null
+    lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    not?: NestedDecimalNullableWithAggregatesFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedDecimalNullableFilter<$PrismaModel>
+    _sum?: NestedDecimalNullableFilter<$PrismaModel>
+    _min?: NestedDecimalNullableFilter<$PrismaModel>
+    _max?: NestedDecimalNullableFilter<$PrismaModel>
   }
 
   export type nfeconfigCountOrderByAggregateInput = {
@@ -38002,18 +37862,8 @@ export namespace Prisma {
     connect?: pedidos_vendaWhereUniqueInput
   }
 
-  export type produtosCreateNestedOneWithoutProdutos_movimentacoesInput = {
-    create?: XOR<produtosCreateWithoutProdutos_movimentacoesInput, produtosUncheckedCreateWithoutProdutos_movimentacoesInput>
-    connectOrCreate?: produtosCreateOrConnectWithoutProdutos_movimentacoesInput
-    connect?: produtosWhereUniqueInput
-  }
-
-  export type NullableDecimalFieldUpdateOperationsInput = {
-    set?: Decimal | DecimalJsLike | number | string | null
-    increment?: Decimal | DecimalJsLike | number | string
-    decrement?: Decimal | DecimalJsLike | number | string
-    multiply?: Decimal | DecimalJsLike | number | string
-    divide?: Decimal | DecimalJsLike | number | string
+  export type DateTimeFieldUpdateOperationsInput = {
+    set?: Date | string
   }
 
   export type pedidos_vendaUpdateOneWithoutProdutos_movimentacoesNestedInput = {
@@ -38024,16 +37874,6 @@ export namespace Prisma {
     delete?: pedidos_vendaWhereInput | boolean
     connect?: pedidos_vendaWhereUniqueInput
     update?: XOR<XOR<pedidos_vendaUpdateToOneWithWhereWithoutProdutos_movimentacoesInput, pedidos_vendaUpdateWithoutProdutos_movimentacoesInput>, pedidos_vendaUncheckedUpdateWithoutProdutos_movimentacoesInput>
-  }
-
-  export type produtosUpdateOneWithoutProdutos_movimentacoesNestedInput = {
-    create?: XOR<produtosCreateWithoutProdutos_movimentacoesInput, produtosUncheckedCreateWithoutProdutos_movimentacoesInput>
-    connectOrCreate?: produtosCreateOrConnectWithoutProdutos_movimentacoesInput
-    upsert?: produtosUpsertWithoutProdutos_movimentacoesInput
-    disconnect?: produtosWhereInput | boolean
-    delete?: produtosWhereInput | boolean
-    connect?: produtosWhereUniqueInput
-    update?: XOR<XOR<produtosUpdateToOneWithWhereWithoutProdutos_movimentacoesInput, produtosUpdateWithoutProdutos_movimentacoesInput>, produtosUncheckedUpdateWithoutProdutos_movimentacoesInput>
   }
 
   export type contatosCreateNestedManyWithoutClientesInput = {
@@ -38096,10 +37936,6 @@ export namespace Prisma {
 
   export type StringFieldUpdateOperationsInput = {
     set?: string
-  }
-
-  export type DateTimeFieldUpdateOperationsInput = {
-    set?: Date | string
   }
 
   export type contatosUpdateManyWithoutClientesNestedInput = {
@@ -38280,6 +38116,14 @@ export namespace Prisma {
     deleteMany?: notafiscalScalarWhereInput | notafiscalScalarWhereInput[]
   }
 
+  export type NullableDecimalFieldUpdateOperationsInput = {
+    set?: Decimal | DecimalJsLike | number | string | null
+    increment?: Decimal | DecimalJsLike | number | string
+    decrement?: Decimal | DecimalJsLike | number | string
+    multiply?: Decimal | DecimalJsLike | number | string
+    divide?: Decimal | DecimalJsLike | number | string
+  }
+
   export type docreferenciadoCreateNestedManyWithoutNotafiscalInput = {
     create?: XOR<docreferenciadoCreateWithoutNotafiscalInput, docreferenciadoUncheckedCreateWithoutNotafiscalInput> | docreferenciadoCreateWithoutNotafiscalInput[] | docreferenciadoUncheckedCreateWithoutNotafiscalInput[]
     connectOrCreate?: docreferenciadoCreateOrConnectWithoutNotafiscalInput | docreferenciadoCreateOrConnectWithoutNotafiscalInput[]
@@ -38412,48 +38256,6 @@ export namespace Prisma {
     upsert?: notafiscalUpsertWithoutNotafiscalpagamentosInput
     connect?: notafiscalWhereUniqueInput
     update?: XOR<XOR<notafiscalUpdateToOneWithWhereWithoutNotafiscalpagamentosInput, notafiscalUpdateWithoutNotafiscalpagamentosInput>, notafiscalUncheckedUpdateWithoutNotafiscalpagamentosInput>
-  }
-
-  export type produtos_movimentacoesCreateNestedManyWithoutProdutosInput = {
-    create?: XOR<produtos_movimentacoesCreateWithoutProdutosInput, produtos_movimentacoesUncheckedCreateWithoutProdutosInput> | produtos_movimentacoesCreateWithoutProdutosInput[] | produtos_movimentacoesUncheckedCreateWithoutProdutosInput[]
-    connectOrCreate?: produtos_movimentacoesCreateOrConnectWithoutProdutosInput | produtos_movimentacoesCreateOrConnectWithoutProdutosInput[]
-    createMany?: produtos_movimentacoesCreateManyProdutosInputEnvelope
-    connect?: produtos_movimentacoesWhereUniqueInput | produtos_movimentacoesWhereUniqueInput[]
-  }
-
-  export type produtos_movimentacoesUncheckedCreateNestedManyWithoutProdutosInput = {
-    create?: XOR<produtos_movimentacoesCreateWithoutProdutosInput, produtos_movimentacoesUncheckedCreateWithoutProdutosInput> | produtos_movimentacoesCreateWithoutProdutosInput[] | produtos_movimentacoesUncheckedCreateWithoutProdutosInput[]
-    connectOrCreate?: produtos_movimentacoesCreateOrConnectWithoutProdutosInput | produtos_movimentacoesCreateOrConnectWithoutProdutosInput[]
-    createMany?: produtos_movimentacoesCreateManyProdutosInputEnvelope
-    connect?: produtos_movimentacoesWhereUniqueInput | produtos_movimentacoesWhereUniqueInput[]
-  }
-
-  export type produtos_movimentacoesUpdateManyWithoutProdutosNestedInput = {
-    create?: XOR<produtos_movimentacoesCreateWithoutProdutosInput, produtos_movimentacoesUncheckedCreateWithoutProdutosInput> | produtos_movimentacoesCreateWithoutProdutosInput[] | produtos_movimentacoesUncheckedCreateWithoutProdutosInput[]
-    connectOrCreate?: produtos_movimentacoesCreateOrConnectWithoutProdutosInput | produtos_movimentacoesCreateOrConnectWithoutProdutosInput[]
-    upsert?: produtos_movimentacoesUpsertWithWhereUniqueWithoutProdutosInput | produtos_movimentacoesUpsertWithWhereUniqueWithoutProdutosInput[]
-    createMany?: produtos_movimentacoesCreateManyProdutosInputEnvelope
-    set?: produtos_movimentacoesWhereUniqueInput | produtos_movimentacoesWhereUniqueInput[]
-    disconnect?: produtos_movimentacoesWhereUniqueInput | produtos_movimentacoesWhereUniqueInput[]
-    delete?: produtos_movimentacoesWhereUniqueInput | produtos_movimentacoesWhereUniqueInput[]
-    connect?: produtos_movimentacoesWhereUniqueInput | produtos_movimentacoesWhereUniqueInput[]
-    update?: produtos_movimentacoesUpdateWithWhereUniqueWithoutProdutosInput | produtos_movimentacoesUpdateWithWhereUniqueWithoutProdutosInput[]
-    updateMany?: produtos_movimentacoesUpdateManyWithWhereWithoutProdutosInput | produtos_movimentacoesUpdateManyWithWhereWithoutProdutosInput[]
-    deleteMany?: produtos_movimentacoesScalarWhereInput | produtos_movimentacoesScalarWhereInput[]
-  }
-
-  export type produtos_movimentacoesUncheckedUpdateManyWithoutProdutosNestedInput = {
-    create?: XOR<produtos_movimentacoesCreateWithoutProdutosInput, produtos_movimentacoesUncheckedCreateWithoutProdutosInput> | produtos_movimentacoesCreateWithoutProdutosInput[] | produtos_movimentacoesUncheckedCreateWithoutProdutosInput[]
-    connectOrCreate?: produtos_movimentacoesCreateOrConnectWithoutProdutosInput | produtos_movimentacoesCreateOrConnectWithoutProdutosInput[]
-    upsert?: produtos_movimentacoesUpsertWithWhereUniqueWithoutProdutosInput | produtos_movimentacoesUpsertWithWhereUniqueWithoutProdutosInput[]
-    createMany?: produtos_movimentacoesCreateManyProdutosInputEnvelope
-    set?: produtos_movimentacoesWhereUniqueInput | produtos_movimentacoesWhereUniqueInput[]
-    disconnect?: produtos_movimentacoesWhereUniqueInput | produtos_movimentacoesWhereUniqueInput[]
-    delete?: produtos_movimentacoesWhereUniqueInput | produtos_movimentacoesWhereUniqueInput[]
-    connect?: produtos_movimentacoesWhereUniqueInput | produtos_movimentacoesWhereUniqueInput[]
-    update?: produtos_movimentacoesUpdateWithWhereUniqueWithoutProdutosInput | produtos_movimentacoesUpdateWithWhereUniqueWithoutProdutosInput[]
-    updateMany?: produtos_movimentacoesUpdateManyWithWhereWithoutProdutosInput | produtos_movimentacoesUpdateManyWithWhereWithoutProdutosInput[]
-    deleteMany?: produtos_movimentacoesScalarWhereInput | produtos_movimentacoesScalarWhereInput[]
   }
 
   export type NestedIntFilter<$PrismaModel = never> = {
@@ -38604,31 +38406,29 @@ export namespace Prisma {
     _max?: NestedDateTimeNullableFilter<$PrismaModel>
   }
 
-  export type NestedDecimalNullableFilter<$PrismaModel = never> = {
-    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel> | null
-    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | null
-    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | null
-    lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    not?: NestedDecimalNullableFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string | null
+  export type NestedDateTimeFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[]
+    notIn?: Date[] | string[]
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
   }
 
-  export type NestedDecimalNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel> | null
-    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | null
-    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | null
-    lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    not?: NestedDecimalNullableWithAggregatesFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _avg?: NestedDecimalNullableFilter<$PrismaModel>
-    _sum?: NestedDecimalNullableFilter<$PrismaModel>
-    _min?: NestedDecimalNullableFilter<$PrismaModel>
-    _max?: NestedDecimalNullableFilter<$PrismaModel>
+  export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[]
+    notIn?: Date[] | string[]
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedDateTimeFilter<$PrismaModel>
+    _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
   export type NestedBigIntFilter<$PrismaModel = never> = {
@@ -38665,17 +38465,6 @@ export namespace Prisma {
     startsWith?: string | StringFieldRefInput<$PrismaModel>
     endsWith?: string | StringFieldRefInput<$PrismaModel>
     not?: NestedStringFilter<$PrismaModel> | string
-  }
-
-  export type NestedDateTimeFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    in?: Date[] | string[]
-    notIn?: Date[] | string[]
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
   }
 
   export type NestedBigIntWithAggregatesFilter<$PrismaModel = never> = {
@@ -38727,20 +38516,6 @@ export namespace Prisma {
     _max?: NestedStringFilter<$PrismaModel>
   }
 
-  export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    in?: Date[] | string[]
-    notIn?: Date[] | string[]
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedDateTimeFilter<$PrismaModel>
-    _max?: NestedDateTimeFilter<$PrismaModel>
-  }
-
   export type NestedDecimalFilter<$PrismaModel = never> = {
     equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
     in?: Decimal[] | DecimalJsLike[] | number[] | string[]
@@ -38766,6 +38541,33 @@ export namespace Prisma {
     _sum?: NestedDecimalFilter<$PrismaModel>
     _min?: NestedDecimalFilter<$PrismaModel>
     _max?: NestedDecimalFilter<$PrismaModel>
+  }
+
+  export type NestedDecimalNullableFilter<$PrismaModel = never> = {
+    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel> | null
+    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | null
+    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | null
+    lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    not?: NestedDecimalNullableFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string | null
+  }
+
+  export type NestedDecimalNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel> | null
+    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | null
+    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | null
+    lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    not?: NestedDecimalNullableWithAggregatesFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedDecimalNullableFilter<$PrismaModel>
+    _sum?: NestedDecimalNullableFilter<$PrismaModel>
+    _min?: NestedDecimalNullableFilter<$PrismaModel>
+    _max?: NestedDecimalNullableFilter<$PrismaModel>
   }
 
   export type NestedBytesNullableFilter<$PrismaModel = never> = {
@@ -38821,24 +38623,24 @@ export namespace Prisma {
   }
 
   export type produtos_movimentacoesCreateWithoutPedidos_vendaInput = {
-    pm_usuario_id?: number | null
-    pm_saldo_anterior?: Decimal | DecimalJsLike | number | string | null
-    pm_saldo_atual?: Decimal | DecimalJsLike | number | string | null
-    pm_quantidade?: Decimal | DecimalJsLike | number | string | null
-    pm_tipo_movimentacao?: string | null
-    pm_data_hora?: Date | string | null
-    produtos?: produtosCreateNestedOneWithoutProdutos_movimentacoesInput
+    pedido_venda_id?: number | null
+    produto_id: number
+    saldo_anterior?: number | null
+    saldo_atual?: number | null
+    quantidade?: number | null
+    tipo_movimentacao?: string | null
+    data_hora?: Date | string
   }
 
   export type produtos_movimentacoesUncheckedCreateWithoutPedidos_vendaInput = {
-    pm_id?: number
-    pm_produto_id?: number | null
-    pm_usuario_id?: number | null
-    pm_saldo_anterior?: Decimal | DecimalJsLike | number | string | null
-    pm_saldo_atual?: Decimal | DecimalJsLike | number | string | null
-    pm_quantidade?: Decimal | DecimalJsLike | number | string | null
-    pm_tipo_movimentacao?: string | null
-    pm_data_hora?: Date | string | null
+    id?: number
+    pedido_venda_id?: number | null
+    produto_id: number
+    saldo_anterior?: number | null
+    saldo_atual?: number | null
+    quantidade?: number | null
+    tipo_movimentacao?: string | null
+    data_hora?: Date | string
   }
 
   export type produtos_movimentacoesCreateOrConnectWithoutPedidos_vendaInput = {
@@ -38904,15 +38706,15 @@ export namespace Prisma {
     AND?: produtos_movimentacoesScalarWhereInput | produtos_movimentacoesScalarWhereInput[]
     OR?: produtos_movimentacoesScalarWhereInput[]
     NOT?: produtos_movimentacoesScalarWhereInput | produtos_movimentacoesScalarWhereInput[]
-    pm_id?: IntFilter<"produtos_movimentacoes"> | number
-    pm_pedido_venda_id?: IntNullableFilter<"produtos_movimentacoes"> | number | null
-    pm_produto_id?: IntNullableFilter<"produtos_movimentacoes"> | number | null
-    pm_usuario_id?: IntNullableFilter<"produtos_movimentacoes"> | number | null
-    pm_saldo_anterior?: DecimalNullableFilter<"produtos_movimentacoes"> | Decimal | DecimalJsLike | number | string | null
-    pm_saldo_atual?: DecimalNullableFilter<"produtos_movimentacoes"> | Decimal | DecimalJsLike | number | string | null
-    pm_quantidade?: DecimalNullableFilter<"produtos_movimentacoes"> | Decimal | DecimalJsLike | number | string | null
-    pm_tipo_movimentacao?: StringNullableFilter<"produtos_movimentacoes"> | string | null
-    pm_data_hora?: DateTimeNullableFilter<"produtos_movimentacoes"> | Date | string | null
+    id?: IntFilter<"produtos_movimentacoes"> | number
+    pedido_venda_id?: IntNullableFilter<"produtos_movimentacoes"> | number | null
+    produto_id?: IntFilter<"produtos_movimentacoes"> | number
+    saldo_anterior?: IntNullableFilter<"produtos_movimentacoes"> | number | null
+    saldo_atual?: IntNullableFilter<"produtos_movimentacoes"> | number | null
+    quantidade?: IntNullableFilter<"produtos_movimentacoes"> | number | null
+    tipo_movimentacao?: StringNullableFilter<"produtos_movimentacoes"> | string | null
+    data_hora?: DateTimeFilter<"produtos_movimentacoes"> | Date | string
+    pedidos_vendaId?: IntNullableFilter<"produtos_movimentacoes"> | number | null
   }
 
   export type pedidos_vendaCreateWithoutItensInput = {
@@ -39137,50 +38939,6 @@ export namespace Prisma {
     create: XOR<pedidos_vendaCreateWithoutProdutos_movimentacoesInput, pedidos_vendaUncheckedCreateWithoutProdutos_movimentacoesInput>
   }
 
-  export type produtosCreateWithoutProdutos_movimentacoesInput = {
-    id_sirius?: number | null
-    codProduto: string
-    descricao: string
-    codEAN: string
-    ncm: string
-    cfop: string
-    unCom?: string | null
-    qtdCom?: Decimal | DecimalJsLike | number | string | null
-    vlrUnCom?: Decimal | DecimalJsLike | number | string | null
-    vlrProd?: Decimal | DecimalJsLike | number | string | null
-    codEANTrib?: string | null
-    unTrib?: string | null
-    qtdTrib?: Decimal | DecimalJsLike | number | string | null
-    vlrUnTrib?: Decimal | DecimalJsLike | number | string | null
-    saldo?: Decimal | DecimalJsLike | number | string | null
-    status: string
-  }
-
-  export type produtosUncheckedCreateWithoutProdutos_movimentacoesInput = {
-    id?: number
-    id_sirius?: number | null
-    codProduto: string
-    descricao: string
-    codEAN: string
-    ncm: string
-    cfop: string
-    unCom?: string | null
-    qtdCom?: Decimal | DecimalJsLike | number | string | null
-    vlrUnCom?: Decimal | DecimalJsLike | number | string | null
-    vlrProd?: Decimal | DecimalJsLike | number | string | null
-    codEANTrib?: string | null
-    unTrib?: string | null
-    qtdTrib?: Decimal | DecimalJsLike | number | string | null
-    vlrUnTrib?: Decimal | DecimalJsLike | number | string | null
-    saldo?: Decimal | DecimalJsLike | number | string | null
-    status: string
-  }
-
-  export type produtosCreateOrConnectWithoutProdutos_movimentacoesInput = {
-    where: produtosWhereUniqueInput
-    create: XOR<produtosCreateWithoutProdutos_movimentacoesInput, produtosUncheckedCreateWithoutProdutos_movimentacoesInput>
-  }
-
   export type pedidos_vendaUpsertWithoutProdutos_movimentacoesInput = {
     update: XOR<pedidos_vendaUpdateWithoutProdutos_movimentacoesInput, pedidos_vendaUncheckedUpdateWithoutProdutos_movimentacoesInput>
     create: XOR<pedidos_vendaCreateWithoutProdutos_movimentacoesInput, pedidos_vendaUncheckedCreateWithoutProdutos_movimentacoesInput>
@@ -39257,56 +39015,6 @@ export namespace Prisma {
     entrega_cidade?: NullableStringFieldUpdateOperationsInput | string | null
     entrega_uf?: NullableStringFieldUpdateOperationsInput | string | null
     itens?: pedidos_venda_itensUncheckedUpdateManyWithoutPedidos_vendaNestedInput
-  }
-
-  export type produtosUpsertWithoutProdutos_movimentacoesInput = {
-    update: XOR<produtosUpdateWithoutProdutos_movimentacoesInput, produtosUncheckedUpdateWithoutProdutos_movimentacoesInput>
-    create: XOR<produtosCreateWithoutProdutos_movimentacoesInput, produtosUncheckedCreateWithoutProdutos_movimentacoesInput>
-    where?: produtosWhereInput
-  }
-
-  export type produtosUpdateToOneWithWhereWithoutProdutos_movimentacoesInput = {
-    where?: produtosWhereInput
-    data: XOR<produtosUpdateWithoutProdutos_movimentacoesInput, produtosUncheckedUpdateWithoutProdutos_movimentacoesInput>
-  }
-
-  export type produtosUpdateWithoutProdutos_movimentacoesInput = {
-    id_sirius?: NullableIntFieldUpdateOperationsInput | number | null
-    codProduto?: StringFieldUpdateOperationsInput | string
-    descricao?: StringFieldUpdateOperationsInput | string
-    codEAN?: StringFieldUpdateOperationsInput | string
-    ncm?: StringFieldUpdateOperationsInput | string
-    cfop?: StringFieldUpdateOperationsInput | string
-    unCom?: NullableStringFieldUpdateOperationsInput | string | null
-    qtdCom?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    vlrUnCom?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    vlrProd?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    codEANTrib?: NullableStringFieldUpdateOperationsInput | string | null
-    unTrib?: NullableStringFieldUpdateOperationsInput | string | null
-    qtdTrib?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    vlrUnTrib?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    saldo?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    status?: StringFieldUpdateOperationsInput | string
-  }
-
-  export type produtosUncheckedUpdateWithoutProdutos_movimentacoesInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    id_sirius?: NullableIntFieldUpdateOperationsInput | number | null
-    codProduto?: StringFieldUpdateOperationsInput | string
-    descricao?: StringFieldUpdateOperationsInput | string
-    codEAN?: StringFieldUpdateOperationsInput | string
-    ncm?: StringFieldUpdateOperationsInput | string
-    cfop?: StringFieldUpdateOperationsInput | string
-    unCom?: NullableStringFieldUpdateOperationsInput | string | null
-    qtdCom?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    vlrUnCom?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    vlrProd?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    codEANTrib?: NullableStringFieldUpdateOperationsInput | string | null
-    unTrib?: NullableStringFieldUpdateOperationsInput | string | null
-    qtdTrib?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    vlrUnTrib?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    saldo?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    status?: StringFieldUpdateOperationsInput | string
   }
 
   export type contatosCreateWithoutClientesInput = {
@@ -41218,53 +40926,6 @@ export namespace Prisma {
     docreferenciado?: docreferenciadoUncheckedUpdateManyWithoutNotafiscalNestedInput
   }
 
-  export type produtos_movimentacoesCreateWithoutProdutosInput = {
-    pm_usuario_id?: number | null
-    pm_saldo_anterior?: Decimal | DecimalJsLike | number | string | null
-    pm_saldo_atual?: Decimal | DecimalJsLike | number | string | null
-    pm_quantidade?: Decimal | DecimalJsLike | number | string | null
-    pm_tipo_movimentacao?: string | null
-    pm_data_hora?: Date | string | null
-    pedidos_venda?: pedidos_vendaCreateNestedOneWithoutProdutos_movimentacoesInput
-  }
-
-  export type produtos_movimentacoesUncheckedCreateWithoutProdutosInput = {
-    pm_id?: number
-    pm_pedido_venda_id?: number | null
-    pm_usuario_id?: number | null
-    pm_saldo_anterior?: Decimal | DecimalJsLike | number | string | null
-    pm_saldo_atual?: Decimal | DecimalJsLike | number | string | null
-    pm_quantidade?: Decimal | DecimalJsLike | number | string | null
-    pm_tipo_movimentacao?: string | null
-    pm_data_hora?: Date | string | null
-  }
-
-  export type produtos_movimentacoesCreateOrConnectWithoutProdutosInput = {
-    where: produtos_movimentacoesWhereUniqueInput
-    create: XOR<produtos_movimentacoesCreateWithoutProdutosInput, produtos_movimentacoesUncheckedCreateWithoutProdutosInput>
-  }
-
-  export type produtos_movimentacoesCreateManyProdutosInputEnvelope = {
-    data: produtos_movimentacoesCreateManyProdutosInput | produtos_movimentacoesCreateManyProdutosInput[]
-    skipDuplicates?: boolean
-  }
-
-  export type produtos_movimentacoesUpsertWithWhereUniqueWithoutProdutosInput = {
-    where: produtos_movimentacoesWhereUniqueInput
-    update: XOR<produtos_movimentacoesUpdateWithoutProdutosInput, produtos_movimentacoesUncheckedUpdateWithoutProdutosInput>
-    create: XOR<produtos_movimentacoesCreateWithoutProdutosInput, produtos_movimentacoesUncheckedCreateWithoutProdutosInput>
-  }
-
-  export type produtos_movimentacoesUpdateWithWhereUniqueWithoutProdutosInput = {
-    where: produtos_movimentacoesWhereUniqueInput
-    data: XOR<produtos_movimentacoesUpdateWithoutProdutosInput, produtos_movimentacoesUncheckedUpdateWithoutProdutosInput>
-  }
-
-  export type produtos_movimentacoesUpdateManyWithWhereWithoutProdutosInput = {
-    where: produtos_movimentacoesScalarWhereInput
-    data: XOR<produtos_movimentacoesUpdateManyMutationInput, produtos_movimentacoesUncheckedUpdateManyWithoutProdutosInput>
-  }
-
   export type pedidos_venda_itensCreateManyPedidos_vendaInput = {
     id?: number
     produto_id: number
@@ -41279,14 +40940,14 @@ export namespace Prisma {
   }
 
   export type produtos_movimentacoesCreateManyPedidos_vendaInput = {
-    pm_id?: number
-    pm_produto_id?: number | null
-    pm_usuario_id?: number | null
-    pm_saldo_anterior?: Decimal | DecimalJsLike | number | string | null
-    pm_saldo_atual?: Decimal | DecimalJsLike | number | string | null
-    pm_quantidade?: Decimal | DecimalJsLike | number | string | null
-    pm_tipo_movimentacao?: string | null
-    pm_data_hora?: Date | string | null
+    id?: number
+    pedido_venda_id?: number | null
+    produto_id: number
+    saldo_anterior?: number | null
+    saldo_atual?: number | null
+    quantidade?: number | null
+    tipo_movimentacao?: string | null
+    data_hora?: Date | string
   }
 
   export type pedidos_venda_itensUpdateWithoutPedidos_vendaInput = {
@@ -41328,35 +40989,35 @@ export namespace Prisma {
   }
 
   export type produtos_movimentacoesUpdateWithoutPedidos_vendaInput = {
-    pm_usuario_id?: NullableIntFieldUpdateOperationsInput | number | null
-    pm_saldo_anterior?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    pm_saldo_atual?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    pm_quantidade?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    pm_tipo_movimentacao?: NullableStringFieldUpdateOperationsInput | string | null
-    pm_data_hora?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    produtos?: produtosUpdateOneWithoutProdutos_movimentacoesNestedInput
+    pedido_venda_id?: NullableIntFieldUpdateOperationsInput | number | null
+    produto_id?: IntFieldUpdateOperationsInput | number
+    saldo_anterior?: NullableIntFieldUpdateOperationsInput | number | null
+    saldo_atual?: NullableIntFieldUpdateOperationsInput | number | null
+    quantidade?: NullableIntFieldUpdateOperationsInput | number | null
+    tipo_movimentacao?: NullableStringFieldUpdateOperationsInput | string | null
+    data_hora?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type produtos_movimentacoesUncheckedUpdateWithoutPedidos_vendaInput = {
-    pm_id?: IntFieldUpdateOperationsInput | number
-    pm_produto_id?: NullableIntFieldUpdateOperationsInput | number | null
-    pm_usuario_id?: NullableIntFieldUpdateOperationsInput | number | null
-    pm_saldo_anterior?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    pm_saldo_atual?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    pm_quantidade?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    pm_tipo_movimentacao?: NullableStringFieldUpdateOperationsInput | string | null
-    pm_data_hora?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    id?: IntFieldUpdateOperationsInput | number
+    pedido_venda_id?: NullableIntFieldUpdateOperationsInput | number | null
+    produto_id?: IntFieldUpdateOperationsInput | number
+    saldo_anterior?: NullableIntFieldUpdateOperationsInput | number | null
+    saldo_atual?: NullableIntFieldUpdateOperationsInput | number | null
+    quantidade?: NullableIntFieldUpdateOperationsInput | number | null
+    tipo_movimentacao?: NullableStringFieldUpdateOperationsInput | string | null
+    data_hora?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type produtos_movimentacoesUncheckedUpdateManyWithoutPedidos_vendaInput = {
-    pm_id?: IntFieldUpdateOperationsInput | number
-    pm_produto_id?: NullableIntFieldUpdateOperationsInput | number | null
-    pm_usuario_id?: NullableIntFieldUpdateOperationsInput | number | null
-    pm_saldo_anterior?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    pm_saldo_atual?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    pm_quantidade?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    pm_tipo_movimentacao?: NullableStringFieldUpdateOperationsInput | string | null
-    pm_data_hora?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    id?: IntFieldUpdateOperationsInput | number
+    pedido_venda_id?: NullableIntFieldUpdateOperationsInput | number | null
+    produto_id?: IntFieldUpdateOperationsInput | number
+    saldo_anterior?: NullableIntFieldUpdateOperationsInput | number | null
+    saldo_atual?: NullableIntFieldUpdateOperationsInput | number | null
+    quantidade?: NullableIntFieldUpdateOperationsInput | number | null
+    tipo_movimentacao?: NullableStringFieldUpdateOperationsInput | string | null
+    data_hora?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type contatosCreateManyClientesInput = {
@@ -42189,49 +41850,6 @@ export namespace Prisma {
     valor?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     data_criacao?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     data_vencimento?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  }
-
-  export type produtos_movimentacoesCreateManyProdutosInput = {
-    pm_id?: number
-    pm_pedido_venda_id?: number | null
-    pm_usuario_id?: number | null
-    pm_saldo_anterior?: Decimal | DecimalJsLike | number | string | null
-    pm_saldo_atual?: Decimal | DecimalJsLike | number | string | null
-    pm_quantidade?: Decimal | DecimalJsLike | number | string | null
-    pm_tipo_movimentacao?: string | null
-    pm_data_hora?: Date | string | null
-  }
-
-  export type produtos_movimentacoesUpdateWithoutProdutosInput = {
-    pm_usuario_id?: NullableIntFieldUpdateOperationsInput | number | null
-    pm_saldo_anterior?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    pm_saldo_atual?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    pm_quantidade?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    pm_tipo_movimentacao?: NullableStringFieldUpdateOperationsInput | string | null
-    pm_data_hora?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    pedidos_venda?: pedidos_vendaUpdateOneWithoutProdutos_movimentacoesNestedInput
-  }
-
-  export type produtos_movimentacoesUncheckedUpdateWithoutProdutosInput = {
-    pm_id?: IntFieldUpdateOperationsInput | number
-    pm_pedido_venda_id?: NullableIntFieldUpdateOperationsInput | number | null
-    pm_usuario_id?: NullableIntFieldUpdateOperationsInput | number | null
-    pm_saldo_anterior?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    pm_saldo_atual?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    pm_quantidade?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    pm_tipo_movimentacao?: NullableStringFieldUpdateOperationsInput | string | null
-    pm_data_hora?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  }
-
-  export type produtos_movimentacoesUncheckedUpdateManyWithoutProdutosInput = {
-    pm_id?: IntFieldUpdateOperationsInput | number
-    pm_pedido_venda_id?: NullableIntFieldUpdateOperationsInput | number | null
-    pm_usuario_id?: NullableIntFieldUpdateOperationsInput | number | null
-    pm_saldo_anterior?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    pm_saldo_atual?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    pm_quantidade?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    pm_tipo_movimentacao?: NullableStringFieldUpdateOperationsInput | string | null
-    pm_data_hora?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
 
