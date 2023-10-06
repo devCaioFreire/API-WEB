@@ -599,7 +599,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "C:\\Users\\usuario027\\Desktop\\SoftClever\\API-WEB\\prisma\\databases\\main",
+      "value": "C:\\Users\\Natan\\Documents\\GitHub\\API-WEB\\prisma\\databases\\main",
       "fromEnvVar": null
     },
     "config": {
@@ -622,8 +622,7 @@ const config = {
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
-    "rootEnvPath": "../../../.env",
-    "schemaEnvPath": "../../../.env"
+    "rootEnvPath": null
   },
   "relativePath": "../..",
   "clientVersion": "5.1.1",
@@ -633,7 +632,7 @@ const config = {
   ],
   "activeProvider": "mysql",
   "dataProxy": false,
-  "postinstall": false
+  "postinstall": true
 }
 
 const fs = require('fs')
