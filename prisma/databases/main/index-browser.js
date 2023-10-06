@@ -169,15 +169,15 @@ exports.Prisma.Pedidos_venda_itensScalarFieldEnum = {
 };
 
 exports.Prisma.Produtos_movimentacoesScalarFieldEnum = {
-  id: 'id',
-  pedido_venda_id: 'pedido_venda_id',
-  produto_id: 'produto_id',
-  saldo_anterior: 'saldo_anterior',
-  saldo_atual: 'saldo_atual',
-  quantidade: 'quantidade',
-  tipo_movimentacao: 'tipo_movimentacao',
-  data_hora: 'data_hora',
-  pedidos_vendaId: 'pedidos_vendaId'
+  pm_id: 'pm_id',
+  pm_pedido_venda_id: 'pm_pedido_venda_id',
+  pm_produto_id: 'pm_produto_id',
+  pm_usuario_id: 'pm_usuario_id',
+  pm_saldo_anterior: 'pm_saldo_anterior',
+  pm_saldo_atual: 'pm_saldo_atual',
+  pm_quantidade: 'pm_quantidade',
+  pm_tipo_movimentacao: 'pm_tipo_movimentacao',
+  pm_data_hora: 'pm_data_hora'
 };
 
 exports.Prisma.CertificadoScalarFieldEnum = {
