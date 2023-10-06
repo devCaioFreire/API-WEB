@@ -12,7 +12,7 @@ export interface ParamFilter {
 }
 
 export interface IQuery {
-  where?: Record<string, any >;
+  where?: Record<string, string | number | boolean| {gte : any}| {lte : any}>;
   take?: number;
   skip?: number;
   orderBy?: any;
@@ -37,11 +37,12 @@ export class OrderService {
             query.where['data_realizacao'] = { ...query.where['data_realizacao'], lte: new Date(filter.value) };
             continue;
           }
-          if (filter.field === 'id') {
-            query.where[filter.field] =  parseInt(filter.value);
+           else {
+            query.where[filter.field] = filter.field === 'id' ? parseInt(filter.value) : filter.value;
           }
         }
       }
+      
       //Criando os Filtros
       if (params && params.length > 0) {
         for (const param of params) {
@@ -64,10 +65,10 @@ export class OrderService {
         //Calculando o Skip
         query.skip = (query.skip ?? 0) * (query.take ?? 0);
       }
-
-      const pedidos = await prisma.pedidos_venda.findMany({ where: query.where, skip: query.skip, take: query.take, orderBy: query.orderBy });
+      
+      const PedidoVenda = await prisma.pedidos_venda.findMany({ where: query.where, skip: query.skip, take: query.take, orderBy: query.orderBy });
       prisma.$disconnect();
-      return pedidos;
+      return PedidoVenda;
     } catch (error) {
       console.log(error);
       throw new ErrorResponse(400, 'Bad Request nos pedidos');

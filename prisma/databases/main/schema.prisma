@@ -63,19 +63,20 @@ model pedidos_venda_itens {
 }
 
 model produtos_movimentacoes {
-  id                Int            @id @default(autoincrement())
-  pedido_venda_id   Int?
-  produto_id        Int
-  saldo_anterior    Int?
-  saldo_atual       Int?
-  quantidade        Int?
-  tipo_movimentacao String?
-  data_hora         DateTime       @default(now())
-  pedidos_vendaId   Int?
-  pedidos_venda     pedidos_venda? @relation(fields: [pedidos_vendaId], references: [id])
+  pm_id                Int            @id @default(autoincrement())
+  pm_pedido_venda_id   Int?
+  pm_produto_id        Int?
+  pm_usuario_id        Int?
+  pm_saldo_anterior    Decimal?       @db.Decimal(15, 2)
+  pm_saldo_atual       Decimal?       @db.Decimal(15, 2)
+  pm_quantidade        Decimal?       @db.Decimal(15, 2)
+  pm_tipo_movimentacao String?
+  pm_data_hora         DateTime?      @db.DateTime(0)
+  pedidos_venda        pedidos_venda? @relation(fields: [pm_pedido_venda_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "produtos_movimentacoes_ibfk_1")
+  produtos             produtos?      @relation(fields: [pm_produto_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "produtos_movimentacoes_ibfk_2")
 
-  @@index([pedido_venda_id], map: "produtos_movimentacoes_pedido_venda_id_fkey")
-  @@index([pedidos_vendaId], map: "produtos_movimentacoes_pedidos_vendaId_fkey")
+  @@index([pm_pedido_venda_id], map: "pm_pedido_venda_id")
+  @@index([pm_produto_id], map: "pm_produto_id")
 }
 
 model certificado {
@@ -445,23 +446,24 @@ model pedidos_venda_pagamentos {
 }
 
 model produtos {
-  id         Int      @id @default(autoincrement())
-  id_sirius  Int?
-  codProduto String   @db.VarChar(60)
-  descricao  String   @db.VarChar(120)
-  codEAN     String   @db.VarChar(14)
-  ncm        String   @db.VarChar(8)
-  cfop       String   @db.VarChar(4)
-  unCom      String?  @db.VarChar(6)
-  qtdCom     Decimal? @db.Decimal(21, 10)
-  vlrUnCom   Decimal? @db.Decimal(15, 2)
-  vlrProd    Decimal? @db.Decimal(15, 2)
-  codEANTrib String?  @db.VarChar(14)
-  unTrib     String?  @db.VarChar(6)
-  qtdTrib    Decimal? @db.Decimal(15, 4)
-  vlrUnTrib  Decimal? @db.Decimal(21, 10)
-  saldo      Decimal? @db.Decimal(15, 4)
-  status     String   @db.VarChar(1)
+  id                     Int                      @id @default(autoincrement())
+  id_sirius              Int?
+  codProduto             String                   @db.VarChar(60)
+  descricao              String                   @db.VarChar(120)
+  codEAN                 String                   @db.VarChar(14)
+  ncm                    String                   @db.VarChar(8)
+  cfop                   String                   @db.VarChar(4)
+  unCom                  String?                  @db.VarChar(6)
+  qtdCom                 Decimal?                 @db.Decimal(21, 10)
+  vlrUnCom               Decimal?                 @db.Decimal(15, 2)
+  vlrProd                Decimal?                 @db.Decimal(15, 2)
+  codEANTrib             String?                  @db.VarChar(14)
+  unTrib                 String?                  @db.VarChar(6)
+  qtdTrib                Decimal?                 @db.Decimal(15, 4)
+  vlrUnTrib              Decimal?                 @db.Decimal(21, 10)
+  saldo                  Decimal?                 @db.Decimal(15, 4)
+  status                 String                   @db.VarChar(1)
+  produtos_movimentacoes produtos_movimentacoes[]
 }
 
 model vendedores {
@@ -505,19 +507,4 @@ model vendedores_x_usuarios {
   id_usuario         BigInt?
   id_vendedor        BigInt?
   id_vendedor_sirius BigInt?
-}
-
-/// The underlying view does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
-view relatorio_pedidos_venda {
-  id_pvi          Int       @unique @default(0)
-  id_pv           Int?      @default(0)
-  valor_liquido   Float?
-  forma_pagamento String?
-  data_realizacao DateTime?
-  descricao       String?
-  valor_unitario  Float?
-  unCom           String?   @db.VarChar(6)
-  quantidade      Int?
-
-  @@ignore
 }
