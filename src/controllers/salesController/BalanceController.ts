@@ -40,15 +40,15 @@ interface ProductMovimentacion {
     pm_observacao: string | null;
   }
 
-export class BalanceController {
+  export class BalanceController {
     async handle(req: Request, res: Response) {
         const { authorization } = req.headers;
         if (!authorization) throw new Error('Token Invalid Or Not Found');
         const token = authorization.split(' ')[1];
 
         const productMovimentacion: ProductMovimentacion[] = req.body;
-        
-        const { tipo_movimentacao } = req.params; // Assume que o tipo de movimentação está como parte da URL
+
+        const { tipo_movimentacao } = req.params; // Obtendo o tipo de movimentação da URL
 
         // Valide o valor de tipo_movimentacao aqui, ele deve ser 'input' ou 'output'
 
