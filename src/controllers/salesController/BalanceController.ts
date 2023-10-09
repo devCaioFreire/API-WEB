@@ -46,6 +46,7 @@ export class BalanceController {
     async AjusteMovimentacao(req: Request, res: Response){
         const { authorization } = req.headers;
         if (!authorization) throw new Error('Token Invalid Or Not Found');
+        
         const token = authorization.split(' ')[1];
         const productMovimentacion: ProductMovimentacion = req.body;
 

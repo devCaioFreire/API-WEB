@@ -1,5 +1,7 @@
-import { createPrismaClientFromJWT } from '../../prisma';
+
+import { createPrismaClientFromJWT, prismaAuth } from '../../prisma';
 import { ErrorResponse } from '../errorService/ErrorService';
+import { Utils_service } from '../utilsService/UtilService';
 import { BalanceService } from './BalanceService';
 
 interface DataItems {
@@ -49,8 +51,7 @@ export class DataSaleService {
             itens,
             status
         }: DataSaleRequest, token:string) {
-        const prisma = createPrismaClientFromJWT(token);
-
+        const prisma = createPrismaClientFromJWT(token); 
         if(!usuario_id){ throw new ErrorResponse(404, 'User Not Found');}
         const dataSales = await prisma.pedidos_venda.create({
             data: {
@@ -95,11 +96,23 @@ export class DataSaleService {
             // Adicione o objeto à matriz productMovimentacion
             productMovimentacion.push(productMov);
         }
+        const utils = new Utils_service();
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        const decoded: any = utils.decodeToken(token);
 
+        const empresa = await prismaAuth.empresas.findUnique({where:{id : decoded.id_company}});
+
+        const dadosEmpresa = {
+            nomeEmpresa: empresa!.xRazaoSocial,
+            endereco: `${empresa!.xLgr}, ${empresa!.nro}`,
+            cidadeEstado: `${empresa!.xMun}, ${empresa!.uf}`,
+            cep:empresa!.cep ,
+            telefone:empresa!.fone,
+
+        };
         const balanceService = new BalanceService();
         await balanceService.create(productMovimentacion, token);
-    
         prisma.$disconnect();
-        return dataSales;
+        return {dadosEmpresa,productMovimentacion};
     }
 }
