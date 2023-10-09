@@ -177,7 +177,9 @@ exports.Prisma.Produtos_movimentacoesScalarFieldEnum = {
   pm_saldo_atual: 'pm_saldo_atual',
   pm_quantidade: 'pm_quantidade',
   pm_tipo_movimentacao: 'pm_tipo_movimentacao',
-  pm_data_hora: 'pm_data_hora'
+  pm_data_hora: 'pm_data_hora',
+  pm_numero_nota_fiscal: 'pm_numero_nota_fiscal',
+  pm_observacao: 'pm_observacao'
 };
 
 exports.Prisma.CertificadoScalarFieldEnum = {

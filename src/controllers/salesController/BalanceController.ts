@@ -27,34 +27,47 @@ export class BalanceController{
     }
 }*/
 
-import { Request, Response } from "express";
-import { BalanceService } from "../../services/salesService/BalanceService";
+import { Request, Response } from 'express';
+import { BalanceService } from '../../services/salesService/BalanceService';
+import { ErrorResponse } from '../../services/errorService/ErrorService';
 
 interface ProductMovimentacion {
-    pm_pedido_venda_id: number;
+    pm_pedido_venda_id: number | null;
     pm_produto_id: number;
-    pm_usuario_id: number | null;
-    pm_quantidade: number | null;
+    pm_usuario_id: number;
+  
+    pm_quantidade: number;
     pm_tipo_movimentacao: string;
-}
+    pm_numero_nota_fiscal: number | null;
+    pm_observacao: string | null;
+  }
 
 export class BalanceController {
-    async handle(req: Request, res: Response) {
+    async AjusteMovimentacao(req: Request, res: Response){
         const { authorization } = req.headers;
         if (!authorization) throw new Error('Token Invalid Or Not Found');
         const token = authorization.split(' ')[1];
-
-        const productMovimentacion: ProductMovimentacion[] = req.body;
-        
-        const { tipo_movimentacao } = req.params; // Assume que o tipo de movimentação está como parte da URL
-
-        // Valide o valor de tipo_movimentacao aqui, ele deve ser 'input' ou 'output'
+        const productMovimentacion: ProductMovimentacion = req.body;
 
         const createBalanceService = new BalanceService();
         const balance = await createBalanceService.create(
-            productMovimentacion, token, tipo_movimentacao
+            [productMovimentacion], token
         );
-
-        return res.json(balance);
+        return res.status(201).json(balance);
     }
+    async EntradaEstoque(req: Request, res: Response){
+        const { authorization } = req.headers;
+        if (!authorization) throw new Error('Token Invalid Or Not Found');
+        const token = authorization.split(' ')[1];
+        const productMovimentacion: ProductMovimentacion = req.body;
+
+        if(productMovimentacion.pm_quantidade < 0){ throw new ErrorResponse(401,'Entrada Inválida - Quantidade Negativa');} 
+        const createBalanceService = new BalanceService();
+        
+        const balance = await createBalanceService.create(
+            [productMovimentacion], token
+        );
+        return res.status(201).json(balance);
+    }
+
 }
