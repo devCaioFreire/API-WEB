@@ -113,6 +113,6 @@ export class DataSaleService {
         const balanceService = new BalanceService();
         await balanceService.create(productMovimentacion, token);
         prisma.$disconnect();
-        return {dadosEmpresa,productMovimentacion};
+        return {dadosEmpresa,produtos};
     }
 }
