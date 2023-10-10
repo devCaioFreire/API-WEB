@@ -52,7 +52,7 @@ export class DataSaleService {
             status
         }: DataSaleRequest, token:string) {
         const prisma = createPrismaClientFromJWT(token); 
-        if(!usuario_id){ throw new ErrorResponse(404, 'User Not Found');}
+        if(!vendedor_id){ throw new ErrorResponse(404, 'User Not Found');}
         const dataSales = await prisma.pedidos_venda.create({
             data: {
                 status,
