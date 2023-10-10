@@ -46,8 +46,24 @@ export class BalanceController {
     async AjusteMovimentacao(req: Request, res: Response){
         const { authorization } = req.headers;
         if (!authorization) throw new Error('Token Invalid Or Not Found');
+        
         const token = authorization.split(' ')[1];
-        const productMovimentacion: ProductMovimentacion = req.body;
+        const {
+            pm_produto_id,
+            pm_usuario_id,
+            pm_quantidade,
+            pm_observacao
+        } = req.body;
+          
+        const productMovimentacion: ProductMovimentacion = {
+            pm_numero_nota_fiscal: null,
+            pm_observacao: pm_observacao ?? 'Sem Observacao',
+            pm_pedido_venda_id: null,
+            pm_produto_id,
+            pm_quantidade,
+            pm_tipo_movimentacao: 'Ajuste de Estoque',
+            pm_usuario_id
+        };
 
         const createBalanceService = new BalanceService();
         const balance = await createBalanceService.create(
@@ -59,8 +75,23 @@ export class BalanceController {
         const { authorization } = req.headers;
         if (!authorization) throw new Error('Token Invalid Or Not Found');
         const token = authorization.split(' ')[1];
-        let productMovimentacion: ProductMovimentacion = req.body;
-        productMovimentacion.pm_tipo_movimentacao = 'Entrada de Estoque'
+        const {
+            pm_numero_nota_fiscal,
+            pm_produto_id,
+            pm_usuario_id,
+            pm_quantidade,
+            pm_observacao
+        } = req.body;
+          
+        const productMovimentacion: ProductMovimentacion = {
+            pm_numero_nota_fiscal: pm_numero_nota_fiscal ?? null,
+            pm_observacao: pm_observacao ?? 'Sem Observacao',
+            pm_pedido_venda_id: null,
+            pm_produto_id,
+            pm_quantidade,
+            pm_tipo_movimentacao: 'Entrada de Estoque',
+            pm_usuario_id
+        };
         if(productMovimentacion.pm_quantidade < 0){ throw new ErrorResponse(401,'Entrada Inválida - Quantidade Negativa');} 
         const createBalanceService = new BalanceService();
         
