@@ -1,24 +1,25 @@
-import { createPrismaClientFromJWT } from "../../prisma";
+import { createPrismaClientFromJWT } from '../../prisma';
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function prismaMiddleware(req: any, res: any, next: any) {
-  const authHeader = req.headers.authorization;
+    const authHeader = req.headers.authorization;
 
-  if (!authHeader) {
-    return res.status(401).send({ error: 'No token provided' });
-  }
+    if (!authHeader) {
+        return res.status(401).send({ error: 'No token provided' });
+    }
 
-  const parts = authHeader.split(' ');
+    const parts = authHeader.split(' ');
 
-  if (parts.length !== 2) {
-    return res.status(401).send({ error: 'Token error' });
-  }
+    if (parts.length !== 2) {
+        return res.status(401).send({ error: 'Token error' });
+    }
 
-  const [scheme, token] = parts;
+    const [scheme, token] = parts;
 
-  if (!/^Bearer$/i.test(scheme)) {
-    return res.status(401).send({ error: 'Token malformatted' });
-  }
+    if (!/^Bearer$/i.test(scheme)) {
+        return res.status(401).send({ error: 'Token malformatted' });
+    }
 
-  req.prisma = createPrismaClientFromJWT(token);
-  next();
+    req.prisma = createPrismaClientFromJWT(token);
+    next();
 }

@@ -1,4 +1,4 @@
-import { createPrismaClientFromJWT } from "../../prisma";
+import { createPrismaClientFromJWT } from '../../prisma';
 
 interface ProductProps {
   id: number;
@@ -14,41 +14,41 @@ interface ProductProps {
 }
 
 export class UpdateProductService {
-  async execute(
-    {
-      id,
-      codProduto,
-      descricao,
-      vlrUnCom,
-      saldo,
-      status,
-      unCom,
-      codEAN,
-      ncm,
-      cfop
-    }: ProductProps, token: string) {
+    async execute(
+        {
+            id,
+            codProduto,
+            descricao,
+            vlrUnCom,
+            saldo,
+            status,
+            unCom,
+            codEAN,
+            ncm,
+            cfop
+        }: ProductProps, token: string) {
 
-    token = token.slice(7)
-    const prisma = createPrismaClientFromJWT(token);
+        token = token.slice(7);
+        const prisma = createPrismaClientFromJWT(token);
 
-    const updateProduct = await prisma.produtos.updateMany({
-      where: {
-        id
-      },
-      data: {
-        codProduto,
-        descricao,
-        vlrUnCom,
-        saldo,
-        status,
-        unCom,
-        codEAN,
-        ncm,
-        cfop
-      }
-    });
+        const updateProduct = await prisma.produtos.updateMany({
+            where: {
+                id
+            },
+            data: {
+                codProduto,
+                descricao,
+                vlrUnCom,
+                saldo,
+                status,
+                unCom,
+                codEAN,
+                ncm,
+                cfop
+            }
+        });
 
-    prisma.$disconnect();
-    return updateProduct;
-  }
+        prisma.$disconnect();
+        return updateProduct;
+    }
 }

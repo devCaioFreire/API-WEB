@@ -12,8 +12,6 @@ function getDatabaseConnectionStringForCompany(companyId: string): string {
         '1': 'mysql://softclever:soft@1973@localhost:3306/b15432558000143?schema-public',
         '3': 'mysql://root:soft@1973@localhost:3306/b15432558000143?schema=public',
     };
-
-    console.log(companyId);
     return databaseConfig[companyId];
 }
 

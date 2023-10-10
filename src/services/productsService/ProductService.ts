@@ -73,17 +73,18 @@ export class ProductService {
             }
 
             const produtos = await prisma.produtos.findMany({ where: query.where, skip: query.skip, take: query.take, orderBy: query.orderBy });
-            prisma.$disconnect();
             return produtos;
         } catch (error) {
-            console.log(error);
             throw new ErrorResponse(400, 'Bad Request nos produtos');
+
+        }
+        finally{
+            prisma.$disconnect();
         }
     }
     ParamPropsFormater(Params: ParamFilter[]) {
         for (const param of Params) {
             if (param.value === '' || param.value === undefined || param.value === null) {
-                console.log(param.field + 'está com valor vazio');
                 continue;
             }
 

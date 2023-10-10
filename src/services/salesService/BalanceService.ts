@@ -24,12 +24,13 @@ export class BalanceService {
     ) {
         const prisma = createPrismaClientFromJWT(token);
         try {
-                const addProductMovimentacion = await prisma.produtos_movimentacoes.createMany({
-                    data: produtos,
-                });
-                return addProductMovimentacion;
+            const addProductMovimentacion = await prisma.produtos_movimentacoes.createMany({
+                data: produtos,
+            });
+            return addProductMovimentacion;
 
         } catch (err) {
+            prisma.$disconnect();
             throw new Error;
         } finally {
             prisma.$disconnect();
@@ -47,6 +48,7 @@ export class BalanceService {
 
             return AjusteMovimentacao;
         } catch (err) {
+            prisma.$disconnect();
             throw new ErrorResponse(500, 'Erro ao criar Movimentação');
         } finally {
             prisma.$disconnect();

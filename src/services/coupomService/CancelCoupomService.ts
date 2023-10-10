@@ -8,7 +8,7 @@ interface CancelCoupomRequest {
 }
 
 export class CancelCoupomService {
-    async execute({ }: CancelCoupomRequest, token: string) {
+    async execute(cancelCupomRequest: CancelCoupomRequest, token: string) {
 
         token = token.slice(7);
         const prisma = createPrismaClientFromJWT(token);

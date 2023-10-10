@@ -1,5 +1,5 @@
-import { Request, Response } from "express";
-import { DataSaleService } from "../../services/salesService/DataSaleService";
+import { Request, Response } from 'express';
+import { DataSaleService } from '../../services/salesService/DataSaleService';
 interface DataItems {
   produto_id: number;
   ean: string;
@@ -7,7 +7,7 @@ interface DataItems {
   quantidade: number;
   valor_unitario: number;
   valor_total: number;
-};
+}
 
 interface DataSaleRequest {
   vendedor_id: number,
@@ -23,40 +23,40 @@ interface DataSaleRequest {
 }
 
 export class DataSaleController {
-  async handle(req: Request, res: Response) {
+    async handle(req: Request, res: Response) {
     
-    let { authorization } = req.headers;
-    if (!authorization) throw new Error('Token Invalid Or Not Found');
-    authorization = authorization.split(' ')[1];
+        let { authorization } = req.headers;
+        if (!authorization) throw new Error('Token Invalid Or Not Found');
+        authorization = authorization.split(' ')[1];
     
-    const {
-      cpf_cnpj,
-      valor_bruto,
-      valor_liquido,
-      forma_pagamento,
-      desconto,
-      troco,
-      vendedor_id,
-      pagamento,
-      itens,
-      status
-    }: DataSaleRequest = req.body;
-    const createDataSaleService = new DataSaleService();
-    const dataSales = await createDataSaleService.create(
-      {
-        status,
-        vendedor_id,
-        valor_bruto,
-        valor_liquido,
-        forma_pagamento,
-        desconto,
-        pagamento,
-        troco,
-        cpf_cnpj,
-        itens
-    }, authorization
-    );
+        const {
+            cpf_cnpj,
+            valor_bruto,
+            valor_liquido,
+            forma_pagamento,
+            desconto,
+            troco,
+            vendedor_id,
+            pagamento,
+            itens,
+            status
+        }: DataSaleRequest = req.body;
+        const createDataSaleService = new DataSaleService();
+        const dataSales = await createDataSaleService.create(
+            {
+                status,
+                vendedor_id,
+                valor_bruto,
+                valor_liquido,
+                forma_pagamento,
+                desconto,
+                pagamento,
+                troco,
+                cpf_cnpj,
+                itens
+            }, authorization
+        );
 
-    return res.json(dataSales);
-  }
+        return res.json(dataSales);
+    }
 }

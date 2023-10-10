@@ -1,4 +1,4 @@
-import { createPrismaClientFromJWT } from "../../prisma";
+import { createPrismaClientFromJWT } from '../../prisma';
 
 interface ProductProps {
   id: string;
@@ -14,15 +14,16 @@ interface ProductProps {
 }
 
 export class DeleteProductService {
-  async execute({ id }: ProductProps, token: string) {
+    async execute({ id }: ProductProps, token: string) {
 
-    token = token.slice(7)
-    const prisma = createPrismaClientFromJWT(token);
+        token = token.slice(7);
+        const prisma = createPrismaClientFromJWT(token);
 
-    const numericId = parseInt(id, undefined);
-    const deleteProduct = await prisma.produtos.delete({
-      where: { id: numericId }
-    });
-    return deleteProduct;
-  }
+        const numericId = parseInt(id, undefined);
+        const deleteProduct = await prisma.produtos.delete({
+            where: { id: numericId }
+        });
+        prisma.$disconnect;
+        return deleteProduct;
+    }
 }

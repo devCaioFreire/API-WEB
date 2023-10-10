@@ -1,4 +1,4 @@
-import { prismaAuth } from "../../prisma";
+import { prismaAuth } from '../../prisma';
 
 interface CompanyData {
   cnpj: string;
@@ -19,17 +19,16 @@ interface CompanyData {
   banco: string;
   status: string;
   email?: string;
-};
+}
 
 export class CompanyService {
-  async create(data: CompanyData) {
-    const existingCompany = await prismaAuth.empresas.findFirst({ where: { cnpj: data.cnpj } });
-    prismaAuth.$disconnect();
+    async create(data: CompanyData) {
+        const existingCompany = await prismaAuth.empresas.findFirst({ where: { cnpj: data.cnpj } });
 
-    if (existingCompany) {
-      throw new Error("A empresa com este CNPJ já está registrada.");
+        if (existingCompany) {
+            throw new Error('A empresa com este CNPJ já está registrada.');
+        }
+
+        return await prismaAuth.empresas.create({ data });
     }
-
-    return await (prismaAuth as any).empresas.create({ data });
-  }
 }
