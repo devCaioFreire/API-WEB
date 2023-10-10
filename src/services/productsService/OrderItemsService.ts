@@ -69,7 +69,7 @@ export class OrderItemsService {
   ParamPropsFormater(Params: ParamFilter[]) {
     for (const param of Params) {
       if (param.value === '' || param.value === undefined || param.value === null) {
-        console.log(param.field + 'está com valor vazio');
+        // console.log(param.field + 'está com valor vazio');
         continue;
       }
 

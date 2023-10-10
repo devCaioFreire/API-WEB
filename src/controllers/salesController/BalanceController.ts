@@ -28,8 +28,8 @@ export class BalanceController{
 }*/
 
 import { Request, Response } from 'express';
-import { BalanceService } from '../../services/salesService/BalanceService';
 import { ErrorResponse } from '../../services/errorService/ErrorService';
+import { BalanceService } from '../../services/salesService/BalanceService';
 
 interface ProductMovimentacion {
     pm_pedido_venda_id: number | null;
@@ -59,8 +59,8 @@ export class BalanceController {
         const { authorization } = req.headers;
         if (!authorization) throw new Error('Token Invalid Or Not Found');
         const token = authorization.split(' ')[1];
-        const productMovimentacion: ProductMovimentacion = req.body;
-
+        let productMovimentacion: ProductMovimentacion = req.body;
+        productMovimentacion.pm_tipo_movimentacao = 'Entrada de Estoque'
         if(productMovimentacion.pm_quantidade < 0){ throw new ErrorResponse(401,'Entrada Inválida - Quantidade Negativa');} 
         const createBalanceService = new BalanceService();
         

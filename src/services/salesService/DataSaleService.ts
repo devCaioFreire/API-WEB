@@ -3,36 +3,36 @@ import { ErrorResponse } from '../errorService/ErrorService';
 import { BalanceService } from './BalanceService';
 
 interface DataItems {
-  produto_id: number;
-  ean: string;
-  descricao: string;
-  quantidade: number;
-  valor_unitario: number;
-  valor_total: number;
+    produto_id: number;
+    ean: string;
+    descricao: string;
+    quantidade: number;
+    valor_unitario: number;
+    valor_total: number;
 }
 
 interface DataSaleRequest {
-  usuario_id: number,
-  cpf_cnpj: string;
-  status: string;
-  valor_bruto: number;
-  valor_liquido: number;
-  forma_pagamento: string;
-  desconto: number;
-  troco: number;
-  pagamento: number;
-  itens: Array<DataItems>
+    vendedor_id: number,
+    cpf_cnpj: string;
+    status: string;
+    valor_bruto: number;
+    valor_liquido: number;
+    forma_pagamento: string;
+    desconto: number;
+    troco: number;
+    pagamento: number;
+    itens: Array<DataItems>
 }
 
 interface ProductMovimentacion {
-  pm_pedido_venda_id: number | null;
-  pm_produto_id: number;
-  pm_usuario_id: number;
+    pm_pedido_venda_id: number | null;
+    pm_produto_id: number;
+    pm_usuario_id: number;
 
-  pm_quantidade: number;
-  pm_tipo_movimentacao: string;
-  pm_numero_nota_fiscal: number | null;
-  pm_observacao: string | null;
+    pm_quantidade: number;
+    pm_tipo_movimentacao: string;
+    pm_numero_nota_fiscal: number | null;
+    pm_observacao: string | null;
 }
 
 export class DataSaleService {
@@ -44,18 +44,18 @@ export class DataSaleService {
             forma_pagamento,
             desconto,
             troco,
-            usuario_id,
+            vendedor_id,
             pagamento,
             itens,
             status
-        }: DataSaleRequest, token:string) {
-        const prisma = createPrismaClientFromJWT(token);
+        }: DataSaleRequest, authorization: string) {
+        const prisma = createPrismaClientFromJWT(authorization);
 
-        if(!usuario_id){ throw new ErrorResponse(404, 'User Not Found');}
+        if (!vendedor_id) { throw new ErrorResponse(404, 'User Not Found'); }
         const dataSales = await prisma.pedidos_venda.create({
             data: {
                 status,
-                usuario_id,
+                vendedor_id,
                 valor_bruto,
                 valor_liquido,
                 forma_pagamento,
@@ -78,15 +78,15 @@ export class DataSaleService {
                 itens: true,
             }
         });
-        const productMovimentacion:ProductMovimentacion[] = []; // Inicialize a matriz vazia
+        const productMovimentacion: ProductMovimentacion[] = []; // Inicialize a matriz vazia
         const produtos = dataSales.itens;
 
         for (const produto of produtos) {
             // Crie o objeto de movimentação para cada produto vendido
-            const productMov:ProductMovimentacion = {
+            const productMov: ProductMovimentacion = {
                 pm_pedido_venda_id: dataSales.id,
                 pm_produto_id: produto.produto_id,
-                pm_usuario_id: dataSales.usuario_id!,
+                pm_usuario_id: dataSales.vendedor_id!,
                 pm_quantidade: -produto.quantidade!,
                 pm_tipo_movimentacao: 'Venda',
                 pm_numero_nota_fiscal: null,
@@ -97,8 +97,8 @@ export class DataSaleService {
         }
 
         const balanceService = new BalanceService();
-        await balanceService.create(productMovimentacion, token);
-    
+        await balanceService.create(productMovimentacion, authorization);
+
         prisma.$disconnect();
         return dataSales;
     }

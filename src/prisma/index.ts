@@ -12,7 +12,6 @@ function getDatabaseConnectionStringForCompany(companyId: string): string {
     "3": "mysql://root:soft@1973@localhost:3306/teste?schema=public",
   };
 
-  console.log(companyId)
   return databaseConfig[companyId];
 }
 

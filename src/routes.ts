@@ -14,10 +14,10 @@ import { ProductController } from './controllers/productController/ProductContro
 import { UpdateProductController } from './controllers/productController/UpdateProductController';
 import { GetDescriptionProductsController } from './controllers/productController/filter/DescriptionFilterController';
 import { GetEANProductsController } from './controllers/productController/filter/EANFilterController';
+import { BalanceController } from './controllers/salesController/BalanceController';
 import { DataSaleController } from './controllers/salesController/DataSaleController';
 import { getNextOrderNumberController } from './controllers/salesController/OrderController';
 import { ErrorMiddleware } from './middlewares/errorMiddleware/ErrorMiddleware';
-import { BalanceController } from './controllers/salesController/BalanceController';
 
 const router = Router();
 const errorMiddleware = new ErrorMiddleware();

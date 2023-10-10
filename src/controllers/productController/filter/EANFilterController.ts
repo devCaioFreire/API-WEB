@@ -4,12 +4,15 @@ import { GetEANProductsService } from "../../../services/productsService/filter/
 export class GetEANProductsController {
   async handle(req: Request, res: Response) {
     const { ean } = req.params;
-    console.log('CODE EAN:', ean);
+
+    let { authorization } = req.headers;
+    if (!authorization) throw new Error('Token Invalid Or Not Found');
+    authorization = authorization.split(' ')[1];
 
     const eanProduct = new GetEANProductsService();
 
     try {
-      const product = await eanProduct.execute(ean);
+      const product = await eanProduct.execute(ean, authorization);
       console.log(product);
       return res.json(product);
     } catch (error) {

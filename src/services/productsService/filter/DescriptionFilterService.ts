@@ -1,9 +1,10 @@
-import { prismaMain } from "../../../prisma";
+import { createPrismaClientFromJWT } from "../../../prisma";
 
 export class GetDescriptionProductsService {
-  async execute(descricao: string, page: number) {
+  async execute(descricao: string, page: number, authorization: string) {
+    const prisma = createPrismaClientFromJWT(authorization);
     try {
-      const products = await prismaMain.produtos.findMany({
+      const products = await prisma.produtos.findMany({
         where: {
           descricao: {
             contains: descricao,

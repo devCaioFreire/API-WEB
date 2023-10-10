@@ -1,10 +1,11 @@
-import { prismaMain } from "../../../prisma";
+import { createPrismaClientFromJWT } from "../../../prisma";
 
 export class GetEANProductsService {
-  async execute(ean: string) {
+  async execute(ean: string, authorization: string) {
+    const prisma = createPrismaClientFromJWT(authorization);
     try {
       const codEAN = ean;
-      const product = await prismaMain.produtos.findFirst({
+      const product = await prisma.produtos.findFirst({
         where: { codEAN }
       });
 

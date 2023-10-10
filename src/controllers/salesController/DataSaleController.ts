@@ -10,7 +10,7 @@ interface DataItems {
 };
 
 interface DataSaleRequest {
-  usuario_id: number,
+  vendedor_id: number,
   cpf_cnpj: string;
   status: string;
   valor_bruto: number;
@@ -36,7 +36,7 @@ export class DataSaleController {
       forma_pagamento,
       desconto,
       troco,
-      usuario_id,
+      vendedor_id,
       pagamento,
       itens,
       status
@@ -45,7 +45,7 @@ export class DataSaleController {
     const dataSales = await createDataSaleService.create(
       {
         status,
-        usuario_id,
+        vendedor_id,
         valor_bruto,
         valor_liquido,
         forma_pagamento,
