@@ -1,4 +1,4 @@
-import { createPrismaClientFromJWT } from "../../prisma";
+import { createPrismaClientFromJWT } from '../../prisma';
 
 interface CancelCoupomRequest {
   id: number;
@@ -8,19 +8,19 @@ interface CancelCoupomRequest {
 }
 
 export class CancelCoupomService {
-  async execute({ }: CancelCoupomRequest, token: string) {
+    async execute({ }: CancelCoupomRequest, token: string) {
 
-    token = token.slice(7)
-    const prisma = createPrismaClientFromJWT(token);
+        token = token.slice(7);
+        const prisma = createPrismaClientFromJWT(token);
 
-    const cancelCoupom = await prisma.pedidos_venda.findMany({
-      where: {
-        status: "R",
-      },
-      take: 10,
-      orderBy: { data_criacao: "desc" },
-    })
-    prisma.$disconnect();
-    return cancelCoupom;
-  }
+        const cancelCoupom = await prisma.pedidos_venda.findMany({
+            where: {
+                status: 'R',
+            },
+            take: 10,
+            orderBy: { data_criacao: 'desc' },
+        });
+        prisma.$disconnect();
+        return cancelCoupom;
+    }
 } 

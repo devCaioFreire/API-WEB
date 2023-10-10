@@ -50,14 +50,14 @@ export class BalanceController {
         const token = authorization.split(' ')[1];
         const {
             pm_produto_id,
-            pm_usuario_id,
+            pm_usuario_id, 
             pm_quantidade,
             pm_observacao
         } = req.body;
           
         const productMovimentacion: ProductMovimentacion = {
             pm_numero_nota_fiscal: null,
-            pm_observacao: pm_observacao ?? 'Sem Observacao',
+            pm_observacao: pm_observacao == '' ? 'Sem Observacao' : pm_observacao,
             pm_pedido_venda_id: null,
             pm_produto_id,
             pm_quantidade,
@@ -66,8 +66,8 @@ export class BalanceController {
         };
 
         const createBalanceService = new BalanceService();
-        const balance = await createBalanceService.create(
-            [productMovimentacion], token
+        const balance = await createBalanceService.AjusteMovimentações(
+            productMovimentacion, token
         );
         return res.status(201).json(balance);
     }
