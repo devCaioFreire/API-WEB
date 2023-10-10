@@ -9,8 +9,8 @@ export const prismaAuth = new PrismaClientAuth();
 function getDatabaseConnectionStringForCompany(companyId: string): string {
     const databaseConfig: any = {
         '0': 'mysql://root:soft@1973@localhost:3306/bancao?schema=public',
-        '1': 'mysql://softclever:soft@1973@localhost:3306/b15432558000143?schema-public',
-        '3': 'mysql://root:soft@1973@localhost:3306/b15432558000143?schema=public',
+        '1': 'mysql://root:soft@1973@localhost:3306/b15432558000113?schema=public',
+        '3': 'mysql://root:soft@1973@localhost:3306/teste?schema=public',
     };
     return databaseConfig[companyId];
 }
