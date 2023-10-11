@@ -74,8 +74,6 @@ model produtos_movimentacoes {
   pm_data_hora          DateTime       @default(now())
   pm_numero_nota_fiscal Int?
   pm_observacao         String?
-  pedidos_venda         pedidos_venda? @relation(fields: [pm_pedido_venda_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "produtos_movimentacoes_ibfk_1")
-  produtos              produtos       @relation(fields: [pm_produto_id], references: [id], onUpdate: Restrict, map: "produtos_movimentacoes_ibfk_2")
 
   @@index([pm_pedido_venda_id], map: "pm_pedido_venda_id")
   @@index([pm_produto_id], map: "pm_produto_id")

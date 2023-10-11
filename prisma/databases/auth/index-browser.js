@@ -16,11 +16,11 @@ exports.$Enums = {}
 
 /**
  * Prisma Client JS version: 5.1.1
- * Query Engine version: 6a3747c37ff169c90047725a05a6ef02e32ac97e
+ * Query Engine version: ac9d7041ed77bcc8a8dbd2ab6616b39013829574
  */
 Prisma.prismaVersion = {
   client: "5.1.1",
-  engine: "6a3747c37ff169c90047725a05a6ef02e32ac97e"
+  engine: "ac9d7041ed77bcc8a8dbd2ab6616b39013829574"
 }
 
 
@@ -185,6 +185,13 @@ exports.Prisma.Usuarios_x_empresasScalarFieldEnum = {
   id_grupo_usuario: 'id_grupo_usuario'
 };
 
+exports.Prisma.ParametrosScalarFieldEnum = {
+  id: 'id',
+  parametro: 'parametro',
+  valorParametro: 'valorParametro',
+  descricao: 'descricao'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -202,7 +209,8 @@ exports.Prisma.ModelName = {
   empresas: 'empresas',
   grupos_usuarios: 'grupos_usuarios',
   usuarios: 'usuarios',
-  usuarios_x_empresas: 'usuarios_x_empresas'
+  usuarios_x_empresas: 'usuarios_x_empresas',
+  parametros: 'parametros'
 };
 
 /**

@@ -72,10 +72,10 @@ model usuarios {
   nome                String?               @db.VarChar(60)
   ultimo_nome         String?               @db.VarChar(60)
   email               String?               @db.VarChar(150)
-  senha               String?               @db.VarChar(250)
+  senha               String?
   celular             String?               @db.VarChar(14)
   status              String?               @default("A") @db.Char(1)
-  user_token          String                @unique(map: "user_token")
+  user_token          String                @unique(map: "user_token") @db.VarChar(128)
   exclusivo           String?               @default("N") @db.Char(1)
   usuarios_x_empresas usuarios_x_empresas[]
 }
@@ -92,4 +92,11 @@ model usuarios_x_empresas {
   @@index([id_empresa], map: "id_empresa")
   @@index([id_grupo_usuario], map: "id_grupo_usuario")
   @@index([id_usuario], map: "id_usuario")
+}
+
+model parametros {
+  id             Int    @id @unique(map: "id_UNIQUE") @default(autoincrement())
+  parametro      String @unique(map: "parametro_UNIQUE") @db.VarChar(80)
+  valorParametro Int
+  descricao      String @db.VarChar(256)
 }

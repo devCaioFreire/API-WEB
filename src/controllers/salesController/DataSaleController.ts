@@ -10,7 +10,7 @@ interface DataItems {
 }
 
 interface DataSaleRequest {
-  vendedor_id: number,
+    usuario_id: number,
   cpf_cnpj: string;
   status: string;
   valor_bruto: number;
@@ -29,33 +29,9 @@ export class DataSaleController {
         if (!authorization) throw new Error('Token Invalid Or Not Found');
         authorization = authorization.split(' ')[1];
     
-        const {
-            cpf_cnpj,
-            valor_bruto,
-            valor_liquido,
-            forma_pagamento,
-            desconto,
-            troco,
-            vendedor_id,
-            pagamento,
-            itens,
-            status
-        }: DataSaleRequest = req.body;
+        const venda: DataSaleRequest = req.body;
         const createDataSaleService = new DataSaleService();
-        const dataSales = await createDataSaleService.create(
-            {
-                status,
-                vendedor_id,
-                valor_bruto,
-                valor_liquido,
-                forma_pagamento,
-                desconto,
-                pagamento,
-                troco,
-                cpf_cnpj,
-                itens
-            }, authorization
-        );
+        const dataSales = await createDataSaleService.create(venda, authorization);
 
         return res.json(dataSales);
     }

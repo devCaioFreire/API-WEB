@@ -30,6 +30,7 @@ export class BalanceService {
             return addProductMovimentacion;
 
         } catch (err) {
+            console.log(err);
             prisma.$disconnect();
             throw new ErrorResponse(400, 'Erro ao Criar Movimentação');
         } finally {

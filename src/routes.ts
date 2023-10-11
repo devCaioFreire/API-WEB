@@ -36,7 +36,7 @@ router.get('/getEANProductFilter/:ean', new GetEANProductsController().handle);
 // POST
 router.post('/login', new LoginController().handle);
 // router.post("/register", new AuthRegisterController().handle);
-router.post('/dataSale', new DataSaleController().handle);
+router.post('/dataSale', errorMiddleware.handleAsync(new DataSaleController().handle));
 router.post('/updateCoupomStatus', new UpdateCoupomStatusController().handle);
 router.post('/addProduct', new AddProductController().handle);
 router.post('/StockAdjustment', errorMiddleware.handleAsync(new BalanceController().AjusteMovimentacao));

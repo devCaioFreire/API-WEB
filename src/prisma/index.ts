@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { PrismaClient as PrismaClientAuth } from '../../prisma/databases/auth';
 import { PrismaClient } from '../../prisma/databases/main';
+import { PrismaClient as PrismaClientAuth } from '../../prisma/databases/auth';
 import { Utils_service } from '../services/utilsService/UtilService';
 
 export const prismaAuth = new PrismaClientAuth();

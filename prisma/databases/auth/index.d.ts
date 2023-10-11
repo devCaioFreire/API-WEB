@@ -43,6 +43,11 @@ export type usuarios = $Result.DefaultSelection<Prisma.$usuariosPayload>
  * 
  */
 export type usuarios_x_empresas = $Result.DefaultSelection<Prisma.$usuarios_x_empresasPayload>
+/**
+ * Model parametros
+ * 
+ */
+export type parametros = $Result.DefaultSelection<Prisma.$parametrosPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -225,6 +230,16 @@ export class PrismaClient<
     * ```
     */
   get usuarios_x_empresas(): Prisma.usuarios_x_empresasDelegate<ExtArgs>;
+
+  /**
+   * `prisma.parametros`: Exposes CRUD operations for the **parametros** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Parametros
+    * const parametros = await prisma.parametros.findMany()
+    * ```
+    */
+  get parametros(): Prisma.parametrosDelegate<ExtArgs>;
 }
 
 export namespace Prisma {
@@ -283,7 +298,7 @@ export namespace Prisma {
 
   /**
    * Prisma Client JS version: 5.1.1
-   * Query Engine version: 6a3747c37ff169c90047725a05a6ef02e32ac97e
+   * Query Engine version: ac9d7041ed77bcc8a8dbd2ab6616b39013829574
    */
   export type PrismaVersion = {
     client: string
@@ -700,7 +715,8 @@ export namespace Prisma {
     empresas: 'empresas',
     grupos_usuarios: 'grupos_usuarios',
     usuarios: 'usuarios',
-    usuarios_x_empresas: 'usuarios_x_empresas'
+    usuarios_x_empresas: 'usuarios_x_empresas',
+    parametros: 'parametros'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -717,7 +733,7 @@ export namespace Prisma {
 
   export type TypeMap<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     meta: {
-      modelProps: 'acoes' | 'acoes_x_grupos' | 'empresas' | 'grupos_usuarios' | 'usuarios' | 'usuarios_x_empresas'
+      modelProps: 'acoes' | 'acoes_x_grupos' | 'empresas' | 'grupos_usuarios' | 'usuarios' | 'usuarios_x_empresas' | 'parametros'
       txIsolationLevel: Prisma.TransactionIsolationLevel
     },
     model: {
@@ -1114,6 +1130,72 @@ export namespace Prisma {
           count: {
             args: Prisma.usuarios_x_empresasCountArgs<ExtArgs>,
             result: $Utils.Optional<Usuarios_x_empresasCountAggregateOutputType> | number
+          }
+        }
+      }
+      parametros: {
+        payload: Prisma.$parametrosPayload<ExtArgs>
+        fields: Prisma.parametrosFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.parametrosFindUniqueArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$parametrosPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.parametrosFindUniqueOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$parametrosPayload>
+          }
+          findFirst: {
+            args: Prisma.parametrosFindFirstArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$parametrosPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.parametrosFindFirstOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$parametrosPayload>
+          }
+          findMany: {
+            args: Prisma.parametrosFindManyArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$parametrosPayload>[]
+          }
+          create: {
+            args: Prisma.parametrosCreateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$parametrosPayload>
+          }
+          createMany: {
+            args: Prisma.parametrosCreateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          delete: {
+            args: Prisma.parametrosDeleteArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$parametrosPayload>
+          }
+          update: {
+            args: Prisma.parametrosUpdateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$parametrosPayload>
+          }
+          deleteMany: {
+            args: Prisma.parametrosDeleteManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          updateMany: {
+            args: Prisma.parametrosUpdateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          upsert: {
+            args: Prisma.parametrosUpsertArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$parametrosPayload>
+          }
+          aggregate: {
+            args: Prisma.ParametrosAggregateArgs<ExtArgs>,
+            result: $Utils.Optional<AggregateParametros>
+          }
+          groupBy: {
+            args: Prisma.parametrosGroupByArgs<ExtArgs>,
+            result: $Utils.Optional<ParametrosGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.parametrosCountArgs<ExtArgs>,
+            result: $Utils.Optional<ParametrosCountAggregateOutputType> | number
           }
         }
       }
@@ -7505,6 +7587,903 @@ export namespace Prisma {
 
 
   /**
+   * Model parametros
+   */
+
+  export type AggregateParametros = {
+    _count: ParametrosCountAggregateOutputType | null
+    _avg: ParametrosAvgAggregateOutputType | null
+    _sum: ParametrosSumAggregateOutputType | null
+    _min: ParametrosMinAggregateOutputType | null
+    _max: ParametrosMaxAggregateOutputType | null
+  }
+
+  export type ParametrosAvgAggregateOutputType = {
+    id: number | null
+    valorParametro: number | null
+  }
+
+  export type ParametrosSumAggregateOutputType = {
+    id: number | null
+    valorParametro: number | null
+  }
+
+  export type ParametrosMinAggregateOutputType = {
+    id: number | null
+    parametro: string | null
+    valorParametro: number | null
+    descricao: string | null
+  }
+
+  export type ParametrosMaxAggregateOutputType = {
+    id: number | null
+    parametro: string | null
+    valorParametro: number | null
+    descricao: string | null
+  }
+
+  export type ParametrosCountAggregateOutputType = {
+    id: number
+    parametro: number
+    valorParametro: number
+    descricao: number
+    _all: number
+  }
+
+
+  export type ParametrosAvgAggregateInputType = {
+    id?: true
+    valorParametro?: true
+  }
+
+  export type ParametrosSumAggregateInputType = {
+    id?: true
+    valorParametro?: true
+  }
+
+  export type ParametrosMinAggregateInputType = {
+    id?: true
+    parametro?: true
+    valorParametro?: true
+    descricao?: true
+  }
+
+  export type ParametrosMaxAggregateInputType = {
+    id?: true
+    parametro?: true
+    valorParametro?: true
+    descricao?: true
+  }
+
+  export type ParametrosCountAggregateInputType = {
+    id?: true
+    parametro?: true
+    valorParametro?: true
+    descricao?: true
+    _all?: true
+  }
+
+  export type ParametrosAggregateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which parametros to aggregate.
+     */
+    where?: parametrosWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of parametros to fetch.
+     */
+    orderBy?: parametrosOrderByWithRelationInput | parametrosOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: parametrosWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` parametros from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` parametros.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned parametros
+    **/
+    _count?: true | ParametrosCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: ParametrosAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: ParametrosSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: ParametrosMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: ParametrosMaxAggregateInputType
+  }
+
+  export type GetParametrosAggregateType<T extends ParametrosAggregateArgs> = {
+        [P in keyof T & keyof AggregateParametros]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateParametros[P]>
+      : GetScalarType<T[P], AggregateParametros[P]>
+  }
+
+
+
+
+  export type parametrosGroupByArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    where?: parametrosWhereInput
+    orderBy?: parametrosOrderByWithAggregationInput | parametrosOrderByWithAggregationInput[]
+    by: ParametrosScalarFieldEnum[] | ParametrosScalarFieldEnum
+    having?: parametrosScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: ParametrosCountAggregateInputType | true
+    _avg?: ParametrosAvgAggregateInputType
+    _sum?: ParametrosSumAggregateInputType
+    _min?: ParametrosMinAggregateInputType
+    _max?: ParametrosMaxAggregateInputType
+  }
+
+  export type ParametrosGroupByOutputType = {
+    id: number
+    parametro: string
+    valorParametro: number
+    descricao: string
+    _count: ParametrosCountAggregateOutputType | null
+    _avg: ParametrosAvgAggregateOutputType | null
+    _sum: ParametrosSumAggregateOutputType | null
+    _min: ParametrosMinAggregateOutputType | null
+    _max: ParametrosMaxAggregateOutputType | null
+  }
+
+  type GetParametrosGroupByPayload<T extends parametrosGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<ParametrosGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof ParametrosGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], ParametrosGroupByOutputType[P]>
+            : GetScalarType<T[P], ParametrosGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type parametrosSelect<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    parametro?: boolean
+    valorParametro?: boolean
+    descricao?: boolean
+  }, ExtArgs["result"]["parametros"]>
+
+  export type parametrosSelectScalar = {
+    id?: boolean
+    parametro?: boolean
+    valorParametro?: boolean
+    descricao?: boolean
+  }
+
+
+  export type $parametrosPayload<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    name: "parametros"
+    objects: {}
+    scalars: $Extensions.GetResult<{
+      id: number
+      parametro: string
+      valorParametro: number
+      descricao: string
+    }, ExtArgs["result"]["parametros"]>
+    composites: {}
+  }
+
+
+  type parametrosGetPayload<S extends boolean | null | undefined | parametrosDefaultArgs> = $Result.GetResult<Prisma.$parametrosPayload, S>
+
+  type parametrosCountArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = 
+    Omit<parametrosFindManyArgs, 'select' | 'include'> & {
+      select?: ParametrosCountAggregateInputType | true
+    }
+
+  export interface parametrosDelegate<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['parametros'], meta: { name: 'parametros' } }
+    /**
+     * Find zero or one Parametros that matches the filter.
+     * @param {parametrosFindUniqueArgs} args - Arguments to find a Parametros
+     * @example
+     * // Get one Parametros
+     * const parametros = await prisma.parametros.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUnique<T extends parametrosFindUniqueArgs<ExtArgs>>(
+      args: SelectSubset<T, parametrosFindUniqueArgs<ExtArgs>>
+    ): Prisma__parametrosClient<$Result.GetResult<Prisma.$parametrosPayload<ExtArgs>, T, 'findUnique'> | null, null, ExtArgs>
+
+    /**
+     * Find one Parametros that matches the filter or throw an error  with `error.code='P2025'` 
+     *     if no matches were found.
+     * @param {parametrosFindUniqueOrThrowArgs} args - Arguments to find a Parametros
+     * @example
+     * // Get one Parametros
+     * const parametros = await prisma.parametros.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUniqueOrThrow<T extends parametrosFindUniqueOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, parametrosFindUniqueOrThrowArgs<ExtArgs>>
+    ): Prisma__parametrosClient<$Result.GetResult<Prisma.$parametrosPayload<ExtArgs>, T, 'findUniqueOrThrow'>, never, ExtArgs>
+
+    /**
+     * Find the first Parametros that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {parametrosFindFirstArgs} args - Arguments to find a Parametros
+     * @example
+     * // Get one Parametros
+     * const parametros = await prisma.parametros.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirst<T extends parametrosFindFirstArgs<ExtArgs>>(
+      args?: SelectSubset<T, parametrosFindFirstArgs<ExtArgs>>
+    ): Prisma__parametrosClient<$Result.GetResult<Prisma.$parametrosPayload<ExtArgs>, T, 'findFirst'> | null, null, ExtArgs>
+
+    /**
+     * Find the first Parametros that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {parametrosFindFirstOrThrowArgs} args - Arguments to find a Parametros
+     * @example
+     * // Get one Parametros
+     * const parametros = await prisma.parametros.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirstOrThrow<T extends parametrosFindFirstOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, parametrosFindFirstOrThrowArgs<ExtArgs>>
+    ): Prisma__parametrosClient<$Result.GetResult<Prisma.$parametrosPayload<ExtArgs>, T, 'findFirstOrThrow'>, never, ExtArgs>
+
+    /**
+     * Find zero or more Parametros that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {parametrosFindManyArgs=} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Parametros
+     * const parametros = await prisma.parametros.findMany()
+     * 
+     * // Get first 10 Parametros
+     * const parametros = await prisma.parametros.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const parametrosWithIdOnly = await prisma.parametros.findMany({ select: { id: true } })
+     * 
+    **/
+    findMany<T extends parametrosFindManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, parametrosFindManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$parametrosPayload<ExtArgs>, T, 'findMany'>>
+
+    /**
+     * Create a Parametros.
+     * @param {parametrosCreateArgs} args - Arguments to create a Parametros.
+     * @example
+     * // Create one Parametros
+     * const Parametros = await prisma.parametros.create({
+     *   data: {
+     *     // ... data to create a Parametros
+     *   }
+     * })
+     * 
+    **/
+    create<T extends parametrosCreateArgs<ExtArgs>>(
+      args: SelectSubset<T, parametrosCreateArgs<ExtArgs>>
+    ): Prisma__parametrosClient<$Result.GetResult<Prisma.$parametrosPayload<ExtArgs>, T, 'create'>, never, ExtArgs>
+
+    /**
+     * Create many Parametros.
+     *     @param {parametrosCreateManyArgs} args - Arguments to create many Parametros.
+     *     @example
+     *     // Create many Parametros
+     *     const parametros = await prisma.parametros.createMany({
+     *       data: {
+     *         // ... provide data here
+     *       }
+     *     })
+     *     
+    **/
+    createMany<T extends parametrosCreateManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, parametrosCreateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a Parametros.
+     * @param {parametrosDeleteArgs} args - Arguments to delete one Parametros.
+     * @example
+     * // Delete one Parametros
+     * const Parametros = await prisma.parametros.delete({
+     *   where: {
+     *     // ... filter to delete one Parametros
+     *   }
+     * })
+     * 
+    **/
+    delete<T extends parametrosDeleteArgs<ExtArgs>>(
+      args: SelectSubset<T, parametrosDeleteArgs<ExtArgs>>
+    ): Prisma__parametrosClient<$Result.GetResult<Prisma.$parametrosPayload<ExtArgs>, T, 'delete'>, never, ExtArgs>
+
+    /**
+     * Update one Parametros.
+     * @param {parametrosUpdateArgs} args - Arguments to update one Parametros.
+     * @example
+     * // Update one Parametros
+     * const parametros = await prisma.parametros.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    update<T extends parametrosUpdateArgs<ExtArgs>>(
+      args: SelectSubset<T, parametrosUpdateArgs<ExtArgs>>
+    ): Prisma__parametrosClient<$Result.GetResult<Prisma.$parametrosPayload<ExtArgs>, T, 'update'>, never, ExtArgs>
+
+    /**
+     * Delete zero or more Parametros.
+     * @param {parametrosDeleteManyArgs} args - Arguments to filter Parametros to delete.
+     * @example
+     * // Delete a few Parametros
+     * const { count } = await prisma.parametros.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+    **/
+    deleteMany<T extends parametrosDeleteManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, parametrosDeleteManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Parametros.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {parametrosUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Parametros
+     * const parametros = await prisma.parametros.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    updateMany<T extends parametrosUpdateManyArgs<ExtArgs>>(
+      args: SelectSubset<T, parametrosUpdateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Parametros.
+     * @param {parametrosUpsertArgs} args - Arguments to update or create a Parametros.
+     * @example
+     * // Update or create a Parametros
+     * const parametros = await prisma.parametros.upsert({
+     *   create: {
+     *     // ... data to create a Parametros
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Parametros we want to update
+     *   }
+     * })
+    **/
+    upsert<T extends parametrosUpsertArgs<ExtArgs>>(
+      args: SelectSubset<T, parametrosUpsertArgs<ExtArgs>>
+    ): Prisma__parametrosClient<$Result.GetResult<Prisma.$parametrosPayload<ExtArgs>, T, 'upsert'>, never, ExtArgs>
+
+    /**
+     * Count the number of Parametros.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {parametrosCountArgs} args - Arguments to filter Parametros to count.
+     * @example
+     * // Count the number of Parametros
+     * const count = await prisma.parametros.count({
+     *   where: {
+     *     // ... the filter for the Parametros we want to count
+     *   }
+     * })
+    **/
+    count<T extends parametrosCountArgs>(
+      args?: Subset<T, parametrosCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], ParametrosCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Parametros.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ParametrosAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends ParametrosAggregateArgs>(args: Subset<T, ParametrosAggregateArgs>): Prisma.PrismaPromise<GetParametrosAggregateType<T>>
+
+    /**
+     * Group by Parametros.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {parametrosGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends parametrosGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: parametrosGroupByArgs['orderBy'] }
+        : { orderBy?: parametrosGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, parametrosGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetParametrosGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the parametros model
+   */
+  readonly fields: parametrosFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for parametros.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__parametrosClient<T, Null = never, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: 'PrismaPromise';
+
+
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>;
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>;
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>;
+  }
+
+
+
+  /**
+   * Fields of the parametros model
+   */ 
+  interface parametrosFieldRefs {
+    readonly id: FieldRef<"parametros", 'Int'>
+    readonly parametro: FieldRef<"parametros", 'String'>
+    readonly valorParametro: FieldRef<"parametros", 'Int'>
+    readonly descricao: FieldRef<"parametros", 'String'>
+  }
+    
+
+  // Custom InputTypes
+
+  /**
+   * parametros findUnique
+   */
+  export type parametrosFindUniqueArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the parametros
+     */
+    select?: parametrosSelect<ExtArgs> | null
+    /**
+     * Filter, which parametros to fetch.
+     */
+    where: parametrosWhereUniqueInput
+  }
+
+
+  /**
+   * parametros findUniqueOrThrow
+   */
+  export type parametrosFindUniqueOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the parametros
+     */
+    select?: parametrosSelect<ExtArgs> | null
+    /**
+     * Filter, which parametros to fetch.
+     */
+    where: parametrosWhereUniqueInput
+  }
+
+
+  /**
+   * parametros findFirst
+   */
+  export type parametrosFindFirstArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the parametros
+     */
+    select?: parametrosSelect<ExtArgs> | null
+    /**
+     * Filter, which parametros to fetch.
+     */
+    where?: parametrosWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of parametros to fetch.
+     */
+    orderBy?: parametrosOrderByWithRelationInput | parametrosOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for parametros.
+     */
+    cursor?: parametrosWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` parametros from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` parametros.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of parametros.
+     */
+    distinct?: ParametrosScalarFieldEnum | ParametrosScalarFieldEnum[]
+  }
+
+
+  /**
+   * parametros findFirstOrThrow
+   */
+  export type parametrosFindFirstOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the parametros
+     */
+    select?: parametrosSelect<ExtArgs> | null
+    /**
+     * Filter, which parametros to fetch.
+     */
+    where?: parametrosWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of parametros to fetch.
+     */
+    orderBy?: parametrosOrderByWithRelationInput | parametrosOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for parametros.
+     */
+    cursor?: parametrosWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` parametros from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` parametros.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of parametros.
+     */
+    distinct?: ParametrosScalarFieldEnum | ParametrosScalarFieldEnum[]
+  }
+
+
+  /**
+   * parametros findMany
+   */
+  export type parametrosFindManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the parametros
+     */
+    select?: parametrosSelect<ExtArgs> | null
+    /**
+     * Filter, which parametros to fetch.
+     */
+    where?: parametrosWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of parametros to fetch.
+     */
+    orderBy?: parametrosOrderByWithRelationInput | parametrosOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing parametros.
+     */
+    cursor?: parametrosWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` parametros from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` parametros.
+     */
+    skip?: number
+    distinct?: ParametrosScalarFieldEnum | ParametrosScalarFieldEnum[]
+  }
+
+
+  /**
+   * parametros create
+   */
+  export type parametrosCreateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the parametros
+     */
+    select?: parametrosSelect<ExtArgs> | null
+    /**
+     * The data needed to create a parametros.
+     */
+    data: XOR<parametrosCreateInput, parametrosUncheckedCreateInput>
+  }
+
+
+  /**
+   * parametros createMany
+   */
+  export type parametrosCreateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many parametros.
+     */
+    data: parametrosCreateManyInput | parametrosCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+
+  /**
+   * parametros update
+   */
+  export type parametrosUpdateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the parametros
+     */
+    select?: parametrosSelect<ExtArgs> | null
+    /**
+     * The data needed to update a parametros.
+     */
+    data: XOR<parametrosUpdateInput, parametrosUncheckedUpdateInput>
+    /**
+     * Choose, which parametros to update.
+     */
+    where: parametrosWhereUniqueInput
+  }
+
+
+  /**
+   * parametros updateMany
+   */
+  export type parametrosUpdateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update parametros.
+     */
+    data: XOR<parametrosUpdateManyMutationInput, parametrosUncheckedUpdateManyInput>
+    /**
+     * Filter which parametros to update
+     */
+    where?: parametrosWhereInput
+  }
+
+
+  /**
+   * parametros upsert
+   */
+  export type parametrosUpsertArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the parametros
+     */
+    select?: parametrosSelect<ExtArgs> | null
+    /**
+     * The filter to search for the parametros to update in case it exists.
+     */
+    where: parametrosWhereUniqueInput
+    /**
+     * In case the parametros found by the `where` argument doesn't exist, create a new parametros with this data.
+     */
+    create: XOR<parametrosCreateInput, parametrosUncheckedCreateInput>
+    /**
+     * In case the parametros was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<parametrosUpdateInput, parametrosUncheckedUpdateInput>
+  }
+
+
+  /**
+   * parametros delete
+   */
+  export type parametrosDeleteArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the parametros
+     */
+    select?: parametrosSelect<ExtArgs> | null
+    /**
+     * Filter which parametros to delete.
+     */
+    where: parametrosWhereUniqueInput
+  }
+
+
+  /**
+   * parametros deleteMany
+   */
+  export type parametrosDeleteManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which parametros to delete
+     */
+    where?: parametrosWhereInput
+  }
+
+
+  /**
+   * parametros without action
+   */
+  export type parametrosDefaultArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the parametros
+     */
+    select?: parametrosSelect<ExtArgs> | null
+  }
+
+
+
+  /**
    * Enums
    */
 
@@ -7598,6 +8577,16 @@ export namespace Prisma {
   };
 
   export type Usuarios_x_empresasScalarFieldEnum = (typeof Usuarios_x_empresasScalarFieldEnum)[keyof typeof Usuarios_x_empresasScalarFieldEnum]
+
+
+  export const ParametrosScalarFieldEnum: {
+    id: 'id',
+    parametro: 'parametro',
+    valorParametro: 'valorParametro',
+    descricao: 'descricao'
+  };
+
+  export type ParametrosScalarFieldEnum = (typeof ParametrosScalarFieldEnum)[keyof typeof ParametrosScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -8085,6 +9074,55 @@ export namespace Prisma {
     id_grupo_usuario?: IntWithAggregatesFilter<"usuarios_x_empresas"> | number
   }
 
+  export type parametrosWhereInput = {
+    AND?: parametrosWhereInput | parametrosWhereInput[]
+    OR?: parametrosWhereInput[]
+    NOT?: parametrosWhereInput | parametrosWhereInput[]
+    id?: IntFilter<"parametros"> | number
+    parametro?: StringFilter<"parametros"> | string
+    valorParametro?: IntFilter<"parametros"> | number
+    descricao?: StringFilter<"parametros"> | string
+  }
+
+  export type parametrosOrderByWithRelationInput = {
+    id?: SortOrder
+    parametro?: SortOrder
+    valorParametro?: SortOrder
+    descricao?: SortOrder
+  }
+
+  export type parametrosWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    parametro?: string
+    AND?: parametrosWhereInput | parametrosWhereInput[]
+    OR?: parametrosWhereInput[]
+    NOT?: parametrosWhereInput | parametrosWhereInput[]
+    valorParametro?: IntFilter<"parametros"> | number
+    descricao?: StringFilter<"parametros"> | string
+  }, "id" | "id" | "parametro">
+
+  export type parametrosOrderByWithAggregationInput = {
+    id?: SortOrder
+    parametro?: SortOrder
+    valorParametro?: SortOrder
+    descricao?: SortOrder
+    _count?: parametrosCountOrderByAggregateInput
+    _avg?: parametrosAvgOrderByAggregateInput
+    _max?: parametrosMaxOrderByAggregateInput
+    _min?: parametrosMinOrderByAggregateInput
+    _sum?: parametrosSumOrderByAggregateInput
+  }
+
+  export type parametrosScalarWhereWithAggregatesInput = {
+    AND?: parametrosScalarWhereWithAggregatesInput | parametrosScalarWhereWithAggregatesInput[]
+    OR?: parametrosScalarWhereWithAggregatesInput[]
+    NOT?: parametrosScalarWhereWithAggregatesInput | parametrosScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"parametros"> | number
+    parametro?: StringWithAggregatesFilter<"parametros"> | string
+    valorParametro?: IntWithAggregatesFilter<"parametros"> | number
+    descricao?: StringWithAggregatesFilter<"parametros"> | string
+  }
+
   export type acoesCreateInput = {
     descricao: string
     descricao_titulo: string
@@ -8534,6 +9572,52 @@ export namespace Prisma {
     id_grupo_usuario?: IntFieldUpdateOperationsInput | number
   }
 
+  export type parametrosCreateInput = {
+    parametro: string
+    valorParametro: number
+    descricao: string
+  }
+
+  export type parametrosUncheckedCreateInput = {
+    id?: number
+    parametro: string
+    valorParametro: number
+    descricao: string
+  }
+
+  export type parametrosUpdateInput = {
+    parametro?: StringFieldUpdateOperationsInput | string
+    valorParametro?: IntFieldUpdateOperationsInput | number
+    descricao?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type parametrosUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    parametro?: StringFieldUpdateOperationsInput | string
+    valorParametro?: IntFieldUpdateOperationsInput | number
+    descricao?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type parametrosCreateManyInput = {
+    id?: number
+    parametro: string
+    valorParametro: number
+    descricao: string
+  }
+
+  export type parametrosUpdateManyMutationInput = {
+    parametro?: StringFieldUpdateOperationsInput | string
+    valorParametro?: IntFieldUpdateOperationsInput | number
+    descricao?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type parametrosUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    parametro?: StringFieldUpdateOperationsInput | string
+    valorParametro?: IntFieldUpdateOperationsInput | number
+    descricao?: StringFieldUpdateOperationsInput | string
+  }
+
   export type IntFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel>
     in?: number[]
@@ -8959,6 +10043,37 @@ export namespace Prisma {
     id_empresa?: SortOrder
     id_usuario?: SortOrder
     id_grupo_usuario?: SortOrder
+  }
+
+  export type parametrosCountOrderByAggregateInput = {
+    id?: SortOrder
+    parametro?: SortOrder
+    valorParametro?: SortOrder
+    descricao?: SortOrder
+  }
+
+  export type parametrosAvgOrderByAggregateInput = {
+    id?: SortOrder
+    valorParametro?: SortOrder
+  }
+
+  export type parametrosMaxOrderByAggregateInput = {
+    id?: SortOrder
+    parametro?: SortOrder
+    valorParametro?: SortOrder
+    descricao?: SortOrder
+  }
+
+  export type parametrosMinOrderByAggregateInput = {
+    id?: SortOrder
+    parametro?: SortOrder
+    valorParametro?: SortOrder
+    descricao?: SortOrder
+  }
+
+  export type parametrosSumOrderByAggregateInput = {
+    id?: SortOrder
+    valorParametro?: SortOrder
   }
 
   export type acoes_x_gruposCreateNestedManyWithoutAcoesInput = {
@@ -10302,6 +11417,10 @@ export namespace Prisma {
      * @deprecated Use usuarios_x_empresasDefaultArgs instead
      */
     export type usuarios_x_empresasArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = usuarios_x_empresasDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use parametrosDefaultArgs instead
+     */
+    export type parametrosArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = parametrosDefaultArgs<ExtArgs>
 
   /**
    * Batch Payload for updateMany & deleteMany & createMany
