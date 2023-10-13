@@ -16,11 +16,11 @@ exports.$Enums = {}
 
 /**
  * Prisma Client JS version: 5.1.1
- * Query Engine version: ac9d7041ed77bcc8a8dbd2ab6616b39013829574
+ * Query Engine version: 6a3747c37ff169c90047725a05a6ef02e32ac97e
  */
 Prisma.prismaVersion = {
   client: "5.1.1",
-  engine: "ac9d7041ed77bcc8a8dbd2ab6616b39013829574"
+  engine: "6a3747c37ff169c90047725a05a6ef02e32ac97e"
 }
 
 
@@ -179,7 +179,9 @@ exports.Prisma.Produtos_movimentacoesScalarFieldEnum = {
   pm_tipo_movimentacao: 'pm_tipo_movimentacao',
   pm_data_hora: 'pm_data_hora',
   pm_numero_nota_fiscal: 'pm_numero_nota_fiscal',
-  pm_observacao: 'pm_observacao'
+  pm_observacao: 'pm_observacao',
+  pedidos_vendaId: 'pedidos_vendaId',
+  produtosId: 'produtosId'
 };
 
 exports.Prisma.CertificadoScalarFieldEnum = {
