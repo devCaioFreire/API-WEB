@@ -9,9 +9,9 @@ export const prismaAuth = new PrismaClientAuth();
 // Função para obter a string de conexão do banco de dados com base na empresa
 function getDatabaseConnectionStringForCompany(companyId: string): string {   
     const databaseConfig: any = {
-        '0': 'mysql://root:soft@1973@localhost:3306/bancao?schema=public',
-        '1': 'mysql://root:soft@1973@localhost:3306/b15432558000113?schema=public',
-        '3': 'mysql://root:soft@1973@localhost:3306/teste?schema=public',
+        '0': 'mysql://avelino:Soft1973@192.168.0.126:3306/bancao?schema=public',
+        '1': 'mysql://avelino:Soft1973@192.168.0.126:3306/b15432558000113?schema=public',
+        '3': 'mysql://avelino:Soft1973@192.168.0.126:3306/teste?schema=public',
     };
     return databaseConfig[companyId];
 }

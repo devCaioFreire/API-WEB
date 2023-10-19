@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { createPrismaClientFromJWT } from '../../prisma';
 import { ErrorResponse } from '../errorService/ErrorService';
 
@@ -18,6 +17,52 @@ export interface IQuery {
   skip?: number;
   orderBy?: any;
 }
+export interface itens {
+    id: number;
+    pedido_id: number;
+    produto_id: number;
+    produto_sirius_id: number | null;
+    descricao: string | null;
+    unidade: string | null;
+    quantidade: number | null;
+    valor_unitario: number | null;
+    valor_total: number | null;
+    ean: string | null;
+    codigo: string | null;
+}
+export interface PedidoVenda {
+    id: number|null,
+    numero :number|null,
+    vendedor_id:number|null,
+    vendedor_nome:string|null,
+    vendedor_id_sirius:number|null,
+    cliente_id:number|null,
+    cliente_nome:string|null,
+    cliente_id_sirius :number|null,
+    usuario_id:number|null,
+    desconto  :number|null,
+    valor_bruto:number|null,
+    valor_liquido :number|null,
+    forma_pagamento:string|null,
+    pagamento :number|null,
+    troco:number|null,
+    status:string|null,
+    cpf_cnpj:string|null,
+    observacoes:string|null,
+    data_criacao:Date|null,
+    cliente_contato:string|null,
+    data_realizacao:Date|null,
+    data_sincronizacao:Date|null,
+    condicao_pagamento_id:number|null,
+    entrega_cep:string|null,
+    entrega_logradouro:string|null,
+    entrega_numero:string|null,
+    entrega_complemento:string|null,
+    entrega_bairro:string|null,
+    entrega_cidade:string|null,
+    entrega_uf:string|null,
+    itens?:itens[],
+}
 
 export class OrderService {
     async get(token: string, selectors?: ParamFilter[], params?: ParamProps[]) {
@@ -33,13 +78,14 @@ export class OrderService {
           
                     if (filter.field === 'dateInitial') {
                         const dateCondition = query.where['data_realizacao'] || {};
+
                         query.where['data_realizacao'] = { ...dateCondition, gte: new Date(filter.value) };
                         continue;
                     }
                     if (filter.field === 'dateFinal') {
                         const dateCondition = query.where['data_realizacao'] || {};
                         query.where['data_realizacao'] = { ...dateCondition, lt: new Date(filter.value) };
-                        query.where['data_realizacao'].lt = new Date((query.where['data_realizacao'].lt as Date).getDate() + 1);
+                        query.where['data_realizacao'].lt.setDate((query.where['data_realizacao'].lt as Date).getDate() + 1);
                         continue;
                     }
           
@@ -70,7 +116,7 @@ export class OrderService {
                 //Calculando o Skip
                 query.skip = (query.skip ?? 0) * (query.take ?? 0);
             }
-
+            console.log(query.where);
             const PedidoVenda = await prisma.pedidos_venda.findMany({ where: query.where, skip: query.skip, take: query.take, orderBy: query.orderBy });
             return PedidoVenda;
         } catch (error) {
@@ -82,7 +128,20 @@ export class OrderService {
     async getOrderByPaymentMethod(token:string,method:string){
         const prisma = createPrismaClientFromJWT(token);
         try {
-            const SaleOrder = await prisma.pedidos_venda.findMany({where:{forma_pagamento:method}});
+            const SaleOrder:PedidoVenda[] = await prisma.pedidos_venda.findMany({where:{forma_pagamento:method}});
+            const listId:number[] = [];
+            for (let i = 0; i < SaleOrder.length; i++) {
+                listId.push(SaleOrder[i].id!);
+
+            }
+            if(listId.length > 0){
+                const itens = await prisma.pedidos_venda_itens.findMany({where:{pedido_id:{in: listId}}});
+
+                for (let i = 0; i < SaleOrder.length; i++) {
+                    SaleOrder[i].itens = itens.filter((item)=>item.pedido_id === SaleOrder[i].id);   
+                }
+            }
+
             return {SaleOrder};  
         } catch (error) {
             console.error(error);

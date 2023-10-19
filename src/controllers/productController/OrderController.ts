@@ -46,7 +46,7 @@ export class OrderController {
         const {method} = req.body;
 
         const OrderServices = new OrderService();
-        const Orders = OrderServices.getOrderByPaymentMethod(authorization, method as string);
+        const Orders = await OrderServices.getOrderByPaymentMethod(authorization, method as string);
 
         return res.status(200).json(Orders);
     }
