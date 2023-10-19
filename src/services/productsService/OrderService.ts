@@ -13,7 +13,7 @@ export interface ParamFilter {
 }
 
 export interface IQuery {
-  where?: Record<string, string | number | boolean| {gte : any}| {lte : any}>;
+  where?: Record<string, string | number | boolean| {gte : Date}| {lt : Date}>;
   take?: number;
   skip?: number;
   orderBy?: any;
@@ -38,7 +38,8 @@ export class OrderService {
                     }
                     if (filter.field === 'dateFinal') {
                         const dateCondition = query.where['data_realizacao'] || {};
-                        query.where['data_realizacao'] = { ...dateCondition, lte: new Date(filter.value) };
+                        query.where['data_realizacao'] = { ...dateCondition, lt: new Date(filter.value) };
+                        query.where['data_realizacao'].lt = new Date((query.where['data_realizacao'].lt as Date).getDate() + 1);
                         continue;
                     }
           
@@ -78,7 +79,17 @@ export class OrderService {
             prisma.$disconnect();
         }
     }
-
+    async getOrderByPaymentMethod(token:string,method:string){
+        const prisma = createPrismaClientFromJWT(token);
+        try {
+            const SaleOrder = await prisma.pedidos_venda.findMany({where:{forma_pagamento:method}});
+            return {SaleOrder};  
+        } catch (error) {
+            console.error(error);
+        }finally{
+            await prisma.$disconnect();
+        }
+    }
     ParamPropsFormater(Params: ParamFilter[]) {
         for (const param of Params) {
             if (param.value === '' || param.value === undefined || param.value === null) {

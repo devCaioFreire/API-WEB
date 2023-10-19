@@ -28,6 +28,7 @@ router.get('/getLastProduct', new getLastProductController().handle);
 router.get('/cancelCoupom', new CancelCoupomController().handle);
 router.get('/getProducts', errorMiddleware.handleAsync(new ProductController().handle));
 router.get('/getSalesOrders', errorMiddleware.handleAsync(new OrderController().handle));
+router.get('/getSalesOrdersByPaymentMethod', errorMiddleware.handleAsync(new OrderController().getOrderByPaymentMethod));
 router.get('/getOrderItems', errorMiddleware.handleAsync(new OrderItemsController().handle));
 router.get('/getAllProducts', new AllProductsController().handle);
 router.get('/getDescriptionProductFilter', new GetDescriptionProductsController().handle);

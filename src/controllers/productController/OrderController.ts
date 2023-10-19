@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Request, Response } from 'express';
 import { OrderService } from '../../services/productsService/OrderService';
 import { ParamFilter, ParamProps } from '../../services/productsService/ProductService';
@@ -36,5 +37,17 @@ export class OrderController {
             }
             return res.json(Order);
         }
+    }
+    async getOrderByPaymentMethod(req: Request, res: Response){
+        let { authorization } = req.headers;
+        if (!authorization) throw new Error('Token Invalid Or Not Found');
+        authorization = authorization.split(' ')[1];
+
+        const {method} = req.body;
+
+        const OrderServices = new OrderService();
+        const Orders = OrderServices.getOrderByPaymentMethod(authorization, method as string);
+
+        return res.status(200).json(Orders);
     }
 }
