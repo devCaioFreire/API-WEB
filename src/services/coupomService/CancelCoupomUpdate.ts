@@ -1,4 +1,4 @@
-import { createPrismaClientFromJWT } from '../../prisma';
+import { await createPrismaClientFromJWT } from '../../prisma';
 import { ErrorResponse } from '../errorService/ErrorService';
 
 interface UpdateCoupomStatusRequest {
@@ -10,7 +10,7 @@ export class UpdateCoupomStatusService {
     async execute({ id, status }: UpdateCoupomStatusRequest, token: string) {
 
         token = token.slice(7);
-        const prisma = createPrismaClientFromJWT(token);
+        const prisma = await createPrismaClientFromJWT(token);
 
         try {
             // Atualizar o status do cupom no banco de dados

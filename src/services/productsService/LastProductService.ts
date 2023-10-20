@@ -1,8 +1,8 @@
-import { createPrismaClientFromJWT } from '../../prisma';
+import { await createPrismaClientFromJWT } from '../../prisma';
 import { ErrorResponse } from '../errorService/ErrorService';
 
 export async function getLastProductService(token: string) {
-    const prisma = createPrismaClientFromJWT(token);
+    const prisma = await createPrismaClientFromJWT(token);
     try {
         const lastProduct = await prisma.produtos.findFirst({
             orderBy: {

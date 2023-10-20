@@ -66,7 +66,7 @@ export interface PedidoVenda {
 
 export class OrderService {
     async get(token: string, selectors?: ParamFilter[], params?: ParamProps[]) {
-        const prisma = createPrismaClientFromJWT(token!);
+        const prisma = await createPrismaClientFromJWT(token!);
         try {     
             
             const query: IQuery = { orderBy: { id: 'asc' }, skip: 0, take: 20, where: {}} ;
@@ -122,11 +122,11 @@ export class OrderService {
         } catch (error) {
             throw new ErrorResponse(400, 'Bad Request nos pedidos');
         }finally{
-            prisma.$disconnect();
+            await prisma.$disconnect();
         }
     }
     async getOrderByPaymentMethod(token:string,method:string){
-        const prisma = createPrismaClientFromJWT(token);
+        const prisma = await createPrismaClientFromJWT(token);
         try {
             const SaleOrder:PedidoVenda[] = await prisma.pedidos_venda.findMany({where:{forma_pagamento:method}});
             const listId:number[] = [];

@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { createPrismaClientFromJWT } from '../../prisma';
+import { await createPrismaClientFromJWT } from '../../prisma';
 import { ErrorResponse } from '../errorService/ErrorService';
 
 export interface ParamProps {
@@ -21,7 +21,7 @@ orderBy?: any;
 
 export class ProductService {
     async execute(ean: string, token: string) {
-        const prisma = createPrismaClientFromJWT(token);
+        const prisma = await createPrismaClientFromJWT(token);
 
         try {
             const products = await prisma.produtos.findFirst({
@@ -35,7 +35,7 @@ export class ProductService {
         }
     }
     async get(token: string, selectors?: ParamFilter[], params?: ParamProps[] ) {
-        const prisma = createPrismaClientFromJWT(token);
+        const prisma = await createPrismaClientFromJWT(token);
         try {
             const query: IQuery = { orderBy: { id: 'asc' }, skip: 0, take: 20, where: {} };
             //Criando o Where

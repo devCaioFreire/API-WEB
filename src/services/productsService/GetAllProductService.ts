@@ -1,11 +1,11 @@
-import { createPrismaClientFromJWT } from '../../prisma';
+import { await createPrismaClientFromJWT } from '../../prisma';
 import { ErrorResponse } from '../errorService/ErrorService';
 
 export class AllProductsService {
     async execute(offset = 0, limit = 20, token: string) {
 
         token = token.slice(7);
-        const prisma = createPrismaClientFromJWT(token);
+        const prisma = await createPrismaClientFromJWT(token);
 
         try {
             const products = await prisma.produtos.findMany({

@@ -1,5 +1,5 @@
 
-import { createPrismaClientFromJWT, prismaAuth } from '../../prisma';
+import { await createPrismaClientFromJWT, prismaAuth } from '../../prisma';
 import { ErrorResponse } from '../errorService/ErrorService';
 import { Utils_service } from '../utilsService/UtilService';
 import { BalanceService } from './BalanceService';
@@ -51,7 +51,7 @@ export class DataSaleService {
             itens,
             status
         }: DataSaleRequest, token:string) {
-        const prisma = createPrismaClientFromJWT(token); 
+        const prisma = await createPrismaClientFromJWT(token); 
         if(!usuario_id){ throw new ErrorResponse(404, 'User Not Found');}
         const dataSales = await prisma.pedidos_venda.create({
             data: {

@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { createPrismaClientFromJWT } from '../../prisma';
+import { await createPrismaClientFromJWT } from '../../prisma';
 import { ErrorResponse } from '../errorService/ErrorService';
 
 export interface ParamProps {
@@ -22,7 +22,7 @@ export interface IQuery {
 export class OrderItemsService {
     async get(token: string, selectors?: ParamFilter[], params?: ParamProps[], ) {
 
-        const prisma = createPrismaClientFromJWT(token);
+        const prisma = await createPrismaClientFromJWT(token);
 
         try {
             const query: IQuery = { orderBy: { id: 'asc' }, skip: 0, take: 1000, where: {} };

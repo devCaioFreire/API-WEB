@@ -1,9 +1,9 @@
-import { createPrismaClientFromJWT } from '../../../prisma';
+import { await createPrismaClientFromJWT } from '../../../prisma';
 import { ErrorResponse } from '../../errorService/ErrorService';
 
 export class GetDescriptionProductsService {
     async execute(descricao: string, page: number, authorization: string) {
-        const prisma = createPrismaClientFromJWT(authorization);
+        const prisma = await createPrismaClientFromJWT(authorization);
         try {
             const products = await prisma.produtos.findMany({
                 where: {
