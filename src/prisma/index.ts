@@ -17,13 +17,13 @@ function getDatabaseConnectionStringForCompany(companyId: string): string {
     return databaseConfig[companyId];
 }
 
-export function createPrismaClientFromJWT(token: string): PrismaClient {
+export async function createPrismaClientFromJWT(token: string): Promise<PrismaClient> {
     try {
         const utils = new Utils_service();
         const decoded: any = utils.decodeToken(token);
 
         const companyId = decoded.id_company;
-        const connectionString = getDatabaseConnectionStringForCompany(companyId);
+        const connectionString = await getDatabaseConnectionStringForCompany(companyId);
 
         const prisma = new PrismaClient({
             datasources: {

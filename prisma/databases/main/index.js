@@ -31,11 +31,11 @@ exports.$Enums = {}
 
 /**
  * Prisma Client JS version: 5.1.1
- * Query Engine version: 6a3747c37ff169c90047725a05a6ef02e32ac97e
+ * Query Engine version: ac9d7041ed77bcc8a8dbd2ab6616b39013829574
  */
 Prisma.prismaVersion = {
   client: "5.1.1",
-  engine: "6a3747c37ff169c90047725a05a6ef02e32ac97e"
+  engine: "ac9d7041ed77bcc8a8dbd2ab6616b39013829574"
 }
 
 false
@@ -603,7 +603,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "C:\\Users\\softclever\\Documents\\GitHub\\API-WEB\\prisma\\databases\\main",
+      "value": "C:\\Users\\usuario022\\Desktop\\GitHub\\API-WEB\\prisma\\databases\\main",
       "fromEnvVar": null
     },
     "config": {
@@ -631,12 +631,12 @@ const config = {
   },
   "relativePath": "../..",
   "clientVersion": "5.1.1",
-  "engineVersion": "6a3747c37ff169c90047725a05a6ef02e32ac97e",
+  "engineVersion": "ac9d7041ed77bcc8a8dbd2ab6616b39013829574",
   "datasourceNames": [
     "db"
   ],
   "activeProvider": "mysql",
-  "dataProxy": false
+  "postinstall": false
 }
 
 const fs = require('fs')

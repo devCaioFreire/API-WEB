@@ -1,5 +1,5 @@
 import bcrypt from 'bcrypt';
-import { randomBytes } from 'crypto';
+import { v4 as uuidv4 } from 'uuid';
 import { prismaAuth } from '../../prisma';
 
 interface RegisterData {
@@ -24,6 +24,7 @@ export class RegisterService {
         celular,
         status,
         exclusivo,
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
         user_token,
         id_empresa,
         id_grupo_usuario
@@ -67,6 +68,6 @@ export class RegisterService {
 }
 
 function generateUniqueToken() {
-    const uniqueToken = randomBytes(64).toString('hex');
+    const uniqueToken = uuidv4();
     return uniqueToken;
 }

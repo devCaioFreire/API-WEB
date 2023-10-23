@@ -1,4 +1,4 @@
-import { createPrismaClientFromJWT } from '../../prisma';
+import { await createPrismaClientFromJWT } from '../../prisma';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function prismaMiddleware(req: any, res: any, next: any) {
@@ -20,6 +20,6 @@ export function prismaMiddleware(req: any, res: any, next: any) {
         return res.status(401).send({ error: 'Token malformatted' });
     }
 
-    req.prisma = createPrismaClientFromJWT(token);
+    req.prisma = await createPrismaClientFromJWT(token);
     next();
 }
