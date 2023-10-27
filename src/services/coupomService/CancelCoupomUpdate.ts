@@ -10,7 +10,7 @@ export class UpdateCoupomStatusService {
     async execute({ id, status }: UpdateCoupomStatusRequest, token: string) {
 
         token = token.slice(7);
-        const prisma = await createPrismaClientFromJWT(token);
+        const prisma  = createPrismaClientFromJWT(token);
 
         try {
             // Atualizar o status do cupom no banco de dados

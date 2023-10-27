@@ -22,7 +22,7 @@ export interface IQuery {
 export class OrderItemsService {
     async get(token: string, selectors?: ParamFilter[], params?: ParamProps[], ) {
 
-        const prisma = await createPrismaClientFromJWT(token);
+        const prisma  = createPrismaClientFromJWT(token);
 
         try {
             const query: IQuery = { orderBy: { id: 'asc' }, skip: 0, take: 1000, where: {} };

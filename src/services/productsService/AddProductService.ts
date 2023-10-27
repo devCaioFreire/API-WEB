@@ -24,7 +24,7 @@ export class AddProductService {
             ncm,
             cfop
         }: ProductProps, token: string) {
-        const prisma = await createPrismaClientFromJWT(token);
+        const prisma  = createPrismaClientFromJWT(token);
 
         const addProduct = await prisma.produtos.create({
             data: {

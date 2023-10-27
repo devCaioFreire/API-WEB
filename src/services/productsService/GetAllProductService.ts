@@ -5,7 +5,7 @@ export class AllProductsService {
     async execute(offset = 0, limit = 20, token: string) {
 
         token = token.slice(7);
-        const prisma = await createPrismaClientFromJWT(token);
+        const prisma  = createPrismaClientFromJWT(token);
 
         try {
             const products = await prisma.produtos.findMany({

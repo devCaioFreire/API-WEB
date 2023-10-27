@@ -43,7 +43,6 @@ var ErrorMiddleware = class {
   handle(err, req, res, next) {
     if (err instanceof ErrorResponse)
       return res.status(err.code).json({ message: err.message });
-    console.log(err);
     return res.status(500).json({ erro: "Internal Server Error" });
   }
 };

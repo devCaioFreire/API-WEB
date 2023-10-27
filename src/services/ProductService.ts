@@ -6,7 +6,7 @@ import { buildQuery } from './UtilService';
 
 export class ProductService {
     async get(token: string, selectors?: ParamFilter[], params?: ParamProps[] ) {
-        const prisma = await createPrismaClientFromJWT(token);
+        const prisma  = await createPrismaClientFromJWT(token);
         try {
             const query = buildQuery(selectors,params);
             const produtos = await prisma.produtos.findMany({ where: query.where, skip: query.skip, take: query.take, orderBy: query.orderBy });
@@ -19,7 +19,7 @@ export class ProductService {
         }
     }
     async put(produto:IProduct, token:string){
-        const prisma = await createPrismaClientFromJWT(token);
+        const prisma  = await createPrismaClientFromJWT(token);
         try {
             const product = await prisma.produtos.findUnique({where:{id:produto.id}});
             if(!product){
@@ -36,7 +36,7 @@ export class ProductService {
 
     }
     async delete(productId:number, token:string){
-        const prisma = await createPrismaClientFromJWT(token);
+        const prisma  = await createPrismaClientFromJWT(token);
         try {
             const product = await prisma.produtos.findUnique({where:{id:productId}});
             if(!product){throw new ErrorResponse(404, 'Produto Não Encontrado');}
@@ -50,7 +50,7 @@ export class ProductService {
         }
     }
     async create(produto:IProduct, token:string){
-        const prisma = await createPrismaClientFromJWT(token);
+        const prisma  = await createPrismaClientFromJWT(token);
         try {
             const createdProduct = await prisma.produtos.create({data:{...produto}});
             return createdProduct;

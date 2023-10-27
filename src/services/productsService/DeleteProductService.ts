@@ -17,7 +17,7 @@ export class DeleteProductService {
     async execute({ id }: ProductProps, token: string) {
 
         token = token.slice(7);
-        const prisma = await createPrismaClientFromJWT(token);
+        const prisma  = createPrismaClientFromJWT(token);
 
         const numericId = parseInt(id, undefined);
         const deleteProduct = await prisma.produtos.delete({

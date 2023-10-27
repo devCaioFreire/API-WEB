@@ -66,7 +66,7 @@ export interface PedidoVenda {
 
 export class OrderService {
     async get(token: string, selectors?: ParamFilter[], params?: ParamProps[]) {
-        const prisma = await createPrismaClientFromJWT(token!);
+        const prisma  = createPrismaClientFromJWT(token!);
         try {     
             
             const query: IQuery = { orderBy: { id: 'asc' }, skip: 0, take: 20, where: {}} ;
@@ -126,7 +126,7 @@ export class OrderService {
         }
     }
     async getOrderByPaymentMethod(token:string,method:string){
-        const prisma = await createPrismaClientFromJWT(token);
+        const prisma  = createPrismaClientFromJWT(token);
         try {
             const SaleOrder:PedidoVenda[] = await prisma.pedidos_venda.findMany({where:{forma_pagamento:method}});
             const listId:number[] = [];

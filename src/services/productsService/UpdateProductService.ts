@@ -29,7 +29,7 @@ export class UpdateProductService {
         }: ProductProps, token: string) {
 
         token = token.slice(7);
-        const prisma = await createPrismaClientFromJWT(token);
+        const prisma  = createPrismaClientFromJWT(token);
 
         const updateProduct = await prisma.produtos.updateMany({
             where: {

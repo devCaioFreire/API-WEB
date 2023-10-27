@@ -1,7 +1,7 @@
 import { createPrismaClientFromJWT } from '../../prisma';
 
 export async function getNextOrderNumber(token: string) {
-    const prisma = await createPrismaClientFromJWT(token);
+    const prisma  = createPrismaClientFromJWT(token);
     const lastOrder = await prisma.pedidos_venda.findFirst({
         orderBy: {
             id: 'desc',

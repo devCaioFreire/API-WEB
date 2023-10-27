@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import cors from 'cors';
 import express, { NextFunction, Request, Response } from 'express';
 import { prismaMiddleware } from './middlewares/MultiTenant/MultiTenant';
@@ -22,6 +23,6 @@ app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
     });
 });
 
-app.listen(3333, () => {
-    console.log('Server is running on port 3333');
+app.listen(8099, () => {
+    console.log('Server is running on port 8099');
 });

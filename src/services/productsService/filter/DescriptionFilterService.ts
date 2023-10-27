@@ -3,7 +3,7 @@ import { ErrorResponse } from '../../errorService/ErrorService';
 
 export class GetDescriptionProductsService {
     async execute(descricao: string, page: number, authorization: string) {
-        const prisma = await createPrismaClientFromJWT(authorization);
+        const prisma  = createPrismaClientFromJWT(authorization);
         try {
             const products = await prisma.produtos.findMany({
                 where: {

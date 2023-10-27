@@ -1,35 +1,6 @@
-/*import { Request, Response } from "express";
-import { BalanceService, ParamFilter, ParamProps } from "../../services/salesService/BalanceService";
-
-
-interface ProductMovimentacion {
-    pm_pedido_venda_id: number;
-    pm_produto_id: number;
-    pm_usuario_id: number | null;
-    pm_quantidade: number | null;
-    pm_tipo_movimentacao: string;
-  }
-
-export class BalanceController{
-    async handle(req: Request, res: Response) {
-        const params = req.query;
-        
-        let { authorization } = req.headers;
-        if (!authorization) throw new Error('Token Invalid Or Not Found');
-        authorization = authorization.split(' ')[1];
-
-        const productMovimentacion: ProductMovimentacion[] = req.body;
-        const createBalanceService = new BalanceService();
-        const balance = await createBalanceService.create(
-            productMovimentacion, authorization, params
-        )
-        return res.json(balance);
-    }
-}*/
-
 import { Request, Response } from 'express';
-import { ErrorResponse } from '../../services/errorService/ErrorService';
-import { BalanceService } from '../../services/salesService/BalanceService';
+import { ErrorResponse } from '../services/errorService/ErrorService';
+import { BalanceService } from '../services/BalanceService';
 
 interface ProductMovimentacion {
     pm_pedido_venda_id: number | null;

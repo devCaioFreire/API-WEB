@@ -21,7 +21,7 @@ orderBy?: any;
 
 export class ProductService {
     async execute(ean: string, token: string) {
-        const prisma = await createPrismaClientFromJWT(token);
+        const prisma  = createPrismaClientFromJWT(token);
 
         try {
             const products = await prisma.produtos.findFirst({
@@ -35,7 +35,7 @@ export class ProductService {
         }
     }
     async get(token: string, selectors?: ParamFilter[], params?: ParamProps[] ) {
-        const prisma = await createPrismaClientFromJWT(token);
+        const prisma  = createPrismaClientFromJWT(token);
         try {
             const query: IQuery = { orderBy: { id: 'asc' }, skip: 0, take: 20, where: {} };
             //Criando o Where
