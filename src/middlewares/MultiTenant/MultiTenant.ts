@@ -1,4 +1,4 @@
-import { await createPrismaClientFromJWT } from '../../prisma';
+import { createPrismaClientFromJWT } from '../../prisma';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function prismaMiddleware(req: any, res: any, next: any) {

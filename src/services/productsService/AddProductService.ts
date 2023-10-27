@@ -1,4 +1,4 @@
-import { await createPrismaClientFromJWT } from '../../prisma';
+import { createPrismaClientFromJWT } from '../../prisma';
 
 interface ProductProps {
   codProduto: string;

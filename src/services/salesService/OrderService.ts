@@ -1,4 +1,4 @@
-import { await createPrismaClientFromJWT } from '../../prisma';
+import { createPrismaClientFromJWT } from '../../prisma';
 
 export async function getNextOrderNumber(token: string) {
     const prisma = await createPrismaClientFromJWT(token);

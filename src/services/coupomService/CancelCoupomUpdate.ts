@@ -1,4 +1,4 @@
-import { await createPrismaClientFromJWT } from '../../prisma';
+import { createPrismaClientFromJWT } from '../../prisma';
 import { ErrorResponse } from '../errorService/ErrorService';
 
 interface UpdateCoupomStatusRequest {

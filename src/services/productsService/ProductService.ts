@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { await createPrismaClientFromJWT } from '../../prisma';
+import { createPrismaClientFromJWT } from '../../prisma';
 import { ErrorResponse } from '../errorService/ErrorService';
 
 export interface ParamProps {

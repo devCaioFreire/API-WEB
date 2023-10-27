@@ -1,5 +1,5 @@
-import { await createPrismaClientFromJWT } from '../../prisma';
-import { ErrorResponse } from '../errorService/ErrorService';
+import { createPrismaClientFromJWT } from '../prisma';
+import { ErrorResponse } from './errorService/ErrorService';
 
 interface ProductMovimentacion {
   pm_pedido_venda_id: number | null;

@@ -1,8 +1,8 @@
 
 import { await createPrismaClientFromJWT, prismaAuth } from '../../prisma';
 import { ErrorResponse } from '../errorService/ErrorService';
-import { Utils_service } from '../utilsService/UtilService';
-import { BalanceService } from './BalanceService';
+import { Utils_service } from '../UtilService';
+import { BalanceService } from '../BalanceService';
 
 interface DataItems {
     produto_id: number;
