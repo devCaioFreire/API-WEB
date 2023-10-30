@@ -97,14 +97,14 @@ export function buildQuery(selectors?: ParamFilter[], params?: ParamProps[]): IQ
     return query;
 }
 //Pega o Token do Header
-export function getAuthorization(ReqHeader: IncomingHttpHeaders){
+export function getAuthorization(ReqHeader: IncomingHttpHeaders):string{
     try {
         let { authorization } = ReqHeader;
         if (!authorization) throw new Error('Token Invalid Or Not Found');
         authorization = authorization.split(' ')[1];
         return authorization;
     } catch (error) {
-        throw new Error;
+        console.log(error);
     }
 
 }

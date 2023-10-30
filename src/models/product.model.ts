@@ -8,7 +8,7 @@ export interface IProduct {
     cfop: string;
     unCom?: string | null;
     qtdCom?: number | null;
-    vlrUnCom?: number | null;
+    vlrUnCom?: number | undefined;
     vlrProd?: number | null;
     codEANTrib?: string | null;
     unTrib?: string | null;

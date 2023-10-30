@@ -40,7 +40,7 @@ router.post('/registerUser', errorMiddleware.handleAsync(new RegisterController(
 router.post('/registerCompanies', errorMiddleware.handleAsync(new CompanyController().create));
 
 // UPDATE
-router.post('/updateProduct', errorMiddleware.handleAsync(new ProductController().updateProduct));
+router.put('/updateProduct', errorMiddleware.handleAsync(new ProductController().updateProduct));
 
 // DELETE
 router.delete('/deleteProduct/:id', errorMiddleware.handleAsync(new ProductController().deleteProduct));

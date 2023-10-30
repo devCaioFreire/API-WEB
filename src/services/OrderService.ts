@@ -43,6 +43,7 @@ export class OrderService {
                 const pedidoDelete = await prisma.pedidos_venda.delete({where:{id:pedido.id}});
 
                 const Itens = await prisma.pedidos_venda_itens.findMany({where:{pedido_id:pedidoDelete.id}});
+
                 const itemIds = Itens.map((item) => item.id);
 
                 const itemsDeleted = await prisma.pedidos_venda_itens.deleteMany({
@@ -90,9 +91,6 @@ export class OrderService {
             prisma.$disconnect();
         }
     }
-    
-    
-    
     
     async getNextOrderNumber(token: string) {
         const prisma  = await createPrismaClientFromJWT(token);

@@ -4,6 +4,7 @@ import { createPrismaClientFromJWT } from '../prisma';
 import { ErrorResponse } from './errorService/ErrorService';
 import { buildQuery } from './UtilService';
 
+
 export class ProductService {
     async get(token: string, selectors?: ParamFilter[], params?: ParamProps[] ) {
         const prisma  = await createPrismaClientFromJWT(token);
@@ -18,23 +19,39 @@ export class ProductService {
             prisma.$disconnect();
         }
     }
-    async put(produto:IProduct, token:string){
-        const prisma  = await createPrismaClientFromJWT(token);
+    async put(product: IProduct, token: string) {
+        const prisma = await createPrismaClientFromJWT(token);
+        
         try {
-            const product = await prisma.produtos.findUnique({where:{id:produto.id}});
-            if(!product){
-                throw Error;
+            const existingProduct = await prisma.produtos.findUnique({
+                where: { id: product.id }
+            });
+      
+            if (!existingProduct) {
+                throw new Error('Produto não encontrado');
             }
-            const updatedProduct = await prisma.produtos.update({where:{id:produto.id},data:{...produto}});
+      
+            const updatedProduct = await prisma.produtos.update({
+                where: { id: product.id },
+                data: {
+                    codProduto: product.codProduto,
+                    descricao: product.descricao,
+                    vlrUnCom: parseFloat(product.vlrUnCom!.toString()),
+                    saldo: parseFloat(product.saldo!.toString()),
+                    status: product.status,
+                    unCom: product.unCom,
+                    codEAN: product.codEAN,
+                    ncm: product.ncm,
+                    cfop: product.cfop
+                }
+            });
+      
             return updatedProduct;
-        } catch (error) {
-            throw  Error;
-        }
-        finally{
+        } finally {
             prisma.$disconnect();
         }
-
     }
+      
     async delete(productId:number, token:string){
         const prisma  = await createPrismaClientFromJWT(token);
         try {
@@ -50,15 +67,33 @@ export class ProductService {
         }
     }
     async create(produto:IProduct, token:string){
+
         const prisma  = await createPrismaClientFromJWT(token);
         try {
-            const createdProduct = await prisma.produtos.create({data:{...produto}});
-            return createdProduct;
+            return await prisma.$transaction(async (prisma) => {
+                let createdProduct;
+                if((await prisma.produtos.findMany({where:{codEAN:produto.codEAN}})).length > 0){
+                    throw new Error('Codigo EAN Já Cadastrado'); 
+                }else{
+                    createdProduct = await prisma.produtos.create({data: {
+                        codProduto: produto.codProduto,
+                        descricao: produto.descricao,
+                        vlrUnCom: parseFloat(produto.vlrUnCom!.toString()),
+                        saldo: parseFloat(produto.saldo!.toString()),
+                        status: produto.status,
+                        unCom: produto.unCom,
+                        codEAN: produto.codEAN,
+                        ncm: produto.ncm,
+                        cfop: produto.cfop
+                    }});
+                }
+
+                return createdProduct;
+            });
         } catch (error) {
-            throw new ErrorResponse(400, 'Bad Request nos produtos');
-        }
-        finally{
-            prisma.$disconnect();
+            throw new ErrorResponse(400, 'Erro ao tentar deletar');
+        } finally {
+            await prisma.$disconnect();
         }
     }
 }

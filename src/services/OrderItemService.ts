@@ -12,7 +12,7 @@ export class OrderItemService {
             const pedidosVendaItens = await prisma.pedidos_venda_itens.findMany({ where: query.where, skip: query.skip, take: query.take, orderBy: query.orderBy });
             return pedidosVendaItens;
         } catch (error) {
-            throw new Error;
+            console.log(error);
         }
         finally{
             prisma.$disconnect();
@@ -54,7 +54,7 @@ export class OrderItemService {
     
             return itemsDeleted;
         } catch (error) {
-            throw new Error;
+            console.log(error);
         } finally {
             prisma.$disconnect();
         }
@@ -68,7 +68,7 @@ export class OrderItemService {
             });
             return createdPedidoItems;
         } catch (error) {
-            throw new Error;
+            console.log(error);
         } finally {
             prisma.$disconnect();
         }
