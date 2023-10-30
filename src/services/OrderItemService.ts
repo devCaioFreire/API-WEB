@@ -2,12 +2,13 @@ import { IPedidoItem } from '../models/order.model';
 import {  ParamFilter, ParamProps } from '../models/utils.model';
 import { createPrismaClientFromJWT } from '../prisma';
 import { ErrorResponse } from './errorService/ErrorService';
-import { buildQuery } from './UtilService';
+import { buildQuery, ParamPropsFormater } from './UtilService';
 
 export class OrderItemService {
     async get(token: string, selectors?: ParamFilter[], params?: ParamProps[] ) {
         const prisma  = await createPrismaClientFromJWT(token);
         try {
+            if(params){params = ParamPropsFormater(params);}
             const query = buildQuery(selectors,params);
             const pedidosVendaItens = await prisma.pedidos_venda_itens.findMany({ where: query.where, skip: query.skip, take: query.take, orderBy: query.orderBy });
             return pedidosVendaItens;
