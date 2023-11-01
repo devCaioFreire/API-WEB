@@ -1,6 +1,8 @@
+import { ProductMovimentacion } from '../models/balance.model';
 import { IPedidoVenda} from '../models/order.model';
 import {  ParamFilter, ParamProps } from '../models/utils.model';
 import { createPrismaClientFromJWT } from '../prisma';
+import { BalanceService } from './BalanceService';
 import { ErrorResponse } from './errorService/ErrorService';
 import { buildQuery, ParamPropsFormater } from './UtilService';
 
@@ -26,6 +28,29 @@ export class OrderService {
             if(!pedido){throw new ErrorResponse(404, 'Produto Não Encontrado');}
             pedido.status = 'C';
             const pedidoUpdated = await prisma.pedidos_venda.update({where:{id:pedido.id}, data:pedido});
+
+            const itens = await prisma.pedidos_venda_itens.findMany({where:{pedido_id:pedidoUpdated.id}});
+            const productMovimentacion: ProductMovimentacion[] = []; // Inicialize a matriz vazia
+            const produtos = itens;
+    
+            if(produtos){
+                for (const produto of produtos) {
+                // Crie o objeto de movimentação para cada produto vendido
+                    const productMov: ProductMovimentacion = {
+                        pm_pedido_venda_id: pedidoUpdated.id,
+                        pm_produto_id: produto.produto_id,
+                        pm_usuario_id: pedidoUpdated.usuario_id!,
+                        pm_quantidade: produto.quantidade!,
+                        pm_tipo_movimentacao: 'Venda',
+                        pm_numero_nota_fiscal: null,
+                        pm_observacao: null
+                    };
+                    // Adicione o objeto à matriz productMovimentacion
+                    productMovimentacion.push(productMov);
+                }}
+            const balanceService = new BalanceService();
+            balanceService.create(productMovimentacion,token);
+
             return pedidoUpdated;
         } catch (error) {
             throw  Error;
@@ -64,7 +89,7 @@ export class OrderService {
     
             // Crie o pedido de venda dentro da transação
             const createdPedido = await prisma.pedidos_venda.create({
-                data: { ...pedidoInfo },
+                data:pedidoInfo,
             });
     
             let createdItens;
@@ -75,10 +100,31 @@ export class OrderService {
                     data: itens,
                 });
             }
+            
             console.log(createdItens);
             // Atualize o objeto do pedido criado com os itens
             const pedidoComItens = { ...createdPedido, itens: createdItens };
+
+            const productMovimentacion: ProductMovimentacion[] = []; // Inicialize a matriz vazia
+            const produtos = itens;
     
+            if(produtos){
+                for (const produto of produtos) {
+                // Crie o objeto de movimentação para cada produto vendido
+                    const productMov: ProductMovimentacion = {
+                        pm_pedido_venda_id: pedidoComItens.id,
+                        pm_produto_id: produto.produto_id,
+                        pm_usuario_id: pedidoComItens.usuario_id!,
+                        pm_quantidade: -produto.quantidade!,
+                        pm_tipo_movimentacao: 'Venda',
+                        pm_numero_nota_fiscal: null,
+                        pm_observacao: null
+                    };
+                    // Adicione o objeto à matriz productMovimentacion
+                    productMovimentacion.push(productMov);
+                }}
+            const balanceService = new BalanceService();
+            balanceService.create(productMovimentacion,token);
             return pedidoComItens;
 
         } catch (error) {
@@ -87,9 +133,6 @@ export class OrderService {
             prisma.$disconnect();
         }
     }
-    
-    
-    
     
     async getNextOrderNumber(token: string) {
         const prisma  = await createPrismaClientFromJWT(token);
