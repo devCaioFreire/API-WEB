@@ -17,7 +17,7 @@ export class ProductService {
             throw new ErrorResponse(400, 'Bad Request nos produtos');
         }
         finally{
-            prisma.$disconnect();
+            await prisma.$disconnect();
         }
     }
     async put(product: IProduct, token: string) {
@@ -49,7 +49,7 @@ export class ProductService {
       
             return updatedProduct;
         } finally {
-            prisma.$disconnect();
+            await prisma.$disconnect();
         }
     }
       
@@ -64,7 +64,7 @@ export class ProductService {
             throw new ErrorResponse(400, 'Bad Request nos produtos');
         }
         finally{
-            prisma.$disconnect();
+            await prisma.$disconnect();
         }
     }
     async create(produto:IProduct, token:string){
