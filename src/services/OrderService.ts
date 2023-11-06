@@ -18,7 +18,7 @@ export class OrderService {
             throw new ErrorResponse(400, 'Bad Request nos pedidos venda');
         }
         finally{
-            prisma.$disconnect();
+            await prisma.$disconnect();
         }
     }
     async put(pedidoCancel:number, token:string){
@@ -56,7 +56,7 @@ export class OrderService {
             throw  Error;
         }
         finally{
-            prisma.$disconnect();
+            await prisma.$disconnect();
         }
 
     }
@@ -130,7 +130,7 @@ export class OrderService {
         } catch (error) {
             throw new ErrorResponse(400, 'Bad Request na criação do pedido');
         } finally {
-            prisma.$disconnect();
+            await prisma.$disconnect();
         }
     }
     
@@ -163,7 +163,7 @@ export class OrderService {
             throw new Error(error as string);
         }
         finally{
-            prisma.$disconnect();
+            await prisma.$disconnect();
         }
     }
 }

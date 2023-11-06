@@ -20,10 +20,9 @@ export class BalanceService {
 
         } catch (err) {
             console.log(err);
-            prisma.$disconnect();
             throw new ErrorResponse(400, 'Erro ao Criar Movimentação');
         } finally {
-            prisma.$disconnect();
+            await prisma.$disconnect();
         }
     }
     async AjusteMovimentações( movimentacao: ProductMovimentacion,token: string,){
@@ -38,10 +37,9 @@ export class BalanceService {
 
             return AjusteMovimentacao;
         } catch (err) {
-            prisma.$disconnect();
             throw new ErrorResponse(500, 'Erro ao criar Movimentação');
         } finally {
-            prisma.$disconnect();
+            await prisma.$disconnect();
         }
     }
 }

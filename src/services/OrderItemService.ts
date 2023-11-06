@@ -16,7 +16,7 @@ export class OrderItemService {
             console.log(error);
         }
         finally{
-            prisma.$disconnect();
+            await prisma.$disconnect();
         }
     }
     // async put(pedidoItemUpdate:IPedidoItem, token:string){
@@ -57,7 +57,7 @@ export class OrderItemService {
         } catch (error) {
             console.log(error);
         } finally {
-            prisma.$disconnect();
+            await prisma.$disconnect();
         }
     }
     
@@ -71,7 +71,7 @@ export class OrderItemService {
         } catch (error) {
             console.log(error);
         } finally {
-            prisma.$disconnect();
+            await prisma.$disconnect();
         }
     }
     
