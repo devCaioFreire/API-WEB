@@ -98,10 +98,10 @@ export class ProductController{
     async GetProductByEAN(req: Request, res:Response){
         try {
             const token = getAuthorization(req.headers);
-            const ean = req.body.codEAN;
+            const ean = req.params.ean;
             const Service = new ProductService();
             const product = await Service.get(token,[{field:'codEAN',value:ean},{field:'status',value:'A'}],[{field:'take',value:1}]);
-
+            console.log(product);
             return res.status(200).json(product);
         } catch (error) {
             console.log(error);
