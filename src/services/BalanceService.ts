@@ -1,17 +1,20 @@
+import { PrismaClient } from '@prisma/client';
 import { ProductMovimentacion } from '../models/balance.model';
 import { createPrismaClientFromJWT } from '../prisma';
 import { ErrorResponse } from './errorService/ErrorService';
-
-
-
-
 
 export class BalanceService {
     async create(
         produtos: ProductMovimentacion[],
         token: string,
-    ) {
-        const prisma  = await createPrismaClientFromJWT(token);
+        prismaPai?:PrismaClient,
+    ) { 
+        let prisma:PrismaClient;
+        if(!prismaPai){
+            prisma  = await createPrismaClientFromJWT(token);
+        }else{
+            prisma = prismaPai;
+        }
         try {
             const addProductMovimentacion = await prisma.produtos_movimentacoes.createMany({
                 data: produtos,
@@ -25,8 +28,13 @@ export class BalanceService {
             await prisma.$disconnect();
         }
     }
-    async AjusteMovimentações( movimentacao: ProductMovimentacion,token: string,){
-        const prisma  = await createPrismaClientFromJWT(token);
+    async AjusteMovimentações( movimentacao: ProductMovimentacion,token: string,prismaPai?:PrismaClient){
+        let prisma:PrismaClient;
+        if(!prismaPai){
+            prisma  = await createPrismaClientFromJWT(token);
+        }else{
+            prisma = prismaPai;
+        }
         try {
             const produto = await prisma.produtos.findUnique({where:{id: movimentacao.pm_produto_id}});
             if (!produto){

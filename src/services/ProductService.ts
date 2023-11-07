@@ -6,11 +6,11 @@ import { buildQuery, ParamPropsFormater } from './UtilService';
 
 
 export class ProductService {
-    async get(token: string, selectors?: ParamFilter[], params?: ParamProps[] ) {
+    async get(token: string, filtro?: ParamFilter[], params?: ParamProps[] ) {
         const prisma  = await createPrismaClientFromJWT(token);
         try {
-            if(selectors){selectors = ParamPropsFormater(selectors);}
-            const query = buildQuery(selectors,params);
+            if(filtro){filtro = ParamPropsFormater(filtro);}
+            const query = buildQuery(filtro,params);
             const produtos = await prisma.produtos.findMany({ where: query.where, skip: query.skip, take: query.take, orderBy: query.orderBy });
             return produtos;
         } catch (error) {

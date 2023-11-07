@@ -9,6 +9,7 @@ export class CompanyController {
             const company = await companyService.create(data);
             return res.status(201).json(company);
         } catch (err) {
+            console.log(err);
             return res.status(500).json({ error: 'Erro ao criar a empresa', details: err });
         }
     }

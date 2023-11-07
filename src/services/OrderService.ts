@@ -1,10 +1,10 @@
 import { ProductMovimentacion } from '../models/balance.model';
 import { IPedidoVenda} from '../models/order.model';
 import {  ParamFilter, ParamProps } from '../models/utils.model';
-import { createPrismaClientFromJWT } from '../prisma';
+import { createPrismaClientFromJWT, prismaAuth } from '../prisma';
 import { BalanceService } from './BalanceService';
 import { ErrorResponse } from './errorService/ErrorService';
-import { buildQuery, ParamPropsFormater } from './UtilService';
+import { buildQuery, decodeToken, ParamPropsFormater } from './UtilService';
 
 export class OrderService {
     async get(token: string, selectors?: ParamFilter[], params?: ParamProps[] ) {
@@ -15,7 +15,8 @@ export class OrderService {
             const pedidosVenda = await prisma.pedidos_venda.findMany({ where: query.where, skip: query.skip, take: query.take, orderBy: query.orderBy });
             return pedidosVenda;
         } catch (error) {
-            throw new ErrorResponse(400, 'Bad Request nos pedidos venda');
+            console.log(error);
+            throw new ErrorResponse(400, error);
         }
         finally{
             await prisma.$disconnect();
@@ -41,7 +42,7 @@ export class OrderService {
                         pm_produto_id: produto.produto_id,
                         pm_usuario_id: pedidoUpdated.usuario_id!,
                         pm_quantidade: produto.quantidade!,
-                        pm_tipo_movimentacao: 'Venda',
+                        pm_tipo_movimentacao: 'Cancelamento de Pedido',
                         pm_numero_nota_fiscal: null,
                         pm_observacao: null
                     };
@@ -93,9 +94,14 @@ export class OrderService {
             });
     
             let createdItens;
+
     
             // Se houver itens, crie os itens do pedido
             if (itens) {
+                for (let i = 0; i < itens.length; i++) {
+                    itens[i].pedido_id = createdPedido.id; 
+                    
+                }
                 createdItens = await prisma.pedidos_venda_itens.createMany({
                     data: itens,
                 });
@@ -124,10 +130,21 @@ export class OrderService {
                     productMovimentacion.push(productMov);
                 }}
             const balanceService = new BalanceService();
+            const empresa  = await prismaAuth.empresas.findFirst({where:{id:decodeToken(token).idCompany}});
             balanceService.create(productMovimentacion,token);
-            return pedidoComItens;
+            const dadosEmpresa = {
+                nomeEmpresa: empresa!.xRazaoSocial,
+                endereco: `${empresa!.xLgr}, ${empresa!.nro}`,
+                cidadeEstado: `${empresa!.xMun}, ${empresa!.uf}`,
+                cep:empresa!.cep ,
+                telefone:empresa!.fone,
+    
+            };
+            const dadosPedido = {id:pedidoInfo.id,data: pedidoInfo.data_realizacao,produtos, valorTotal: pedidoInfo.valor_liquido};
+            return {dadosEmpresa,dadosPedido};
 
         } catch (error) {
+            console.log(error);
             throw new ErrorResponse(400, 'Bad Request na criação do pedido');
         } finally {
             await prisma.$disconnect();

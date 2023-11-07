@@ -35,6 +35,14 @@ export function  ParamPropsFormater(Params: ParamFilter[]) {
     }
     return Params;
 }
+export function decodeToken(token:string){
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const decoded: any = jwt.verify(token, process.env.JWT_SECRET!);
+    if (!decoded || !decoded.id_company) {
+        throw new Error('Invalid JWT');
+    }
+    return decoded;
+}
 //transforma o Req.query nos filtros e configurações do get
 export function GetPropsAndFilters(Req:Request){
     let ParamConfig: ParamProps[] = [];
@@ -44,9 +52,9 @@ export function GetPropsAndFilters(Req:Request){
         ParamConfig.push({ field: field, value: value })
     ));
 
-    const filters = ParamConfig.filter(element => element.field === 'filter');
+    const filters = ParamConfig.filter(element => element.field == 'filter');
 
-    ParamConfig = ParamConfig.filter(element => element.field != 'filter');
+    ParamConfig = ParamConfig.filter(element => element.field !== 'filter');
     if (filters != undefined && filters != null) {
         for (const filter of filters) {
             const json = JSON.parse(filter.value);

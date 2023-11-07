@@ -75,7 +75,32 @@ export class ProductController{
         try {
             const token = getAuthorization(req.headers);
             const Service = new ProductService();
-            const product = await Service.get(token,[{field:'take',value:'1'}],[{field:'order',value:'desc'}]);
+            const product = await Service.get(token,[{field:'order',value:'desc'}],[{field:'take',value:'1'}]);
+
+            return res.status(200).json(product);
+        } catch (error) {
+            console.log(error);
+        }
+    }
+    async getProductByDescription(req: Request, res:Response){
+        try {
+            const token = getAuthorization(req.headers);
+            const descricao = req.query.descricao as string;
+            const page = req.query.page;
+            const Service = new ProductService();
+            const product = await Service.get(token,[{field:'descricao',value:descricao},{field:'status',value:'A'}],[{field:'page',value:page}]);
+
+            return res.status(200).json(product);
+        } catch (error) {
+            console.log(error);
+        }
+    }
+    async GetProductByEAN(req: Request, res:Response){
+        try {
+            const token = getAuthorization(req.headers);
+            const ean = req.body.codEAN;
+            const Service = new ProductService();
+            const product = await Service.get(token,[{field:'codEAN',value:ean},{field:'status',value:'A'}],[{field:'take',value:1}]);
 
             return res.status(200).json(product);
         } catch (error) {

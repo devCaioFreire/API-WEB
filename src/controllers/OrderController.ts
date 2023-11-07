@@ -3,6 +3,7 @@ import { Request, Response } from 'express';
 import { GetPropsAndFilters, getAuthorization } from '../services/UtilService';
 import { OrderService } from '../services/OrderService';
 import { IPedidoVenda } from '../models/order.model';
+import { OrderItemsService } from '../services/productsService/OrderItemsService';
 export class OrderController{
     
     async getNextOrderNumberController(req: Request, res: Response){
@@ -92,6 +93,21 @@ export class OrderController{
                 }
             }
             return res.status(200).json(PedidoResponse);
+        } catch (error) {
+            throw new Error(error as string);
+        }
+    }
+    async getOrderById(req: Request, res: Response){
+        try {
+            const token = getAuthorization(req.headers);
+            const  {ParamConfig,ParamFilter} = GetPropsAndFilters(req);
+            const Service = new OrderService();
+            const pedido = await Service.get(token,ParamFilter,[{field:'take',value:'1'}]);
+
+            const ItemService = new OrderItemsService();
+            const itens = await ItemService.get(token,[{field:'pedido_id', value:pedido[0].id}],[{field:'take',value:'10000'}]);
+            
+            return res.status(200).json(itens);
         } catch (error) {
             throw new Error(error as string);
         }

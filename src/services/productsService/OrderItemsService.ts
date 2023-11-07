@@ -22,7 +22,7 @@ export interface IQuery {
 export class OrderItemsService {
     async get(token: string, selectors?: ParamFilter[], params?: ParamProps[], ) {
 
-        const prisma  = createPrismaClientFromJWT(token);
+        const prisma  = await createPrismaClientFromJWT(token);
 
         try {
             const query: IQuery = { orderBy: { id: 'asc' }, skip: 0, take: 1000, where: {} };
@@ -64,7 +64,7 @@ export class OrderItemsService {
             throw new ErrorResponse(400, 'Bad Request on Sales Order');
         }
         finally{
-            prisma.$disconnect();
+            await prisma.$disconnect();
         }
     }
 
