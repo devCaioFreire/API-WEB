@@ -1,12 +1,11 @@
+import { PrismaClient } from '@prisma/client';
 import { IPedidoItem } from '../models/order.model';
 import {  ParamFilter, ParamProps } from '../models/utils.model';
-import { createPrismaClientFromJWT } from '../prisma';
 import { ErrorResponse } from './ErrorService';
 import { buildQuery, ParamPropsFormater } from './UtilService';
 
 export class OrderItemService {
-    async get(token: string, selectors?: ParamFilter[], params?: ParamProps[] ) {
-        const prisma  = await createPrismaClientFromJWT(token);
+    async get(selectors: ParamFilter[], params: ParamProps[], prisma:PrismaClient ) {
         try {
             if(params){params = ParamPropsFormater(params);}
             const query = buildQuery(selectors,params);
@@ -15,29 +14,8 @@ export class OrderItemService {
         } catch (error) {
             console.log(error);
         }
-        finally{
-            await prisma.$disconnect();
-        }
     }
-    // async put(pedidoItemUpdate:IPedidoItem, token:string){
-    //     const prisma  = createPrismaClientFromJWT(token);
-    //     try {
-    //         const pedido = await prisma.pedidos_venda_itens.findUnique({where:{id:pedidoItemUpdate.id}});
-    //         if(!pedido){
-    //             throw Error;
-    //         }
-    //         const updatedItem = await prisma.pedidos_venda_itens.update({where:{id:pedidoItemUpdate.id},data:{...pedidoItemUpdate}});
-    //         return updatedItem;
-    //     } catch (error) {
-    //         throw  Error;
-    //     }
-    //     finally{
-    //         prisma.$disconnect();
-    //     }
-
-    // }
-    async delete(ItensDelete: IPedidoItem[], token: string) {
-        const prisma  = await createPrismaClientFromJWT(token);
+    async delete(ItensDelete: IPedidoItem[],prisma:PrismaClient) {
         try {
             const itemIds = ItensDelete.map((item) => item.id);
     
@@ -56,13 +34,10 @@ export class OrderItemService {
             return itemsDeleted;
         } catch (error) {
             console.log(error);
-        } finally {
-            await prisma.$disconnect();
         }
     }
     
-    async create(pedidoItems: IPedidoItem[], token: string) {
-        const prisma  = await createPrismaClientFromJWT(token);
+    async create(pedidoItems: IPedidoItem[], prisma:PrismaClient) {
         try {
             const createdPedidoItems = await prisma.pedidos_venda_itens.createMany({
                 data: pedidoItems,
@@ -70,8 +45,6 @@ export class OrderItemService {
             return createdPedidoItems;
         } catch (error) {
             console.log(error);
-        } finally {
-            await prisma.$disconnect();
         }
     }
     

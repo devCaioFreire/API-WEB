@@ -10,7 +10,7 @@ export interface ParamFilter {
     }
     
 export interface IQuery {
-    where?: Record<string, string | number | boolean>;
+    where?: Record<string, string | number | boolean| {gte : Date}| {lt : Date}>;
     take?: number;
     skip?: number;
     orderBy?: any;

@@ -1,6 +1,8 @@
 import { Request, Response } from 'express';
 import { ErrorResponse } from '../services/ErrorService';
 import { BalanceService } from '../services/BalanceService';
+import { createPrismaClientFromJWT } from '../prisma';
+import { getAuthorization } from '../services/UtilService';
 
 interface ProductMovimentacion {
     pm_pedido_venda_id: number | null;
@@ -15,10 +17,7 @@ interface ProductMovimentacion {
 
 export class BalanceController {
     async AjusteMovimentacao(req: Request, res: Response){
-        const { authorization } = req.headers;
-        if (!authorization) throw new Error('Token Invalid Or Not Found');
-        
-        const token = authorization.split(' ')[1];
+        const prisma = await createPrismaClientFromJWT(getAuthorization(req.headers));
         const {
             pm_produto_id,
             pm_usuario_id, 
@@ -38,14 +37,13 @@ export class BalanceController {
 
         const createBalanceService = new BalanceService();
         const balance = await createBalanceService.AjusteMovimentações(
-            productMovimentacion, token
+            productMovimentacion, prisma
         );
+        await prisma.$disconnect();
         return res.status(201).json(balance);
     }
     async EntradaEstoque(req: Request, res: Response){
-        const { authorization } = req.headers;
-        if (!authorization) throw new Error('Token Invalid Or Not Found');
-        const token = authorization.split(' ')[1];
+        const prisma = await createPrismaClientFromJWT(getAuthorization(req.headers));
         const {
             pm_numero_nota_fiscal,
             pm_produto_id,
@@ -67,8 +65,9 @@ export class BalanceController {
         const createBalanceService = new BalanceService();
         
         const balance = await createBalanceService.create(
-            [productMovimentacion], token
+            [productMovimentacion], prisma
         );
+        await prisma.$disconnect();
         return res.status(201).json(balance);
     }
 

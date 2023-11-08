@@ -67,17 +67,32 @@ export function GetPropsAndFilters(Req:Request){
 }
 //Monta o Query para fazer o Get no Prisma
 export function buildQuery(selectors?: ParamFilter[], params?: ParamProps[]): IQuery {
-    const query: IQuery = { orderBy: { id: 'asc' }, skip: 0, take: 20, where: {} };
+    const query: IQuery = { orderBy: { id: 'asc' }, skip: 0, take: 20, where: {}} ;
     //Criando o Where
     if (selectors && selectors.length > 0) {
         query.where = {};
         for (const filter of selectors) {
             if (filter.value === '' || filter.value === undefined || filter.value === null) continue;
+  
+            if (filter.field === 'dateInitial') {
+                const dateCondition = query.where['data_realizacao'] || {};
 
-            const { field, value } = filter;
-            query.where[field] = field === 'id' ? parseInt(value) : value;
+                query.where['data_realizacao'] = { ...dateCondition, gte: new Date(filter.value) };
+                continue;
+            }
+            if (filter.field === 'dateFinal') {
+                const dateCondition = query.where['data_realizacao'] || {};
+                query.where['data_realizacao'] = { ...dateCondition, lt: new Date(filter.value) };
+                query.where['data_realizacao'].lt.setDate((query.where['data_realizacao'].lt as Date).getDate() + 1);
+                continue;
+            }
+  
+            else {
+                query.where[filter.field] = filter.field === 'id' ? parseInt(filter.value) : filter.value;
+            }
         }
     }
+
     //Criando os Filtros
     if (params && params.length > 0) {
         for (const param of params) {
@@ -92,13 +107,10 @@ export function buildQuery(selectors?: ParamFilter[], params?: ParamProps[]): IQ
                 query.orderBy = { [param.value]: 'asc' };
                 break;
             case 'order':
-                // eslint-disable-next-line no-case-declarations
-                const campo = Object.getOwnPropertyNames(query.orderBy)[0];
-                query.orderBy = { [campo]: param.value };
+                query.orderBy = { [Object.getOwnPropertyNames(query.orderBy)[0]]: param.value };
                 break;
             }
         }
-        
         //Calculando o Skip
         query.skip = (query.skip ?? 0) * (query.take ?? 0);
     }
@@ -110,6 +122,7 @@ export function getAuthorization(ReqHeader: IncomingHttpHeaders):string{
         let { authorization } = ReqHeader;
         if (!authorization) throw new Error('Token Invalid Or Not Found');
         authorization = authorization.split(' ')[1];
+
         return authorization;
     } catch (error) {
         console.log(error);

@@ -1,14 +1,12 @@
-import { ProductMovimentacion } from '../models/balance.model';
-import { IPedidoVenda} from '../models/order.model';
+import { PrismaClient } from '@prisma/client';
+import { IPedidoItem, IPedidoVenda} from '../models/order.model';
 import {  ParamFilter, ParamProps } from '../models/utils.model';
-import { createPrismaClientFromJWT, prismaAuth } from '../prisma';
-import { BalanceService } from './BalanceService';
 import { ErrorResponse } from './ErrorService';
-import { buildQuery, decodeToken, ParamPropsFormater } from './UtilService';
+import { buildQuery, ParamPropsFormater } from './UtilService';
+import { createPrismaClientFromJWT } from '../prisma';
 
 export class OrderService {
-    async get(token: string, selectors?: ParamFilter[], params?: ParamProps[] ) {
-        const prisma  = await createPrismaClientFromJWT(token);
+    async get(selectors: ParamFilter[], params: ParamProps[],prisma:PrismaClient) {
         try {
             if(params){params = ParamPropsFormater(params);}
             const query = buildQuery(selectors,params);
@@ -16,60 +14,38 @@ export class OrderService {
             return pedidosVenda;
         } catch (error) {
             console.log(error);
-            throw new ErrorResponse(400, error);
-        }
-        finally{
-            await prisma.$disconnect();
+            throw Error.call(error);
         }
     }
-    async put(pedidoCancel:number, token:string){
-        const prisma  = await createPrismaClientFromJWT(token);
+    async getById(id:number|string, prisma:PrismaClient){
+        try {
+            return await prisma.pedidos_venda.findMany({where:{id:id}});
+        } catch (error) {
+            console.log(error);
+            throw Error.call(error);
+        }
+    }
+    async put(pedidoCancel:number,prisma:PrismaClient){
         try {
             const pedido = await prisma.pedidos_venda.findUnique({where:{id:pedidoCancel}});
             if(!pedido){throw new ErrorResponse(404, 'Produto Não Encontrado');}
             pedido.status = 'C';
             const pedidoUpdated = await prisma.pedidos_venda.update({where:{id:pedido.id}, data:pedido});
 
-            const itens = await prisma.pedidos_venda_itens.findMany({where:{pedido_id:pedidoUpdated.id}});
-            const productMovimentacion: ProductMovimentacion[] = []; // Inicialize a matriz vazia
-            const produtos = itens;
-    
-            if(produtos){
-                for (const produto of produtos) {
-                // Crie o objeto de movimentação para cada produto vendido
-                    const productMov: ProductMovimentacion = {
-                        pm_pedido_venda_id: pedidoUpdated.id,
-                        pm_produto_id: produto.produto_id,
-                        pm_usuario_id: pedidoUpdated.usuario_id!,
-                        pm_quantidade: produto.quantidade!,
-                        pm_tipo_movimentacao: 'Cancelamento de Pedido',
-                        pm_numero_nota_fiscal: null,
-                        pm_observacao: null
-                    };
-                    // Adicione o objeto à matriz productMovimentacion
-                    productMovimentacion.push(productMov);
-                }}
-            const balanceService = new BalanceService();
-            balanceService.create(productMovimentacion,token);
-
             return pedidoUpdated;
         } catch (error) {
             throw  Error;
         }
-        finally{
-            await prisma.$disconnect();
-        }
-
     }
-    async delete(pedidoUpdate:number, token:string){
-        const prisma  = await createPrismaClientFromJWT(token);
+    async delete(pedidoUpdate:number,prisma:PrismaClient){
         try {
             const pedido = await prisma.pedidos_venda.findUnique({where:{id:pedidoUpdate}});
             if(!pedido){throw new ErrorResponse(404, 'Produto Não Encontrado');}
             const pedidoDelete = await prisma.pedidos_venda.delete({where:{id:pedido.id}});
 
             const Itens = await prisma.pedidos_venda_itens.findMany({where:{pedido_id:pedidoDelete.id}});
-            const itemIds = Itens.map((item) => item.id);
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            const itemIds = Itens.map((item:any) => item.id);
 
             const itemsDeleted = await prisma.pedidos_venda_itens.deleteMany({
                 where: { id: { in: itemIds } },
@@ -79,108 +55,52 @@ export class OrderService {
         } catch (error) {
             throw new ErrorResponse(400, 'Bad Request nos produtos');
         }
-        finally{
-            prisma.$disconnect();
-        }
     }
-    async create(pedido: IPedidoVenda, token: string) {
-        const prisma  = await createPrismaClientFromJWT(token);
+    async create(pedido: IPedidoVenda,prisma:PrismaClient) {
         try {
-            const { itens, ...pedidoInfo } = pedido;
-    
-            // Crie o pedido de venda dentro da transação
             const createdPedido = await prisma.pedidos_venda.create({
-                data:pedidoInfo,
+                data:pedido,
             });
-    
-            let createdItens;
-
-    
-            // Se houver itens, crie os itens do pedido
-            if (itens) {
-                for (let i = 0; i < itens.length; i++) {
-                    itens[i].pedido_id = createdPedido.id; 
-                    
-                }
-                createdItens = await prisma.pedidos_venda_itens.createMany({
-                    data: itens,
-                });
-            }
-            
-            console.log(createdItens);
-            // Atualize o objeto do pedido criado com os itens
-            const pedidoComItens = { ...createdPedido, itens: createdItens };
-
-            const productMovimentacion: ProductMovimentacion[] = []; // Inicialize a matriz vazia
-            const produtos = itens;
-    
-            if(produtos){
-                for (const produto of produtos) {
-                // Crie o objeto de movimentação para cada produto vendido
-                    const productMov: ProductMovimentacion = {
-                        pm_pedido_venda_id: pedidoComItens.id,
-                        pm_produto_id: produto.produto_id,
-                        pm_usuario_id: pedidoComItens.usuario_id!,
-                        pm_quantidade: -produto.quantidade!,
-                        pm_tipo_movimentacao: 'Venda',
-                        pm_numero_nota_fiscal: null,
-                        pm_observacao: null
-                    };
-                    // Adicione o objeto à matriz productMovimentacion
-                    productMovimentacion.push(productMov);
-                }}
-            const balanceService = new BalanceService();
-            const empresa  = await prismaAuth.empresas.findFirst({where:{id:decodeToken(token).idCompany}});
-            balanceService.create(productMovimentacion,token);
-            const dadosEmpresa = {
-                nomeEmpresa: empresa!.xRazaoSocial,
-                endereco: `${empresa!.xLgr}, ${empresa!.nro}`,
-                cidadeEstado: `${empresa!.xMun}, ${empresa!.uf}`,
-                cep:empresa!.cep ,
-                telefone:empresa!.fone,
-    
-            };
-            const dadosPedido = {id:pedidoInfo.id,data: pedidoInfo.data_realizacao,produtos, valorTotal: pedidoInfo.valor_liquido};
-            return {dadosEmpresa,dadosPedido};
-
+            return createdPedido;
         } catch (error) {
             console.log(error);
             throw new ErrorResponse(400, 'Bad Request na criação do pedido');
-        } finally {
-            await prisma.$disconnect();
-        }
+        } 
     }
     
-    async getNextOrderNumber(token: string) {
-        const prisma  = await createPrismaClientFromJWT(token);
-        const lastOrder = await prisma.pedidos_venda.findFirst({
-            orderBy: {
-                id: 'desc',
-            },
-        });
-        prisma.$disconnect;
-        if (lastOrder) {
-            const ultimoNumeroPedido = lastOrder.id;
-            const proximoNumeroPedido = ultimoNumeroPedido + 1;
-            return proximoNumeroPedido;
-        } else {
-            // Se não houver pedidos na tabela, comece com o número 1
-            return 1;
+    async getNextOrderNumber(token:string) {
+        const prisma = await createPrismaClientFromJWT(token);
+        try {
+            const lastOrder = await prisma.pedidos_venda.findFirst({
+                orderBy: {
+                    id: 'desc',
+                },
+            });
+            await prisma.$disconnect;
+            if (lastOrder) {
+                const ultimoNumeroPedido = lastOrder.id;
+                const proximoNumeroPedido = ultimoNumeroPedido + 1;
+                return proximoNumeroPedido;
+            } else {
+                // Se não houver pedidos na tabela, comece com o número 1
+                return 1;
+            }
+        } catch (error) {
+            console.log(error);
+            throw new ErrorResponse(500, 'Erro ao procurar id');
+        }finally{
+            await prisma.$disconnect();
         }
+        
         
     }
 
-    async getOrderByListId(listId: number[], token:string){
-        const prisma = await createPrismaClientFromJWT(token);
+    async getOrderByListId(listId: number[],prisma:PrismaClient){
         try {
-           
-            const itens = await prisma.pedidos_venda_itens.findMany({where:{pedido_id:{in: listId}}});
+            const itens: IPedidoItem[] = await prisma.pedidos_venda_itens.findMany({where:{pedido_id:{in: listId}}});
             return itens;
         } catch (error) {
             throw new Error(error as string);
-        }
-        finally{
-            await prisma.$disconnect();
         }
     }
 }
