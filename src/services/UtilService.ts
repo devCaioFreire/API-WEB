@@ -3,6 +3,7 @@ import jwt from 'jsonwebtoken';
 import { IQuery, ParamFilter, ParamProps } from '../models/utils.model';
 import { IncomingHttpHeaders } from 'http';
 import { Request } from 'express';
+import { ErrorResponse } from './ErrorService';
 
 export class Utils_service {
     decodeToken(token:string){
@@ -118,16 +119,13 @@ export function buildQuery(selectors?: ParamFilter[], params?: ParamProps[]): IQ
 }
 //Pega o Token do Header
 export function getAuthorization(ReqHeader: IncomingHttpHeaders):string{
-    try {
-        let { authorization } = ReqHeader;
-        if (!authorization) throw new Error('Token Invalid Or Not Found');
+    let authorization  = ReqHeader.authorization ?? '';
+    if(authorization != ''){
         authorization = authorization.split(' ')[1];
-
         return authorization;
-    } catch (error) {
-        console.log(error);
+    }else{
+        throw new ErrorResponse(400,'Token Invalido');
     }
-
 }
 // Função para converter campos BigInt em strings
 export function convertBigIntToString(obj: any){

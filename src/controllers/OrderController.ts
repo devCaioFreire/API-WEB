@@ -23,17 +23,20 @@ export class OrderController{
     }
     async createOrder(req: Request, res: Response){
         const token = getAuthorization(req.headers);
+        console.log(token);
         const prisma = await createPrismaClientFromJWT(token);
         try {
             return await prisma.$transaction(async (prisma) => {
                 
                 const pedido:IPedidoVenda = {...req.body};
-    
+                
                 const Service = new OrderService();
                 const itemService = new OrderItemService();
                 const balanceService = new BalanceService();
-    
-                const empresa = await prismaAuth.empresas.findUnique({where:{id:decodeToken(token).idCompany}});
+                const idCompany = decodeToken(token);
+                console.log(idCompany);
+                const empresa = await prismaAuth.empresas.findUnique({where:{id:idCompany.idCompany}});
+                
                 const { itens, ...pedidoInfo } = pedido;
     
                 //Criando Pedido
