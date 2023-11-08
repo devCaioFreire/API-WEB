@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { ErrorResponse } from '../services/errorService/ErrorService';
+import { ErrorResponse } from '../services/ErrorService';
 import { BalanceService } from '../services/BalanceService';
 
 interface ProductMovimentacion {

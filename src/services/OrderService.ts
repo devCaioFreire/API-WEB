@@ -3,7 +3,7 @@ import { IPedidoVenda} from '../models/order.model';
 import {  ParamFilter, ParamProps } from '../models/utils.model';
 import { createPrismaClientFromJWT, prismaAuth } from '../prisma';
 import { BalanceService } from './BalanceService';
-import { ErrorResponse } from './errorService/ErrorService';
+import { ErrorResponse } from './ErrorService';
 import { buildQuery, decodeToken, ParamPropsFormater } from './UtilService';
 
 export class OrderService {

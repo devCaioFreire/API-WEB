@@ -1,7 +1,7 @@
 import { IProduct } from '../models/product.model';
 import {  ParamFilter, ParamProps } from '../models/utils.model';
 import { createPrismaClientFromJWT } from '../prisma';
-import { ErrorResponse } from './errorService/ErrorService';
+import { ErrorResponse } from './ErrorService';
 import { buildQuery, ParamPropsFormater } from './UtilService';
 
 

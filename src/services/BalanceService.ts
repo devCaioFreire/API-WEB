@@ -1,7 +1,7 @@
 import { PrismaClient } from '@prisma/client';
 import { ProductMovimentacion } from '../models/balance.model';
 import { createPrismaClientFromJWT } from '../prisma';
-import { ErrorResponse } from './errorService/ErrorService';
+import { ErrorResponse } from './ErrorService';
 
 export class BalanceService {
     async create(

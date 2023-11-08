@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from 'express';
 import { RequestHandler } from 'express-serve-static-core';
-import { ErrorResponse } from '../../services/errorService/ErrorService';
+import { ErrorResponse } from '../../services/ErrorService';
 
 
 export class ErrorMiddleware {
